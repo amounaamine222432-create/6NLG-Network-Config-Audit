@@ -1,0 +1,71 @@
+{
+  "benchmark": {
+    "family": "Cisco IOS 15",
+    "version": "4.1.1",
+    "reference_pdf_sha256": "7a54074e91143d1ad6ecea3964d1ed4948775d01a863cfb53ab54d1facd4ed34",
+    "scope": "Sous-ensemble de six recommandations revues pour l'audit statique de laboratoire",
+    "note": "Cette implémentation ne constitue pas une certification CIS ; vérification du comportement par équipement requise."
+  },
+  "rules": [
+    {
+      "id": "CIS-IOS15-1.2.2",
+      "control_id": "1.2.2",
+      "pdf_page": 37,
+      "title": "Limiter les accès VTY au protocole SSH",
+      "profile": "L1",
+      "check": "vty_ssh_only",
+      "review_status": "mapped_for_lab",
+      "remediation": "Sous chaque bloc line vty : transport input ssh"
+    },
+    {
+      "id": "CIS-IOS15-1.3.1",
+      "control_id": "1.3.1",
+      "pdf_page": 57,
+      "title": "Définir une bannière EXEC",
+      "profile": "L1",
+      "check": "exec_banner_present",
+      "review_status": "mapped_for_lab",
+      "remediation": "Définir une bannière EXEC adaptée à la politique de l'organisation"
+    },
+    {
+      "id": "CIS-IOS15-1.4.1",
+      "control_id": "1.4.1",
+      "pdf_page": 64,
+      "title": "Configurer un secret pour le mode privilégié",
+      "profile": "L1",
+      "check": "enable_secret_present",
+      "review_status": "mapped_for_lab",
+      "remediation": "Définir un enable secret fort selon la politique interne"
+    },
+    {
+      "id": "CIS-IOS15-2.2.7",
+      "control_id": "2.2.7",
+      "pdf_page": 129,
+      "title": "Définir une interface source pour Syslog",
+      "profile": "L1",
+      "check": "syslog_source_present",
+      "review_status": "mapped_for_lab",
+      "remediation": "logging source-interface Loopback0 (adapter à la topologie)"
+    },
+    {
+      "id": "CIS-IOS15-2.3.1.1",
+      "control_id": "2.3.1.1",
+      "pdf_page": 132,
+      "title": "Activer l'authentification NTP",
+      "profile": "L2",
+      "check": "ntp_auth_enabled",
+      "review_status": "mapped_for_lab",
+      "remediation": "Configurer ntp authenticate et les clés/serveurs selon le plan NTP"
+    },
+    {
+      "id": "CIS-IOS15-3.1.1",
+      "control_id": "3.1.1",
+      "pdf_page": 151,
+      "title": "Désactiver le routage par la source IP",
+      "profile": "L1",
+      "check": "source_routing_disabled",
+      "review_status": "mapped_for_lab",
+      "remediation": "no ip source-route"
+    }
+  ]
+}

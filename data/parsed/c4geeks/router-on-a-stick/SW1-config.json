@@ -1,0 +1,84 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "SW1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/1",
+      "source_line": 12,
+      "ipv4_addresses": [],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "switchport mode access",
+        "switchport access vlan 10"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/2",
+      "source_line": 16,
+      "ipv4_addresses": [],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "switchport mode access",
+        "switchport access vlan 20"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 21,
+      "ipv4_addresses": [],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan 10,20"
+      ]
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 2,
+      "command": "enable"
+    },
+    {
+      "line": 3,
+      "command": "configure terminal"
+    },
+    {
+      "line": 25,
+      "command": "end"
+    },
+    {
+      "line": 26,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 6,
+      "command": "vlan 10"
+    },
+    {
+      "line": 7,
+      "command": "name SALES"
+    },
+    {
+      "line": 8,
+      "command": "vlan 20"
+    },
+    {
+      "line": 9,
+      "command": "name ENGINEERING"
+    }
+  ],
+  "source_file": "SW1-config.txt"
+}

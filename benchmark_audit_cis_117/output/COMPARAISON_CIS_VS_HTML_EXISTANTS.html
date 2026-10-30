@@ -1,0 +1,451 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>6NLG — CIS vs HTML existants</title>
+    <style>body{font:14px system-ui,sans-serif;background:#f2f6fb;color:#182a3c;margin:0}
+    main{max-width:1500px;margin:auto;padding:35px}h1{color:#123c64}article{background:white;padding:22px;
+    border-radius:14px;margin:16px 0;box-shadow:0 2px 14px #1231}table{border-collapse:collapse;width:100%}
+    th,td{border-bottom:1px solid #dbe5ee;padding:12px;vertical-align:top;text-align:left}th{background:#e8f0f8}
+    tr:hover{background:#f6faff}.pill{border-radius:9px;padding:3px 8px;font-weight:bold}
+    .PASS{background:#d7f5e3;color:#126838}.FAIL{background:#ffe0df;color:#a12323}
+    .UNKNOWN{background:#fff0bf;color:#805400}.ABSENT{background:#ddd;color:#444}
+    details{margin-top:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+    .warning{border-left:5px solid #e5a327;background:#fff8e4;padding:15px}small{color:#526476}</style></head><body><main><h1>6NLG — Comparaison audit existant / référentiel CIS local</h1>
+    <article class="warning"><b>Portée :</b> comparaison des deux exports existants avec les 39 règles du catalogue
+    local CIS IOS 15 v4.1.1 phase 5 <b>de laboratoire</b>. Il ne s'agit pas d'une certification ni d'une
+    confrontation indépendante au PDF officiel. PASS signifie « le moteur a conclu PASS », non « CIS a certifié PASS ».
+    La colonne recommandation est issue du catalogue local, pas d'une vérification directe du PDF original.</article>
+    <article><h2>Résultats observés</h2><p>01_R-FINAL-HARDENED : PASS=30, UNKNOWN=9 | 02_R-FINAL-MIXED-RISK : FAIL=16, PASS=2, UNKNOWN=21</p><p>39 contrôles × 2 configurations = 78
+    observations. 39 × 3 = 117 scénarios <b>cibles</b> ; le fichier <code>matrice_117_a_completer.json</code>
+    indique ceux à construire et à faire annoter indépendamment.</p>
+    <p>Les résultats UNKNOWN ne doivent pas être comptés comme PASS ni comme FAIL. Les métriques précision/rappel/F1
+    nécessitent des étiquettes attendues indépendantes et ne sont donc pas calculées ici.</p></article>
+    <article><h2>Contrôle par contrôle : exigence / résultat / preuve</h2><table><thead><tr>
+    <th>Réf. CIS locale</th><th>Intitulé du contrôle</th><th>Routeur renforcé</th>
+    <th>Routeur avec risques</th><th>Correction de référence</th></tr></thead><tbody><tr><td><b>1.1.1</b><br><small>p. 13</small></td><td>Activer AAA new-model<br><small>aaa_new_model</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Activer aaa new-model après validation du plan d&#x27;authentification et d&#x27;accès de secours</td></tr><tr><td><b>1.2.2</b><br><small>p. 37</small></td><td>Limiter les accès VTY au protocole SSH<br><small>vty_ssh_only</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [
+        &quot;ssh&quot;
+      ],
+      &quot;source_line&quot;: 92
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;transport_input&quot;: [
+        &quot;ssh&quot;
+      ],
+      &quot;source_line&quot;: 97
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [
+        &quot;telnet&quot;
+      ],
+      &quot;source_line&quot;: 65
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;transport_input&quot;: [
+        &quot;all&quot;
+      ],
+      &quot;source_line&quot;: 71
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Sous chaque ligne VTY, autoriser uniquement transport input ssh</td></tr><tr><td><b>1.2.7</b><br><small>p. 47</small></td><td>Limiter la temporisation EXEC de la console à dix minutes<br><small>console_exec_timeout</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;con 0&quot;,
+      &quot;seconds&quot;: 300,
+      &quot;source_line&quot;: 89
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;con 0&quot;,
+      &quot;seconds&quot;: 0,
+      &quot;source_line&quot;: 61
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Définir exec-timeout 10 0 ou moins sur la console ; vérifier la valeur effective</td></tr><tr><td><b>1.2.9</b><br><small>p. 51</small></td><td>Limiter la temporisation EXEC VTY à dix minutes<br><small>vty_exec_timeout</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;seconds&quot;: 300,
+      &quot;source_line&quot;: 92
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;seconds&quot;: 300,
+      &quot;source_line&quot;: 97
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;seconds&quot;: 900,
+      &quot;source_line&quot;: 65
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;seconds&quot;: 0,
+      &quot;source_line&quot;: 71
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Définir exec-timeout 10 0 ou moins sous les lignes VTY ; vérifier la valeur effective</td></tr><tr><td><b>1.3.1</b><br><small>p. 57</small></td><td>Définir une bannière EXEC<br><small>exec_banner_present</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;exec_banner_configured&quot;: true,
+  &quot;source_lines&quot;: [
+    88
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;exec_banner_configured&quot;: false,
+  &quot;source_lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir une bannière EXEC selon la politique interne</td></tr><tr><td><b>1.3.2</b><br><small>p. 60</small></td><td>Définir une bannière LOGIN<br><small>login_banner</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;source_lines&quot;: [
+    87
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir une bannière de connexion approuvée</td></tr><tr><td><b>1.3.3</b><br><small>p. 62</small></td><td>Définir une bannière MOTD<br><small>motd_banner</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;source_lines&quot;: [
+    86
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;source_lines&quot;: [
+    60
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Définir une bannière MOTD approuvée</td></tr><tr><td><b>1.4.1</b><br><small>p. 64</small></td><td>Configurer enable secret<br><small>enable_secret_present</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: true,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer un enable secret robuste conformément à la politique interne</td></tr><tr><td><b>1.4.3</b><br><small>p. 68</small></td><td>Utiliser username secret pour les comptes locaux<br><small>local_user_secrets</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;local_user_count&quot;: 1,
+  &quot;secret_count&quot;: 1,
+  &quot;password_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;local_user_count&quot;: 1,
+  &quot;secret_count&quot;: 0,
+  &quot;password_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Remplacer les déclarations username password par username secret, sans exposer les valeurs</td></tr><tr><td><b>1.5.4</b><br><small>p. 76</small></td><td>Éviter les communautés SNMP en lecture-écriture RW<br><small>snmp_no_rw</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;community_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;community_count&quot;: 2,
+  &quot;rw_count&quot;: 1,
+  &quot;unknown_access_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Supprimer ou restreindre les communautés SNMP RW ; privilégier SNMPv3</td></tr><tr><td><b>1.5.9</b><br><small>p. 86</small></td><td>Utiliser priv pour les groupes SNMPv3<br><small>snmp_v3_priv</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;snmp_v3_group_count&quot;: 1,
+  &quot;priv_group_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;snmp_v3_group_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer les groupes SNMPv3 avec un niveau de sécurité priv</td></tr><tr><td><b>2.1.1.2</b><br><small>p. 101</small></td><td>Utiliser SSH version 2<br><small>ssh_version2</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ssh_version&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ssh_version&quot;: null,
+  &quot;requires_live_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer ip ssh version 2 et vérifier show ip ssh</td></tr><tr><td><b>2.2.2</b><br><small>p. 119</small></td><td>Activer la journalisation tamponnée avec une taille définie<br><small>syslog_buffer</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;enabled&quot;: true,
+  &quot;buffer_size_bytes&quot;: 64000,
+  &quot;recommended_size_bytes&quot;: 64000,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;enabled&quot;: true,
+  &quot;buffer_size_bytes&quot;: 8192,
+  &quot;recommended_size_bytes&quot;: 64000,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer logging buffered avec une capacité adaptée ; CIS recommande 64000 octets</td></tr><tr><td><b>2.2.4</b><br><small>p. 123</small></td><td>Définir un collecteur Syslog distant<br><small>syslog_host</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_targets&quot;: 1,
+  &quot;ip_address_targets&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_targets&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir une destination de journaux autorisée par logging host</td></tr><tr><td><b>2.2.5</b><br><small>p. 125</small></td><td>Utiliser le niveau informational pour les journaux distants<br><small>syslog_informational</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;trap_severity&quot;: &quot;informational&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;trap_severity&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer logging trap informational selon les règles de journalisation de l&#x27;organisation</td></tr><tr><td><b>2.2.7</b><br><small>p. 129</small></td><td>Définir une interface source pour Syslog<br><small>syslog_source_present</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;source_interface&quot;: &quot;GigabitEthernet0/1&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;source_interface&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer une interface source Syslog stable, généralement une loopback</td></tr><tr><td><b>2.3.1.1</b><br><small>p. 132</small></td><td>Activer l&#x27;authentification NTP<br><small>ntp_auth_enabled</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Activer ntp authenticate et vérifier la politique NTP</td></tr><tr><td><b>2.3.1.2</b><br><small>p. 134</small></td><td>Configurer des clés d&#x27;authentification NTP<br><small>ntp_auth_keys</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer des clés NTP sans divulguer leur contenu</td></tr><tr><td><b>2.3.1.3</b><br><small>p. 136</small></td><td>Définir les clés NTP de confiance<br><small>ntp_trusted_keys</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir les identifiants de clés de confiance NTP</td></tr><tr><td><b>2.3.1.4</b><br><small>p. 138</small></td><td>Associer une clé aux serveurs NTP<br><small>ntp_server_keys</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ntp_server_count&quot;: 1,
+  &quot;keyed_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer chaque ntp server avec une référence de clé valide</td></tr><tr><td><b>2.3.2</b><br><small>p. 140</small></td><td>Définir un serveur NTP<br><small>ntp_servers</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ntp_server_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer un serveur NTP autorisé et vérifier les associations actives</td></tr><tr><td><b>2.4.3</b><br><small>p. 146</small></td><td>Utiliser une interface Loopback comme source NTP<br><small>ntp_loopback_source</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;source_is_loopback&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;source_is_loopback&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer ntp source LoopbackX après validation de la topologie</td></tr><tr><td><b>3.1.1</b><br><small>p. 151</small></td><td>Désactiver le routage par la source IP<br><small>source_routing_disabled</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: false,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: true,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer no ip source-route</td></tr><tr><td><b>3.1.2</b><br><small>p. 153</small></td><td>Désactiver Proxy ARP sur les interfaces<br><small>proxy_arp_disabled</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;interface_count&quot;: 3,
+  &quot;proxy_arp_enabled_count&quot;: 0,
+  &quot;proxy_arp_disabled_count&quot;: 3,
+  &quot;requires_live_confirmation&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;interface_count&quot;: 3,
+  &quot;proxy_arp_enabled_count&quot;: 1,
+  &quot;proxy_arp_disabled_count&quot;: 1,
+  &quot;requires_live_confirmation&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer no ip proxy-arp sur les interfaces concernées et vérifier show ip interface</td></tr><tr><td><b>3.1.3</b><br><small>p. 155</small></td><td>Éviter les interfaces Tunnel<br><small>no_tunnel_interfaces</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;tunnel_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;tunnel_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Examiner les interfaces Tunnel et leur nécessité opérationnelle avant modification</td></tr><tr><td><b>3.3.4.1</b><br><small>p. 196</small></td><td>Configurer l&#x27;authentification des voisins BGP<br><small>bgp_neighbor_password</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;bgp_peer_count&quot;: 1,
+  &quot;protected_peer_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;bgp_peer_count&quot;: 1,
+  &quot;protected_peer_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer une authentification sur les voisins ou peer-groups BGP selon la politique du réseau</td></tr><tr><td><b>1.1.2</b><br><small>p. 15</small></td><td>Définir aaa authentication login default<br><small>aaa_login_default</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;method_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir une liste de méthodes AAA login default sans méthode none</td></tr><tr><td><b>1.1.3</b><br><small>p. 17</small></td><td>Définir aaa authentication enable default<br><small>aaa_enable_default</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;method_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Définir les méthodes aaa authentication enable default après validation des accès de secours</td></tr><tr><td><b>1.1.4</b><br><small>p. 19</small></td><td>Définir login authentication sur la console<br><small>aaa_line_console</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 1,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Lier la console à une liste AAA existante par login authentication</td></tr><tr><td><b>1.1.5</b><br><small>p. 21</small></td><td>Définir login authentication sur les lignes TTY<br><small>aaa_line_tty</small></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Sur les lignes TTY présentes, associer une liste de méthodes AAA valide</td></tr><tr><td><b>1.1.6</b><br><small>p. 23</small></td><td>Définir login authentication sur les lignes VTY<br><small>aaa_line_vty</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 2,
+  &quot;verified_count&quot;: 2,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 2,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Lier toutes les lignes VTY à une liste AAA existante</td></tr><tr><td><b>1.2.4</b><br><small>p. 41</small></td><td>Créer une ACL restrictive pour la gestion VTY<br><small>vty_restricting_acl</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 2,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 0,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 2,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Créer une ACL VTY autorisant seulement les sources d&#x27;administration approuvées</td></tr><tr><td><b>1.2.5</b><br><small>p. 43</small></td><td>Appliquer access-class in aux lignes VTY<br><small>vty_access_class</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 2,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 0,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 2,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Ajouter access-class NOM in à chaque plage de lignes VTY et vérifier l&#x27;ACL</td></tr><tr><td><b>3.2.1</b><br><small>p. 159</small></td><td>Filtrer les adresses sources privées ou réservées sur l&#x27;interface externe<br><small>external_antispoof_acl</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;required_network_count&quot;: 9,
+  &quot;verified_deny_network_count&quot;: 9,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;early_broad_permit_count&quot;: 1,
+  &quot;required_network_count&quot;: 9,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer des refus anti-usurpation adaptés à l&#x27;interface WAN avant les permis généraux</td></tr><tr><td><b>3.2.2</b><br><small>p. 161</small></td><td>Appliquer une ACL entrante à l&#x27;interface externe<br><small>external_inbound_acl</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;external_interface_count&quot;: 1,
+  &quot;inbound_acl_count&quot;: 1,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;external_interface_count&quot;: 1,
+  &quot;inbound_acl_count&quot;: 1,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Identifier les interfaces externes puis appliquer une ACL par ip access-group NOM in</td></tr><tr><td><b>3.3.1.8</b><br><small>p. 178</small></td><td>Activer ip authentication key-chain eigrp<br><small>eigrp_interface_keychain</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer une chaîne de clés EIGRP et ses clés sur les interfaces concernées</td></tr><tr><td><b>3.3.1.9</b><br><small>p. 180</small></td><td>Activer ip authentication mode eigrp md5<br><small>eigrp_interface_md5</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill FAIL">FAIL</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td>Configurer le mode d&#x27;authentification EIGRP MD5 sur les interfaces concernées</td></tr><tr><td><b>3.3.2.1</b><br><small>p. 182</small></td><td>Configurer area authentication message-digest pour OSPF<br><small>ospf_area_md5</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ospf_area_count&quot;: 1,
+  &quot;area_md5_count&quot;: 1,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;ospf_area_count&quot;: 1,
+  &quot;area_md5_count&quot;: 0,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer l&#x27;authentification message-digest pour les zones OSPF impliquées</td></tr><tr><td><b>3.3.2.2</b><br><small>p. 184</small></td><td>Configurer ip ospf message-digest-key md5<br><small>ospf_interface_md5</small></td><td><span class="pill PASS">PASS</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 1,
+  &quot;missing_key_count&quot;: 0,
+  &quot;wrong_mode_count&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td><td><span class="pill UNKNOWN">UNKNOWN</span><details><summary>Preuves IR / audit</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 1,
+  &quot;missing_key_count&quot;: 1,
+  &quot;wrong_mode_count&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td><td>Configurer une clé OSPF MD5 sur les interfaces participantes, sans divulguer la valeur</td></tr>
+    </tbody></table></article>
+    <article><h2>Vérification méthodologique</h2><ol><li>Confirmer le PDF CIS officiel et sa version
+    avant toute affirmation de conformité.</li><li>Pour chaque règle, préparer des échantillons PASS, FAIL et
+    UNKNOWN annotés sans consulter le résultat du moteur.</li><li>Rejouer parsing → normalisation IR → audit
+    sur chaque fichier, et conserver les JSON et HTML.</li><li>Contrôler les preuves et les dépendances du
+    contexte (<code>complete_config</code>, interfaces WAN, commandes show).</li><li>Calculer la matrice
+    de confusion par statut uniquement sur les cas dont l'oracle a été validé.</li></ol></article>
+    </main></body></html>

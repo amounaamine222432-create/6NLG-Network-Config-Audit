@@ -1,0 +1,75 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 7,
+      "ipv4_addresses": [],
+      "no_ip_address": true,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    },
+    {
+      "name": "GigabitEthernet0/0.10",
+      "source_line": 11,
+      "ipv4_addresses": [
+        {
+          "address": "10.10.10.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "description VLAN 10 gateway",
+        "encapsulation dot1Q 10"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/0.20",
+      "source_line": 16,
+      "ipv4_addresses": [
+        {
+          "address": "10.20.20.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "description VLAN 20 gateway",
+        "encapsulation dot1Q 20"
+      ]
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 3,
+      "command": "enable"
+    },
+    {
+      "line": 4,
+      "command": "configure terminal"
+    },
+    {
+      "line": 24,
+      "command": "end"
+    },
+    {
+      "line": 25,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [],
+  "source_file": "R1-config.txt"
+}

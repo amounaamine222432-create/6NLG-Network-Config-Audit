@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NetAudit 6NLG — Bilan technique Juniper Junos</title>
+  <style>
+    :root{--ink:#1a2b40;--muted:#61798d;--line:#dae4ec;--teal:#137e7e;--blue:#17659a;--bg:#edf4f8}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .page{max-width:1110px;margin:24px auto 60px;padding:0 16px}.hero{background:linear-gradient(120deg,#0e213a,#125168 75%,#0e8a84);border-radius:19px;padding:32px 37px;color:white}
+    .eyebrow{font-size:10px;font-weight:850;letter-spacing:1.7px;color:#9de9dd}.hero h1{margin:10px 0;font-size:32px;letter-spacing:-1.1px}.hero p{max-width:800px;color:#d5edec;margin:6px 0}
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin:15px 0}.stat,.intro,.device,.notice{background:white;border:1px solid var(--line);border-radius:13px;padding:18px}
+    .stat span{font-size:10px;font-weight:750;color:#627a8c;text-transform:uppercase}.stat strong{display:block;font-size:26px;line-height:1.4}
+    .intro{margin-bottom:16px}.intro p{color:#526d7f;margin:5px 0}.device{margin:18px 0;padding:0;overflow:hidden}.device-head{padding:24px 26px;background:#eaf8fa;border-bottom:1px solid var(--line)}
+    .device-head h2{margin:3px 0;font-size:21px}.device-head p{margin:0;color:#527187;font-size:11px}.body{padding:20px 25px}.section{margin:0 0 27px}.section h3{font-size:16px;color:#174767;margin:0 0 9px}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.chip{background:#e1f6f2;color:#126f66;border-radius:40px;padding:4px 10px;font-size:10px;font-weight:800}
+    .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:9px}table{border-collapse:collapse;width:100%;min-width:550px;font-size:11px}th{text-align:left;background:#f1f7fa;color:#44667d;font-size:10px}td,th{padding:10px 12px;border-bottom:1px solid #e9eff4;vertical-align:top;overflow-wrap:anywhere}
+    tr:last-child td{border-bottom:0}.mono,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .block{border:1px solid #cfdee9;border-radius:10px;overflow:hidden;background:#fafcfe;min-width:0}.block h4{font-size:11px;background:#e7f0f7;color:#284b65;padding:10px 12px;margin:0}
+    .block pre{background:#12243b;color:#c6f5ee;margin:0;padding:13px;font-size:10.5px;line-height:1.6;max-height:340px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+    .empty{font-size:11px;color:#647a8e;padding:11px;border:1px dashed #cedde6;border-radius:8px;background:#f8fbfd}.notice{border-left:4px solid #e2aa4d;background:#fff9eb;color:#725731;font-size:11px}
+    .finding{padding:11px 13px;border:1px solid var(--line);border-radius:9px;background:#f6f9fc;margin:8px 0}.finding strong{font-size:12px}.finding p{margin:3px 0;color:#546d81;font-size:11px}
+    footer{text-align:center;margin:25px 0;color:#6a8093;font-size:10px}
+    @media(max-width:740px){.page{margin:0;padding:8px}.hero{border-radius:11px;padding:24px}.hero h1{font-size:25px}.stats{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.body{padding:16px}}
+    @page{size:A4;margin:13mm}@media print{body{background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{margin:0;max-width:none}.hero{border-radius:0}.device{break-before:page}.stat,.device,.intro{break-inside:avoid-page}pre{max-height:none!important;overflow:visible!important}}
+  </style>
+</head>
+<body><div class="page">
+  <header class="hero"><div class="eyebrow">SUP'COM × 6NLG · JUNIPER JUNOS / SRX</div>
+    <h1>Bilan technique des configurations réseau</h1>
+    <p>Parsing externe ciscoconfparse2 / clijson, normalisation IR v2 et inventaire des interfaces, adresses, protocoles, VRF, politiques et fonctions de sécurité SRX.</p>
+    <p>Généré le {{ generated_at }} · Analyse de fichiers hors ligne</p>
+  </header>
+
+  <section class="stats">
+    <div class="stat"><span>Équipements</span><strong>{{ metrics.devices }}</strong></div>
+    <div class="stat"><span>Interfaces</span><strong>{{ metrics.interfaces }}</strong></div>
+    <div class="stat"><span>OSPF</span><strong>{{ metrics.ospf }}</strong></div>
+    <div class="stat"><span>BGP</span><strong>{{ metrics.bgp }}</strong></div>
+    <div class="stat"><span>Alertes d'audit</span><strong>—</strong></div>
+  </section>
+  <section class="intro">
+    <strong>Périmètre</strong>
+    <p>Ce document présente les déclarations modélisées : il ne constitue pas un audit de sécurité Juniper, n'atteste pas l'état opérationnel et ne certifie pas la conformité de la configuration.</p>
+    <p>Les extraits JSON ci-dessous proviennent de l'IR expurgée. Aucun mot de passe, identifiant PPP ou texte CLI brut n'y est reproduit. Les compteurs IR v1 et v2 ont des périmètres distincts.</p>
+  </section>
+
+  {% for item in devices %}
+  {% set ir = item.ir %}
+  {% set old = ir.routing %}
+  {% set details = ir.junos_details %}
+  {% set advanced = details.protocols %}
+  {% set aux = details.auxiliary %}
+  {% set sec = aux.security or {} %}
+  {% set counters = ir.diagnostics.source_only_counts %}
+  <article class="device">
+    <header class="device-head"><div class="eyebrow" style="color:#177f88">ÉQUIPEMENT {{ loop.index }} / {{ devices|length }}</div>
+      <h2>{{ item.summary.hostname }}</h2>
+      <p>Fichier : <strong>{{ item.summary.file }}</strong> · Format : {{ item.summary.format }} · IR : {{ ir.schema_version }} · Statut : {{ ir.diagnostics.status }}</p>
+    </header>
+    <div class="body">
+      <section class="section"><h3>01 · Fonctionnalités détectées</h3>
+        <div class="chips">
+          {% if ir.interfaces or details.interfaces %}<span class="chip">Interfaces & IP</span>{% endif %}
+          {% for kind in ['bgp','ospf','isis','mpls','ldp','rsvp','evpn','lldp','stp'] %}{% if advanced[kind] %}<span class="chip">{{ kind|upper }}</span>{% endif %}{% endfor %}
+          {% if old.static_routes or (aux.get('routing_options') or {}).get('static_routes') %}<span class="chip">Routes statiques</span>{% endif %}
+          {% if details.routing_instances %}<span class="chip">VRF / instances</span>{% endif %}
+          {% if ir.policies.route_policies %}<span class="chip">Politiques de routage</span>{% endif %}
+          {% if sec.zones %}<span class="chip">Zones SRX</span>{% endif %}
+          {% if sec.policies %}<span class="chip">Politiques de sécurité</span>{% endif %}
+          {% if sec.source_nat_rules %}<span class="chip">NAT source</span>{% endif %}
+          {% if sec.screens %}<span class="chip">Protections SRX</span>{% endif %}
+        </div>
+      </section>
+
+      <section class="section"><h3>02 · Interfaces et adressage IP</h3>
+        {% if item.summary.interfaces %}
+        <div class="table-wrap"><table><thead><tr><th>Interface</th><th>IPv4 / IPv6 déclarée</th><th>État opérationnel</th></tr></thead><tbody>
+          {% for iface in item.summary.interfaces %}<tr><td class="mono">{{ iface.name }}</td><td class="mono">{{ iface.addresses|join(', ') or 'Aucune adresse explicitement modélisée' }}</td><td>Inconnu (configuration statique)</td></tr>{% endfor %}
+        </tbody></table></div>
+        {% else %}<div class="empty">Aucune interface identifiée.</div>{% endif %}
+        <h4>Configuration d'interfaces normalisée (Junos)</h4>
+        <div class="split">
+          <div class="block"><h4>Interfaces, DHCP, PPPoE, VLAN</h4><pre>{{ details.interfaces|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>Interface-range</h4><pre>{{ aux.interface_ranges|default([],true)|tojson(indent=2) }}</pre></div>
+        </div>
+      </section>
+
+      <section class="section"><h3>03 · Protocoles et routage</h3>
+        <div class="split">
+          <div class="block"><h4>BGP · Groupes, voisins et paramètres</h4><pre>{{ advanced.bgp|default({},true)|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>OSPF · Aires, interfaces et paramètres</h4><pre>{{ advanced.ospf|default({},true)|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>IS-IS / MPLS / LDP / RSVP / EVPN / LLDP / STP</h4><pre>{{ {'isis':advanced.get('isis'),'mpls':advanced.get('mpls'),'ldp':advanced.get('ldp'),'rsvp':advanced.get('rsvp'),'evpn':advanced.get('evpn'),'lldp':advanced.get('lldp'),'stp':advanced.get('stp')}|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>Routes statiques et options de routage</h4><pre>{{ {'routing':old.static_routes,'junos_options':aux.get('routing_options')}|tojson(indent=2) }}</pre></div>
+        </div>
+      </section>
+
+      <section class="section"><h3>04 · VRF et politiques de routage</h3>
+        <div class="split">
+          <div class="block"><h4>Instances de routage / VRF</h4><pre>{{ details.routing_instances|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>Route policies, préfixes et communities Junos</h4><pre>{{ {'route_policies':ir.policies.route_policies,'junos_prefix_lists':ir.policies.get('junos_prefix_lists',[]),'community_sets':ir.policies.community_sets}|tojson(indent=2) }}</pre></div>
+        </div>
+      </section>
+
+      <section class="section"><h3>05 · Sécurité SRX et fonctionnalités</h3>
+        <div class="split">
+          <div class="block"><h4>Zones et accès locaux configurés</h4><pre>{{ sec.zones|default([],true)|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>Politiques SRX configurées</h4><pre>{{ sec.policies|default([],true)|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>NAT source / profils de filtrage</h4><pre>{{ {'nat_source':sec.get('source_nat_rules'),'screens':sec.get('screens')}|tojson(indent=2) }}</pre></div>
+          <div class="block"><h4>Options de sécurité / TCP MSS</h4><pre>{{ {'tcp_mss_all_tcp_bytes':sec.get('tcp_mss_all_tcp_bytes'),'forwarding_family_modes':sec.get('forwarding_family_modes')}|tojson(indent=2) }}</pre></div>
+        </div>
+      </section>
+
+      <section class="section"><h3>06 · Couverture de la normalisation</h3>
+        <p><strong>Couverture combinée IR v1 + extensions v2 :</strong> {{ counters.combined_modeled_leaves or 0 }} / {{ counters.combined_total_leaves or 0 }} feuilles reconnues ; <strong>{{ counters.combined_unmodeled_leaves or 0 }} restent non modélisées.</strong> Ce résultat ne certifie ni la plateforme, ni le comportement opérationnel.</p>
+        {% if counters.combined_unmodeled_by_section %}<p>Sections restant hors modèle : {{ counters.combined_unmodeled_by_section|tojson }}.</p>{% endif %}
+        <div class="table-wrap"><table><thead><tr><th>Famille d'extensions IR v2</th><th>Feuilles reconnues</th><th>Feuilles restantes</th></tr></thead><tbody>
+          {% for family, count in counters.junos_v2_feature_recognized_by_section.items() %}
+            <tr><td>{{ family }}</td><td>{{ count }}</td><td>{{ counters.junos_v2_feature_unmodeled_by_section.get(family,0) }}</td></tr>
+          {% endfor %}
+        </tbody></table></div>
+        <p>IR v1 : {{ counters.unmodeled_leaves or 0 }} feuilles non modélisées. <strong>Ne pas additionner</strong> aux compteurs d'extensions IR v2.</p>
+        {% for finding in item.review.findings %}<div class="finding"><strong>{{ finding.title }}</strong><p>{{ finding.observation }}</p><p>{{ finding.advice }}</p></div>{% endfor %}
+      </section>
+    </div>
+  </article>
+  {% endfor %}
+  <div class="notice"><strong>Réserve scientifique :</strong> aucune connexion aux équipements ni simulation de trafic n'a été effectuée. Une politique configurée n'est pas une preuve d'application effective ; les fichiers Markdown de documentation ne constituent pas des sauvegardes intégrales attestées.</div>
+  <footer>SUP'COM × 6NLG · NetAudit · Bilan Juniper Junos / SRX généré depuis l'IR structurée</footer>
+</div></body></html>

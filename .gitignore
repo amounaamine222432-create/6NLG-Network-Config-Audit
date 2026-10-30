@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Fichiers temporaires
+*.log
+*.tmp
+.DS_Store
+
+# Rapports générés
+reports/
+outputs/
+exports/
+
+# Configurations privées
+private_configs/
+secrets/

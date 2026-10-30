@@ -1,0 +1,825 @@
+{
+  "schema_version": "1.0.0",
+  "source": {
+    "vendor": "cisco_ios",
+    "parser_schema_version": "6.0",
+    "file": "as2dept1.cfg",
+    "sha256": "99f118dafca8f03888a382dbc65835dbfa6ce4d0ee530955421e873fbd09ceba"
+  },
+  "device": {
+    "hostname": "as2dept1",
+    "platform": {
+      "vendor": "cisco",
+      "family": "ios",
+      "version": "15.2"
+    }
+  },
+  "vrfs": [],
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "2.1.1.2",
+          "prefix_length": 32,
+          "cidr": "2.1.1.2/32",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 51
+      }
+    },
+    {
+      "name": "Ethernet0/0",
+      "description": null,
+      "admin_enabled": false,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": "auto",
+        "media_type": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": true,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 54
+      }
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": "1000",
+        "duplex": "full",
+        "media_type": "gbic",
+        "auto_negotiation": true,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "2.34.101.4",
+          "prefix_length": 24,
+          "cidr": "2.34.101.4/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 59
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": true,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "2.34.201.4",
+          "prefix_length": 24,
+          "cidr": "2.34.201.4/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 66
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": true,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "2.128.0.1",
+          "prefix_length": 24,
+          "cidr": "2.128.0.1/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 70
+      }
+    },
+    {
+      "name": "GigabitEthernet3/0",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": true,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "2.128.1.1",
+          "prefix_length": 24,
+          "cidr": "2.128.1.1/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 75
+      }
+    }
+  ],
+  "routing": {
+    "static_routes": [],
+    "ospf": [],
+    "bgp": [
+      {
+        "local_as": 65001,
+        "router_id": "2.1.4.1",
+        "neighbors": [
+          {
+            "id": "as2",
+            "kind": "peer_group",
+            "peer_group": null,
+            "remote_as": 2,
+            "remote_as_unparsed": null,
+            "remote_as_inherited_from": null,
+            "session_type_configured": "ebgp",
+            "update_source": null,
+            "activated_families": [],
+            "policies": [
+              {
+                "policy_name": "as2_to_dept",
+                "direction": "in",
+                "address_family": "ipv4",
+                "source": {
+                  "line": 95
+                }
+              },
+              {
+                "policy_name": "dept_to_as2",
+                "direction": "out",
+                "address_family": "ipv4",
+                "source": {
+                  "line": 96
+                }
+              }
+            ],
+            "inherited_policy_references": [],
+            "source": {
+              "line": 83
+            }
+          },
+          {
+            "id": "2.34.101.3",
+            "kind": "peer",
+            "peer_group": "as2",
+            "remote_as": 2,
+            "remote_as_unparsed": null,
+            "remote_as_inherited_from": "as2",
+            "session_type_configured": "ebgp",
+            "update_source": null,
+            "activated_families": [
+              "ipv4"
+            ],
+            "policies": [],
+            "inherited_policy_references": [
+              {
+                "policy_name": "as2_to_dept",
+                "direction": "in",
+                "address_family": "ipv4",
+                "inherited_from": "as2",
+                "source": {
+                  "line": 95
+                }
+              },
+              {
+                "policy_name": "dept_to_as2",
+                "direction": "out",
+                "address_family": "ipv4",
+                "inherited_from": "as2",
+                "source": {
+                  "line": 96
+                }
+              }
+            ],
+            "source": {
+              "line": 85
+            }
+          },
+          {
+            "id": "2.34.201.3",
+            "kind": "peer",
+            "peer_group": "as2",
+            "remote_as": 2,
+            "remote_as_unparsed": null,
+            "remote_as_inherited_from": "as2",
+            "session_type_configured": "ebgp",
+            "update_source": null,
+            "activated_families": [
+              "ipv4"
+            ],
+            "policies": [],
+            "inherited_policy_references": [
+              {
+                "policy_name": "as2_to_dept",
+                "direction": "in",
+                "address_family": "ipv4",
+                "inherited_from": "as2",
+                "source": {
+                  "line": 95
+                }
+              },
+              {
+                "policy_name": "dept_to_as2",
+                "direction": "out",
+                "address_family": "ipv4",
+                "inherited_from": "as2",
+                "source": {
+                  "line": 96
+                }
+              }
+            ],
+            "source": {
+              "line": 86
+            }
+          }
+        ],
+        "network_statements": [
+          {
+            "prefix": "2.128.0.0/24",
+            "address": "2.128.0.0",
+            "mask": "255.255.255.0",
+            "address_family": "ipv4",
+            "source": {
+              "line": 92
+            }
+          },
+          {
+            "prefix": "2.128.1.0/24",
+            "address": "2.128.1.0",
+            "mask": "255.255.255.0",
+            "address_family": "ipv4",
+            "source": {
+              "line": 93
+            }
+          }
+        ],
+        "address_families": [
+          "ipv4"
+        ],
+        "source": {
+          "line": 80
+        }
+      }
+    ]
+  },
+  "policies": {
+    "acls": [
+      {
+        "name": "RESTRICT_HOST_TRAFFIC_IN",
+        "type": "extended",
+        "entries": [
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "network_wildcard",
+              "address": "2.128.0.0",
+              "wildcard": "0.0.255.255"
+            },
+            "destination_match": {
+              "kind": "any"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 111
+            }
+          },
+          {
+            "sequence": null,
+            "action": "deny",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "any"
+            },
+            "destination_match": {
+              "kind": "any"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 112
+            }
+          },
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "icmp",
+            "source_match": {
+              "kind": "any"
+            },
+            "destination_match": {
+              "kind": "any"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 113
+            }
+          }
+        ]
+      },
+      {
+        "name": "RESTRICT_HOST_TRAFFIC_OUT",
+        "type": "extended",
+        "entries": [
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "any"
+            },
+            "destination_match": {
+              "kind": "network_wildcard",
+              "address": "2.128.0.0",
+              "wildcard": "0.0.255.255"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 115
+            }
+          },
+          {
+            "sequence": null,
+            "action": "deny",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "network_wildcard",
+              "address": "1.128.0.0",
+              "wildcard": "0.0.255.255"
+            },
+            "destination_match": {
+              "kind": "network_wildcard",
+              "address": "2.128.0.0",
+              "wildcard": "0.0.255.255"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 116
+            }
+          },
+          {
+            "sequence": null,
+            "action": "deny",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "any"
+            },
+            "destination_match": {
+              "kind": "any"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 117
+            }
+          }
+        ]
+      },
+      {
+        "name": "102",
+        "type": "numbered",
+        "entries": [
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "2.128.0.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 119
+            }
+          },
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "2.128.1.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 120
+            }
+          }
+        ]
+      },
+      {
+        "name": "105",
+        "type": "numbered",
+        "entries": [
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "1.0.1.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 121
+            }
+          },
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "1.0.2.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 122
+            }
+          },
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "3.0.1.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 123
+            }
+          },
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": "ip",
+            "source_match": {
+              "kind": "host",
+              "address": "3.0.2.0"
+            },
+            "destination_match": {
+              "kind": "host",
+              "address": "255.255.255.0"
+            },
+            "source_port": null,
+            "destination_port": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 124
+            }
+          }
+        ]
+      }
+    ],
+    "prefix_lists": [],
+    "route_maps": [
+      {
+        "name": "dept_to_as2",
+        "entries": [
+          {
+            "sequence": 100,
+            "action": "permit",
+            "operations": [],
+            "unmodeled_statement_count": 3,
+            "source": {
+              "line": 126
+            }
+          }
+        ]
+      },
+      {
+        "name": "as2_to_dept",
+        "entries": [
+          {
+            "sequence": 100,
+            "action": "permit",
+            "operations": [
+              {
+                "operation": "set_local_preference",
+                "value": 350
+              }
+            ],
+            "unmodeled_statement_count": 1,
+            "source": {
+              "line": 131
+            }
+          }
+        ]
+      }
+    ],
+    "community_lists": [
+      {
+        "name": "as2_community",
+        "kind": "expanded",
+        "entry_count": 1
+      }
+    ]
+  },
+  "services": {
+    "nat": {
+      "rules": [],
+      "pools": []
+    },
+    "dhcp": {
+      "pools": [],
+      "excluded_ranges": []
+    },
+    "vlans": [],
+    "snmp": {
+      "communities": [],
+      "targets": []
+    },
+    "syslog": {
+      "targets": [],
+      "source_interface": null,
+      "severity": null
+    }
+  },
+  "management": {
+    "http_enabled": false,
+    "https_enabled": false,
+    "ssh_version": null,
+    "terminal_lines": [
+      {
+        "line_id": "con 0",
+        "transport_input": [],
+        "login_method": null,
+        "exec_timeout": [
+          "0",
+          "0"
+        ],
+        "line_password_configured": false,
+        "source": {
+          "line": 140
+        }
+      },
+      {
+        "line_id": "aux 0",
+        "transport_input": [],
+        "login_method": null,
+        "exec_timeout": [
+          "0",
+          "0"
+        ],
+        "line_password_configured": false,
+        "source": {
+          "line": 145
+        }
+      },
+      {
+        "line_id": "vty 0 4",
+        "transport_input": [],
+        "login_method": "line_password",
+        "exec_timeout": [],
+        "line_password_configured": false,
+        "source": {
+          "line": 150
+        }
+      }
+    ],
+    "local_accounts": [],
+    "banners": []
+  },
+  "diagnostics": {
+    "unparsed_global_count": 3,
+    "unparsed_global_lines": [
+      15,
+      38,
+      104
+    ],
+    "platform_opaque_count": 3,
+    "opaque_sections": [
+      {
+        "section": "interface:GigabitEthernet2/0",
+        "count": 1,
+        "source": {
+          "line": 70
+        }
+      },
+      {
+        "section": "interface:GigabitEthernet3/0",
+        "count": 1,
+        "source": {
+          "line": 75
+        }
+      },
+      {
+        "section": "bgp-neighbor-af",
+        "count": 1,
+        "source": {
+          "line": 83
+        }
+      },
+      {
+        "section": "bgp",
+        "count": 1,
+        "source": {
+          "line": 80
+        }
+      },
+      {
+        "section": "bgp-address-family",
+        "count": 4,
+        "source": {
+          "line": 88
+        }
+      },
+      {
+        "section": "route-map:dept_to_as2",
+        "count": 3,
+        "source": {
+          "line": 126
+        }
+      },
+      {
+        "section": "route-map:as2_to_dept",
+        "count": 1,
+        "source": {
+          "line": 131
+        }
+      },
+      {
+        "section": "line",
+        "count": 2,
+        "source": {
+          "line": 140
+        }
+      },
+      {
+        "section": "line",
+        "count": 2,
+        "source": {
+          "line": 145
+        }
+      }
+    ],
+    "source_only_counts": {
+      "cli_wrappers": 1,
+      "timestamps_directives": 2,
+      "other_global_service_directives": 0,
+      "other_system_stanzas": 1,
+      "configuration_metadata": 0
+    },
+    "notes": [
+      "Expressions des community-lists non encore traduites semantiquement."
+    ],
+    "status": "partial"
+  }
+}

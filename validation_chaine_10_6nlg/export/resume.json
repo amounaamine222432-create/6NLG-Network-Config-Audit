@@ -1,0 +1,109 @@
+{
+  "configurations": 10,
+  "assertions": 14,
+  "matched": 14,
+  "discrepancies": [],
+  "records": [
+    {
+      "configuration": "01_R-FINAL-HARDENED.cfg",
+      "complete": false,
+      "pass": 30,
+      "fail": 0,
+      "unknown": 9,
+      "assertions": 0,
+      "matched_assertions": 0,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "01_multi_eigrp_valid.cfg",
+      "complete": false,
+      "pass": 2,
+      "fail": 0,
+      "unknown": 37,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "02_R-FINAL-MIXED-RISK.cfg",
+      "complete": false,
+      "pass": 2,
+      "fail": 16,
+      "unknown": 21,
+      "assertions": 0,
+      "matched_assertions": 0,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "02_multi_eigrp_one_missing_auth.cfg",
+      "complete": true,
+      "pass": 1,
+      "fail": 21,
+      "unknown": 9,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "03_acl_wan_undefined.cfg",
+      "complete": true,
+      "pass": 1,
+      "fail": 19,
+      "unknown": 9,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "05_acl_wan_early_permit.cfg",
+      "complete": true,
+      "pass": 2,
+      "fail": 18,
+      "unknown": 9,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "07_vty_two_ranges_one_telnet.cfg",
+      "complete": false,
+      "pass": 0,
+      "fail": 1,
+      "unknown": 38,
+      "assertions": 1,
+      "matched_assertions": 1,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "08_vty_acl_one_broad.cfg",
+      "complete": false,
+      "pass": 0,
+      "fail": 2,
+      "unknown": 37,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "11_ntp_good_references.cfg",
+      "complete": false,
+      "pass": 5,
+      "fail": 0,
+      "unknown": 34,
+      "assertions": 1,
+      "matched_assertions": 1,
+      "unparsed_global": "non disponible"
+    },
+    {
+      "configuration": "14_ospf_two_areas_one_missing.cfg",
+      "complete": true,
+      "pass": 2,
+      "fail": 20,
+      "unknown": 9,
+      "assertions": 2,
+      "matched_assertions": 2,
+      "unparsed_global": "non disponible"
+    }
+  ],
+  "note": "Métriques ciblées pour huit cas ; deux configurations complètes exploratoires sans oracle global."
+}

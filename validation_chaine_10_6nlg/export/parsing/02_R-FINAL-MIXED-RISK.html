@@ -1,0 +1,575 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>02_R-FINAL-MIXED-RISK — PARSING</title><style>body{font:14px system-ui;background:#eff4f9;color:#192b3d;margin:30px auto;max-width:1260px}
+    article{background:white;padding:25px;border-radius:13px}h1{color:#194d79}table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #d8e1ea;text-align:left;vertical-align:top}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f7;padding:12px;border-radius:8px}
+    .PASS{color:#1d7843;font-weight:bold}.FAIL{color:#b22929;font-weight:bold}.UNKNOWN{color:#9b6a00;font-weight:bold}</style><article><h1>02_R-FINAL-MIXED-RISK — PARSING</h1><p>Données complètes de la phase, à rapprocher du fichier CFG.</p><pre>{
+  &quot;vendor&quot;: &quot;cisco_ios&quot;,
+  &quot;parser_schema_version&quot;: &quot;6.0&quot;,
+  &quot;source_cli_family&quot;: &quot;ios&quot;,
+  &quot;hostname&quot;: &quot;R-FINAL-MIXED-RISK&quot;,
+  &quot;interfaces&quot;: [
+    {
+      &quot;name&quot;: &quot;GigabitEthernet0/0&quot;,
+      &quot;source_line&quot;: 26,
+      &quot;ipv4_addresses&quot;: [
+        {
+          &quot;address&quot;: &quot;198.51.100.6&quot;,
+          &quot;mask&quot;: &quot;255.255.255.252&quot;,
+          &quot;options&quot;: []
+        }
+      ],
+      &quot;no_ip_address&quot;: false,
+      &quot;ipv4_dhcp&quot;: false,
+      &quot;ipv4_dhcp_options&quot;: [],
+      &quot;mtu&quot;: null,
+      &quot;acl_bindings&quot;: [
+        {
+          &quot;name&quot;: &quot;WAN-OPEN&quot;,
+          &quot;direction&quot;: &quot;in&quot;
+        }
+      ],
+      &quot;ospf_network_type&quot;: null,
+      &quot;ospf_md5_keys&quot;: [],
+      &quot;ospf_authentication_mode&quot;: null,
+      &quot;eigrp_authentication&quot;: {},
+      &quot;vrf_forwarding&quot;: null,
+      &quot;description&quot;: &quot;WAN&quot;,
+      &quot;duplex&quot;: null,
+      &quot;speed&quot;: null,
+      &quot;media_type&quot;: null,
+      &quot;negotiation&quot;: null,
+      &quot;cdp_enabled&quot;: null,
+      &quot;administrative_command&quot;: &quot;no shutdown&quot;,
+      &quot;other_commands&quot;: [],
+      &quot;ip_helper_addresses&quot;: [],
+      &quot;nat_role&quot;: &quot;outside&quot;,
+      &quot;switchport&quot;: {
+        &quot;mode&quot;: null,
+        &quot;access_vlan&quot;: null,
+        &quot;native_vlan&quot;: null,
+        &quot;allowed_vlan_commands&quot;: [],
+        &quot;trunk_encapsulation&quot;: null
+      },
+      &quot;dot1q&quot;: null,
+      &quot;hsrp_version&quot;: null,
+      &quot;hsrp_groups&quot;: [],
+      &quot;proxy_arp_enabled&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;GigabitEthernet0/1&quot;,
+      &quot;source_line&quot;: 34,
+      &quot;ipv4_addresses&quot;: [
+        {
+          &quot;address&quot;: &quot;10.70.10.1&quot;,
+          &quot;mask&quot;: &quot;255.255.255.0&quot;,
+          &quot;options&quot;: []
+        }
+      ],
+      &quot;no_ip_address&quot;: false,
+      &quot;ipv4_dhcp&quot;: false,
+      &quot;ipv4_dhcp_options&quot;: [],
+      &quot;mtu&quot;: null,
+      &quot;acl_bindings&quot;: [],
+      &quot;ospf_network_type&quot;: null,
+      &quot;ospf_md5_keys&quot;: [],
+      &quot;ospf_authentication_mode&quot;: null,
+      &quot;eigrp_authentication&quot;: {},
+      &quot;vrf_forwarding&quot;: null,
+      &quot;description&quot;: &quot;LAN&quot;,
+      &quot;duplex&quot;: null,
+      &quot;speed&quot;: null,
+      &quot;media_type&quot;: null,
+      &quot;negotiation&quot;: null,
+      &quot;cdp_enabled&quot;: null,
+      &quot;administrative_command&quot;: &quot;no shutdown&quot;,
+      &quot;other_commands&quot;: [],
+      &quot;ip_helper_addresses&quot;: [],
+      &quot;nat_role&quot;: &quot;inside&quot;,
+      &quot;switchport&quot;: {
+        &quot;mode&quot;: null,
+        &quot;access_vlan&quot;: null,
+        &quot;native_vlan&quot;: null,
+        &quot;allowed_vlan_commands&quot;: [],
+        &quot;trunk_encapsulation&quot;: null
+      },
+      &quot;dot1q&quot;: null,
+      &quot;hsrp_version&quot;: null,
+      &quot;hsrp_groups&quot;: [],
+      &quot;proxy_arp_enabled&quot;: false
+    },
+    {
+      &quot;name&quot;: &quot;GigabitEthernet0/2&quot;,
+      &quot;source_line&quot;: 41,
+      &quot;ipv4_addresses&quot;: [],
+      &quot;no_ip_address&quot;: false,
+      &quot;ipv4_dhcp&quot;: false,
+      &quot;ipv4_dhcp_options&quot;: [],
+      &quot;mtu&quot;: null,
+      &quot;acl_bindings&quot;: [],
+      &quot;ospf_network_type&quot;: null,
+      &quot;ospf_md5_keys&quot;: [],
+      &quot;ospf_authentication_mode&quot;: null,
+      &quot;eigrp_authentication&quot;: {},
+      &quot;vrf_forwarding&quot;: &quot;CUSTOMER-B&quot;,
+      &quot;description&quot;: &quot;CUSTOMER-VRF&quot;,
+      &quot;duplex&quot;: null,
+      &quot;speed&quot;: null,
+      &quot;media_type&quot;: null,
+      &quot;negotiation&quot;: null,
+      &quot;cdp_enabled&quot;: null,
+      &quot;administrative_command&quot;: &quot;no shutdown&quot;,
+      &quot;other_commands&quot;: [],
+      &quot;ip_helper_addresses&quot;: [],
+      &quot;nat_role&quot;: null,
+      &quot;switchport&quot;: {
+        &quot;mode&quot;: null,
+        &quot;access_vlan&quot;: null,
+        &quot;native_vlan&quot;: null,
+        &quot;allowed_vlan_commands&quot;: [],
+        &quot;trunk_encapsulation&quot;: null
+      },
+      &quot;dot1q&quot;: null,
+      &quot;hsrp_version&quot;: null,
+      &quot;hsrp_groups&quot;: []
+    }
+  ],
+  &quot;ospf_processes&quot;: [
+    {
+      &quot;process_id&quot;: &quot;70&quot;,
+      &quot;source_line&quot;: 47,
+      &quot;router_id&quot;: &quot;10.70.0.1&quot;,
+      &quot;networks&quot;: [
+        {
+          &quot;network&quot;: &quot;10.70.10.0&quot;,
+          &quot;wildcard_mask&quot;: &quot;0.0.0.255&quot;,
+          &quot;area&quot;: &quot;0&quot;
+        }
+      ],
+      &quot;passive_interfaces&quot;: [],
+      &quot;area_authentication&quot;: [],
+      &quot;non_passive_interfaces&quot;: [],
+      &quot;redistribution_commands&quot;: [],
+      &quot;other_commands&quot;: [],
+      &quot;default_information_originate&quot;: null,
+      &quot;default_information_options&quot;: []
+    }
+  ],
+  &quot;eigrp_processes&quot;: [
+    {
+      &quot;identifier&quot;: &quot;70&quot;,
+      &quot;source_line&quot;: 50,
+      &quot;address_families&quot;: [],
+      &quot;networks&quot;: [
+        [
+          &quot;10.70.0.0&quot;,
+          &quot;0.0.255.255&quot;
+        ]
+      ],
+      &quot;passive_interfaces&quot;: [],
+      &quot;af_interfaces&quot;: {},
+      &quot;active_af_interface&quot;: null,
+      &quot;auto_summary_enabled&quot;: true,
+      &quot;other_count&quot;: 0
+    }
+  ],
+  &quot;static_routes&quot;: [
+    {
+      &quot;destination&quot;: &quot;0.0.0.0&quot;,
+      &quot;mask&quot;: &quot;0.0.0.0&quot;,
+      &quot;vrf&quot;: null,
+      &quot;next_hop&quot;: &quot;198.51.100.5&quot;,
+      &quot;outgoing_interface&quot;: null,
+      &quot;administrative_distance_configured&quot;: null,
+      &quot;options&quot;: [],
+      &quot;source_line&quot;: 46,
+      &quot;raw&quot;: &quot;ip route 0.0.0.0 0.0.0.0 198.51.100.5&quot;
+    }
+  ],
+  &quot;bgp_processes&quot;: [
+    {
+      &quot;local_as&quot;: &quot;65070&quot;,
+      &quot;source_line&quot;: 53,
+      &quot;router_id&quot;: &quot;10.70.0.1&quot;,
+      &quot;neighbors&quot;: [
+        {
+          &quot;id&quot;: &quot;192.0.2.70&quot;,
+          &quot;source_line&quot;: 55,
+          &quot;is_peer_group&quot;: false,
+          &quot;peer_group&quot;: null,
+          &quot;remote_as&quot;: &quot;65170&quot;,
+          &quot;update_source&quot;: null,
+          &quot;description_configured&quot;: false,
+          &quot;description_source_line&quot;: null,
+          &quot;password_configured&quot;: false,
+          &quot;password_source_line&quot;: null,
+          &quot;activated_families&quot;: [],
+          &quot;route_maps&quot;: [],
+          &quot;send_community_by_family&quot;: {},
+          &quot;advertise_additional_paths&quot;: [],
+          &quot;route_reflector_client_families&quot;: [],
+          &quot;global_commands&quot;: [
+            &quot;remote-as 65170&quot;
+          ],
+          &quot;address_family_commands&quot;: {},
+          &quot;effective_remote_as&quot;: &quot;65170&quot;,
+          &quot;remote_as_inherited_from&quot;: null,
+          &quot;session_type_configured&quot;: &quot;ebgp&quot;
+        }
+      ],
+      &quot;network_statements&quot;: [
+        {
+          &quot;prefix&quot;: &quot;10.70.0.0&quot;,
+          &quot;mask&quot;: &quot;255.255.0.0&quot;,
+          &quot;address_family&quot;: null,
+          &quot;source_line&quot;: 56,
+          &quot;raw&quot;: &quot;network 10.70.0.0 mask 255.255.0.0&quot;
+        }
+      ],
+      &quot;address_families&quot;: [],
+      &quot;other_commands&quot;: [],
+      &quot;log_neighbor_changes&quot;: null
+    }
+  ],
+  &quot;key_chains&quot;: [],
+  &quot;access_lists&quot;: [
+    {
+      &quot;name&quot;: &quot;WAN-OPEN&quot;,
+      &quot;acl_type&quot;: &quot;extended&quot;,
+      &quot;entries&quot;: [
+        {
+          &quot;sequence&quot;: null,
+          &quot;action&quot;: &quot;permit&quot;,
+          &quot;body&quot;: &quot;ip any any log&quot;,
+          &quot;protocol&quot;: &quot;ip&quot;,
+          &quot;source&quot;: {
+            &quot;kind&quot;: &quot;any&quot;
+          },
+          &quot;destination&quot;: {
+            &quot;kind&quot;: &quot;any&quot;
+          },
+          &quot;source_port&quot;: null,
+          &quot;destination_port&quot;: null,
+          &quot;remaining_tokens&quot;: [],
+          &quot;source_line&quot;: 9,
+          &quot;raw&quot;: &quot;permit ip any any log&quot;,
+          &quot;logging_mode&quot;: &quot;log&quot;
+        }
+      ],
+      &quot;other_commands&quot;: []
+    },
+    {
+      &quot;name&quot;: &quot;VTY-OPEN&quot;,
+      &quot;acl_type&quot;: &quot;standard&quot;,
+      &quot;entries&quot;: [
+        {
+          &quot;sequence&quot;: null,
+          &quot;action&quot;: &quot;permit&quot;,
+          &quot;body&quot;: &quot;any&quot;,
+          &quot;protocol&quot;: null,
+          &quot;source&quot;: {
+            &quot;kind&quot;: &quot;any&quot;
+          },
+          &quot;destination&quot;: null,
+          &quot;source_port&quot;: null,
+          &quot;destination_port&quot;: null,
+          &quot;remaining_tokens&quot;: [],
+          &quot;source_line&quot;: 11,
+          &quot;raw&quot;: &quot;permit any&quot;,
+          &quot;logging_mode&quot;: null
+        }
+      ],
+      &quot;other_commands&quot;: []
+    }
+  ],
+  &quot;prefix_lists&quot;: [
+    {
+      &quot;name&quot;: &quot;OPEN-PREFIX&quot;,
+      &quot;entries&quot;: [
+        {
+          &quot;sequence&quot;: &quot;5&quot;,
+          &quot;action&quot;: &quot;permit&quot;,
+          &quot;prefix&quot;: &quot;10.70.0.0/16&quot;,
+          &quot;ge&quot;: null,
+          &quot;le&quot;: null,
+          &quot;options&quot;: [],
+          &quot;source_line&quot;: 12,
+          &quot;raw&quot;: &quot;ip prefix-list OPEN-PREFIX seq 5 permit 10.70.0.0/16&quot;
+        }
+      ]
+    }
+  ],
+  &quot;route_maps&quot;: [
+    {
+      &quot;name&quot;: &quot;OPEN-EXPORT&quot;,
+      &quot;entries&quot;: [
+        {
+          &quot;action&quot;: &quot;permit&quot;,
+          &quot;sequence&quot;: &quot;10&quot;,
+          &quot;source_line&quot;: 13,
+          &quot;match_commands&quot;: [
+            &quot;match ip address prefix-list OPEN-PREFIX&quot;
+          ],
+          &quot;set_commands&quot;: [],
+          &quot;other_commands&quot;: []
+        }
+      ]
+    }
+  ],
+  &quot;community_lists&quot;: [],
+  &quot;wrapper_commands&quot;: [
+    {
+      &quot;line&quot;: 77,
+      &quot;command&quot;: &quot;end&quot;
+    }
+  ],
+  &quot;unparsed_lines&quot;: [],
+  &quot;vrfs&quot;: [
+    {
+      &quot;name&quot;: &quot;CUSTOMER-B&quot;,
+      &quot;source_line&quot;: 15,
+      &quot;description&quot;: null,
+      &quot;rd&quot;: &quot;65000:70&quot;,
+      &quot;address_families&quot;: [],
+      &quot;route_targets&quot;: [],
+      &quot;other_commands&quot;: []
+    }
+  ],
+  &quot;global_settings&quot;: {
+    &quot;ios_version&quot;: &quot;15.2&quot;,
+    &quot;ip_domain_name&quot;: null,
+    &quot;ip_domain_lookup_enabled&quot;: null,
+    &quot;ip_cef_enabled&quot;: null,
+    &quot;ipv6_cef_enabled&quot;: null,
+    &quot;service_timestamps&quot;: [],
+    &quot;service_commands&quot;: [],
+    &quot;ssh_commands&quot;: [],
+    &quot;http_server_enabled&quot;: true,
+    &quot;https_server_enabled&quot;: null,
+    &quot;spanning_tree_mode&quot;: null,
+    &quot;spanning_tree_extend_system_id&quot;: null,
+    &quot;cdp_enabled&quot;: null,
+    &quot;ip_forward_protocols&quot;: [],
+    &quot;tftp_source_interface&quot;: null,
+    &quot;dns_views&quot;: [],
+    &quot;ipv6_ioam_commands&quot;: [],
+    &quot;enable_secret_configured&quot;: null,
+    &quot;enable_password_configured&quot;: true,
+    &quot;rsa_key_generation_requests&quot;: [],
+    &quot;aaa_login_privilege_mode&quot;: null,
+    &quot;aaa_authentication_login&quot;: [],
+    &quot;aaa_authentication_enable&quot;: [],
+    &quot;bgp_community_new_format&quot;: null,
+    &quot;icmp_unreachable_rate_limit&quot;: null,
+    &quot;tcp_synwait_seconds&quot;: null,
+    &quot;ip_source_route_enabled&quot;: true,
+    &quot;clock_timezone&quot;: null,
+    &quot;aaa_new_model_enabled&quot;: false
+  },
+  &quot;ntp&quot;: {
+    &quot;servers&quot;: [],
+    &quot;peers&quot;: [],
+    &quot;source_interface&quot;: null,
+    &quot;authentication_enabled&quot;: null,
+    &quot;authentication_keys&quot;: [],
+    &quot;trusted_key_ids&quot;: [],
+    &quot;master_configured&quot;: null,
+    &quot;master_stratum&quot;: null,
+    &quot;access_groups&quot;: [],
+    &quot;update_calendar_enabled&quot;: null,
+    &quot;logging_enabled&quot;: null,
+    &quot;clock_period&quot;: null
+  },
+  &quot;configuration_metadata&quot;: [],
+  &quot;platform_commands&quot;: [],
+  &quot;local_users&quot;: [
+    {
+      &quot;name&quot;: &quot;admin&quot;,
+      &quot;privilege&quot;: &quot;15&quot;,
+      &quot;credential_kind&quot;: &quot;password&quot;,
+      &quot;credential_configured&quot;: true,
+      &quot;source_line&quot;: 7
+    }
+  ],
+  &quot;lines&quot;: [
+    {
+      &quot;identifier&quot;: &quot;con 0&quot;,
+      &quot;source_line&quot;: 61,
+      &quot;exec_timeout&quot;: [
+        &quot;0&quot;,
+        &quot;0&quot;
+      ],
+      &quot;login_method&quot;: &quot;line_password&quot;,
+      &quot;access_classes&quot;: [],
+      &quot;privilege_level&quot;: null,
+      &quot;stopbits&quot;: null,
+      &quot;transport_input&quot;: [],
+      &quot;transport_output&quot;: [],
+      &quot;logging_synchronous&quot;: false,
+      &quot;password_configured&quot;: true,
+      &quot;other_commands&quot;: []
+    },
+    {
+      &quot;identifier&quot;: &quot;vty 0 4&quot;,
+      &quot;source_line&quot;: 65,
+      &quot;exec_timeout&quot;: [
+        &quot;15&quot;,
+        &quot;0&quot;
+      ],
+      &quot;login_method&quot;: &quot;line_password&quot;,
+      &quot;access_classes&quot;: [
+        {
+          &quot;acl&quot;: &quot;VTY-OPEN&quot;,
+          &quot;direction&quot;: &quot;in&quot;,
+          &quot;vrf_also&quot;: false
+        }
+      ],
+      &quot;privilege_level&quot;: null,
+      &quot;stopbits&quot;: null,
+      &quot;transport_input&quot;: [
+        &quot;telnet&quot;
+      ],
+      &quot;transport_output&quot;: [],
+      &quot;logging_synchronous&quot;: false,
+      &quot;password_configured&quot;: true,
+      &quot;other_commands&quot;: []
+    },
+    {
+      &quot;identifier&quot;: &quot;vty 5 15&quot;,
+      &quot;source_line&quot;: 71,
+      &quot;exec_timeout&quot;: [
+        &quot;0&quot;,
+        &quot;0&quot;
+      ],
+      &quot;login_method&quot;: &quot;line_password&quot;,
+      &quot;access_classes&quot;: [
+        {
+          &quot;acl&quot;: &quot;VTY-OPEN&quot;,
+          &quot;direction&quot;: &quot;in&quot;,
+          &quot;vrf_also&quot;: false
+        }
+      ],
+      &quot;privilege_level&quot;: null,
+      &quot;stopbits&quot;: null,
+      &quot;transport_input&quot;: [
+        &quot;all&quot;
+      ],
+      &quot;transport_output&quot;: [],
+      &quot;logging_synchronous&quot;: false,
+      &quot;password_configured&quot;: true,
+      &quot;other_commands&quot;: []
+    }
+  ],
+  &quot;banners&quot;: [
+    {
+      &quot;kind&quot;: &quot;motd&quot;,
+      &quot;source_line&quot;: 60,
+      &quot;delimiter&quot;: &quot;^C&quot;,
+      &quot;opening_command&quot;: &quot;banner motd ^CTest system — access restricted^C&quot;,
+      &quot;body_lines&quot;: []
+    }
+  ],
+  &quot;system_stanzas&quot;: [],
+  &quot;vlans&quot;: [
+    {
+      &quot;name&quot;: &quot;170&quot;,
+      &quot;configured_name&quot;: &quot;CUSTOMER-B&quot;,
+      &quot;other_commands&quot;: []
+    }
+  ],
+  &quot;dhcp_pools&quot;: [
+    {
+      &quot;name&quot;: &quot;LAN-TEST&quot;,
+      &quot;network&quot;: {
+        &quot;address&quot;: &quot;10.70.10.0&quot;,
+        &quot;mask_or_prefix&quot;: &quot;255.255.255.0&quot;
+      },
+      &quot;default_routers&quot;: [
+        &quot;10.70.10.1&quot;
+      ],
+      &quot;dns_servers&quot;: [
+        &quot;192.0.2.53&quot;
+      ],
+      &quot;domain_name&quot;: null,
+      &quot;lease&quot;: null,
+      &quot;other_commands&quot;: []
+    }
+  ],
+  &quot;dhcp_excluded_addresses&quot;: [
+    {
+      &quot;addresses&quot;: [
+        &quot;10.70.10.1&quot;,
+        &quot;10.70.10.5&quot;
+      ],
+      &quot;source_line&quot;: 19
+    }
+  ],
+  &quot;dhcp_other_commands&quot;: [],
+  &quot;nat_rules&quot;: [
+    {
+      &quot;source_line&quot;: 24,
+      &quot;kind&quot;: &quot;static&quot;,
+      &quot;acl&quot;: null,
+      &quot;pool&quot;: null,
+      &quot;interface&quot;: null,
+      &quot;inside_local&quot;: &quot;10.70.10.10&quot;,
+      &quot;inside_global&quot;: &quot;203.0.113.20&quot;,
+      &quot;overload&quot;: false,
+      &quot;protocol&quot;: null,
+      &quot;inside_port&quot;: null,
+      &quot;outside_port&quot;: null,
+      &quot;raw&quot;: &quot;ip nat inside source static 10.70.10.10 203.0.113.20&quot;,
+      &quot;options&quot;: [
+        &quot;static&quot;,
+        &quot;10.70.10.10&quot;,
+        &quot;203.0.113.20&quot;
+      ]
+    }
+  ],
+  &quot;nat_pools&quot;: [],
+  &quot;nat_other_commands&quot;: [],
+  &quot;nat_translation_settings&quot;: {},
+  &quot;snmp&quot;: {
+    &quot;communities&quot;: [
+      {
+        &quot;value&quot;: null,
+        &quot;secret_redacted&quot;: true,
+        &quot;access&quot;: &quot;RO&quot;,
+        &quot;options&quot;: [
+          &quot;RO&quot;
+        ],
+        &quot;source_line&quot;: 58
+      },
+      {
+        &quot;value&quot;: null,
+        &quot;secret_redacted&quot;: true,
+        &quot;access&quot;: &quot;RW&quot;,
+        &quot;options&quot;: [
+          &quot;RW&quot;
+        ],
+        &quot;source_line&quot;: 59
+      }
+    ],
+    &quot;hosts&quot;: [],
+    &quot;groups&quot;: [],
+    &quot;users&quot;: [],
+    &quot;trap_rules&quot;: [],
+    &quot;traps_enabled&quot;: null,
+    &quot;location_configured&quot;: null,
+    &quot;contact_configured&quot;: null,
+    &quot;other_commands&quot;: []
+  },
+  &quot;syslog&quot;: {
+    &quot;hosts&quot;: [],
+    &quot;source_interface&quot;: null,
+    &quot;trap_level&quot;: null,
+    &quot;console_enabled&quot;: null,
+    &quot;buffered&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;size_bytes&quot;: 8192,
+      &quot;severity&quot;: 6,
+      &quot;discriminator_configured&quot;: false,
+      &quot;source_line&quot;: 57
+    },
+    &quot;other_commands&quot;: []
+  }
+}</pre></article></html>

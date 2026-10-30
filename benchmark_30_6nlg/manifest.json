@@ -1,0 +1,182 @@
+[
+  {
+    "filename": "01_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-01",
+    "fact_count": 21
+  },
+  {
+    "filename": "02_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-02",
+    "fact_count": 21
+  },
+  {
+    "filename": "03_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-03",
+    "fact_count": 21
+  },
+  {
+    "filename": "04_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-04",
+    "fact_count": 21
+  },
+  {
+    "filename": "05_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-05",
+    "fact_count": 21
+  },
+  {
+    "filename": "06_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-06",
+    "fact_count": 21
+  },
+  {
+    "filename": "07_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-07",
+    "fact_count": 21
+  },
+  {
+    "filename": "08_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-08",
+    "fact_count": 21
+  },
+  {
+    "filename": "09_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-09",
+    "fact_count": 21
+  },
+  {
+    "filename": "10_OK.cfg",
+    "group": "OK",
+    "hostname": "R-BENCH-OK-10",
+    "fact_count": 21
+  },
+  {
+    "filename": "11_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-11",
+    "fact_count": 17
+  },
+  {
+    "filename": "12_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-12",
+    "fact_count": 17
+  },
+  {
+    "filename": "13_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-13",
+    "fact_count": 17
+  },
+  {
+    "filename": "14_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-14",
+    "fact_count": 17
+  },
+  {
+    "filename": "15_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-15",
+    "fact_count": 17
+  },
+  {
+    "filename": "16_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-16",
+    "fact_count": 17
+  },
+  {
+    "filename": "17_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-17",
+    "fact_count": 17
+  },
+  {
+    "filename": "18_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-18",
+    "fact_count": 17
+  },
+  {
+    "filename": "19_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-19",
+    "fact_count": 17
+  },
+  {
+    "filename": "20_FAIL.cfg",
+    "group": "FAIL",
+    "hostname": "R-BENCH-FAIL-20",
+    "fact_count": 17
+  },
+  {
+    "filename": "21_MIXED.cfg",
+    "group": "MIXED",
+    "hostname": "R-BENCH-MIXED-21",
+    "fact_count": 21
+  },
+  {
+    "filename": "22_MIXED.cfg",
+    "group": "MIXED",
+    "hostname": "R-BENCH-MIXED-22",
+    "fact_count": 21
+  },
+  {
+    "filename": "23_MIXED.cfg",
+    "group": "MIXED",
+    "hostname": "R-BENCH-MIXED-23",
+    "fact_count": 21
+  },
+  {
+    "filename": "24_MIXED.cfg",
+    "group": "MIXED",
+    "hostname": "R-BENCH-MIXED-24",
+    "fact_count": 21
+  },
+  {
+    "filename": "25_MIXED.cfg",
+    "group": "MIXED",
+    "hostname": "R-BENCH-MIXED-25",
+    "fact_count": 21
+  },
+  {
+    "filename": "26_PARTIAL.cfg",
+    "group": "PARTIAL",
+    "hostname": "R-BENCH-PARTIAL-26",
+    "fact_count": 13
+  },
+  {
+    "filename": "27_PARTIAL.cfg",
+    "group": "PARTIAL",
+    "hostname": "R-BENCH-PARTIAL-27",
+    "fact_count": 4
+  },
+  {
+    "filename": "28_PARTIAL.cfg",
+    "group": "PARTIAL",
+    "hostname": "R-BENCH-PARTIAL-28",
+    "fact_count": 14
+  },
+  {
+    "filename": "29_PARTIAL.cfg",
+    "group": "PARTIAL",
+    "hostname": "R-BENCH-PARTIAL-29",
+    "fact_count": 4
+  },
+  {
+    "filename": "30_PARTIAL.cfg",
+    "group": "PARTIAL",
+    "hostname": "R-BENCH-PARTIAL-30",
+    "fact_count": 5
+  }
+]

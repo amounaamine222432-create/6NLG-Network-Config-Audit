@@ -1,0 +1,400 @@
+[
+  {
+    "file": "ACL_01.cfg",
+    "family": "ACL",
+    "parser_expected": {
+      "access_lists.0.name": "WEB-1",
+      "access_lists.0.entries.0.action": "deny",
+      "access_lists.0.entries.1.protocol": "tcp",
+      "access_lists.0.entries.1.logging_mode": "log"
+    },
+    "ir_expected": {
+      "policies.acls.0.name": "WEB-1",
+      "policies.acls.0.entries.0.action": "deny",
+      "policies.acls.0.entries.1.protocol": "tcp",
+      "policies.acls.0.entries.1.logging_mode": "log"
+    }
+  },
+  {
+    "file": "ACL_02.cfg",
+    "family": "ACL",
+    "parser_expected": {
+      "access_lists.0.name": "WEB-2",
+      "access_lists.0.entries.0.action": "deny",
+      "access_lists.0.entries.1.protocol": "tcp",
+      "access_lists.0.entries.1.logging_mode": null
+    },
+    "ir_expected": {
+      "policies.acls.0.name": "WEB-2",
+      "policies.acls.0.entries.0.action": "deny",
+      "policies.acls.0.entries.1.protocol": "tcp",
+      "policies.acls.0.entries.1.logging_mode": null
+    }
+  },
+  {
+    "file": "ACL_03.cfg",
+    "family": "ACL",
+    "parser_expected": {
+      "access_lists.0.name": "WEB-3",
+      "access_lists.0.entries.0.action": "deny",
+      "access_lists.0.entries.1.protocol": "tcp",
+      "access_lists.0.entries.1.logging_mode": "log"
+    },
+    "ir_expected": {
+      "policies.acls.0.name": "WEB-3",
+      "policies.acls.0.entries.0.action": "deny",
+      "policies.acls.0.entries.1.protocol": "tcp",
+      "policies.acls.0.entries.1.logging_mode": "log"
+    }
+  },
+  {
+    "file": "ACL_04.cfg",
+    "family": "ACL",
+    "parser_expected": {
+      "access_lists.0.name": "WEB-4",
+      "access_lists.0.entries.0.action": "deny",
+      "access_lists.0.entries.1.protocol": "tcp",
+      "access_lists.0.entries.1.logging_mode": null
+    },
+    "ir_expected": {
+      "policies.acls.0.name": "WEB-4",
+      "policies.acls.0.entries.0.action": "deny",
+      "policies.acls.0.entries.1.protocol": "tcp",
+      "policies.acls.0.entries.1.logging_mode": null
+    }
+  },
+  {
+    "file": "ACL_05.cfg",
+    "family": "ACL",
+    "parser_expected": {
+      "access_lists.0.name": "WEB-5",
+      "access_lists.0.entries.0.action": "deny",
+      "access_lists.0.entries.1.protocol": "tcp",
+      "access_lists.0.entries.1.logging_mode": "log"
+    },
+    "ir_expected": {
+      "policies.acls.0.name": "WEB-5",
+      "policies.acls.0.entries.0.action": "deny",
+      "policies.acls.0.entries.1.protocol": "tcp",
+      "policies.acls.0.entries.1.logging_mode": "log"
+    }
+  },
+  {
+    "file": "ROUTING_01.cfg",
+    "family": "ROUTING",
+    "parser_expected": {
+      "ospf_processes.0.process_id": "101",
+      "ospf_processes.0.networks.0.area": "1"
+    },
+    "ir_expected": {
+      "routing.ospf.0.process_id": "101",
+      "routing.ospf.0.network_selectors.0.area": "1"
+    }
+  },
+  {
+    "file": "ROUTING_02.cfg",
+    "family": "ROUTING",
+    "parser_expected": {
+      "ospf_processes.0.process_id": "102",
+      "ospf_processes.0.networks.0.area": "2"
+    },
+    "ir_expected": {
+      "routing.ospf.0.process_id": "102",
+      "routing.ospf.0.network_selectors.0.area": "2"
+    }
+  },
+  {
+    "file": "ROUTING_03.cfg",
+    "family": "ROUTING",
+    "parser_expected": {
+      "ospf_processes.0.process_id": "103",
+      "ospf_processes.0.networks.0.area": "3"
+    },
+    "ir_expected": {
+      "routing.ospf.0.process_id": "103",
+      "routing.ospf.0.network_selectors.0.area": "3"
+    }
+  },
+  {
+    "file": "ROUTING_04.cfg",
+    "family": "ROUTING",
+    "parser_expected": {
+      "eigrp_processes.0.identifier": "104"
+    },
+    "ir_expected": {
+      "routing.eigrp.0.identifier": "104",
+      "routing.eigrp.0.auto_summary_enabled": true
+    }
+  },
+  {
+    "file": "ROUTING_05.cfg",
+    "family": "ROUTING",
+    "parser_expected": {
+      "eigrp_processes.0.identifier": "105"
+    },
+    "ir_expected": {
+      "routing.eigrp.0.identifier": "105",
+      "routing.eigrp.0.auto_summary_enabled": false
+    }
+  },
+  {
+    "file": "BGP_01.cfg",
+    "family": "BGP",
+    "parser_expected": {
+      "bgp_processes.0.local_as": "65101",
+      "bgp_processes.0.neighbors.0.remote_as": "65201"
+    },
+    "ir_expected": {
+      "routing.bgp.0.local_as": 65101,
+      "routing.bgp.0.neighbors.0.remote_as": 65201,
+      "routing.bgp.0.network_statements.0.prefix": "10.1.0.0/16"
+    }
+  },
+  {
+    "file": "BGP_02.cfg",
+    "family": "BGP",
+    "parser_expected": {
+      "bgp_processes.0.local_as": "65102",
+      "bgp_processes.0.neighbors.0.remote_as": "65202"
+    },
+    "ir_expected": {
+      "routing.bgp.0.local_as": 65102,
+      "routing.bgp.0.neighbors.0.remote_as": 65202,
+      "routing.bgp.0.network_statements.0.prefix": "10.2.0.0/16"
+    }
+  },
+  {
+    "file": "BGP_03.cfg",
+    "family": "BGP",
+    "parser_expected": {
+      "bgp_processes.0.local_as": "65103",
+      "bgp_processes.0.neighbors.0.remote_as": "65203"
+    },
+    "ir_expected": {
+      "routing.bgp.0.local_as": 65103,
+      "routing.bgp.0.neighbors.0.remote_as": 65203,
+      "routing.bgp.0.network_statements.0.prefix": "10.3.0.0/16"
+    }
+  },
+  {
+    "file": "BGP_04.cfg",
+    "family": "BGP",
+    "parser_expected": {
+      "bgp_processes.0.local_as": "65104",
+      "bgp_processes.0.neighbors.0.remote_as": "65204"
+    },
+    "ir_expected": {
+      "routing.bgp.0.local_as": 65104,
+      "routing.bgp.0.neighbors.0.remote_as": 65204,
+      "routing.bgp.0.network_statements.0.prefix": "10.4.0.0/16"
+    }
+  },
+  {
+    "file": "BGP_05.cfg",
+    "family": "BGP",
+    "parser_expected": {
+      "bgp_processes.0.local_as": "65105",
+      "bgp_processes.0.neighbors.0.remote_as": "65205"
+    },
+    "ir_expected": {
+      "routing.bgp.0.local_as": 65105,
+      "routing.bgp.0.neighbors.0.remote_as": 65205,
+      "routing.bgp.0.network_statements.0.prefix": "10.5.0.0/16"
+    }
+  },
+  {
+    "file": "DHCP_NAT_01.cfg",
+    "family": "DHCP_NAT",
+    "parser_expected": {
+      "dhcp_pools.0.name": "POOL-1",
+      "nat_rules.0.inside_local": "10.1.10.20"
+    },
+    "ir_expected": {
+      "services.dhcp.pools.0.name": "POOL-1",
+      "services.dhcp.pools.0.subnet": "10.1.10.0/24",
+      "services.nat.rules.0.inside_global": "203.0.113.1"
+    }
+  },
+  {
+    "file": "DHCP_NAT_02.cfg",
+    "family": "DHCP_NAT",
+    "parser_expected": {
+      "dhcp_pools.0.name": "POOL-2",
+      "nat_rules.0.inside_local": "10.2.10.20"
+    },
+    "ir_expected": {
+      "services.dhcp.pools.0.name": "POOL-2",
+      "services.dhcp.pools.0.subnet": "10.2.10.0/24",
+      "services.nat.rules.0.inside_global": "203.0.113.2"
+    }
+  },
+  {
+    "file": "DHCP_NAT_03.cfg",
+    "family": "DHCP_NAT",
+    "parser_expected": {
+      "dhcp_pools.0.name": "POOL-3",
+      "nat_rules.0.inside_local": "10.3.10.20"
+    },
+    "ir_expected": {
+      "services.dhcp.pools.0.name": "POOL-3",
+      "services.dhcp.pools.0.subnet": "10.3.10.0/24",
+      "services.nat.rules.0.inside_global": "203.0.113.3"
+    }
+  },
+  {
+    "file": "DHCP_NAT_04.cfg",
+    "family": "DHCP_NAT",
+    "parser_expected": {
+      "dhcp_pools.0.name": "POOL-4",
+      "nat_rules.0.inside_local": "10.4.10.20"
+    },
+    "ir_expected": {
+      "services.dhcp.pools.0.name": "POOL-4",
+      "services.dhcp.pools.0.subnet": "10.4.10.0/24",
+      "services.nat.rules.0.inside_global": "203.0.113.4"
+    }
+  },
+  {
+    "file": "DHCP_NAT_05.cfg",
+    "family": "DHCP_NAT",
+    "parser_expected": {
+      "dhcp_pools.0.name": "POOL-5",
+      "nat_rules.0.inside_local": "10.5.10.20"
+    },
+    "ir_expected": {
+      "services.dhcp.pools.0.name": "POOL-5",
+      "services.dhcp.pools.0.subnet": "10.5.10.0/24",
+      "services.nat.rules.0.inside_global": "203.0.113.5"
+    }
+  },
+  {
+    "file": "VLAN_VRF_01.cfg",
+    "family": "VLAN_VRF",
+    "parser_expected": {
+      "vrfs.0.name": "SITE-1",
+      "vlans.0.name": "201",
+      "interfaces.0.name": "GigabitEthernet0/1"
+    },
+    "ir_expected": {
+      "vrfs.0.name": "SITE-1",
+      "services.vlans.0.id": 201,
+      "interfaces.0.vrf": "SITE-1"
+    }
+  },
+  {
+    "file": "VLAN_VRF_02.cfg",
+    "family": "VLAN_VRF",
+    "parser_expected": {
+      "vrfs.0.name": "SITE-2",
+      "vlans.0.name": "202",
+      "interfaces.0.name": "GigabitEthernet0/2"
+    },
+    "ir_expected": {
+      "vrfs.0.name": "SITE-2",
+      "services.vlans.0.id": 202,
+      "interfaces.0.vrf": "SITE-2"
+    }
+  },
+  {
+    "file": "VLAN_VRF_03.cfg",
+    "family": "VLAN_VRF",
+    "parser_expected": {
+      "vrfs.0.name": "SITE-3",
+      "vlans.0.name": "203",
+      "interfaces.0.name": "GigabitEthernet0/3"
+    },
+    "ir_expected": {
+      "vrfs.0.name": "SITE-3",
+      "services.vlans.0.id": 203,
+      "interfaces.0.vrf": "SITE-3"
+    }
+  },
+  {
+    "file": "VLAN_VRF_04.cfg",
+    "family": "VLAN_VRF",
+    "parser_expected": {
+      "vrfs.0.name": "SITE-4",
+      "vlans.0.name": "204",
+      "interfaces.0.name": "GigabitEthernet0/4"
+    },
+    "ir_expected": {
+      "vrfs.0.name": "SITE-4",
+      "services.vlans.0.id": 204,
+      "interfaces.0.vrf": "SITE-4"
+    }
+  },
+  {
+    "file": "VLAN_VRF_05.cfg",
+    "family": "VLAN_VRF",
+    "parser_expected": {
+      "vrfs.0.name": "SITE-5",
+      "vlans.0.name": "205",
+      "interfaces.0.name": "GigabitEthernet0/5"
+    },
+    "ir_expected": {
+      "vrfs.0.name": "SITE-5",
+      "services.vlans.0.id": 205,
+      "interfaces.0.vrf": "SITE-5"
+    }
+  },
+  {
+    "file": "STATIC_01.cfg",
+    "family": "STATIC",
+    "parser_expected": {
+      "static_routes.0.destination": "10.1.0.0",
+      "static_routes.1.next_hop": "198.51.100.1"
+    },
+    "ir_expected": {
+      "routing.static_routes.0.prefix": "10.1.0.0/16",
+      "routing.static_routes.1.prefix": "0.0.0.0/0"
+    }
+  },
+  {
+    "file": "STATIC_02.cfg",
+    "family": "STATIC",
+    "parser_expected": {
+      "static_routes.0.destination": "10.2.0.0",
+      "static_routes.1.next_hop": "198.51.100.2"
+    },
+    "ir_expected": {
+      "routing.static_routes.0.prefix": "10.2.0.0/16",
+      "routing.static_routes.1.prefix": "0.0.0.0/0"
+    }
+  },
+  {
+    "file": "STATIC_03.cfg",
+    "family": "STATIC",
+    "parser_expected": {
+      "static_routes.0.destination": "10.3.0.0",
+      "static_routes.1.next_hop": "198.51.100.3"
+    },
+    "ir_expected": {
+      "routing.static_routes.0.prefix": "10.3.0.0/16",
+      "routing.static_routes.1.prefix": "0.0.0.0/0"
+    }
+  },
+  {
+    "file": "STATIC_04.cfg",
+    "family": "STATIC",
+    "parser_expected": {
+      "static_routes.0.destination": "10.4.0.0",
+      "static_routes.1.next_hop": "198.51.100.4"
+    },
+    "ir_expected": {
+      "routing.static_routes.0.prefix": "10.4.0.0/16",
+      "routing.static_routes.1.prefix": "0.0.0.0/0"
+    }
+  },
+  {
+    "file": "STATIC_05.cfg",
+    "family": "STATIC",
+    "parser_expected": {
+      "static_routes.0.destination": "10.5.0.0",
+      "static_routes.1.next_hop": "198.51.100.5"
+    },
+    "ir_expected": {
+      "routing.static_routes.0.prefix": "10.5.0.0/16",
+      "routing.static_routes.1.prefix": "0.0.0.0/0"
+    }
+  }
+]

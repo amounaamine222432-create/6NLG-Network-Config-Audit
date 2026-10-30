@@ -1,0 +1,683 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://supcom.example.invalid/schemas/network_device_ir_v2.schema.json",
+  "title": "IR réseau multi-constructeurs — v2 (politiques et fonctions Junos)",
+  "description": "Représentation normalisée et statique d'une configuration. Ne décrit pas l'état opérationnel de l'équipement.",
+  "type": "object",
+  "required": ["schema_version", "source", "device", "vrfs", "interfaces", "routing", "policies", "services", "management", "diagnostics"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "2.0.0"},
+    "source": {
+      "type": "object",
+      "required": ["vendor", "parser_schema_version", "file", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "vendor": {"type": "string"},
+        "parser_schema_version": {"type": ["string", "null"]},
+        "file": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["hostname", "platform"],
+      "additionalProperties": false,
+      "properties": {
+        "hostname": {"type": ["string", "null"]},
+        "platform": {
+          "type": "object",
+          "required": ["vendor", "family", "version"],
+          "properties": {
+            "vendor": {"type": "string"},
+            "family": {"type": "string"},
+            "version": {"type": ["string", "null"]}
+          }
+        },
+        "platform_directives": {"type": "array", "items": {
+          "type": "object", "required": ["feature", "configured_value", "value_unit", "documentation_status", "operational_state", "source"],
+          "additionalProperties": false,
+          "properties": {
+            "feature": {"type": "string"},
+            "configured_value": {"type": ["string", "integer", "boolean", "object", "null"]},
+            "value_unit": {"type": ["string", "null"]},
+            "documentation_status": {"enum": ["vendor_documented", "vendor_documented_platform_specific", "syntax_only"]},
+            "documented_meaning": {"type": ["string", "null"]},
+            "documentation_scope": {"type": ["string", "null"]},
+            "documentation_reference": {"type": ["string", "null"]},
+            "operational_state": {"type": "null"},
+            "source": {"$ref": "#/$defs/sourceLine"}
+          }
+        }}
+      }
+    },
+    "vrfs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "route_distinguisher", "address_families", "route_targets", "source"],
+        "properties": {
+          "name": {"type": ["string", "null"]},
+          "route_distinguisher": {"type": ["string", "null"]},
+          "description": {"type": ["string", "null"]},
+          "address_families": {"type": "array", "items": {"type": "string"}},
+          "route_targets": {"type": "array", "items": {"type": "object"}},
+          "source": {"$ref": "#/$defs/sourceLine"}
+        }
+      }
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "admin_enabled", "operational_state", "ipv4_addresses", "vrf", "nat_role", "dhcp_relay_targets", "vlan_tagging", "hsrp_groups", "source"],
+        "properties": {
+          "name": {"type": ["string", "null"]},
+          "description": {"type": ["string", "null"]},
+          "admin_enabled": {"type": ["boolean", "null"], "description": "null = état non explicitement déclaré."},
+          "operational_state": {"type": "null", "description": "Impossible à déduire d'une simple configuration."},
+          "link": {"type": "object"},
+          "ipv4_addresses": {"type": "array", "items": {"$ref": "#/$defs/interfaceIp"}},
+          "ipv4_dhcp": {"type": "boolean"},
+          "ipv4_explicitly_absent": {"type": "boolean"},
+          "vrf": {"type": ["string", "null"]},
+          "nat_role": {"enum": ["inside", "outside", null]},
+          "acl_bindings": {"type": "array", "items": {"type": "object"}},
+          "ospf_network_type": {"type": ["string", "null"]},
+          "ospf_authentication_mode": {"type": ["string", "null"]},
+          "ospf_md5_key_ids": {"type": "array", "items": {"type": "string"}},
+          "eigrp_authentication": {"type": "object"},
+          "dhcp_relay_targets": {"type": "array", "items": {"type": "string"}},
+          "vlan_tagging": {
+            "type": ["object", "null"],
+            "properties": {"vlan_id": {"type": ["integer", "null"]}, "native": {"type": "boolean"}}
+          },
+          "switchport": {"type": "object", "properties": {
+            "trunk_encapsulation": {"enum": ["dot1q", "isl", "negotiate", null]}
+          }},
+          "hsrp_groups": {"type": "array", "items": {"type": "object"}},
+          "source": {"$ref": "#/$defs/sourceLine"}
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "required": ["static_routes", "ospf", "bgp"],
+      "additionalProperties": false,
+      "properties": {
+        "static_routes": {"type": "array", "items": {"$ref": "#/$defs/staticRoute"}},
+        "ospf": {"type": "array", "items": {"$ref": "#/$defs/ospfProcess"}},
+        "eigrp": {"type": "array", "items": {"type": "object"}},
+        "key_chains": {"type": "array", "items": {"type": "object"}},
+        "bgp": {"type": "array", "items": {"$ref": "#/$defs/bgpProcess"}}
+      }
+    },
+    "policies": {
+      "type": "object",
+      "required": ["acls", "prefix_lists", "route_maps", "community_lists", "route_policies", "community_sets"],
+      "additionalProperties": false,
+      "properties": {
+        "acls": {"type": "array", "items": {"$ref": "#/$defs/acl"}},
+        "prefix_lists": {"type": "array", "items": {"$ref": "#/$defs/prefixList"}},
+        "route_maps": {"type": "array", "items": {"$ref": "#/$defs/routeMap"}},
+        "community_lists": {"type": "array", "items": {"type": "object"}},
+        "route_policies": {"type": "array", "items": {"$ref": "#/$defs/routePolicyV2"}},
+        "community_sets": {"type": "array", "items": {"$ref": "#/$defs/communitySetV2"}},
+        "junos_prefix_lists": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["name", "prefixes", "vendor_semantics", "source"], "properties": {
+            "name": {"type": "string"},
+            "prefixes": {"type": "array", "items": {"type": "string"}},
+            "vendor_semantics": {"const": "junos"}, "source": {"$ref": "#/$defs/sourceLine"}
+          }}}
+      }
+    },
+    "services": {
+      "type": "object",
+      "required": ["nat", "dhcp", "vlans", "snmp", "syslog"],
+      "additionalProperties": false,
+      "properties": {
+        "nat": {
+          "type": "object", "required": ["rules", "pools"],
+          "properties": {"rules": {"type": "array", "items": {"type": "object"}},
+                         "pools": {"type": "array", "items": {"type": "object"}},
+                         "translation_timers": {"type": "object"}}
+        },
+        "dhcp": {
+          "type": "object", "required": ["pools", "excluded_ranges"],
+          "properties": {"pools": {"type": "array", "items": {"type": "object", "properties": {
+                           "lease": {"type": ["object", "null"], "properties": {
+                             "infinite": {"type": "boolean"},
+                             "duration_seconds": {"type": ["integer", "null"], "minimum": 0},
+                             "source": {"$ref": "#/$defs/sourceLine"}
+                           }}
+                         }}},
+                         "excluded_ranges": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}}
+          }
+        },
+        "vlans": {"type": "array", "items": {"type": "object"}},
+        "snmp": {
+          "type": "object", "required": ["communities", "targets"],
+          "properties": {
+            "communities": {
+              "type": "array",
+              "items": {
+                "type": "object", "required": ["access", "secret_redacted", "source"],
+                "additionalProperties": false,
+                "properties": {"access": {"type": "string"}, "secret_redacted": {"const": true},
+                               "source": {"$ref": "#/$defs/sourceLine"}}
+              }
+            },
+            "targets": {"type": "array", "items": {"type": "object"}},
+            "location_configured": {"type": ["boolean", "null"]},
+            "contact_configured": {"type": ["boolean", "null"]},
+            "groups": {"type": "array", "items": {"type": "object"}},
+            "users": {"type": "array", "items": {"type": "object", "properties": {
+              "authentication_configured": {"type": "boolean"},
+              "authentication_algorithm": {"type": ["string", "null"]},
+              "privacy_configured": {"type": "boolean"},
+              "privacy_algorithm": {"type": ["string", "null"]},
+              "secrets_redacted": {"const": true}
+            }}},
+            "trap_rules": {"type": "array", "items": {"type": "object"}},
+            "traps_explicitly_disabled": {"type": "boolean"}
+          }
+        },
+        "syslog": {
+          "type": "object", "required": ["targets", "source_interface", "severity"],
+          "properties": {"targets": {"type": "array", "items": {"type": "object"}},
+                         "source_interface": {"type": ["string", "null"]},
+                         "severity": {"type": ["string", "null"]},
+                         "buffered": {"type": ["object", "null"], "properties": {
+                           "enabled": {"type": ["boolean", "null"]},
+                           "size_bytes": {"type": ["integer", "null"]},
+                           "severity": {"type": ["integer", "null"], "minimum": 0, "maximum": 7},
+                           "discriminator_configured": {"type": "boolean"},
+                           "source": {"$ref": "#/$defs/sourceLine"}
+                         }}}
+        },
+        "ntp": {
+          "type": "object",
+          "required": ["servers", "peers", "source_interface", "authentication_enabled", "authentication_key_count", "trusted_key_count", "master_configured", "master_stratum", "access_groups"],
+          "properties": {
+            "servers": {"type": "array", "items": {"type": "object"}},
+            "peers": {"type": "array", "items": {"type": "object"}},
+            "source_interface": {"type": ["string", "null"]},
+            "authentication_enabled": {"type": ["boolean", "null"]},
+            "authentication_key_count": {"type": "integer", "minimum": 0},
+            "trusted_key_count": {"type": "integer", "minimum": 0},
+            "master_configured": {"type": ["boolean", "null"]},
+            "master_stratum": {"type": ["integer", "null"]},
+            "access_groups": {"type": "array", "items": {"type": "object"}}
+          }
+        },
+        "ip_stack": {
+          "type": "object", "required": ["icmp_unreachable_rate_limit", "tcp_synwait_seconds", "source_route_enabled"],
+          "properties": {
+            "icmp_unreachable_rate_limit": {"type": ["object", "null"]},
+            "tcp_synwait_seconds": {"type": ["integer", "null"]},
+            "source_route_enabled": {"type": ["boolean", "null"]}
+          }
+        },
+        "clock": {
+          "type": "object", "required": ["timezone", "synchronized"],
+          "additionalProperties": false,
+          "properties": {
+            "timezone": {"type": ["object", "null"], "properties": {
+              "name": {"type": "string"},
+              "hours_offset": {"type": "integer", "minimum": -23, "maximum": 23},
+              "minutes_offset": {"type": "integer", "minimum": 0, "maximum": 59},
+              "source": {"$ref": "#/$defs/sourceLine"}
+            }},
+            "synchronized": {"type": "null"}
+          }
+        }
+      }
+    },
+    "management": {
+      "type": "object",
+      "required": ["http_enabled", "https_enabled", "ssh_version", "terminal_lines", "local_accounts", "banners"],
+      "additionalProperties": false,
+      "properties": {
+        "http_enabled": {"type": ["boolean", "null"]},
+        "https_enabled": {"type": ["boolean", "null"]},
+        "ssh_version": {"type": ["integer", "null"]},
+        "terminal_lines": {"type": "array", "items": {"type": "object"}},
+        "local_accounts": {"type": "array", "items": {"type": "object"}},
+        "banners": {"type": "array", "items": {"type": "object"}},
+        "enable_secret_configured": {"type": ["boolean", "null"]},
+        "enable_password_configured": {"type": ["boolean", "null"]},
+        "aaa_new_model_enabled": {"type": ["boolean", "null"]},
+        "aaa_authentication_login": {"type": "array", "items": {"type": "object"}},
+        "aaa_authentication_enable": {"type": "array", "items": {"type": "object"}},
+        "aaa_login_privilege_mode": {"type": ["boolean", "null"]},
+        "rsa_key_generation_requests": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "junos_details": {"$ref": "#/$defs/junosDetails"},
+    "diagnostics": {
+      "type": "object",
+      "required": ["unparsed_global_count", "unparsed_global_lines", "platform_opaque_count", "opaque_sections", "source_only_counts", "notes", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "unparsed_global_count": {"type": "integer", "minimum": 0},
+        "unparsed_global_lines": {"type": "array", "items": {"type": ["integer", "null"]}},
+        "platform_opaque_count": {"type": "integer", "minimum": 0},
+        "platform_directive_count": {"type": "integer", "minimum": 0},
+        "platform_modeled_count": {"type": "integer", "minimum": 0},
+        "platform_semantics_unverified_count": {"type": "integer", "minimum": 0},
+        "platform_scope_limited_count": {"type": "integer", "minimum": 0},
+        "formatting_recovery_count": {"type": "integer", "minimum": 0},
+        "opaque_sections": {"type": "array", "items": {"type": "object"}},
+        "source_only_counts": {"type": "object"},
+        "notes": {"type": "array", "items": {"type": "string"}},
+        "status": {"enum": ["modeled_subset", "partial"]}
+      }
+    }
+  },
+  "$defs": {
+    "junosDetails": {
+      "type": "object", "additionalProperties": false,
+      "required": ["protocols", "routing_instances", "interfaces", "auxiliary"],
+      "properties": {
+        "protocols": {
+          "type": "object", "additionalProperties": false,
+          "properties": {
+            "bgp": {"type": "object", "additionalProperties": false,
+              "required": ["groups"], "properties": {
+              "log_updown_configured": {"const": true}, "graceful_restart_configured": {"const": true},
+              "groups": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+                "required": ["name"], "properties": {
+                  "name": {"type": "string"}, "mtu_discovery_configured": {"const": true},
+                  "import_policies": {"type": "array", "items": {"type": "string"}},
+                  "export_policies": {"type": "array", "items": {"type": "string"}},
+                  "vpn_apply_export_configured": {"const": true},
+                  "preference": {"type": "integer", "minimum": 0, "maximum": 255},
+                  "cluster_id": {"type": "string"}, "multipath_configured": {"const": true},
+                  "multiple_as_configured": {"const": true}, "bfd": {"$ref": "#/$defs/junosBfd"}
+                  , "hold_time_seconds": {"type": "integer", "minimum": 3, "maximum": 65535}
+                  , "remove_private_configured": {"const": true}, "as_override_configured": {"const": true}
+                  , "advertise_peer_as_configured": {"const": true}
+                  , "authentication_configured": {"const": true}, "authentication_secret_redacted": {"const": true}
+                  , "neighbors": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+                    "required": ["id"], "properties": {
+                      "id": {"type": "string"}, "disabled_configured": {"const": true},
+                      "hold_time_seconds": {"type": "integer", "minimum": 3, "maximum": 65535},
+                      "bfd": {"$ref": "#/$defs/junosBfd"}, "authentication_configured": {"const": true},
+                      "authentication_secret_redacted": {"const": true}
+                    }}}
+              }}}
+            }},
+            "ospf": {"type": "object", "additionalProperties": false,
+              "required": ["areas"], "properties": {
+                "traffic_engineering_configured": {"const": true},
+                "export_policies": {"type": "array", "items": {"type": "string"}},
+                "import_policies": {"type": "array", "items": {"type": "string"}},
+                "reference_bandwidth_configured": {"type": "string", "pattern": "^[0-9]+[kKmMgGtT]?$"},
+                "areas": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+                  "required": ["id", "interfaces"], "properties": {
+                    "id": {"type": "string"}, "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}},
+                    "area_type": {"enum": ["stub", "nssa"]}, "no_summaries_configured": {"const": true}
+                }}}
+              }},
+            "isis": {"type": "object", "additionalProperties": false,
+              "required": ["interfaces", "disabled_levels"], "properties": {
+                "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}},
+                "disabled_levels": {"type": "array", "items": {"enum": [1, 2]}}
+              }},
+            "rsvp": {"$ref": "#/$defs/junosProtocolWithInterfaces"},
+            "ldp": {"type": "object", "additionalProperties": false,
+              "required": ["interfaces"], "properties": {
+                "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}},
+                "make_before_break_configured": {"const": true}
+              }},
+            "mpls": {"type": "object", "additionalProperties": false,
+              "required": ["interfaces", "label_switched_paths"], "properties": {
+                "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}},
+                "traffic_engineering_mode": {"enum": ["bgp", "bgp-igp"]},
+                "ipv6_tunneling_configured": {"const": true}, "no_decrement_ttl_configured": {"const": true},
+                "record_configured": {"const": true},
+                "label_switched_paths": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+                  "required": ["name", "destination"], "properties": {
+                    "name": {"type": "string"}, "destination": {"type": "string"},
+                    "fast_reroute_configured": {"const": true}
+                  }}}
+              }},
+            "lldp": {"type": "object", "additionalProperties": false,
+              "required": ["interfaces"], "properties": {
+                "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}},
+                "port_id_subtype": {"enum": ["interface-name", "locally-assigned"]}
+              }},
+            "stp": {"type": "object", "additionalProperties": false,
+              "required": ["configured"], "properties": {"configured": {"const": true}}},
+            "evpn": {"type": "object", "additionalProperties": false,
+              "properties": {
+                "encapsulation": {"enum": ["vxlan", "mpls", "srv6"]},
+                "default_gateway_option": {"enum": ["no-gateway-community", "do-not-advertise"]},
+                "extended_vni_list": {"type": "object", "additionalProperties": false,
+                  "required": ["all", "items"], "properties": {
+                    "all": {"type": "boolean"},
+                    "items": {"type": "array", "items": {"type": "string", "pattern": "^[0-9]+(-[0-9]+)?$"}}
+                  }}
+              }}
+          }
+        },
+        "routing_instances": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["name"], "properties": {
+            "name": {"type": "string"}, "vrf_import": {"type": "string"},
+            "vrf_export": {"type": "string"}, "vrf_table_label_configured": {"const": true},
+            "multipath_configured": {"const": true}, "auto_export_configured": {"const": true},
+            "instance_type": {"enum": ["vrf", "virtual-router", "evpn", "mac-vrf", "vpls", "forwarding", "no-forwarding"]},
+            "interfaces": {"type": "array", "items": {"type": "string"}},
+            "vrf_target": {"type": "string"}, "route_distinguisher": {"type": "string"},
+            "configured_protocols": {"type": "array", "items": {"enum": ["bgp", "ospf", "isis", "evpn", "ldp", "rsvp"]}},
+            "evpn": {"type": "object", "additionalProperties": false, "properties": {
+              "irb_symmetric_routing_vni": {"type": "integer", "minimum": 1, "maximum": 16777215},
+              "ip_prefix_routes": {"type": "object", "additionalProperties": false, "properties": {
+                "advertise_direct_nexthop_configured": {"const": true},
+                "encapsulation": {"enum": ["vxlan", "mpls"]},
+                "vni": {"type": "integer", "minimum": 1, "maximum": 16777215},
+                "import_policy": {"type": "string"}
+              }}
+            }}
+          }}},
+        "interfaces": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["name"], "properties": {
+            "name": {"type": "string"},
+            "vlan_id": {"type": "integer", "minimum": 1, "maximum": 4094},
+            "encapsulation": {"enum": ["ppp-over-ether", "ethernet-bridge", "vlan-bridge"]},
+            "physical_settings": {"type": "object", "additionalProperties": false, "properties": {
+              "vlan_tagging_configured": {"const": true},
+              "vdsl_profile": {"enum": ["auto", "8a", "8b", "8c", "8d", "12a", "12b", "17a"]},
+              "no_per_unit_scheduler_configured": {"const": true},
+              "trace_flag_configured": {"enum": ["all", "ppp", "pppoe"]}
+            }},
+            "pppoe": {"type": "object", "additionalProperties": false, "properties": {
+              "underlying_interface": {"type": "string"},
+              "auto_reconnect_seconds": {"type": "integer", "minimum": 0, "maximum": 86400},
+              "client_configured": {"const": true}, "service_name_configured": {"const": true}
+            }},
+            "pap_authentication": {"type": "object", "additionalProperties": false,
+              "required": ["credentials_redacted"], "properties": {
+                "credentials_redacted": {"const": true},
+                "login_configured": {"const": true}, "secret_configured": {"const": true},
+                "passive_configured": {"const": true}
+              }},
+            "families": {"type": "object", "additionalProperties": false, "properties": {
+              "inet6": {"type": "object", "additionalProperties": false, "required": ["addresses"],
+                "properties": {"addresses": {"type": "array", "items": {"type": "string"}}}},
+              "inet": {"type": "object", "additionalProperties": false, "required": ["virtual_gateways"],
+                "properties": {
+                  "virtual_gateways": {"type": "array", "items": {"type": "string"}},
+                  "addresses": {"type": "array", "items": {"type": "string"}},
+                  "dhcp_configured": {"const": true}, "negotiate_address_configured": {"const": true},
+                  "family_configured": {"const": true}
+                }},
+              "mpls": {"type": "object", "additionalProperties": false, "required": ["configured"],
+                "properties": {"configured": {"const": true}}},
+              "ethernet_switching": {"type": "object", "additionalProperties": false, "properties": {
+                "interface_mode": {"enum": ["access", "trunk"]},
+                "vlan_members": {"type": "array", "items": {"type": "string"}}
+              }}
+            }}
+          }}},
+        "auxiliary": {"type": "object", "additionalProperties": false, "properties": {
+          "system": {"type": "object", "additionalProperties": false, "properties": {
+            "ssh_configured": {"const": true}
+          }},
+          "security": {"type": "object", "additionalProperties": false, "properties": {
+            "forwarding_family_modes": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["family", "configured_mode"], "properties": {
+                "family": {"type": "string"}, "configured_mode": {"enum": ["packet-based", "flow-based"]}
+              }}},
+            "zones": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["name"], "properties": {
+                "name": {"type": "string"}, "screen_profile": {"type": "string"},
+                "inbound_system_services": {"type": "array", "items": {"type": "string"}},
+                "inbound_protocols": {"type": "array", "items": {"type": "string"}},
+                "interfaces": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+                  "required": ["name"], "properties": {
+                    "name": {"type": "string"},
+                    "inbound_system_services": {"type": "array", "items": {"type": "string"}},
+                    "inbound_protocols": {"type": "array", "items": {"type": "string"}}
+                  }}}
+              }}},
+            "policies": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["name", "from_zone", "to_zone"], "properties": {
+                "name": {"type": "string"}, "from_zone": {"type": "string"}, "to_zone": {"type": "string"},
+                "source_address": {"type": "array", "items": {"type": "string"}},
+                "destination_address": {"type": "array", "items": {"type": "string"}},
+                "application": {"type": "array", "items": {"type": "string"}},
+                "configured_action": {"enum": ["permit", "deny", "reject"]}
+              }}},
+            "source_nat_rules": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["rule_set", "name", "translation"], "properties": {
+                "rule_set": {"type": "string"}, "name": {"type": "string"},
+                "from_zone": {"type": "string"}, "to_zone": {"type": "string"},
+                "source_address": {"type": "string"}, "destination_address": {"type": "string"},
+                "translation": {"const": "interface"}
+              }}},
+            "screens": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["name", "checks", "syn_flood"], "properties": {
+                "name": {"type": "string"},
+                "checks": {"type": "array", "items": {"enum": ["icmp.ping-death", "ip.source-route-option", "ip.tear-drop", "tcp.land"]}},
+                "syn_flood": {"type": "object", "additionalProperties": false, "properties": {
+                  "alarm_threshold": {"type": "integer", "minimum": 1, "maximum": 1000000},
+                  "attack_threshold": {"type": "integer", "minimum": 1, "maximum": 1000000},
+                  "source_threshold": {"type": "integer", "minimum": 1, "maximum": 1000000},
+                  "destination_threshold": {"type": "integer", "minimum": 1, "maximum": 1000000},
+                  "timeout": {"type": "integer", "minimum": 1, "maximum": 1000000}
+                }}
+              }}},
+            "tcp_mss_all_tcp_bytes": {"type": "integer", "minimum": 64, "maximum": 65535}
+          }},
+          "interface_ranges": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+            "required": ["name"], "properties": {
+              "name": {"type": "string"},
+              "members": {"type": "array", "items": {"type": "string"}},
+              "vlan_members": {"type": "array", "items": {"type": "string"}}
+            }}},
+          "switch_options": {"type": "object", "additionalProperties": false, "properties": {
+            "vtep_source_interface": {"type": "string"}, "route_distinguisher": {"type": "string"},
+            "vrf_target": {"type": "string"}
+          }},
+          "forwarding_options": {"type": "object", "additionalProperties": false, "properties": {
+            "storm_control_profiles": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["name", "all_configured"], "properties": {
+                "name": {"type": "string"}, "all_configured": {"const": true}
+              }}}
+          }},
+          "routing_options": {"type": "object", "additionalProperties": false, "properties": {
+            "forwarding_table": {"type": "object", "additionalProperties": false, "properties": {
+              "export_policy": {"type": "string"}, "ecmp_fast_reroute_configured": {"const": true}
+            }},
+            "static_routes": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["prefix"], "properties": {
+                "prefix": {"type": "string"}, "next_hop": {"type": "string"},
+                "next_hop_kind": {"enum": ["ip", "interface"]},
+                "metric": {"type": "integer", "minimum": 0, "maximum": 4294967295}
+              }}}
+          }}
+        }}
+      }
+    },
+    "junosBfd": {"type": "object", "additionalProperties": false, "properties": {
+      "minimum_interval_ms": {"type": "integer", "minimum": 1, "maximum": 255000},
+      "multiplier": {"type": "integer", "minimum": 1, "maximum": 255},
+      "session_mode": {"enum": ["single-hop", "multihop"]}
+    }},
+    "junosProtocolInterface": {"type": "object", "additionalProperties": false,
+      "required": ["name"], "properties": {
+        "name": {"type": "string"}, "passive_configured": {"const": true},
+        "bfd": {"$ref": "#/$defs/junosBfd"},
+        "metric": {"type": "integer", "minimum": 0, "maximum": 65535},
+        "priority": {"type": "integer", "minimum": 0, "maximum": 255},
+        "hello_interval": {"type": "integer", "minimum": 1, "maximum": 65535},
+        "dead_interval": {"type": "integer", "minimum": 1, "maximum": 65535},
+        "network_type": {"enum": ["p2p", "p2mp", "broadcast", "nbma"]},
+        "authentication": {"type": "object", "additionalProperties": false,
+          "required": ["type", "secret_redacted"], "properties": {
+            "type": {"enum": ["md5"]}, "secret_redacted": {"const": true}
+          }}
+      }},
+    "junosProtocolWithInterfaces": {"type": "object", "additionalProperties": false,
+      "required": ["interfaces"], "properties": {
+        "interfaces": {"type": "array", "items": {"$ref": "#/$defs/junosProtocolInterface"}}
+      }},
+    "sourceLine": {
+      "type": "object", "required": ["line"], "additionalProperties": false,
+      "properties": {"line": {"type": ["integer", "null"], "minimum": 1}}
+    },
+    "interfaceIp": {
+      "type": "object", "required": ["address", "prefix_length", "cidr", "secondary"],
+      "additionalProperties": false,
+      "properties": {
+        "address": {"type": ["string", "null"]},
+        "prefix_length": {"type": ["integer", "null"], "minimum": 0, "maximum": 32},
+        "cidr": {"type": ["string", "null"]},
+        "secondary": {"type": "boolean"}
+      }
+    },
+    "staticRoute": {
+      "type": "object", "required": ["prefix", "vrf", "next_hop", "outgoing_interface", "administrative_distance", "source"],
+      "properties": {
+        "prefix": {"type": ["string", "null"]},
+        "destination": {"type": ["string", "null"]},
+        "mask": {"type": ["string", "null"]},
+        "vrf": {"type": ["string", "null"]},
+        "next_hop": {"type": ["string", "null"]},
+        "outgoing_interface": {"type": ["string", "null"]},
+        "administrative_distance": {"type": ["integer", "null"], "minimum": 0},
+        "unmodeled_option_count": {"type": "integer", "minimum": 0},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "ospfProcess": {
+      "type": "object", "required": ["process_id", "router_id", "network_selectors", "passive_interfaces", "source"],
+      "properties": {
+        "process_id": {"type": "string"},
+        "router_id": {"type": ["string", "null"]},
+        "network_selectors": {"type": "array", "items": {"type": "object"}},
+        "passive_interfaces": {"type": "array", "items": {"type": "string"}},
+        "area_authentication": {"type": "array", "items": {"type": "object"}},
+        "non_passive_interfaces": {"type": "array", "items": {"type": "string"}, "description": "Exceptions no passive-interface explicitement declarees ; ne prouve pas une adjacence effective."},
+        "redistribution_present": {"type": "boolean"},
+        "redistribution_statement_count": {"type": "integer"},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "bgpProcess": {
+      "type": "object", "required": ["local_as", "router_id", "neighbors", "network_statements", "source"],
+      "properties": {
+        "local_as": {"type": ["integer", "null"]},
+        "router_id": {"type": ["string", "null"]},
+        "neighbors": {"type": "array", "items": {"$ref": "#/$defs/bgpPeer"}},
+        "network_statements": {"type": "array", "items": {"type": "object"}},
+        "address_families": {"type": "array", "items": {"type": "string"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "bgpPeer": {
+      "type": "object", "required": ["id", "kind", "remote_as", "policies", "source"],
+      "properties": {
+        "id": {"type": ["string", "null"]},
+        "kind": {"enum": ["peer", "peer_group"]},
+        "peer_group": {"type": ["string", "null"]},
+        "remote_as": {"type": ["integer", "null"]},
+        "remote_as_unparsed": {"type": ["string", "null"]},
+        "remote_as_inherited_from": {"type": ["string", "null"]},
+        "session_type_configured": {"enum": ["ibgp", "ebgp", null]},
+        "activated_families": {"type": "array", "items": {"type": "string"}},
+        "update_source": {"type": ["string", "null"]},
+        "description_configured": {"type": "boolean", "description": "Presence de la description, sans exporter son texte libre potentiellement sensible."},
+        "description_source": {"oneOf": [{"$ref": "#/$defs/sourceLine"}, {"type": "null"}]},
+        "policies": {"type": "array", "items": {"type": "object"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "acl": {
+      "type": "object", "required": ["name", "type", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "prefixList": {
+      "type": "object", "required": ["name", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "routePolicyV2": {
+      "type": "object",
+      "required": ["name", "vendor_semantics", "terms", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "vendor_semantics": {"enum": ["junos", "cisco_ios"]},
+        "terms": {"type": "array", "items": {"$ref": "#/$defs/routePolicyTermV2"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "routePolicyTermV2": {
+      "type": "object",
+      "required": ["name", "order", "conditions", "actions", "unmodeled_condition_count", "unmodeled_action_count", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "order": {"type": "integer", "minimum": 0},
+        "conditions": {"type": "array", "items": {"$ref": "#/$defs/routePolicyConditionV2"}},
+        "actions": {"type": "array", "items": {"$ref": "#/$defs/routePolicyActionV2"}},
+        "unmodeled_condition_count": {"type": "integer", "minimum": 0},
+        "unmodeled_action_count": {"type": "integer", "minimum": 0},
+        "unmodeled_statement_count": {"type": "integer", "minimum": 0},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "routePolicyConditionV2": {
+      "type": "object",
+      "required": ["kind", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum": ["route_protocol", "route_filter", "community_reference", "rib", "address_family", "junos_prefix_list_reference", "junos_prefix_list_filter", "cisco_match_prefix_list", "cisco_match_acl", "cisco_match_community_list"]},
+        "values": {"type": "array", "items": {"type": "string"}},
+        "prefix": {"type": "string"},
+        "modifier": {"enum": ["exact", "longer", "orlonger", "prefix-length-range"]},
+        "min_prefix_length": {"type": "integer", "minimum": 0, "maximum": 128},
+        "max_prefix_length": {"type": "integer", "minimum": 0, "maximum": 128},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "routePolicyActionV2": {
+      "type": "object",
+      "required": ["kind", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"enum": ["accept", "reject", "community_add", "community_delete", "community_set", "set_local_preference", "set_metric", "set_tag", "load_balance_per_packet", "load_balance_per_flow", "set_next_hop", "set_next_hop_self", "next_term", "next_policy", "prepend_as_path", "cisco_permit", "cisco_deny", "cisco_prepend_as_path", "cisco_set_communities"]},
+        "reference": {"type": "string"},
+        "value": {"type": "integer"},
+        "values": {"type": "array", "items": {"type": "string"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "communitySetV2": {
+      "type": "object",
+      "required": ["name", "members", "vendor_semantics", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string"},
+        "members": {"type": "array", "items": {"type": "string"}},
+        "vendor_semantics": {"enum": ["junos", "cisco_ios"]},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "routeMap": {
+      "type": "object", "required": ["name", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    }
+  }
+}

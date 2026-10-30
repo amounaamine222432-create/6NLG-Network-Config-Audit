@@ -1,0 +1,17 @@
+{
+  "family": "VLAN_VRF",
+  "facts": [
+    [
+      "hostname",
+      "R-VLAN_VRF-03"
+    ],
+    [
+      "vrf_name",
+      "CLIENT_3"
+    ],
+    [
+      "vlan_id",
+      "103"
+    ]
+  ]
+}

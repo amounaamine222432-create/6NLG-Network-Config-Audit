@@ -1,0 +1,252 @@
+[
+  {
+    "name": "STATIC_01",
+    "family": "STATIC",
+    "facts": 3
+  },
+  {
+    "name": "STATIC_02",
+    "family": "STATIC",
+    "facts": 3
+  },
+  {
+    "name": "STATIC_03",
+    "family": "STATIC",
+    "facts": 3
+  },
+  {
+    "name": "STATIC_04",
+    "family": "STATIC",
+    "facts": 3
+  },
+  {
+    "name": "STATIC_05",
+    "family": "STATIC",
+    "facts": 3
+  },
+  {
+    "name": "OSPF_01",
+    "family": "OSPF",
+    "facts": 4
+  },
+  {
+    "name": "OSPF_02",
+    "family": "OSPF",
+    "facts": 4
+  },
+  {
+    "name": "OSPF_03",
+    "family": "OSPF",
+    "facts": 4
+  },
+  {
+    "name": "OSPF_04",
+    "family": "OSPF",
+    "facts": 4
+  },
+  {
+    "name": "OSPF_05",
+    "family": "OSPF",
+    "facts": 4
+  },
+  {
+    "name": "BGP_01",
+    "family": "BGP",
+    "facts": 4
+  },
+  {
+    "name": "BGP_02",
+    "family": "BGP",
+    "facts": 4
+  },
+  {
+    "name": "BGP_03",
+    "family": "BGP",
+    "facts": 4
+  },
+  {
+    "name": "BGP_04",
+    "family": "BGP",
+    "facts": 4
+  },
+  {
+    "name": "BGP_05",
+    "family": "BGP",
+    "facts": 4
+  },
+  {
+    "name": "EIGRP_01",
+    "family": "EIGRP",
+    "facts": 3
+  },
+  {
+    "name": "EIGRP_02",
+    "family": "EIGRP",
+    "facts": 3
+  },
+  {
+    "name": "EIGRP_03",
+    "family": "EIGRP",
+    "facts": 3
+  },
+  {
+    "name": "EIGRP_04",
+    "family": "EIGRP",
+    "facts": 3
+  },
+  {
+    "name": "EIGRP_05",
+    "family": "EIGRP",
+    "facts": 3
+  },
+  {
+    "name": "ACL_01",
+    "family": "ACL",
+    "facts": 3
+  },
+  {
+    "name": "ACL_02",
+    "family": "ACL",
+    "facts": 3
+  },
+  {
+    "name": "ACL_03",
+    "family": "ACL",
+    "facts": 3
+  },
+  {
+    "name": "ACL_04",
+    "family": "ACL",
+    "facts": 3
+  },
+  {
+    "name": "ACL_05",
+    "family": "ACL",
+    "facts": 3
+  },
+  {
+    "name": "NAT_01",
+    "family": "NAT",
+    "facts": 4
+  },
+  {
+    "name": "NAT_02",
+    "family": "NAT",
+    "facts": 4
+  },
+  {
+    "name": "NAT_03",
+    "family": "NAT",
+    "facts": 4
+  },
+  {
+    "name": "NAT_04",
+    "family": "NAT",
+    "facts": 4
+  },
+  {
+    "name": "NAT_05",
+    "family": "NAT",
+    "facts": 4
+  },
+  {
+    "name": "DHCP_01",
+    "family": "DHCP",
+    "facts": 4
+  },
+  {
+    "name": "DHCP_02",
+    "family": "DHCP",
+    "facts": 4
+  },
+  {
+    "name": "DHCP_03",
+    "family": "DHCP",
+    "facts": 4
+  },
+  {
+    "name": "DHCP_04",
+    "family": "DHCP",
+    "facts": 4
+  },
+  {
+    "name": "DHCP_05",
+    "family": "DHCP",
+    "facts": 4
+  },
+  {
+    "name": "VLAN_VRF_01",
+    "family": "VLAN_VRF",
+    "facts": 3
+  },
+  {
+    "name": "VLAN_VRF_02",
+    "family": "VLAN_VRF",
+    "facts": 3
+  },
+  {
+    "name": "VLAN_VRF_03",
+    "family": "VLAN_VRF",
+    "facts": 3
+  },
+  {
+    "name": "VLAN_VRF_04",
+    "family": "VLAN_VRF",
+    "facts": 3
+  },
+  {
+    "name": "VLAN_VRF_05",
+    "family": "VLAN_VRF",
+    "facts": 3
+  },
+  {
+    "name": "POLICY_01",
+    "family": "POLICY",
+    "facts": 3
+  },
+  {
+    "name": "POLICY_02",
+    "family": "POLICY",
+    "facts": 3
+  },
+  {
+    "name": "POLICY_03",
+    "family": "POLICY",
+    "facts": 3
+  },
+  {
+    "name": "POLICY_04",
+    "family": "POLICY",
+    "facts": 3
+  },
+  {
+    "name": "POLICY_05",
+    "family": "POLICY",
+    "facts": 3
+  },
+  {
+    "name": "MIXED_01",
+    "family": "MIXED",
+    "facts": 5
+  },
+  {
+    "name": "MIXED_02",
+    "family": "MIXED",
+    "facts": 5
+  },
+  {
+    "name": "MIXED_03",
+    "family": "MIXED",
+    "facts": 5
+  },
+  {
+    "name": "MIXED_04",
+    "family": "MIXED",
+    "facts": 5
+  },
+  {
+    "name": "MIXED_05",
+    "family": "MIXED",
+    "facts": 5
+  }
+]

@@ -1,0 +1,94 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 15,
+      "ipv4_addresses": [
+        {
+          "address": "1.1.1.1",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": []
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 18,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.0.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [
+    {
+      "process_id": "1",
+      "source_line": 22,
+      "router_id": "1.1.1.1",
+      "networks": [
+        {
+          "network": "10.0.0.0",
+          "wildcard_mask": "0.0.0.255",
+          "area": "0"
+        },
+        {
+          "network": "1.1.1.1",
+          "wildcard_mask": "0.0.0.0",
+          "area": "0"
+        }
+      ],
+      "passive_interfaces": [],
+      "redistribution_commands": [],
+      "other_commands": []
+    }
+  ],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 12,
+      "command": "enable"
+    },
+    {
+      "line": 13,
+      "command": "configure terminal"
+    },
+    {
+      "line": 17,
+      "command": "exit"
+    },
+    {
+      "line": 21,
+      "command": "exit"
+    },
+    {
+      "line": 26,
+      "command": "exit"
+    },
+    {
+      "line": 27,
+      "command": "end"
+    },
+    {
+      "line": 28,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [],
+  "source_file": "R1-config.txt"
+}

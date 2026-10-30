@@ -1,0 +1,306 @@
+{
+  "vendor": "cisco_ios",
+  "parser_schema_version": "6.0",
+  "source_cli_family": "ios",
+  "hostname": "R-BENCH-OK-03",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 8,
+      "ipv4_addresses": [
+        {
+          "address": "198.51.100.13",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "mtu": null,
+      "acl_bindings": [],
+      "ospf_network_type": null,
+      "ospf_md5_keys": [],
+      "ospf_authentication_mode": null,
+      "eigrp_authentication": {},
+      "vrf_forwarding": null,
+      "description": "WAN",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": [],
+        "trunk_encapsulation": null
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": [],
+      "proxy_arp_enabled": false
+    },
+    {
+      "name": "GigabitEthernet0/1",
+      "source_line": 14,
+      "ipv4_addresses": [
+        {
+          "address": "10.3.0.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "mtu": null,
+      "acl_bindings": [],
+      "ospf_network_type": null,
+      "ospf_md5_keys": [],
+      "ospf_authentication_mode": null,
+      "eigrp_authentication": {},
+      "vrf_forwarding": null,
+      "description": "LAN",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": [],
+        "trunk_encapsulation": null
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": [],
+      "proxy_arp_enabled": false
+    }
+  ],
+  "ospf_processes": [],
+  "eigrp_processes": [],
+  "static_routes": [
+    {
+      "destination": "0.0.0.0",
+      "mask": "0.0.0.0",
+      "vrf": null,
+      "next_hop": "198.51.100.14",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 19,
+      "raw": "ip route 0.0.0.0 0.0.0.0 198.51.100.14"
+    }
+  ],
+  "bgp_processes": [],
+  "key_chains": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 36,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [],
+  "vrfs": [],
+  "global_settings": {
+    "ios_version": "15.2",
+    "ip_domain_name": null,
+    "ip_domain_lookup_enabled": null,
+    "ip_cef_enabled": null,
+    "ipv6_cef_enabled": null,
+    "service_timestamps": [],
+    "service_commands": [],
+    "ssh_commands": [
+      "ip ssh version 2"
+    ],
+    "http_server_enabled": null,
+    "https_server_enabled": null,
+    "spanning_tree_mode": null,
+    "spanning_tree_extend_system_id": null,
+    "cdp_enabled": null,
+    "ip_forward_protocols": [],
+    "tftp_source_interface": null,
+    "dns_views": [],
+    "ipv6_ioam_commands": [],
+    "enable_secret_configured": null,
+    "enable_password_configured": null,
+    "rsa_key_generation_requests": [],
+    "aaa_login_privilege_mode": null,
+    "aaa_authentication_login": [
+      {
+        "name": "default",
+        "methods": [
+          "local"
+        ],
+        "source_line": 5
+      }
+    ],
+    "aaa_authentication_enable": [],
+    "bgp_community_new_format": null,
+    "icmp_unreachable_rate_limit": null,
+    "tcp_synwait_seconds": null,
+    "ip_source_route_enabled": false,
+    "clock_timezone": null,
+    "aaa_new_model_enabled": true
+  },
+  "ntp": {
+    "servers": [
+      {
+        "target": "192.0.2.30",
+        "vrf": null,
+        "source_interface": null,
+        "key_id": null,
+        "version": null,
+        "prefer": false,
+        "unmodeled_token_count": 0,
+        "source_line": 35
+      }
+    ],
+    "peers": [],
+    "source_interface": null,
+    "authentication_enabled": null,
+    "authentication_keys": [],
+    "trusted_key_ids": [],
+    "master_configured": null,
+    "master_stratum": null,
+    "access_groups": [],
+    "update_calendar_enabled": null,
+    "logging_enabled": null,
+    "clock_period": null
+  },
+  "configuration_metadata": [],
+  "platform_commands": [],
+  "local_users": [],
+  "lines": [
+    {
+      "identifier": "con 0",
+      "source_line": 21,
+      "exec_timeout": [
+        "5",
+        "0"
+      ],
+      "login_method": "authentication default",
+      "access_classes": [],
+      "privilege_level": null,
+      "stopbits": null,
+      "transport_input": [],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    },
+    {
+      "identifier": "vty 0 4",
+      "source_line": 24,
+      "exec_timeout": [
+        "5",
+        "0"
+      ],
+      "login_method": "authentication default",
+      "access_classes": [],
+      "privilege_level": null,
+      "stopbits": null,
+      "transport_input": [
+        "ssh"
+      ],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    },
+    {
+      "identifier": "vty 5 15",
+      "source_line": 28,
+      "exec_timeout": [
+        "5",
+        "0"
+      ],
+      "login_method": "authentication default",
+      "access_classes": [],
+      "privilege_level": null,
+      "stopbits": null,
+      "transport_input": [
+        "ssh"
+      ],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    }
+  ],
+  "banners": [
+    {
+      "kind": "motd",
+      "source_line": 20,
+      "delimiter": "^C",
+      "opening_command": "banner motd ^CAccess restricted^C",
+      "body_lines": []
+    }
+  ],
+  "system_stanzas": [],
+  "vlans": [],
+  "dhcp_pools": [],
+  "dhcp_excluded_addresses": [],
+  "dhcp_other_commands": [],
+  "nat_rules": [],
+  "nat_pools": [],
+  "nat_other_commands": [],
+  "nat_translation_settings": {},
+  "snmp": {
+    "communities": [
+      {
+        "value": null,
+        "secret_redacted": true,
+        "access": "RO",
+        "options": [
+          "RO"
+        ],
+        "source_line": 32
+      }
+    ],
+    "hosts": [],
+    "groups": [],
+    "users": [],
+    "trap_rules": [],
+    "traps_enabled": null,
+    "location_configured": null,
+    "contact_configured": null,
+    "other_commands": []
+  },
+  "syslog": {
+    "hosts": [
+      {
+        "host": "192.0.2.20",
+        "options": [],
+        "source_line": 34
+      }
+    ],
+    "source_interface": null,
+    "trap_level": null,
+    "console_enabled": null,
+    "buffered": {
+      "enabled": true,
+      "size_bytes": 64000,
+      "severity": 6,
+      "discriminator_configured": false,
+      "source_line": 33
+    },
+    "other_commands": []
+  }
+}

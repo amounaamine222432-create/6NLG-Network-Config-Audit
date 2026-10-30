@@ -1,0 +1,354 @@
+{
+  "vendor": "cisco_ios",
+  "parser_schema_version": "6.0",
+  "hostname": "CE-1A",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 67,
+      "ipv4_addresses": [
+        {
+          "address": "1.1.1.1",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": null,
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 71,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.0.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": "link to PE-1",
+      "duplex": "auto",
+      "speed": "auto",
+      "media_type": "rj45",
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/1",
+      "source_line": 79,
+      "ipv4_addresses": [],
+      "no_ip_address": false,
+      "ipv4_dhcp": true,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": "MGMT",
+      "description": null,
+      "duplex": "auto",
+      "speed": "auto",
+      "media_type": "rj45",
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/2",
+      "source_line": 87,
+      "ipv4_addresses": [],
+      "no_ip_address": true,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": null,
+      "duplex": "auto",
+      "speed": "auto",
+      "media_type": "rj45",
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/3",
+      "source_line": 94,
+      "ipv4_addresses": [],
+      "no_ip_address": true,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": null,
+      "duplex": "auto",
+      "speed": "auto",
+      "media_type": "rj45",
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    }
+  ],
+  "ospf_processes": [
+    {
+      "process_id": "1",
+      "source_line": 101,
+      "router_id": "10.10.10.10",
+      "networks": [
+        {
+          "network": "1.1.1.1",
+          "wildcard_mask": "0.0.0.0",
+          "area": "0"
+        },
+        {
+          "network": "10.0.0.0",
+          "wildcard_mask": "0.0.0.3",
+          "area": "0"
+        }
+      ],
+      "passive_interfaces": [
+        "Loopback0"
+      ],
+      "redistribution_commands": [],
+      "other_commands": []
+    }
+  ],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 130,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [],
+  "vrfs": [
+    {
+      "name": "MGMT",
+      "source_line": 16,
+      "description": null,
+      "rd": null,
+      "address_families": [
+        "ipv4"
+      ],
+      "route_targets": [],
+      "other_commands": []
+    }
+  ],
+  "global_settings": {
+    "ios_version": "15.9",
+    "ip_domain_name": "nickdoeslabs.local",
+    "ip_domain_lookup_enabled": null,
+    "ip_cef_enabled": true,
+    "ipv6_cef_enabled": false,
+    "service_timestamps": [
+      "service timestamps debug datetime msec",
+      "service timestamps log datetime msec"
+    ],
+    "service_commands": [
+      "no service password-encryption"
+    ],
+    "ssh_commands": [],
+    "http_server_enabled": false,
+    "https_server_enabled": false,
+    "spanning_tree_mode": null,
+    "spanning_tree_extend_system_id": null,
+    "cdp_enabled": null,
+    "ip_forward_protocols": [
+      "nd"
+    ],
+    "tftp_source_interface": "GigabitEthernet0/1",
+    "dns_views": [
+      "vrf MGMT default"
+    ],
+    "ipv6_ioam_commands": [
+      "ipv6 ioam timestamp"
+    ],
+    "aaa_new_model_enabled": false
+  },
+  "configuration_metadata": [],
+  "platform_commands": [
+    {
+      "source_line": 12,
+      "command": "boot-start-marker"
+    },
+    {
+      "source_line": 13,
+      "command": "boot-end-marker"
+    },
+    {
+      "source_line": 26,
+      "command": "mmi polling-interval 60"
+    },
+    {
+      "source_line": 27,
+      "command": "no mmi auto-configure"
+    },
+    {
+      "source_line": 28,
+      "command": "no mmi pvc"
+    },
+    {
+      "source_line": 29,
+      "command": "mmi snmp-timeout 180"
+    },
+    {
+      "source_line": 45,
+      "command": "multilink bundle-name authenticated"
+    },
+    {
+      "source_line": 128,
+      "command": "no scheduler allocate"
+    }
+  ],
+  "local_users": [
+    {
+      "name": "admin",
+      "privilege": null,
+      "credential_kind": "secret",
+      "credential_configured": true,
+      "source_line": 34
+    }
+  ],
+  "lines": [
+    {
+      "identifier": "con 0",
+      "source_line": 121,
+      "exec_timeout": null,
+      "login_method": null,
+      "transport_input": [],
+      "transport_output": [],
+      "logging_synchronous": true,
+      "password_configured": false,
+      "other_commands": []
+    },
+    {
+      "identifier": "aux 0",
+      "source_line": 123,
+      "exec_timeout": null,
+      "login_method": null,
+      "transport_input": [],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    },
+    {
+      "identifier": "vty 0 15",
+      "source_line": 124,
+      "exec_timeout": null,
+      "login_method": "local",
+      "transport_input": [
+        "ssh"
+      ],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    }
+  ],
+  "banners": [],
+  "system_stanzas": [
+    {
+      "name": "redundancy",
+      "source_line": 51,
+      "commands": []
+    },
+    {
+      "name": "control-plane",
+      "source_line": 119,
+      "commands": []
+    }
+  ],
+  "vlans": [],
+  "dhcp_pools": [],
+  "dhcp_excluded_addresses": [],
+  "dhcp_other_commands": [],
+  "nat_rules": [],
+  "nat_pools": [],
+  "nat_other_commands": [],
+  "snmp": {
+    "communities": [],
+    "hosts": [],
+    "other_commands": []
+  },
+  "syslog": {
+    "hosts": [],
+    "source_interface": null,
+    "trap_level": null,
+    "console_enabled": null,
+    "other_commands": []
+  },
+  "source_file": "CE1A.cfg"
+}

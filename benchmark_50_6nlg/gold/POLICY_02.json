@@ -1,0 +1,17 @@
+{
+  "family": "POLICY",
+  "facts": [
+    [
+      "hostname",
+      "R-POLICY-02"
+    ],
+    [
+      "prefix_name",
+      "PL_2"
+    ],
+    [
+      "route_map_name",
+      "RM_2"
+    ]
+  ]
+}

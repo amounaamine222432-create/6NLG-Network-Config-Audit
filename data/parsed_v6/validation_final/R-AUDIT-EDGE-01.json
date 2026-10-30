@@ -1,0 +1,609 @@
+{
+  "vendor": "cisco_ios",
+  "parser_schema_version": "6.0",
+  "hostname": "R-AUDIT-EDGE-01",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 22,
+      "ipv4_addresses": [
+        {
+          "address": "10.255.255.1",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": "OSPF_BGP_ROUTER_ID",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": null,
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 26,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.50.2",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": "INTERNAL_LAN_USERS",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": "inside",
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": [
+        {
+          "group_id": "50",
+          "virtual_ip": "192.168.50.1",
+          "priority": "110",
+          "preempt": true,
+          "authentication_configured": false,
+          "track_commands": [],
+          "other_commands": []
+        }
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/1",
+      "source_line": 35,
+      "ipv4_addresses": [
+        {
+          "address": "203.0.113.2",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": "EBGP_UPLINK_ISP",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": "outside",
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/2",
+      "source_line": 41,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.12.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": null,
+      "description": "INTERNAL_OSPF_TRANSIT",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    },
+    {
+      "name": "GigabitEthernet0/3",
+      "source_line": 46,
+      "ipv4_addresses": [
+        {
+          "address": "172.31.255.2",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "ipv4_dhcp": false,
+      "ipv4_dhcp_options": [],
+      "vrf_forwarding": "MGMT",
+      "description": "OUT_OF_BAND_MANAGEMENT",
+      "duplex": null,
+      "speed": null,
+      "media_type": null,
+      "negotiation": null,
+      "cdp_enabled": null,
+      "administrative_command": "no shutdown",
+      "other_commands": [],
+      "ip_helper_addresses": [],
+      "nat_role": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_commands": []
+      },
+      "dot1q": null,
+      "hsrp_version": null,
+      "hsrp_groups": []
+    }
+  ],
+  "ospf_processes": [
+    {
+      "process_id": "10",
+      "source_line": 52,
+      "router_id": "10.255.255.1",
+      "networks": [
+        {
+          "network": "10.255.255.1",
+          "wildcard_mask": "0.0.0.0",
+          "area": "0"
+        },
+        {
+          "network": "192.168.50.0",
+          "wildcard_mask": "0.0.0.255",
+          "area": "0"
+        },
+        {
+          "network": "10.0.12.0",
+          "wildcard_mask": "0.0.0.3",
+          "area": "0"
+        }
+      ],
+      "passive_interfaces": [
+        "Loopback0",
+        "GigabitEthernet0/0"
+      ],
+      "redistribution_commands": [],
+      "other_commands": []
+    }
+  ],
+  "static_routes": [
+    {
+      "destination": "0.0.0.0",
+      "mask": "0.0.0.0",
+      "vrf": null,
+      "next_hop": "203.0.113.1",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 69,
+      "raw": "ip route 0.0.0.0 0.0.0.0 203.0.113.1"
+    },
+    {
+      "destination": "198.51.100.0",
+      "mask": "255.255.255.0",
+      "vrf": null,
+      "next_hop": "10.0.12.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": 200,
+      "options": [
+        "200"
+      ],
+      "source_line": 70,
+      "raw": "ip route 198.51.100.0 255.255.255.0 10.0.12.2 200"
+    }
+  ],
+  "bgp_processes": [
+    {
+      "local_as": "65010",
+      "source_line": 60,
+      "router_id": "10.255.255.1",
+      "neighbors": [
+        {
+          "id": "203.0.113.1",
+          "source_line": 62,
+          "is_peer_group": false,
+          "peer_group": null,
+          "remote_as": "65020",
+          "update_source": null,
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [
+            {
+              "name": "ISP_OUT",
+              "direction": "out",
+              "address_family": "ipv4",
+              "source_line": 66
+            }
+          ],
+          "global_commands": [
+            "remote-as 65020"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate",
+              "route-map ISP_OUT out"
+            ]
+          },
+          "effective_remote_as": "65020",
+          "remote_as_inherited_from": null,
+          "session_type_configured": "ebgp"
+        }
+      ],
+      "network_statements": [
+        {
+          "prefix": "192.168.50.0",
+          "mask": "255.255.255.0",
+          "address_family": "ipv4",
+          "source_line": 64,
+          "raw": "network 192.168.50.0 mask 255.255.255.0"
+        }
+      ],
+      "address_families": [
+        {
+          "name": "ipv4",
+          "source_line": 63,
+          "other_commands": []
+        }
+      ],
+      "other_commands": []
+    }
+  ],
+  "access_lists": [
+    {
+      "name": "10",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "192.168.50.0 0.0.0.255",
+          "protocol": null,
+          "source": {
+            "kind": "network_wildcard",
+            "address": "192.168.50.0",
+            "wildcard": "0.0.0.255"
+          },
+          "destination": null,
+          "source_port": null,
+          "destination_port": null,
+          "remaining_tokens": [],
+          "source_line": 76,
+          "raw": "permit 192.168.50.0 0.0.0.255"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "20",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "host 192.0.2.50",
+          "protocol": null,
+          "source": {
+            "kind": "host",
+            "address": "192.0.2.50"
+          },
+          "destination": null,
+          "source_port": null,
+          "destination_port": null,
+          "remaining_tokens": [],
+          "source_line": 77,
+          "raw": "permit host 192.0.2.50"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "MGMT_FILTER",
+      "acl_type": "extended",
+      "entries": [
+        {
+          "sequence": "10",
+          "action": "permit",
+          "body": "tcp host 192.0.2.50 host 172.31.255.2 eq 22",
+          "protocol": "tcp",
+          "source": {
+            "kind": "host",
+            "address": "192.0.2.50"
+          },
+          "destination": {
+            "kind": "host",
+            "address": "172.31.255.2"
+          },
+          "source_port": null,
+          "destination_port": {
+            "operator": "eq",
+            "ports": [
+              "22"
+            ]
+          },
+          "remaining_tokens": [],
+          "source_line": 79,
+          "raw": "10 permit tcp host 192.0.2.50 host 172.31.255.2 eq 22"
+        },
+        {
+          "sequence": "20",
+          "action": "deny",
+          "body": "ip any any",
+          "protocol": "ip",
+          "source": {
+            "kind": "any"
+          },
+          "destination": {
+            "kind": "any"
+          },
+          "source_port": null,
+          "destination_port": null,
+          "remaining_tokens": [],
+          "source_line": 80,
+          "raw": "20 deny ip any any"
+        }
+      ],
+      "other_commands": []
+    }
+  ],
+  "prefix_lists": [
+    {
+      "name": "OUT_LAN",
+      "entries": [
+        {
+          "sequence": "5",
+          "action": "permit",
+          "prefix": "192.168.50.0/24",
+          "ge": null,
+          "le": null,
+          "options": [],
+          "source_line": 72,
+          "raw": "ip prefix-list OUT_LAN seq 5 permit 192.168.50.0/24"
+        }
+      ]
+    }
+  ],
+  "route_maps": [
+    {
+      "name": "ISP_OUT",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "10",
+          "source_line": 73,
+          "match_commands": [
+            "match ip address prefix-list OUT_LAN"
+          ],
+          "set_commands": [],
+          "other_commands": []
+        }
+      ]
+    }
+  ],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 106,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [],
+  "vrfs": [
+    {
+      "name": "MGMT",
+      "source_line": 16,
+      "description": "Out-of-band management",
+      "rd": "65010:99",
+      "address_families": [
+        "ipv4"
+      ],
+      "route_targets": [],
+      "other_commands": []
+    }
+  ],
+  "global_settings": {
+    "ios_version": "15.9",
+    "ip_domain_name": "lab.invalid",
+    "ip_domain_lookup_enabled": false,
+    "ip_cef_enabled": true,
+    "ipv6_cef_enabled": null,
+    "service_timestamps": [
+      "service timestamps log datetime msec"
+    ],
+    "service_commands": [],
+    "ssh_commands": [
+      "ip ssh version 2"
+    ],
+    "http_server_enabled": false,
+    "https_server_enabled": false,
+    "spanning_tree_mode": null,
+    "spanning_tree_extend_system_id": null,
+    "cdp_enabled": null,
+    "ip_forward_protocols": [],
+    "tftp_source_interface": null,
+    "dns_views": [],
+    "ipv6_ioam_commands": []
+  },
+  "configuration_metadata": [],
+  "platform_commands": [],
+  "local_users": [
+    {
+      "name": "auditor",
+      "privilege": "15",
+      "credential_kind": "secret",
+      "credential_configured": true,
+      "source_line": 97
+    }
+  ],
+  "lines": [
+    {
+      "identifier": "vty 0 4",
+      "source_line": 98,
+      "exec_timeout": [
+        "10",
+        "0"
+      ],
+      "login_method": "local",
+      "transport_input": [
+        "ssh"
+      ],
+      "transport_output": [],
+      "logging_synchronous": false,
+      "password_configured": false,
+      "other_commands": []
+    }
+  ],
+  "banners": [
+    {
+      "kind": "login",
+      "source_line": 103,
+      "delimiter": "^C",
+      "opening_command": "banner login ^CC",
+      "body_lines": [
+        "AUTHORIZED TEST LAB ONLY^C"
+      ]
+    }
+  ],
+  "system_stanzas": [],
+  "vlans": [],
+  "dhcp_pools": [
+    {
+      "name": "USERS",
+      "network": {
+        "address": "192.168.50.0",
+        "mask_or_prefix": "255.255.255.0"
+      },
+      "default_routers": [
+        "192.168.50.1"
+      ],
+      "dns_servers": [
+        "192.0.2.53"
+      ],
+      "domain_name": "lab.invalid",
+      "other_commands": []
+    }
+  ],
+  "dhcp_excluded_addresses": [
+    {
+      "addresses": [
+        "192.168.50.1",
+        "192.168.50.30"
+      ],
+      "source_line": 84
+    }
+  ],
+  "dhcp_other_commands": [],
+  "nat_rules": [
+    {
+      "source_line": 82,
+      "kind": "list_interface",
+      "acl": "10",
+      "pool": null,
+      "interface": "GigabitEthernet0/1",
+      "inside_local": null,
+      "inside_global": null,
+      "overload": true,
+      "protocol": null,
+      "inside_port": null,
+      "outside_port": null,
+      "raw": "ip nat inside source list 10 interface GigabitEthernet0/1 overload",
+      "options": [
+        "list",
+        "10",
+        "interface",
+        "GigabitEthernet0/1",
+        "overload"
+      ]
+    }
+  ],
+  "nat_pools": [],
+  "nat_other_commands": [],
+  "snmp": {
+    "communities": [
+      {
+        "value": "LAB_RO_ONLY",
+        "access": "RO",
+        "options": [
+          "RO",
+          "20"
+        ],
+        "source_line": 91
+      }
+    ],
+    "hosts": [
+      {
+        "host": "192.0.2.50",
+        "version": "2c",
+        "options": [
+          "version",
+          "2c",
+          "LAB_RO_ONLY"
+        ],
+        "source_line": 92
+      }
+    ],
+    "other_commands": []
+  },
+  "syslog": {
+    "hosts": [
+      {
+        "host": "192.0.2.60",
+        "options": [],
+        "source_line": 93
+      }
+    ],
+    "source_interface": "Loopback0",
+    "trap_level": "warnings",
+    "console_enabled": null,
+    "other_commands": []
+  },
+  "source_file": "R-AUDIT-EDGE-01.cfg"
+}

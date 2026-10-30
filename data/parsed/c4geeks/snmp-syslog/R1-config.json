@@ -1,0 +1,108 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 17,
+      "ipv4_addresses": [
+        {
+          "address": "10.20.20.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 11,
+      "command": "enable"
+    },
+    {
+      "line": 12,
+      "command": "configure terminal"
+    },
+    {
+      "line": 20,
+      "command": "exit"
+    },
+    {
+      "line": 39,
+      "command": "end"
+    },
+    {
+      "line": 40,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 14,
+      "command": "service timestamps log datetime msec"
+    },
+    {
+      "line": 15,
+      "command": "service timestamps debug datetime msec"
+    },
+    {
+      "line": 23,
+      "command": "logging buffered 32768 informational"
+    },
+    {
+      "line": 24,
+      "command": "logging host 10.20.20.50"
+    },
+    {
+      "line": 25,
+      "command": "logging trap informational"
+    },
+    {
+      "line": 26,
+      "command": "logging source-interface GigabitEthernet0/0"
+    },
+    {
+      "line": 29,
+      "command": "snmp-server location DC1-Rack4"
+    },
+    {
+      "line": 30,
+      "command": "snmp-server contact noc@example.com"
+    },
+    {
+      "line": 31,
+      "command": "snmp-server community CFG-RO ro"
+    },
+    {
+      "line": 32,
+      "command": "snmp-server host 10.20.20.50 version 2c CFG-RO"
+    },
+    {
+      "line": 35,
+      "command": "snmp-server group CFGADMIN v3 priv"
+    },
+    {
+      "line": 36,
+      "command": "snmp-server user cfgmon CFGADMIN v3 auth sha Auth-Pass-2026 priv aes 128 Priv-Pass-2026"
+    },
+    {
+      "line": 37,
+      "command": "snmp-server host 10.20.20.50 version 3 priv cfgmon"
+    },
+    {
+      "line": 38,
+      "command": "snmp-server enable traps snmp linkdown linkup"
+    }
+  ],
+  "source_file": "R1-config.txt"
+}

@@ -1,0 +1,9 @@
+{
+  "facts": [
+    "hostname=R-BENCH-PARTIAL-30",
+    "ios=15.2",
+    "route=0.0.0.0/0|198.51.100.122",
+    "snmp_access=RO",
+    "source_route=false"
+  ]
+}

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NetAudit 6NLG — Bilan technique des configurations</title>
+  <style>
+    :root{--ink:#19253b;--muted:#62738c;--line:#dce5ee;--surface:#fff;--light:#f3f7fb;--aqua:#17c0ad;--navy:#10213b;--orange:#c97a25;--red:#b84c51;--green:#177a64}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#edf2f8;color:var(--ink);font:13px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .report{width:min(1120px,calc(100% - 40px));margin:26px auto 70px}.cover{color:white;background:linear-gradient(120deg,#0d2039 8%,#164a61 70%,#127e7b);padding:36px 41px;border-radius:20px;box-shadow:0 12px 28px #091d3533}.cover .brand{display:flex;align-items:center;gap:10px;font-size:21px;letter-spacing:-.8px;font-weight:850}.brand .mark{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#5dede0;color:#103344}.eyebrow{margin:25px 0 7px;font-size:10px;letter-spacing:2px;color:#9de9e5;font-weight:800;text-transform:uppercase}.cover h1{font-size:34px;line-height:1.18;letter-spacing:-1.4px;margin:0 0 10px}.cover p{max-width:690px;color:#cfedf1;margin:0}.cover-meta{border-top:1px solid #ffffff33;margin-top:24px;padding-top:15px;display:flex;flex-wrap:wrap;gap:18px;font-size:11px;color:#b9e6e8}
+    .summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:17px 0 21px}.stat{border:1px solid var(--line);border-radius:14px;background:white;padding:16px 17px}.stat span{display:block;color:#61738c;font-size:10px;text-transform:uppercase;letter-spacing:.6px;font-weight:800}.stat strong{font-size:26px;display:block;margin-top:4px;line-height:1.2}.stat.warn strong{color:var(--orange)}
+    .intro,.toc,.device,.disclaimer{background:white;border:1px solid var(--line);border-radius:16px;padding:22px 25px;margin-bottom:17px;box-shadow:0 4px 22px #25375508}.intro p{margin:5px 0;color:#52647a}.toc h2,.intro h2{margin:0 0 10px;font-size:16px}.toc ul{margin:0;padding-left:22px;display:grid;gap:5px}.toc a{color:#117c82;text-decoration:none;font-weight:700}.toc a:hover{text-decoration:underline}
+    .device{padding:0;overflow:hidden;margin:23px 0}.device-header{padding:25px 27px;background:linear-gradient(100deg,#effbfd,#f4f7ff);border-bottom:1px solid #d9e8ed}.device-header h2{font-size:22px;letter-spacing:-.5px;margin:4px 0}.device-header p{margin:0;color:#576c85;font-size:12px}.label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.15px;color:#178d8a}.device-body{padding:22px 26px 27px}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}.chip{background:#e6f5f4;border:1px solid #b8e3de;color:#146e69;border-radius:20px;padding:4px 11px;font-size:10px;font-weight:750}.chip.neutral{background:#f1f4f8;color:#5f7388;border-color:#dbe2ea}
+    .section{margin:0 0 24px;break-inside:avoid-page}.section h3{margin:0 0 12px;font-size:15px;color:#173953;display:flex;align-items:center;gap:10px}.section h3 .no{color:#138f8b;background:#e5f5f5;border-radius:8px;padding:4px 8px;font-size:11px}.section h4{font-size:12px;margin:16px 0 7px;color:#365068}.subtle{color:#6b7d91;font-size:11px;margin:3px 0 12px}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}table{border-collapse:collapse;width:100%;font-size:11px;min-width:520px}th{text-align:left;background:#f0f5fa;color:#475d72;font-size:10px;padding:10px 12px;letter-spacing:.25px}td{border-top:1px solid #e9eef3;padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}tr:nth-child(even) td{background:#fcfdff}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.code-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}.config{border:1px solid #cbd9e5;border-radius:10px;overflow:hidden;break-inside:avoid}.config-title{background:#e8eff6;color:#36516b;padding:9px 12px;font-size:10px;font-weight:800}.config pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:10.5px;line-height:1.58;background:#10223a;color:#d8f4ee;padding:13px;margin:0;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:13px}.tile{background:#f8fbfd;border:1px solid #e0eaf1;border-radius:12px;padding:14px}.tile h4{margin:0 0 8px;font-size:12px}.tile dl{display:grid;grid-template-columns:135px 1fr;gap:7px;margin:0;font-size:11px}.tile dt{color:#74849a}.tile dd{margin:0;font-weight:700;overflow-wrap:anywhere}.tile p{margin:0;color:#54667a;font-size:11px}
+    .finding{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:13px;border:1px solid var(--line);border-radius:10px;margin:9px 0;break-inside:avoid}.finding strong{display:block;font-size:12px}.finding p{font-size:11px;color:#5f6f80;margin:3px 0}.finding small{color:#75879a}.severity{border-radius:7px;text-align:center;font-weight:800;font-size:10px;padding:5px;align-self:start}.severity.warning{color:#955616;background:#fff0d9}.severity.success{color:#136f54;background:#e0f5eb}.severity.info{color:#456a9d;background:#e7f0ff}
+    .scope{background:#fff9eb;border-left:4px solid #e0af53;color:#6a522f;padding:12px 15px;border-radius:7px;font-size:11px}.footer{color:#7588a0;text-align:center;font-size:10px;margin:25px 0}.empty{color:#72859a;font-size:11px;background:#f6f9fc;padding:12px;border-radius:8px;border:1px dashed #d3dfe9}
+    @media(max-width:800px){.summary{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.report{width:calc(100% - 20px);margin:10px auto 35px}.cover{padding:27px 23px}.cover h1{font-size:27px}.device-body{padding:17px}.device-header{padding:21px}.code-grid{grid-template-columns:1fr}.tile dl{grid-template-columns:105px 1fr}}
+    @page{size:A4;margin:13mm}
+    @media print{body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.report{width:100%;margin:0}.cover{border-radius:0;box-shadow:none}.intro,.toc,.device,.disclaimer{box-shadow:none}.device{break-before:page}.section{break-inside:auto}.config,.finding,.tile,.table-wrap{break-inside:avoid}.footer{margin:15px 0}a{color:inherit;text-decoration:none}}
+  </style>
+</head>
+<body>
+  {% macro config_blocks(blocks) -%}
+    {% if blocks %}
+      <div class="code-grid">
+        {% for block in blocks %}
+          <div class="config"><div class="config-title">{{ block.title }}</div><pre>{{ block.lines | join('\n') }}</pre></div>
+        {% endfor %}
+      </div>
+    {% else %}<div class="empty">Aucune configuration de cette famille extraite du fichier.</div>{% endif %}
+  {%- endmacro %}
+
+  <div class="report">
+    <header class="cover">
+      <div class="brand"><span class="mark">◈</span> NetAudit <span style="color:#a8ecea;font-weight:550;font-size:13px">/ 6NLG</span></div>
+      <div class="eyebrow">Projet tutoré SUP'COM × 6NLG — Cisco IOS</div>
+      <h1>Bilan technique des<br>configurations réseau</h1>
+      <p>Inventaire des équipements, des interfaces et adresses, des protocoles et de leurs paramètres configurés, des services, des politiques de filtrage et des observations d'audit.</p>
+      <div class="cover-meta"><span>Généré : {{ generated_at }}</span><span>Source : fichiers de configuration importés</span><span>Analyse statique · moteur Cisco IOS V6.7</span></div>
+    </header>
+
+    <div class="summary">
+      <div class="stat"><span>Équipements</span><strong>{{ totals.devices }}</strong></div>
+      <div class="stat"><span>Interfaces</span><strong>{{ metrics.interfaces }}</strong></div>
+      <div class="stat"><span>OSPF / BGP</span><strong>{{ metrics.ospf }} / {{ metrics.bgp }}</strong></div>
+      <div class="stat warn"><span>Alertes</span><strong>{{ totals.warnings }}</strong></div>
+      <div class="stat"><span>Commandes opaques</span><strong>{{ metrics.unknowns }}</strong></div>
+    </div>
+
+    <section class="intro">
+      <h2>Périmètre et méthodologie</h2>
+      <p>Les informations présentées sont issues du <strong>parsing Cisco IOS</strong>, puis de leur <strong>normalisation IR JSON</strong> et des contrôles statiques existants. Les extraits lisibles ci-dessous sont <strong>reconstitués à partir des champs structurés</strong> et ne constituent pas une copie intégrale de la configuration CLI. Les secrets et mots de passe ne sont pas inclus.</p>
+      <p>Un protocole « configuré » ne signifie pas que ses sessions sont établies. Les commandes non interprétées et la portée des directives historiques nécessitent toujours une revue.</p>
+      <p><strong>Imprimer / enregistrer en PDF :</strong> ouvrir ce rapport dans le navigateur puis utiliser Ctrl+P.</p>
+    </section>
+
+    <nav class="toc" aria-label="Sommaire des équipements"><h2>Équipements analysés</h2><ul>
+      {% for device in devices %}<li><a href="#equipement-{{ device.id }}">{{ device.summary.hostname }} — {{ device.summary.file }}</a></li>{% endfor %}
+    </ul></nav>
+
+    {% for device in devices %}
+      {% set ir = device.ir %}
+      {% set routing = ir.routing %}
+      {% set services = ir.services %}
+      {% set management = ir.management %}
+      {% set policies = ir.policies %}
+      <article class="device" id="equipement-{{ device.id }}">
+        <header class="device-header">
+          <div class="label">Équipement {{ device.id }} / {{ devices|length }}</div>
+          <h2>{{ device.summary.hostname }}</h2>
+          <p><strong>Fichier :</strong> {{ device.summary.file }} · <strong>Version déclarée :</strong> {{ ir.device.platform.version or 'non identifiée' }} · <strong>Famille :</strong> {{ device.summary.format }} ({{ device.summary.format_confidence }})</p>
+        </header>
+        <div class="device-body">
+          <section class="section">
+            <h3><span class="no">01</span> Synthèse et fonctionnalités présentes</h3>
+            <p class="subtle">Éléments déduits des commandes modélisées, sans vérification de l'état opérationnel.</p>
+            <div class="chips">{% for feature in device.capabilities %}<span class="chip">{{ feature }}</span>{% else %}<span class="chip neutral">Aucune fonctionnalité répertoriée</span>{% endfor %}</div>
+            <div class="split">
+              <div class="tile"><h4>Inventaire technique</h4><dl>
+                <dt>Interfaces</dt><dd>{{ ir.interfaces|length }}</dd>
+                <dt>Routes statiques</dt><dd>{{ routing.static_routes|length }}</dd>
+                <dt>OSPF / BGP</dt><dd>{{ routing.ospf|length }} / {{ routing.bgp|length }}</dd>
+                <dt>Listes ACL</dt><dd>{{ policies.acls|length }}</dd>
+                <dt>VRF</dt><dd>{{ ir.vrfs|length }}</dd>
+              </dl></div>
+              <div class="tile"><h4>Couverture du parsing</h4><dl>
+                <dt>Globales inconnues</dt><dd>{{ device.summary.coverage.global_unknown }}</dd>
+                <dt>Sous-sections opaques</dt><dd>{{ device.summary.coverage.nested_unknown }}</dd>
+                <dt>Plateforme opaque</dt><dd>{{ device.summary.coverage.platform_unknown }}</dd>
+                <dt>Portée limitée</dt><dd>{{ device.summary.coverage.platform_scope_limited }}</dd>
+                <dt>Récupérations</dt><dd>{{ device.summary.coverage.formatting_recoveries }}</dd>
+              </dl></div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h3><span class="no">02</span> Interfaces réseau et adressage IPv4</h3>
+            {% if ir.interfaces %}
+              <div class="table-wrap"><table><thead><tr><th>Interface</th><th>Description</th><th>Adresses / CIDR</th><th>État administratif</th><th>VRF / VLAN / NAT / ACL</th></tr></thead><tbody>
+                {% for i in ir.interfaces %}<tr>
+                  <td class="mono"><strong>{{ i.name }}</strong></td><td>{{ i.description or '—' }}</td>
+                  <td class="mono">{% for a in i.ipv4_addresses %}{{ a.cidr or a.address }}{% if a.secondary %} (secondary){% endif %}<br>{% else %}{% if i.ipv4_dhcp %}DHCP demandé{% elif i.ipv4_explicitly_absent %}Sans IP (déclaré){% else %}Non spécifiée{% endif %}{% endfor %}</td>
+                  <td>{% if i.admin_enabled is sameas true %}no shutdown déclaré{% elif i.admin_enabled is sameas false %}shutdown déclaré{% else %}Non explicité{% endif %}<br><small class="muted">État opérationnel inconnu</small></td>
+                  <td class="mono">
+                    {% if i.vrf %}VRF {{ i.vrf }}<br>{% endif %}
+                    {% if i.vlan_tagging %}802.1Q {{ i.vlan_tagging.vlan_id }}<br>{% endif %}
+                    {% if i.switchport.mode %}Switchport {{ i.switchport.mode }}<br>{% endif %}
+                    {% if i.nat_role %}NAT {{ i.nat_role }}<br>{% endif %}
+                    {% for bind in i.acl_bindings %}ACL {{ bind.name }} ({{ bind.direction }})<br>{% endfor %}
+                    {% if i.hsrp_groups %}HSRP : {{ i.hsrp_groups|length }} groupe(s){% endif %}
+                  </td>
+                </tr>{% endfor %}
+              </tbody></table></div>
+              <h4>Paramètres d'interface reconstitués</h4>{{ config_blocks(device.configs.interfaces) }}
+            {% else %}<div class="empty">Aucune interface identifiée.</div>{% endif %}
+          </section>
+
+          <section class="section">
+            <h3><span class="no">03</span> Protocoles de routage et paramètres associés</h3>
+            <h4>OSPF — Processus, Router ID, réseaux et interfaces passives</h4>
+            {% if routing.ospf %}
+              <div class="table-wrap"><table><thead><tr><th>Processus</th><th>Router ID</th><th>Sélecteurs réseau (wildcard, zone)</th><th>Interfaces passives / actives déclarées</th></tr></thead><tbody>
+                {% for p in routing.ospf %}<tr><td>{{ p.process_id }}</td><td class="mono">{{ p.router_id or '—' }}</td>
+                  <td class="mono">{% for n in p.network_selectors %}{{ n.address }} / {{ n.wildcard }} · area {{ n.area }}<br>{% else %}—{% endfor %}</td>
+                  <td>Passives : {{ p.passive_interfaces|join(', ') or '—' }}<br>Non passives : {{ p.non_passive_interfaces|join(', ') or '—' }}</td></tr>{% endfor %}
+              </tbody></table></div>
+              <h4>Configuration OSPF reconstituée</h4>{{ config_blocks(device.configs.ospf) }}
+            {% else %}<div class="empty">Aucun processus OSPF configuré dans le fichier.</div>{% endif %}
+
+            <h4>BGP — AS, voisins et politiques</h4>
+            {% if routing.bgp %}
+              {% for bgp in routing.bgp %}
+                <div class="tile" style="margin-bottom:9px"><strong>AS local {{ bgp.local_as }}</strong> · Router ID {{ bgp.router_id or 'non déclaré' }} · Annonces : {{ bgp.network_statements|length }} · Voisins : {{ bgp.neighbors|length }}</div>
+                <div class="table-wrap"><table><thead><tr><th>Voisin / Groupe</th><th>AS distant</th><th>Type configuré</th><th>Route-map / direction</th></tr></thead><tbody>
+                  {% for peer in bgp.neighbors %}<tr><td class="mono">{{ peer.id }}{% if peer.peer_group %}<br>Groupe : {{ peer.peer_group }}{% endif %}</td><td>{{ peer.remote_as or 'non résolu' }}</td><td>{{ peer.session_type_configured or peer.kind }}</td><td>{% for pol in peer.policies %}{{ pol.policy_name }} ({{ pol.direction }})<br>{% else %}—{% endfor %}</td></tr>
+                  {% else %}<tr><td colspan="4">Aucun voisin extrait.</td></tr>{% endfor %}
+                </tbody></table></div>
+              {% endfor %}
+              <h4>Configuration BGP reconstituée</h4>{{ config_blocks(device.configs.bgp) }}
+            {% else %}<div class="empty">Aucun processus BGP configuré dans le fichier.</div>{% endif %}
+
+            <h4>Routes statiques</h4>
+            {% if routing.static_routes %}
+              <div class="table-wrap"><table><thead><tr><th>Préfixe</th><th>Next-hop</th><th>Interface de sortie</th><th>VRF</th></tr></thead><tbody>
+                {% for route in routing.static_routes %}<tr><td class="mono">{{ route.prefix or route.destination }}</td><td class="mono">{{ route.next_hop or '—' }}</td><td>{{ route.outgoing_interface or '—' }}</td><td>{{ route.vrf or 'globale' }}</td></tr>{% endfor %}
+              </tbody></table></div>{{ config_blocks(device.configs.static) }}
+            {% else %}<div class="empty">Aucune route statique extraite.</div>{% endif %}
+          </section>
+
+          <section class="section">
+            <h3><span class="no">04</span> ACL, filtrage et politiques de routage</h3>
+            <h4>Access Control Lists ({{ policies.acls|length }})</h4>
+            {{ config_blocks(device.configs.acls) }}
+            <h4>Prefix-lists et route-maps</h4>
+            {{ config_blocks(device.configs.policies) }}
+            <p class="subtle">Les extraits décrivent les paramètres reconnus. Une ACL permissive ou une politique absente ne prouve pas à elle seule son effet réel sur les paquets.</p>
+          </section>
+
+          <section class="section">
+            <h3><span class="no">05</span> Services et fonctionnalités réseau</h3>
+            <div class="split">
+              <div class="tile"><h4>DHCP</h4><dl>
+                <dt>Pools</dt><dd>{{ services.dhcp.pools|length }}</dd>
+                <dt>Plages exclues</dt><dd>{{ services.dhcp.excluded_ranges|length }}</dd>
+                {% for pool in services.dhcp.pools %}<dt>{{ pool.name }}</dt><dd>{{ pool.subnet or '—' }} · passerelle(s) : {{ pool.gateways|join(', ') or '—' }}</dd>{% endfor %}
+              </dl></div>
+              <div class="tile"><h4>NAT/PAT et VLAN</h4><dl>
+                <dt>Règles NAT</dt><dd>{{ services.nat.rules|length }}</dd>
+                <dt>Pools NAT</dt><dd>{{ services.nat.pools|length }}</dd>
+                <dt>VLAN explicites</dt><dd>{{ services.vlans|length }}</dd>
+                {% for r in services.nat.rules %}<dt>Règle NAT</dt><dd>{{ r.kind }}{% if r.overload %} (PAT / overload){% endif %}</dd>{% endfor %}
+              </dl></div>
+              <div class="tile"><h4>Supervision SNMP (sans secrets)</h4><dl>
+                <dt>Communautés</dt><dd>{{ services.snmp.communities|length }} (valeurs masquées)</dd>
+                {% for c in services.snmp.communities %}<dt>Droit configuré</dt><dd>{{ c.access|upper }} — secret masqué</dd>{% endfor %}
+                <dt>Utilisateurs v3</dt><dd>{{ services.snmp.users|length }} (identifiants et secrets non affichés)</dd>
+                <dt>Destinations</dt><dd>{{ services.snmp.targets|length }}</dd>
+              </dl></div>
+              <div class="tile"><h4>Syslog et NTP</h4><dl>
+                <dt>Syslog</dt><dd>{{ services.syslog.targets|length }} destination(s)</dd>
+                {% for h in services.syslog.targets %}<dt>Collecteur</dt><dd class="mono">{{ h.address }}</dd>{% endfor %}
+                <dt>NTP</dt><dd>{{ services.ntp.servers|length }} serveur(s) / {{ services.ntp.peers|length }} pair(s)</dd>
+                <dt>Buffer Syslog</dt><dd>{% if services.syslog.buffered %}{{ services.syslog.buffered.size_bytes or 'taille non précisée' }} octets{% else %}Non explicité{% endif %}</dd>
+              </dl></div>
+              <div class="tile"><h4>Administration et accès</h4><dl>
+                <dt>SSH version</dt><dd>{{ management.ssh_version or 'non précisée' }}</dd>
+                <dt>HTTP</dt><dd>{% if management.http_enabled is sameas true %}Activé{% elif management.http_enabled is sameas false %}Désactivé{% else %}Non explicité{% endif %}</dd>
+                <dt>HTTPS</dt><dd>{% if management.https_enabled is sameas true %}Activé{% elif management.https_enabled is sameas false %}Désactivé{% else %}Non explicité{% endif %}</dd>
+                <dt>Lignes VTY/console</dt><dd>{{ management.terminal_lines|length }}</dd>
+              </dl></div>
+              <div class="tile"><h4>Autres éléments</h4><dl>
+                <dt>VRF</dt><dd>{{ ir.vrfs|length }}</dd>
+                <dt>HSRP</dt><dd>{% set total_hsrp = namespace(n=0) %}{% for i in ir.interfaces %}{% set total_hsrp.n = total_hsrp.n + (i.hsrp_groups|length) %}{% endfor %}{{ total_hsrp.n }} groupe(s)</dd>
+                <dt>Version IOS déclarée</dt><dd>{{ ir.device.platform.version or 'non spécifiée' }}</dd>
+                <dt>Mode</dt><dd>Configuration hors ligne</dd>
+              </dl></div>
+            </div>
+            <h4>Paramètres de services reconstitués / expurgés</h4>
+            {{ config_blocks(device.configs.services) }}
+          </section>
+
+          <section class="section">
+            <h3><span class="no">06</span> Contrôles d'audit et recommandations</h3>
+            <p class="subtle">{{ device.review.finding_totals.warning or 0 }} alerte(s) · {{ device.review.finding_totals.success or 0 }} contrôle(s) positifs · {{ device.review.finding_totals.info or 0 }} information(s).</p>
+            {% for finding in device.review.findings %}
+              <div class="finding">
+                <span class="severity {{ finding.level }}">{% if finding.level == 'warning' %}À vérifier{% elif finding.level == 'success' %}OK{% else %}Info{% endif %}</span>
+                <div><strong>{{ finding.title }}</strong><small>{{ finding.code }}{% if finding.source_line %} · ligne {{ finding.source_line }}{% endif %}</small>
+                  <p>{{ finding.observation }}</p><p><strong>Action :</strong> {{ finding.advice }}</p>
+                </div>
+              </div>
+            {% else %}<div class="empty">Aucun constat statique généré pour ce fichier.</div>{% endfor %}
+          </section>
+
+          <div class="scope"><strong>Réserve d'interprétation :</strong> le format est inféré depuis la syntaxe ; l'identité matérielle n'est pas attestée. Les interfaces, liens et sessions de routage peuvent être configurés sans être opérationnels. Les directives MMI historiques ont une signification documentée pour des plateformes anciennes, mais leur applicabilité ici n'est pas confirmée.</div>
+        </div>
+      </article>
+    {% endfor %}
+    <footer class="footer">SUP'COM × 6NLG • NetAudit • Bilan généré automatiquement depuis l'IR Cisco IOS et les contrôles statiques</footer>
+  </div>
+</body>
+</html>

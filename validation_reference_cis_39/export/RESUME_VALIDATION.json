@@ -1,0 +1,59 @@
+{
+  "results": [
+    {
+      "configuration": "R-CIS39-BRANCH-SECURE.cfg",
+      "counts": {
+        "PASS": 37,
+        "FAIL": 0,
+        "UNKNOWN": 0,
+        "NOT_SELECTED": 0,
+        "NOT_APPLICABLE": 2,
+        "NOT_EVALUATED": 0
+      },
+      "checks": 39,
+      "matches": 39,
+      "unparsed_global_count": 0,
+      "opaque_section_count": 0,
+      "mismatches": []
+    },
+    {
+      "configuration": "R-CIS39-CONTROLLED-RISKS.cfg",
+      "counts": {
+        "PASS": 28,
+        "FAIL": 9,
+        "UNKNOWN": 0,
+        "NOT_SELECTED": 0,
+        "NOT_APPLICABLE": 2,
+        "NOT_EVALUATED": 0
+      },
+      "checks": 39,
+      "matches": 39,
+      "unparsed_global_count": 0,
+      "opaque_section_count": 0,
+      "mismatches": []
+    },
+    {
+      "configuration": "R-CIS39-REFERENCE.cfg",
+      "counts": {
+        "PASS": 37,
+        "FAIL": 0,
+        "UNKNOWN": 0,
+        "NOT_SELECTED": 0,
+        "NOT_APPLICABLE": 2,
+        "NOT_EVALUATED": 0
+      },
+      "checks": 39,
+      "matches": 39,
+      "unparsed_global_count": 0,
+      "opaque_section_count": 0,
+      "mismatches": []
+    }
+  ],
+  "problems": [],
+  "benchmark_scope": "39 contrôles CIS de laboratoire",
+  "complete_config": true,
+  "external_interfaces": [
+    "GigabitEthernet0/0"
+  ],
+  "note": "Configs de laboratoire avec identifiants/secrets fictifs, non déployables en production."
+}

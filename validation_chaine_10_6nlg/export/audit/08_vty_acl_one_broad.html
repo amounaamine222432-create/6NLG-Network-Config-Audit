@@ -1,0 +1,176 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>08_vty_acl_one_broad — AUDIT</title><style>body{font:14px system-ui;background:#eff4f9;color:#192b3d;margin:30px auto;max-width:1260px}
+    article{background:white;padding:25px;border-radius:13px}h1{color:#194d79}table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #d8e1ea;text-align:left;vertical-align:top}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f7;padding:12px;border-radius:8px}
+    .PASS{color:#1d7843;font-weight:bold}.FAIL{color:#b22929;font-weight:bold}.UNKNOWN{color:#9b6a00;font-weight:bold}</style><article><h1>08_vty_acl_one_broad — AUDIT</h1><p>PASS: 0 · FAIL: 2 · UNKNOWN: 37 · NOT_SELECTED: 0 · NOT_APPLICABLE: 0 · NOT_EVALUATED: 0</p><table><tr><th>Réf CIS</th><th>Statut</th><th>Contrôle</th><th>Preuve</th></tr><tr><td>1.1.1</td><td class="UNKNOWN">UNKNOWN</td><td>Activer AAA new-model</td><td><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.2.2</td><td class="UNKNOWN">UNKNOWN</td><td>Limiter les accès VTY au protocole SSH</td><td><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [],
+      &quot;source_line&quot;: 8
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;transport_input&quot;: [],
+      &quot;source_line&quot;: 10
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.2.7</td><td class="UNKNOWN">UNKNOWN</td><td>Limiter la temporisation EXEC de la console à dix minutes</td><td><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.2.9</td><td class="UNKNOWN">UNKNOWN</td><td>Limiter la temporisation EXEC VTY à dix minutes</td><td><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;seconds&quot;: null,
+      &quot;source_line&quot;: 8
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;seconds&quot;: null,
+      &quot;source_line&quot;: 10
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.3.1</td><td class="UNKNOWN">UNKNOWN</td><td>Définir une bannière EXEC</td><td><pre>{
+  &quot;exec_banner_configured&quot;: false,
+  &quot;source_lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.3.2</td><td class="UNKNOWN">UNKNOWN</td><td>Définir une bannière LOGIN</td><td><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.3.3</td><td class="UNKNOWN">UNKNOWN</td><td>Définir une bannière MOTD</td><td><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.4.1</td><td class="UNKNOWN">UNKNOWN</td><td>Configurer enable secret</td><td><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.4.3</td><td class="UNKNOWN">UNKNOWN</td><td>Utiliser username secret pour les comptes locaux</td><td><pre>{
+  &quot;local_user_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.5.4</td><td class="UNKNOWN">UNKNOWN</td><td>Éviter les communautés SNMP en lecture-écriture RW</td><td><pre>{
+  &quot;community_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.5.9</td><td class="UNKNOWN">UNKNOWN</td><td>Utiliser priv pour les groupes SNMPv3</td><td><pre>{
+  &quot;snmp_v3_group_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.1.1.2</td><td class="UNKNOWN">UNKNOWN</td><td>Utiliser SSH version 2</td><td><pre>{
+  &quot;ssh_version&quot;: null,
+  &quot;requires_live_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.2.2</td><td class="UNKNOWN">UNKNOWN</td><td>Activer la journalisation tamponnée avec une taille définie</td><td><pre>{
+  &quot;buffer_size_bytes&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.2.4</td><td class="UNKNOWN">UNKNOWN</td><td>Définir un collecteur Syslog distant</td><td><pre>{
+  &quot;configured_targets&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.2.5</td><td class="UNKNOWN">UNKNOWN</td><td>Utiliser le niveau informational pour les journaux distants</td><td><pre>{
+  &quot;trap_severity&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.2.7</td><td class="UNKNOWN">UNKNOWN</td><td>Définir une interface source pour Syslog</td><td><pre>{
+  &quot;source_interface&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.3.1.1</td><td class="UNKNOWN">UNKNOWN</td><td>Activer l&#x27;authentification NTP</td><td><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.3.1.2</td><td class="UNKNOWN">UNKNOWN</td><td>Configurer des clés d&#x27;authentification NTP</td><td><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.3.1.3</td><td class="UNKNOWN">UNKNOWN</td><td>Définir les clés NTP de confiance</td><td><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.3.1.4</td><td class="UNKNOWN">UNKNOWN</td><td>Associer une clé aux serveurs NTP</td><td><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.3.2</td><td class="UNKNOWN">UNKNOWN</td><td>Définir un serveur NTP</td><td><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>2.4.3</td><td class="UNKNOWN">UNKNOWN</td><td>Utiliser une interface Loopback comme source NTP</td><td><pre>{
+  &quot;source_is_loopback&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.1.1</td><td class="UNKNOWN">UNKNOWN</td><td>Désactiver le routage par la source IP</td><td><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.1.2</td><td class="UNKNOWN">UNKNOWN</td><td>Désactiver Proxy ARP sur les interfaces</td><td><pre>{
+  &quot;interface_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.1.3</td><td class="UNKNOWN">UNKNOWN</td><td>Éviter les interfaces Tunnel</td><td><pre>{
+  &quot;tunnel_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.3.4.1</td><td class="UNKNOWN">UNKNOWN</td><td>Configurer l&#x27;authentification des voisins BGP</td><td><pre>{
+  &quot;bgp_peer_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.1.2</td><td class="UNKNOWN">UNKNOWN</td><td>Définir aaa authentication login default</td><td><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.1.3</td><td class="UNKNOWN">UNKNOWN</td><td>Définir aaa authentication enable default</td><td><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.1.4</td><td class="UNKNOWN">UNKNOWN</td><td>Définir login authentication sur la console</td><td><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.1.5</td><td class="UNKNOWN">UNKNOWN</td><td>Définir login authentication sur les lignes TTY</td><td><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.1.6</td><td class="UNKNOWN">UNKNOWN</td><td>Définir login authentication sur les lignes VTY</td><td><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 2,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>1.2.4</td><td class="FAIL">FAIL</td><td>Créer une ACL restrictive pour la gestion VTY</td><td><pre>{
+  &quot;non_restrictive_vty_acls&quot;: [
+    &quot;OPEN&quot;
+  ],
+  &quot;validation_scope&quot;: &quot;acl_definition_only&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></td></tr><tr><td>1.2.5</td><td class="FAIL">FAIL</td><td>Appliquer access-class in aux lignes VTY</td><td><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 1,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 1,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></td></tr><tr><td>3.2.1</td><td class="UNKNOWN">UNKNOWN</td><td>Filtrer les adresses sources privées ou réservées sur l&#x27;interface externe</td><td><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_found&quot;,
+  &quot;interface&quot;: &quot;GigabitEthernet0/0&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.2.2</td><td class="UNKNOWN">UNKNOWN</td><td>Appliquer une ACL entrante à l&#x27;interface externe</td><td><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_found&quot;,
+  &quot;interface&quot;: &quot;GigabitEthernet0/0&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.3.1.8</td><td class="UNKNOWN">UNKNOWN</td><td>Activer ip authentication key-chain eigrp</td><td><pre>{
+  &quot;eigrp_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.3.1.9</td><td class="UNKNOWN">UNKNOWN</td><td>Activer ip authentication mode eigrp md5</td><td><pre>{
+  &quot;eigrp_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.3.2.1</td><td class="UNKNOWN">UNKNOWN</td><td>Configurer area authentication message-digest pour OSPF</td><td><pre>{
+  &quot;ospf_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr><tr><td>3.3.2.2</td><td class="UNKNOWN">UNKNOWN</td><td>Configurer ip ospf message-digest-key md5</td><td><pre>{
+  &quot;ospf_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></td></tr></table></article></html>

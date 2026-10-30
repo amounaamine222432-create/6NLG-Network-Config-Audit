@@ -1,0 +1,1847 @@
+[
+  {
+    "case": "01_aaa_new_model_pass",
+    "control_id": "1.1.1",
+    "check": "aaa_new_model",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "management.aaa_new_model_enabled",
+      "observed": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "01_aaa_new_model_fail",
+    "control_id": "1.1.1",
+    "check": "aaa_new_model",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "management.aaa_new_model_enabled",
+      "observed": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "01_aaa_new_model_unknown",
+    "control_id": "1.1.1",
+    "check": "aaa_new_model",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "management.aaa_new_model_enabled",
+      "observed": null,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "02_vty_ssh_only_pass",
+    "control_id": "1.2.2",
+    "check": "vty_ssh_only",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_lines": [
+        {
+          "line_id": "vty 0 4",
+          "transport_input": [
+            "ssh"
+          ],
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "02_vty_ssh_only_fail",
+    "control_id": "1.2.2",
+    "check": "vty_ssh_only",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_lines": [
+        {
+          "line_id": "vty 0 4",
+          "transport_input": [
+            "telnet"
+          ],
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "02_vty_ssh_only_unknown",
+    "control_id": "1.2.2",
+    "check": "vty_ssh_only",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_lines": [],
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "03_console_exec_timeout_pass",
+    "control_id": "1.2.7",
+    "check": "console_exec_timeout",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "max_allowed_seconds": 600,
+      "lines": [
+        {
+          "line_id": "con 0",
+          "seconds": 300,
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "03_console_exec_timeout_fail",
+    "control_id": "1.2.7",
+    "check": "console_exec_timeout",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "max_allowed_seconds": 600,
+      "lines": [
+        {
+          "line_id": "con 0",
+          "seconds": 1200,
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "03_console_exec_timeout_unknown",
+    "control_id": "1.2.7",
+    "check": "console_exec_timeout",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "lines": [],
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "04_vty_exec_timeout_pass",
+    "control_id": "1.2.9",
+    "check": "vty_exec_timeout",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "max_allowed_seconds": 600,
+      "lines": [
+        {
+          "line_id": "vty 0 4",
+          "seconds": 300,
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "04_vty_exec_timeout_fail",
+    "control_id": "1.2.9",
+    "check": "vty_exec_timeout",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "max_allowed_seconds": 600,
+      "lines": [
+        {
+          "line_id": "vty 0 4",
+          "seconds": 1200,
+          "source_line": 3
+        }
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "04_vty_exec_timeout_unknown",
+    "control_id": "1.2.9",
+    "check": "vty_exec_timeout",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "lines": [],
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "05_exec_banner_present_pass",
+    "control_id": "1.3.1",
+    "check": "exec_banner_present",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "exec_banner_configured": true,
+      "source_lines": [
+        3
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "05_exec_banner_present_fail",
+    "control_id": "1.3.1",
+    "check": "exec_banner_present",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "exec_banner_configured": false,
+      "source_lines": [],
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "05_exec_banner_present_unknown",
+    "control_id": "1.3.1",
+    "check": "exec_banner_present",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "exec_banner_configured": false,
+      "source_lines": [],
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "06_login_banner_pass",
+    "control_id": "1.3.2",
+    "check": "login_banner",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "banner_kind": "login",
+      "source_lines": [
+        3
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "06_login_banner_fail",
+    "control_id": "1.3.2",
+    "check": "login_banner",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "banner_kind": "login",
+      "observed": false,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "06_login_banner_unknown",
+    "control_id": "1.3.2",
+    "check": "login_banner",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "banner_kind": "login",
+      "observed": false,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "07_motd_banner_pass",
+    "control_id": "1.3.3",
+    "check": "motd_banner",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "banner_kind": "motd",
+      "source_lines": [
+        3
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "07_motd_banner_fail",
+    "control_id": "1.3.3",
+    "check": "motd_banner",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "banner_kind": "motd",
+      "observed": false,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "07_motd_banner_unknown",
+    "control_id": "1.3.3",
+    "check": "motd_banner",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "banner_kind": "motd",
+      "observed": false,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "08_enable_secret_present_pass",
+    "control_id": "1.4.1",
+    "check": "enable_secret_present",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "management.enable_secret_configured",
+      "observed": true,
+      "expected": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "08_enable_secret_present_fail",
+    "control_id": "1.4.1",
+    "check": "enable_secret_present",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "ir_path": "management.enable_secret_configured",
+      "observed": false,
+      "expected": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "08_enable_secret_present_unknown",
+    "control_id": "1.4.1",
+    "check": "enable_secret_present",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "management.enable_secret_configured",
+      "observed": null,
+      "expected": true,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "09_local_user_secrets_pass",
+    "control_id": "1.4.3",
+    "check": "local_user_secrets",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "local_user_count": 1,
+      "secret_count": 1,
+      "password_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "09_local_user_secrets_fail",
+    "control_id": "1.4.3",
+    "check": "local_user_secrets",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "local_user_count": 1,
+      "secret_count": 0,
+      "password_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "09_local_user_secrets_unknown",
+    "control_id": "1.4.3",
+    "check": "local_user_secrets",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "local_user_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "10_snmp_no_rw_pass",
+    "control_id": "1.5.4",
+    "check": "snmp_no_rw",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "community_count": 1,
+      "rw_count": 0,
+      "unknown_access_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "10_snmp_no_rw_fail",
+    "control_id": "1.5.4",
+    "check": "snmp_no_rw",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "community_count": 1,
+      "rw_count": 1,
+      "unknown_access_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "10_snmp_no_rw_unknown",
+    "control_id": "1.5.4",
+    "check": "snmp_no_rw",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "community_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "11_snmp_v3_priv_pass",
+    "control_id": "1.5.9",
+    "check": "snmp_v3_priv",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "snmp_v3_group_count": 1,
+      "priv_group_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "11_snmp_v3_priv_fail",
+    "control_id": "1.5.9",
+    "check": "snmp_v3_priv",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "snmp_v3_group_count": 1,
+      "priv_group_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "11_snmp_v3_priv_unknown",
+    "control_id": "1.5.9",
+    "check": "snmp_v3_priv",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "snmp_v3_group_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "12_ssh_version2_pass",
+    "control_id": "2.1.1.2",
+    "check": "ssh_version2",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ssh_version": 2,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "12_ssh_version2_fail",
+    "control_id": "2.1.1.2",
+    "check": "ssh_version2",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ssh_version": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "12_ssh_version2_unknown",
+    "control_id": "2.1.1.2",
+    "check": "ssh_version2",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ssh_version": null,
+      "requires_live_confirmation": true,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "13_syslog_buffer_pass",
+    "control_id": "2.2.2",
+    "check": "syslog_buffer",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "enabled": true,
+      "buffer_size_bytes": 64000,
+      "recommended_size_bytes": 64000,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "13_syslog_buffer_fail",
+    "control_id": "2.2.2",
+    "check": "syslog_buffer",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "enabled": true,
+      "buffer_size_bytes": 4096,
+      "recommended_size_bytes": 64000,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "13_syslog_buffer_unknown",
+    "control_id": "2.2.2",
+    "check": "syslog_buffer",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "buffer_size_bytes": null,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "14_syslog_host_pass",
+    "control_id": "2.2.4",
+    "check": "syslog_host",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_targets": 1,
+      "ip_address_targets": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "14_syslog_host_fail",
+    "control_id": "2.2.4",
+    "check": "syslog_host",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "configured_targets": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "14_syslog_host_unknown",
+    "control_id": "2.2.4",
+    "check": "syslog_host",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_targets": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "15_syslog_informational_pass",
+    "control_id": "2.2.5",
+    "check": "syslog_informational",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "trap_severity": "informational",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "15_syslog_informational_fail",
+    "control_id": "2.2.5",
+    "check": "syslog_informational",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "trap_severity": "debugging",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "15_syslog_informational_unknown",
+    "control_id": "2.2.5",
+    "check": "syslog_informational",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "trap_severity": null,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "16_syslog_source_present_pass",
+    "control_id": "2.2.7",
+    "check": "syslog_source_present",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "source_interface": "Loopback0",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "16_syslog_source_present_fail",
+    "control_id": "2.2.7",
+    "check": "syslog_source_present",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "source_interface": null,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "16_syslog_source_present_unknown",
+    "control_id": "2.2.7",
+    "check": "syslog_source_present",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "source_interface": null,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "17_ntp_auth_enabled_pass",
+    "control_id": "2.3.1.1",
+    "check": "ntp_auth_enabled",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_enabled",
+      "observed": true,
+      "expected": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "17_ntp_auth_enabled_fail",
+    "control_id": "2.3.1.1",
+    "check": "ntp_auth_enabled",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_enabled",
+      "observed": false,
+      "expected": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "17_ntp_auth_enabled_unknown",
+    "control_id": "2.3.1.1",
+    "check": "ntp_auth_enabled",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_enabled",
+      "observed": null,
+      "expected": true,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "18_ntp_auth_keys_pass",
+    "control_id": "2.3.1.2",
+    "check": "ntp_auth_keys",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_key_count",
+      "count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "18_ntp_auth_keys_fail",
+    "control_id": "2.3.1.2",
+    "check": "ntp_auth_keys",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_key_count",
+      "count": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "18_ntp_auth_keys_unknown",
+    "control_id": "2.3.1.2",
+    "check": "ntp_auth_keys",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.authentication_key_count",
+      "count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "19_ntp_trusted_keys_pass",
+    "control_id": "2.3.1.3",
+    "check": "ntp_trusted_keys",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.trusted_key_count",
+      "count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "19_ntp_trusted_keys_fail",
+    "control_id": "2.3.1.3",
+    "check": "ntp_trusted_keys",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "ir_path": "services.ntp.trusted_key_count",
+      "count": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "19_ntp_trusted_keys_unknown",
+    "control_id": "2.3.1.3",
+    "check": "ntp_trusted_keys",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ntp.trusted_key_count",
+      "count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "20_ntp_server_keys_pass",
+    "control_id": "2.3.1.4",
+    "check": "ntp_server_keys",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "key_reference_consistency_verified": true,
+      "ntp_server_count": 1,
+      "keyed_server_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "20_ntp_server_keys_fail",
+    "control_id": "2.3.1.4",
+    "check": "ntp_server_keys",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "inferred_absence": true,
+      "invalid_key_reference_count": 1,
+      "ntp_server_count": 1,
+      "keyed_server_count": 1,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "20_ntp_server_keys_unknown",
+    "control_id": "2.3.1.4",
+    "check": "ntp_server_keys",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ntp_server_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "21_ntp_servers_pass",
+    "control_id": "2.3.2",
+    "check": "ntp_servers",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ntp_server_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "21_ntp_servers_fail",
+    "control_id": "2.3.2",
+    "check": "ntp_servers",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "ntp_server_count": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "21_ntp_servers_unknown",
+    "control_id": "2.3.2",
+    "check": "ntp_servers",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ntp_server_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "22_ntp_loopback_source_pass",
+    "control_id": "2.4.3",
+    "check": "ntp_loopback_source",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "source_is_loopback": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "22_ntp_loopback_source_fail",
+    "control_id": "2.4.3",
+    "check": "ntp_loopback_source",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "source_is_loopback": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "22_ntp_loopback_source_unknown",
+    "control_id": "2.4.3",
+    "check": "ntp_loopback_source",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "source_is_loopback": null,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "23_source_routing_disabled_pass",
+    "control_id": "3.1.1",
+    "check": "source_routing_disabled",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ip_stack.source_route_enabled",
+      "observed": false,
+      "expected": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "23_source_routing_disabled_fail",
+    "control_id": "3.1.1",
+    "check": "source_routing_disabled",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ip_stack.source_route_enabled",
+      "observed": true,
+      "expected": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "23_source_routing_disabled_unknown",
+    "control_id": "3.1.1",
+    "check": "source_routing_disabled",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ir_path": "services.ip_stack.source_route_enabled",
+      "observed": null,
+      "expected": false,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "24_proxy_arp_disabled_pass",
+    "control_id": "3.1.2",
+    "check": "proxy_arp_disabled",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "interface_count": 1,
+      "proxy_arp_enabled_count": 0,
+      "proxy_arp_disabled_count": 1,
+      "requires_live_confirmation": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "24_proxy_arp_disabled_fail",
+    "control_id": "3.1.2",
+    "check": "proxy_arp_disabled",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "interface_count": 1,
+      "proxy_arp_enabled_count": 1,
+      "proxy_arp_disabled_count": 0,
+      "requires_live_confirmation": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "24_proxy_arp_disabled_unknown",
+    "control_id": "3.1.2",
+    "check": "proxy_arp_disabled",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "interface_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "25_no_tunnel_interfaces_pass",
+    "control_id": "3.1.3",
+    "check": "no_tunnel_interfaces",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "tunnel_count": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "25_no_tunnel_interfaces_fail",
+    "control_id": "3.1.3",
+    "check": "no_tunnel_interfaces",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "tunnel_count": 1,
+      "source_lines": [
+        3
+      ],
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "25_no_tunnel_interfaces_unknown",
+    "control_id": "3.1.3",
+    "check": "no_tunnel_interfaces",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "tunnel_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "26_bgp_neighbor_password_pass",
+    "control_id": "3.3.4.1",
+    "check": "bgp_neighbor_password",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "bgp_peer_count": 1,
+      "protected_peer_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "26_bgp_neighbor_password_fail",
+    "control_id": "3.3.4.1",
+    "check": "bgp_neighbor_password",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "bgp_peer_count": 1,
+      "protected_peer_count": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "26_bgp_neighbor_password_unknown",
+    "control_id": "3.3.4.1",
+    "check": "bgp_neighbor_password",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "bgp_peer_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "27_aaa_login_default_pass",
+    "control_id": "1.1.2",
+    "check": "aaa_login_default",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "method_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "27_aaa_login_default_fail",
+    "control_id": "1.1.2",
+    "check": "aaa_login_default",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "insecure_none_method": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "27_aaa_login_default_unknown",
+    "control_id": "1.1.2",
+    "check": "aaa_login_default",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "configured": false,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "28_aaa_enable_default_pass",
+    "control_id": "1.1.3",
+    "check": "aaa_enable_default",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "method_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "28_aaa_enable_default_fail",
+    "control_id": "1.1.3",
+    "check": "aaa_enable_default",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "insecure_none_method": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "28_aaa_enable_default_unknown",
+    "control_id": "1.1.3",
+    "check": "aaa_enable_default",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "list_name": "default",
+      "configured": false,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "29_aaa_line_console_pass",
+    "control_id": "1.1.4",
+    "check": "aaa_line_console",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "line_count": 1,
+      "verified_count": 1,
+      "failed_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "29_aaa_line_console_fail",
+    "control_id": "1.1.4",
+    "check": "aaa_line_console",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "line_count": 1,
+      "verified_count": 0,
+      "failed_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "29_aaa_line_console_unknown",
+    "control_id": "1.1.4",
+    "check": "aaa_line_console",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "con ",
+      "line_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "30_aaa_line_tty_pass",
+    "control_id": "1.1.5",
+    "check": "aaa_line_tty",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "tty ",
+      "line_count": 1,
+      "verified_count": 1,
+      "failed_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "30_aaa_line_tty_fail",
+    "control_id": "1.1.5",
+    "check": "aaa_line_tty",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "tty ",
+      "line_count": 1,
+      "verified_count": 0,
+      "failed_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "30_aaa_line_tty_unknown",
+    "control_id": "1.1.5",
+    "check": "aaa_line_tty",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "tty ",
+      "line_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "31_aaa_line_vty_pass",
+    "control_id": "1.1.6",
+    "check": "aaa_line_vty",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "line_count": 1,
+      "verified_count": 1,
+      "failed_count": 0,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "31_aaa_line_vty_fail",
+    "control_id": "1.1.6",
+    "check": "aaa_line_vty",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "line_count": 1,
+      "verified_count": 0,
+      "failed_count": 1,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "31_aaa_line_vty_unknown",
+    "control_id": "1.1.6",
+    "check": "aaa_line_vty",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "scope": "vty ",
+      "line_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "32_vty_restricting_acl_pass",
+    "control_id": "1.2.4",
+    "check": "vty_restricting_acl",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "restrictive_acl_count": 1,
+      "restrictive_acl_names": [
+        "VTY-MGMT"
+      ],
+      "linked_restrictive_acls": [
+        "VTY-MGMT"
+      ],
+      "validation_scope": "acl_definition_only",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "32_vty_restricting_acl_fail",
+    "control_id": "1.2.4",
+    "check": "vty_restricting_acl",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "non_restrictive_vty_acls": [
+        "VTY-OPEN"
+      ],
+      "validation_scope": "acl_definition_only",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "32_vty_restricting_acl_unknown",
+    "control_id": "1.2.4",
+    "check": "vty_restricting_acl",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_line_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "33_vty_access_class_pass",
+    "control_id": "1.2.5",
+    "check": "vty_access_class",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_line_count": 1,
+      "restricted_count": 1,
+      "unresolved_count": 0,
+      "overly_broad_count": 0,
+      "validation_scope": "vty_input_acl",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "33_vty_access_class_fail",
+    "control_id": "1.2.5",
+    "check": "vty_access_class",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "vty_line_count": 1,
+      "restricted_count": 0,
+      "unresolved_count": 1,
+      "overly_broad_count": 0,
+      "validation_scope": "vty_input_acl",
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "33_vty_access_class_unknown",
+    "control_id": "1.2.5",
+    "check": "vty_access_class",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "vty_line_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "34_external_antispoof_acl_pass",
+    "control_id": "3.2.1",
+    "check": "external_antispoof_acl",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "required_network_count": 9,
+      "verified_deny_network_count": 9,
+      "external_designation": "user_supplied",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "34_external_antispoof_acl_fail",
+    "control_id": "3.2.1",
+    "check": "external_antispoof_acl",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "early_broad_permit_count": 1,
+      "required_network_count": 9,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "34_external_antispoof_acl_unknown",
+    "control_id": "3.2.1",
+    "check": "external_antispoof_acl",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "reason": "external_interface_not_found",
+      "interface": "GigabitEthernet0/0",
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "35_external_inbound_acl_pass",
+    "control_id": "3.2.2",
+    "check": "external_inbound_acl",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "external_interface_count": 1,
+      "inbound_acl_count": 1,
+      "external_designation": "user_supplied",
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "35_external_inbound_acl_fail",
+    "control_id": "3.2.2",
+    "check": "external_inbound_acl",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "reason": "inbound_acl_not_defined",
+      "undefined_acl_binding_count": 1,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "35_external_inbound_acl_unknown",
+    "control_id": "3.2.2",
+    "check": "external_inbound_acl",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "reason": "external_interface_not_found",
+      "interface": "GigabitEthernet0/0",
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "36_eigrp_interface_keychain_pass",
+    "control_id": "3.3.1.8",
+    "check": "eigrp_interface_keychain",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_authentication_interfaces": 1,
+      "invalid_count": 0,
+      "requires_live_interface_membership_confirmation": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "36_eigrp_interface_keychain_fail",
+    "control_id": "3.3.1.8",
+    "check": "eigrp_interface_keychain",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_authentication_interfaces": 1,
+      "invalid_count": 1,
+      "requires_live_interface_membership_confirmation": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "36_eigrp_interface_keychain_unknown",
+    "control_id": "3.3.1.8",
+    "check": "eigrp_interface_keychain",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "eigrp_process_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "37_eigrp_interface_md5_pass",
+    "control_id": "3.3.1.9",
+    "check": "eigrp_interface_md5",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_authentication_interfaces": 1,
+      "invalid_count": 0,
+      "requires_live_interface_membership_confirmation": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "37_eigrp_interface_md5_fail",
+    "control_id": "3.3.1.9",
+    "check": "eigrp_interface_md5",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "configured_authentication_interfaces": 1,
+      "invalid_count": 1,
+      "requires_live_interface_membership_confirmation": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "37_eigrp_interface_md5_unknown",
+    "control_id": "3.3.1.9",
+    "check": "eigrp_interface_md5",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "eigrp_process_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "38_ospf_area_md5_pass",
+    "control_id": "3.3.2.1",
+    "check": "ospf_area_md5",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ospf_area_count": 1,
+      "area_md5_count": 1,
+      "processes_without_network_selectors": 0,
+      "inferred_absence": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "38_ospf_area_md5_fail",
+    "control_id": "3.3.2.1",
+    "check": "ospf_area_md5",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": true,
+    "evidence": {
+      "ospf_area_count": 1,
+      "area_md5_count": 0,
+      "processes_without_network_selectors": 0,
+      "inferred_absence": true,
+      "assessment_basis": "assumed_absence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "38_ospf_area_md5_unknown",
+    "control_id": "3.3.2.1",
+    "check": "ospf_area_md5",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ospf_process_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "39_ospf_interface_md5_pass",
+    "control_id": "3.3.2.2",
+    "check": "ospf_interface_md5",
+    "expected": "PASS",
+    "actual": "PASS",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_ospf_interface_count": 1,
+      "missing_key_count": 0,
+      "wrong_mode_count": 0,
+      "inferred_absence": false,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "39_ospf_interface_md5_fail",
+    "control_id": "3.3.2.2",
+    "check": "ospf_interface_md5",
+    "expected": "FAIL",
+    "actual": "FAIL",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "configured_ospf_interface_count": 1,
+      "missing_key_count": 1,
+      "wrong_mode_count": 1,
+      "inferred_absence": true,
+      "assessment_basis": "explicit_ir"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  },
+  {
+    "case": "39_ospf_interface_md5_unknown",
+    "control_id": "3.3.2.2",
+    "check": "ospf_interface_md5",
+    "expected": "UNKNOWN",
+    "actual": "UNKNOWN",
+    "match": true,
+    "complete_config": false,
+    "evidence": {
+      "ospf_process_count": 0,
+      "assessment_basis": "insufficient_evidence"
+    },
+    "oracle_basis": "manually specified isolated IOS syntax; subject to expert review"
+  }
+]

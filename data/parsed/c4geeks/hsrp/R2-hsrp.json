@@ -1,0 +1,56 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R2",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 12,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.10.2",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": [
+        "standby version 2",
+        "standby 1 ip 192.168.10.254",
+        "standby 1 priority 100",
+        "standby 1 preempt"
+      ]
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 9,
+      "command": "enable"
+    },
+    {
+      "line": 10,
+      "command": "configure terminal"
+    },
+    {
+      "line": 19,
+      "command": "exit"
+    },
+    {
+      "line": 20,
+      "command": "end"
+    },
+    {
+      "line": 21,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [],
+  "source_file": "R2-hsrp.txt"
+}

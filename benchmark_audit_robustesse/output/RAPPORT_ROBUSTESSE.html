@@ -1,0 +1,196 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>6NLG — Robustesse audit</title>
+    <style>body{font:14px system-ui;background:#edf4fa;color:#19344b;margin:25px auto;max-width:1400px}
+    main{padding:25px;background:white;border-radius:12px}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #cadbe7;vertical-align:top;text-align:left}
+    .ok{background:#eefaf0}.bad{background:#ffe3de}pre{white-space:pre-wrap}.warning{padding:12px;background:#fff4ce}</style>
+    <main><h1>6NLG V68 — tests adversariaux et configurations mixtes</h1><p class="warning">Oracles rédigés avant exécution.
+    La cohérence avec ces scénarios ne prouve pas une certification CIS officielle.</p>
+    <h2>20 configurations · 33 assertions · 0 écart(s)</h2>
+    <p>Les écarts rouges nécessitent une revue de la configuration, du parsing, de l’IR et de la règle avant correction.</p>
+    <table><tr><th>Config</th><th>Contrôle</th><th>Attendu</th><th>Observé</th><th>Justification</th><th>Évidence</th></tr><tr class="ok"><td>01_multi_eigrp_valid</td><td>eigrp_interface_keychain</td><td>PASS</td><td>PASS</td><td>Deux processus EIGRP disjoints ne doivent pas être croisés.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 2,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>01_multi_eigrp_valid</td><td>eigrp_interface_md5</td><td>PASS</td><td>PASS</td><td>Deux processus EIGRP disjoints ne doivent pas être croisés.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 2,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>02_multi_eigrp_one_missing_auth</td><td>eigrp_interface_keychain</td><td>FAIL</td><td>FAIL</td><td>Une interface réellement sélectionnée par EIGRP 20 est non protégée.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 2,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>02_multi_eigrp_one_missing_auth</td><td>eigrp_interface_md5</td><td>FAIL</td><td>FAIL</td><td>Une interface réellement sélectionnée par EIGRP 20 est non protégée.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 2,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>03_acl_wan_undefined</td><td>external_inbound_acl</td><td>FAIL</td><td>FAIL</td><td>Référence ACL non résolue : ne jamais conclure PASS.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;reason&quot;: &quot;inbound_acl_not_defined&quot;,
+  &quot;undefined_acl_binding_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>03_acl_wan_undefined</td><td>external_antispoof_acl</td><td>FAIL</td><td>FAIL</td><td>Référence ACL non résolue : ne jamais conclure PASS.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;reason&quot;: &quot;inbound_acl_not_defined&quot;,
+  &quot;undefined_acl_binding_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>04_acl_wan_not_selected</td><td>external_inbound_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Sans désignation explicite de l’interface WAN, aucune preuve de périmètre.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_designated&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>04_acl_wan_not_selected</td><td>external_antispoof_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Sans désignation explicite de l’interface WAN, aucune preuve de périmètre.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_designated&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>05_acl_wan_early_permit</td><td>external_inbound_acl</td><td>PASS</td><td>PASS</td><td>Une règle permit any any avant les deny annule l’anti-spoofing.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;external_interface_count&quot;: 1,
+  &quot;inbound_acl_count&quot;: 1,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>05_acl_wan_early_permit</td><td>external_antispoof_acl</td><td>FAIL</td><td>FAIL</td><td>Une règle permit any any avant les deny annule l’anti-spoofing.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;early_broad_permit_count&quot;: 1,
+  &quot;required_network_count&quot;: 9,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>06_acl_wan_after_deny</td><td>external_inbound_acl</td><td>PASS</td><td>PASS</td><td>Les refus arrivent avant le permis, mais la politique bloque tout trafic ; contrôle fonctionnel séparé requis.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;external_interface_count&quot;: 1,
+  &quot;inbound_acl_count&quot;: 1,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>06_acl_wan_after_deny</td><td>external_antispoof_acl</td><td>PASS</td><td>PASS</td><td>Les refus arrivent avant le permis, mais la politique bloque tout trafic ; contrôle fonctionnel séparé requis.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;required_network_count&quot;: 9,
+  &quot;verified_deny_network_count&quot;: 9,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>07_vty_two_ranges_one_telnet</td><td>vty_ssh_only</td><td>FAIL</td><td>FAIL</td><td>Une seule plage VTY exposant telnet suffit à faire FAIL.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [
+        &quot;ssh&quot;
+      ],
+      &quot;source_line&quot;: 3
+    },
+    {
+      &quot;line_id&quot;: &quot;vty 5 15&quot;,
+      &quot;transport_input&quot;: [
+        &quot;ssh&quot;,
+        &quot;telnet&quot;
+      ],
+      &quot;source_line&quot;: 5
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>08_vty_acl_one_broad</td><td>vty_access_class</td><td>FAIL</td><td>FAIL</td><td>Une plage VTY avec ACL permissive ne peut pas être masquée par une autre restrictive.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 1,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 1,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>08_vty_acl_one_broad</td><td>vty_restricting_acl</td><td>FAIL</td><td>FAIL</td><td>Une plage VTY avec ACL permissive ne peut pas être masquée par une autre restrictive.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;non_restrictive_vty_acls&quot;: [
+    &quot;OPEN&quot;
+  ],
+  &quot;validation_scope&quot;: &quot;acl_definition_only&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>09_vty_acl_missing_reference</td><td>vty_access_class</td><td>FAIL</td><td>FAIL</td><td>Référence ACL inconnue sur une des deux plages.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 2,
+  &quot;restricted_count&quot;: 1,
+  &quot;unresolved_count&quot;: 1,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>10_aaa_none_on_one_range</td><td>aaa_line_vty</td><td>FAIL</td><td>FAIL</td><td>Une plage VTY désactive la connexion malgré l’autre plage protégée.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 2,
+  &quot;verified_count&quot;: 1,
+  &quot;failed_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>11_ntp_good_references</td><td>ntp_server_keys</td><td>PASS</td><td>PASS</td><td>Chaque serveur référence une clé définie et trusted.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;key_reference_consistency_verified&quot;: true,
+  &quot;ntp_server_count&quot;: 2,
+  &quot;keyed_server_count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>11_ntp_good_references</td><td>ntp_auth_keys</td><td>PASS</td><td>PASS</td><td>Chaque serveur référence une clé définie et trusted.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>11_ntp_good_references</td><td>ntp_trusted_keys</td><td>PASS</td><td>PASS</td><td>Chaque serveur référence une clé définie et trusted.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>11_ntp_good_references</td><td>ntp_servers</td><td>PASS</td><td>PASS</td><td>Chaque serveur référence une clé définie et trusted.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;ntp_server_count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>12_ntp_one_untrusted</td><td>ntp_server_keys</td><td>FAIL</td><td>FAIL</td><td>Une clé définie mais non déclarée trusted ne valide pas le serveur.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;inferred_absence&quot;: true,
+  &quot;invalid_key_reference_count&quot;: 1,
+  &quot;ntp_server_count&quot;: 2,
+  &quot;keyed_server_count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>13_ntp_untrusted_partial</td><td>ntp_server_keys</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Sans hypothèse de complétude, la relation trusted est inconnue.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;invalid_key_reference_count&quot;: 1,
+  &quot;ntp_server_count&quot;: 1,
+  &quot;keyed_server_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>14_ospf_two_areas_one_missing</td><td>ospf_area_md5</td><td>FAIL</td><td>FAIL</td><td>Une zone sans authentication message-digest; clés interface néanmoins définies.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;ospf_area_count&quot;: 2,
+  &quot;area_md5_count&quot;: 1,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>14_ospf_two_areas_one_missing</td><td>ospf_interface_md5</td><td>PASS</td><td>PASS</td><td>Une zone sans authentication message-digest; clés interface néanmoins définies.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 2,
+  &quot;missing_key_count&quot;: 0,
+  &quot;wrong_mode_count&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>15_ospf_one_missing_interface_key</td><td>ospf_area_md5</td><td>PASS</td><td>PASS</td><td>La zone OSPF est protégée, mais une interface manque de clé MD5.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;ospf_area_count&quot;: 1,
+  &quot;area_md5_count&quot;: 1,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>15_ospf_one_missing_interface_key</td><td>ospf_interface_md5</td><td>FAIL</td><td>FAIL</td><td>La zone OSPF est protégée, mais une interface manque de clé MD5.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 2,
+  &quot;missing_key_count&quot;: 1,
+  &quot;wrong_mode_count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>16_bgp_one_peer_unprotected</td><td>bgp_neighbor_password</td><td>FAIL</td><td>FAIL</td><td>Un voisin BGP sans password invalide le contrôle global.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 2,
+  &quot;protected_peer_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>17_bgp_two_peers_protected</td><td>bgp_neighbor_password</td><td>PASS</td><td>PASS</td><td>Les deux voisins BGP possèdent explicitement un password.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 2,
+  &quot;protected_peer_count&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>18_acl_wan_missing_binding</td><td>external_inbound_acl</td><td>FAIL</td><td>FAIL</td><td>ACL définie mais non appliquée à l’interface externe.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;external_interfaces&quot;: [
+    &quot;GigabitEthernet0/0&quot;
+  ],
+  &quot;missing_inbound_acl_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>19_vty_acl_defined_but_unbound</td><td>vty_restricting_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Une ACL existante mais sans liaison aux VTY ne prouve pas le contrôle.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;restrictive_acl_count&quot;: 1,
+  &quot;restrictive_acl_names&quot;: [
+    &quot;SECURE&quot;
+  ],
+  &quot;linked_restrictive_acls&quot;: [],
+  &quot;validation_scope&quot;: &quot;acl_definition_only&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>19_vty_acl_defined_but_unbound</td><td>vty_access_class</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Une ACL existante mais sans liaison aux VTY ne prouve pas le contrôle.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 1,
+  &quot;restricted_count&quot;: 0,
+  &quot;unresolved_count&quot;: 1,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>20_bgp_incomplete_neighbor</td><td>bgp_neighbor_password</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Un mot de passe absent de l’extrait ne signifie pas nécessairement absent du routeur.</td><td><details><summary>Preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 1,
+  &quot;protected_peer_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr></table></main></html>

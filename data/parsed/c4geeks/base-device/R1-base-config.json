@@ -1,0 +1,112 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 18,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.10.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 9,
+      "command": "enable"
+    },
+    {
+      "line": 10,
+      "command": "configure terminal"
+    },
+    {
+      "line": 21,
+      "command": "exit"
+    },
+    {
+      "line": 25,
+      "command": "exit"
+    },
+    {
+      "line": 29,
+      "command": "exit"
+    },
+    {
+      "line": 31,
+      "command": "end"
+    },
+    {
+      "line": 32,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 12,
+      "command": "enable secret Cisc0-Lab!"
+    },
+    {
+      "line": 13,
+      "command": "service password-encryption"
+    },
+    {
+      "line": 14,
+      "command": "ip domain-name lab.example.com"
+    },
+    {
+      "line": 15,
+      "command": "username admin privilege 15 secret Adm1n-Lab!"
+    },
+    {
+      "line": 16,
+      "command": "crypto key generate rsa modulus 2048"
+    },
+    {
+      "line": 17,
+      "command": "ip ssh version 2"
+    },
+    {
+      "line": 22,
+      "command": "line console 0"
+    },
+    {
+      "line": 23,
+      "command": "password Con-Lab!"
+    },
+    {
+      "line": 24,
+      "command": "login"
+    },
+    {
+      "line": 26,
+      "command": "line vty 0 4"
+    },
+    {
+      "line": 27,
+      "command": "login local"
+    },
+    {
+      "line": 28,
+      "command": "transport input ssh"
+    },
+    {
+      "line": 30,
+      "command": "banner motd #Authorized access only. Activity is logged.#"
+    }
+  ],
+  "source_file": "R1-base-config.txt"
+}

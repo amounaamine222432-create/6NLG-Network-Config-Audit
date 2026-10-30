@@ -1,0 +1,691 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "as2border2",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 53,
+      "ipv4_addresses": [
+        {
+          "address": "2.1.1.2",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": []
+    },
+    {
+      "name": "Ethernet0/0",
+      "source_line": 56,
+      "ipv4_addresses": [],
+      "no_ip_address": true,
+      "administrative_command": "shutdown",
+      "other_commands": [
+        "duplex auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 61,
+      "ipv4_addresses": [
+        {
+          "address": "10.23.21.2",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "ip access-group OUTSIDE_TO_INSIDE in",
+        "ip access-group INSIDE_TO_AS3 out",
+        "media-type gbic",
+        "speed 1000",
+        "duplex full",
+        "negotiation auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "source_line": 70,
+      "ipv4_addresses": [
+        {
+          "address": "2.12.22.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "negotiation auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2/0",
+      "source_line": 74,
+      "ipv4_addresses": [
+        {
+          "address": "2.12.21.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "negotiation auto"
+      ]
+    }
+  ],
+  "ospf_processes": [
+    {
+      "process_id": "1",
+      "source_line": 78,
+      "router_id": "2.1.1.2",
+      "networks": [
+        {
+          "network": "2.0.0.0",
+          "wildcard_mask": "0.255.255.255",
+          "area": "1"
+        }
+      ],
+      "passive_interfaces": [],
+      "redistribution_commands": [
+        "redistribute connected subnets"
+      ],
+      "other_commands": []
+    }
+  ],
+  "static_routes": [],
+  "bgp_processes": [
+    {
+      "local_as": "2",
+      "source_line": 83,
+      "router_id": "2.1.1.2",
+      "neighbors": [
+        {
+          "id": "as1",
+          "source_line": 86,
+          "is_peer_group": true,
+          "peer_group": null,
+          "remote_as": "1",
+          "update_source": null,
+          "activated_families": [],
+          "route_maps": [
+            {
+              "name": "as1_to_as2",
+              "direction": "in",
+              "address_family": "ipv4",
+              "source_line": 104
+            },
+            {
+              "name": "as2_to_as1",
+              "direction": "out",
+              "address_family": "ipv4",
+              "source_line": 105
+            }
+          ],
+          "global_commands": [
+            "peer-group",
+            "remote-as 1"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "send-community",
+              "route-map as1_to_as2 in",
+              "route-map as2_to_as1 out"
+            ]
+          }
+        },
+        {
+          "id": "as2",
+          "source_line": 88,
+          "is_peer_group": true,
+          "peer_group": null,
+          "remote_as": "2",
+          "update_source": null,
+          "activated_families": [],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group",
+            "remote-as 2"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "send-community",
+              "advertise additional-paths all"
+            ]
+          }
+        },
+        {
+          "id": "as3",
+          "source_line": 90,
+          "is_peer_group": true,
+          "peer_group": null,
+          "remote_as": "3",
+          "update_source": null,
+          "activated_families": [],
+          "route_maps": [
+            {
+              "name": "as3_to_as2",
+              "direction": "in",
+              "address_family": "ipv4",
+              "source_line": 109
+            },
+            {
+              "name": "as2_to_as3",
+              "direction": "out",
+              "address_family": "ipv4",
+              "source_line": 110
+            }
+          ],
+          "global_commands": [
+            "peer-group",
+            "remote-as 3"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "send-community",
+              "route-map as3_to_as2 in",
+              "route-map as2_to_as3 out"
+            ]
+          }
+        },
+        {
+          "id": "2.1.2.1",
+          "source_line": 92,
+          "is_peer_group": false,
+          "peer_group": "as2",
+          "remote_as": null,
+          "update_source": "Loopback0",
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group as2",
+            "update-source Loopback0"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate"
+            ]
+          }
+        },
+        {
+          "id": "2.1.2.2",
+          "source_line": 94,
+          "is_peer_group": false,
+          "peer_group": "as2",
+          "remote_as": null,
+          "update_source": "Loopback0",
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group as2",
+            "update-source Loopback0"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate"
+            ]
+          }
+        },
+        {
+          "id": "10.23.21.3",
+          "source_line": 96,
+          "is_peer_group": false,
+          "peer_group": "as3",
+          "remote_as": null,
+          "update_source": null,
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group as3"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate"
+            ]
+          }
+        }
+      ],
+      "network_statements": [],
+      "address_families": [
+        {
+          "name": "ipv4",
+          "source_line": 98,
+          "other_commands": [
+            "bgp dampening",
+            "bgp additional-paths select all",
+            "bgp additional-paths send receive",
+            "aggregate-address 2.128.0.0 255.255.0.0 summary-only",
+            "maximum-paths eibgp 5"
+          ]
+        }
+      ],
+      "other_commands": [
+        "bgp log-neighbor-changes"
+      ]
+    }
+  ],
+  "access_lists": [
+    {
+      "name": "INSIDE_TO_AS3",
+      "acl_type": "extended",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip 2.0.0.0 0.255.255.255 3.0.0.0 0.255.255.255",
+          "source_line": 128,
+          "raw": "permit ip 2.0.0.0 0.255.255.255 3.0.0.0 0.255.255.255"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip 10.23.21.2 0.0.0.0 10.23.21.3 0.0.0.0",
+          "source_line": 129,
+          "raw": "permit ip 10.23.21.2 0.0.0.0 10.23.21.3 0.0.0.0"
+        },
+        {
+          "sequence": null,
+          "action": "deny",
+          "body": "ip any any",
+          "source_line": 130,
+          "raw": "deny   ip any any"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "OUTSIDE_TO_INSIDE",
+      "acl_type": "extended",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "deny",
+          "body": "ip 2.0.0.0 0.255.255.255 any",
+          "source_line": 132,
+          "raw": "deny   ip 2.0.0.0 0.255.255.255 any"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip any any",
+          "source_line": 133,
+          "raw": "permit ip any any"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "101",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 1.0.1.0 host 255.255.255.0",
+          "source_line": 140,
+          "raw": "permit ip host 1.0.1.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 1.0.2.0 host 255.255.255.0",
+          "source_line": 141,
+          "raw": "permit ip host 1.0.2.0 host 255.255.255.0"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "103",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 3.0.1.0 host 255.255.255.0",
+          "source_line": 142,
+          "raw": "permit ip host 3.0.1.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 3.0.2.0 host 255.255.255.0",
+          "source_line": 143,
+          "raw": "permit ip host 3.0.2.0 host 255.255.255.0"
+        }
+      ],
+      "other_commands": []
+    }
+  ],
+  "prefix_lists": [
+    {
+      "name": "inbound_route_filter",
+      "entries": [
+        {
+          "sequence": "5",
+          "action": "deny",
+          "prefix": "2.0.0.0/8",
+          "ge": null,
+          "le": "32",
+          "options": [
+            "le",
+            "32"
+          ],
+          "source_line": 136,
+          "raw": "ip prefix-list inbound_route_filter seq 5 deny 2.0.0.0/8 le 32"
+        },
+        {
+          "sequence": "10",
+          "action": "permit",
+          "prefix": "0.0.0.0/0",
+          "ge": null,
+          "le": "32",
+          "options": [
+            "le",
+            "32"
+          ],
+          "source_line": 137,
+          "raw": "ip prefix-list inbound_route_filter seq 10 permit 0.0.0.0/0 le 32"
+        }
+      ]
+    },
+    {
+      "name": "outbound_routes",
+      "entries": [
+        {
+          "sequence": "5",
+          "action": "permit",
+          "prefix": "2.128.0.0/9",
+          "ge": "16",
+          "le": null,
+          "options": [
+            "ge",
+            "16"
+          ],
+          "source_line": 139,
+          "raw": "ip prefix-list outbound_routes seq 5 permit 2.128.0.0/9 ge 16"
+        }
+      ]
+    }
+  ],
+  "route_maps": [
+    {
+      "name": "as2_to_as1",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "2",
+          "source_line": 145,
+          "match_commands": [
+            "match ip address prefix-list outbound_routes"
+          ],
+          "set_commands": [
+            "set metric 50",
+            "set community 2:1 additive"
+          ],
+          "other_commands": []
+        },
+        {
+          "action": "permit",
+          "sequence": "3",
+          "source_line": 150,
+          "match_commands": [
+            "match ip address 103"
+          ],
+          "set_commands": [
+            "set metric 50",
+            "set community 2:1 additive"
+          ],
+          "other_commands": []
+        }
+      ]
+    },
+    {
+      "name": "as1_to_as2",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "100",
+          "source_line": 155,
+          "match_commands": [
+            "match community as1_community"
+          ],
+          "set_commands": [
+            "set local-preference 350",
+            "set community 1:2 additive"
+          ],
+          "other_commands": []
+        }
+      ]
+    },
+    {
+      "name": "as2_to_as3",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "1",
+          "source_line": 160,
+          "match_commands": [
+            "match ip address 101"
+          ],
+          "set_commands": [
+            "set metric 50",
+            "set community 2:3 additive"
+          ],
+          "other_commands": []
+        },
+        {
+          "action": "permit",
+          "sequence": "2",
+          "source_line": 165,
+          "match_commands": [
+            "match ip address prefix-list outbound_routes"
+          ],
+          "set_commands": [
+            "set metric 50",
+            "set community 2:3 additive"
+          ],
+          "other_commands": []
+        }
+      ]
+    },
+    {
+      "name": "as3_to_as2",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "100",
+          "source_line": 170,
+          "match_commands": [
+            "match community as3_community"
+          ],
+          "set_commands": [
+            "set local-preference 350",
+            "set community 3:2 additive"
+          ],
+          "other_commands": []
+        }
+      ]
+    }
+  ],
+  "community_lists": [
+    {
+      "name": "as1_community",
+      "community_type": "expanded",
+      "entries": [
+        {
+          "raw": "ip community-list expanded as1_community permit _1:",
+          "definition": "permit _1:",
+          "source_line": 120
+        }
+      ]
+    },
+    {
+      "name": "as2_community",
+      "community_type": "expanded",
+      "entries": [
+        {
+          "raw": "ip community-list expanded as2_community permit _2:",
+          "definition": "permit _2:",
+          "source_line": 121
+        }
+      ]
+    },
+    {
+      "name": "as3_community",
+      "community_type": "expanded",
+      "entries": [
+        {
+          "raw": "ip community-list expanded as3_community permit _3:",
+          "definition": "permit _3:",
+          "source_line": 122
+        }
+      ]
+    }
+  ],
+  "wrapper_commands": [
+    {
+      "line": 194,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 3,
+      "command": "version 15.2"
+    },
+    {
+      "line": 4,
+      "command": "service timestamps debug datetime msec"
+    },
+    {
+      "line": 5,
+      "command": "service timestamps log datetime msec"
+    },
+    {
+      "line": 9,
+      "command": "boot-start-marker"
+    },
+    {
+      "line": 10,
+      "command": "boot-end-marker"
+    },
+    {
+      "line": 13,
+      "command": "ntp server 18.18.18.18"
+    },
+    {
+      "line": 16,
+      "command": "no aaa new-model"
+    },
+    {
+      "line": 17,
+      "command": "no ip icmp rate-limit unreachable"
+    },
+    {
+      "line": 18,
+      "command": "ip cef"
+    },
+    {
+      "line": 25,
+      "command": "no ip domain lookup"
+    },
+    {
+      "line": 26,
+      "command": "ip domain name lab.local"
+    },
+    {
+      "line": 27,
+      "command": "no ipv6 cef"
+    },
+    {
+      "line": 30,
+      "command": "multilink bundle-name authenticated"
+    },
+    {
+      "line": 40,
+      "command": "ip tcp synwait-time 5"
+    },
+    {
+      "line": 117,
+      "command": "ip forward-protocol nd"
+    },
+    {
+      "line": 119,
+      "command": "ip bgp-community new-format"
+    },
+    {
+      "line": 124,
+      "command": "no ip http server"
+    },
+    {
+      "line": 125,
+      "command": "no ip http secure-server"
+    },
+    {
+      "line": 177,
+      "command": "control-plane"
+    },
+    {
+      "line": 180,
+      "command": "line con 0"
+    },
+    {
+      "line": 181,
+      "command": "exec-timeout 0 0"
+    },
+    {
+      "line": 182,
+      "command": "privilege level 15"
+    },
+    {
+      "line": 183,
+      "command": "logging synchronous"
+    },
+    {
+      "line": 184,
+      "command": "stopbits 1"
+    },
+    {
+      "line": 185,
+      "command": "line aux 0"
+    },
+    {
+      "line": 186,
+      "command": "exec-timeout 0 0"
+    },
+    {
+      "line": 187,
+      "command": "privilege level 15"
+    },
+    {
+      "line": 188,
+      "command": "logging synchronous"
+    },
+    {
+      "line": 189,
+      "command": "stopbits 1"
+    },
+    {
+      "line": 190,
+      "command": "line vty 0 4"
+    },
+    {
+      "line": 191,
+      "command": "login"
+    }
+  ],
+  "source_file": "as2border2.cfg"
+}

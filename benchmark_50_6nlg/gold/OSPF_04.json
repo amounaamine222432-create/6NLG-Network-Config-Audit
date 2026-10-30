@@ -1,0 +1,21 @@
+{
+  "family": "OSPF",
+  "facts": [
+    [
+      "hostname",
+      "R-OSPF-04"
+    ],
+    [
+      "ospf_id",
+      "4"
+    ],
+    [
+      "ospf_router_id",
+      "10.0.0.4"
+    ],
+    [
+      "ospf_network",
+      "10.4.0.0|0.0.255.255|0"
+    ]
+  ]
+}

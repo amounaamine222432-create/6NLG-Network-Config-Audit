@@ -1,0 +1,43 @@
+{
+  "total": 117,
+  "match": 117,
+  "mismatch": 0,
+  "confusion": {
+    "PASS": {
+      "PASS": 39
+    },
+    "FAIL": {
+      "FAIL": 39
+    },
+    "UNKNOWN": {
+      "UNKNOWN": 39
+    }
+  },
+  "metrics": {
+    "PASS": {
+      "TP": 39,
+      "FP": 0,
+      "FN": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "FAIL": {
+      "TP": 39,
+      "FP": 0,
+      "FN": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "UNKNOWN": {
+      "TP": 39,
+      "FP": 0,
+      "FN": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "qualification": "synthetic manually prescribed labels, pending independent subject-matter review"
+}

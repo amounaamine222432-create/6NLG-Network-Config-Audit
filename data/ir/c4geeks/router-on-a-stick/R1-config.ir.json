@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0.0",
+  "source": {
+    "vendor": "cisco_ios",
+    "parser_schema_version": "6.0",
+    "file": "router-on-a-stick/R1-config.txt",
+    "sha256": "2ff998f80702fd211a3ef83cf31d2fae68f00c403e152b81068805a64f52075c"
+  },
+  "device": {
+    "hostname": "R1",
+    "platform": {
+      "vendor": "cisco",
+      "family": "ios",
+      "version": null
+    }
+  },
+  "vrfs": [],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "description": null,
+      "admin_enabled": true,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": true,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 7
+      }
+    },
+    {
+      "name": "GigabitEthernet0/0.10",
+      "description": "VLAN 10 gateway",
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "10.10.10.1",
+          "prefix_length": 24,
+          "cidr": "10.10.10.1/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": {
+        "vlan_id": 10,
+        "native": false
+      },
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 11
+      }
+    },
+    {
+      "name": "GigabitEthernet0/0.20",
+      "description": "VLAN 20 gateway",
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "10.20.20.1",
+          "prefix_length": 24,
+          "cidr": "10.20.20.1/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "dhcp_relay_targets": [],
+      "vlan_tagging": {
+        "vlan_id": 20,
+        "native": false
+      },
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 16
+      }
+    }
+  ],
+  "routing": {
+    "static_routes": [],
+    "ospf": [],
+    "bgp": []
+  },
+  "policies": {
+    "acls": [],
+    "prefix_lists": [],
+    "route_maps": [],
+    "community_lists": []
+  },
+  "services": {
+    "nat": {
+      "rules": [],
+      "pools": []
+    },
+    "dhcp": {
+      "pools": [],
+      "excluded_ranges": []
+    },
+    "vlans": [],
+    "snmp": {
+      "communities": [],
+      "targets": []
+    },
+    "syslog": {
+      "targets": [],
+      "source_interface": null,
+      "severity": null
+    },
+    "ntp": {
+      "servers": [],
+      "peers": [],
+      "source_interface": null,
+      "authentication_enabled": null,
+      "authentication_key_count": 0,
+      "trusted_key_count": 0,
+      "master_configured": null,
+      "master_stratum": null,
+      "access_groups": []
+    },
+    "ip_stack": {
+      "icmp_unreachable_rate_limit": null,
+      "tcp_synwait_seconds": null,
+      "source_route_enabled": null
+    },
+    "clock": {
+      "timezone": null,
+      "synchronized": null
+    }
+  },
+  "management": {
+    "http_enabled": null,
+    "https_enabled": null,
+    "ssh_version": null,
+    "terminal_lines": [],
+    "local_accounts": [],
+    "banners": [],
+    "enable_secret_configured": null,
+    "enable_password_configured": null,
+    "aaa_login_privilege_mode": null,
+    "rsa_key_generation_requests": []
+  },
+  "diagnostics": {
+    "unparsed_global_count": 0,
+    "unparsed_global_lines": [],
+    "platform_opaque_count": 0,
+    "opaque_sections": [],
+    "source_only_counts": {
+      "cli_wrappers": 4,
+      "timestamps_directives": 0,
+      "other_global_service_directives": 0,
+      "other_system_stanzas": 0,
+      "configuration_metadata": 0,
+      "bgp_community_new_format_configured": null
+    },
+    "notes": [],
+    "status": "modeled_subset"
+  }
+}

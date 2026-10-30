@@ -1,0 +1,1058 @@
+{
+  "method": "39 contrôles × 3 statuts ciblés; aucun oracle inventé",
+  "cases": [
+    {
+      "control_id": "1.1.1",
+      "check": "aaa_new_model",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.1",
+      "check": "aaa_new_model",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.1",
+      "check": "aaa_new_model",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.2",
+      "check": "vty_ssh_only",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.2",
+      "check": "vty_ssh_only",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.2",
+      "check": "vty_ssh_only",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.7",
+      "check": "console_exec_timeout",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.7",
+      "check": "console_exec_timeout",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.7",
+      "check": "console_exec_timeout",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.9",
+      "check": "vty_exec_timeout",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.9",
+      "check": "vty_exec_timeout",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.9",
+      "check": "vty_exec_timeout",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.1",
+      "check": "exec_banner_present",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.1",
+      "check": "exec_banner_present",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.1",
+      "check": "exec_banner_present",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.2",
+      "check": "login_banner",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.2",
+      "check": "login_banner",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.2",
+      "check": "login_banner",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.3",
+      "check": "motd_banner",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.3",
+      "check": "motd_banner",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.3.3",
+      "check": "motd_banner",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.1",
+      "check": "enable_secret_present",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.1",
+      "check": "enable_secret_present",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.1",
+      "check": "enable_secret_present",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.3",
+      "check": "local_user_secrets",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.3",
+      "check": "local_user_secrets",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.4.3",
+      "check": "local_user_secrets",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.4",
+      "check": "snmp_no_rw",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.4",
+      "check": "snmp_no_rw",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.4",
+      "check": "snmp_no_rw",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.9",
+      "check": "snmp_v3_priv",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.9",
+      "check": "snmp_v3_priv",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.5.9",
+      "check": "snmp_v3_priv",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.1.1.2",
+      "check": "ssh_version2",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.1.1.2",
+      "check": "ssh_version2",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.1.1.2",
+      "check": "ssh_version2",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.2",
+      "check": "syslog_buffer",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.2",
+      "check": "syslog_buffer",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.2",
+      "check": "syslog_buffer",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.4",
+      "check": "syslog_host",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.4",
+      "check": "syslog_host",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.4",
+      "check": "syslog_host",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.5",
+      "check": "syslog_informational",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.5",
+      "check": "syslog_informational",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.5",
+      "check": "syslog_informational",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.7",
+      "check": "syslog_source_present",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.7",
+      "check": "syslog_source_present",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.2.7",
+      "check": "syslog_source_present",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.1",
+      "check": "ntp_auth_enabled",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.1",
+      "check": "ntp_auth_enabled",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.1",
+      "check": "ntp_auth_enabled",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.2",
+      "check": "ntp_auth_keys",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.2",
+      "check": "ntp_auth_keys",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.2",
+      "check": "ntp_auth_keys",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.3",
+      "check": "ntp_trusted_keys",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.3",
+      "check": "ntp_trusted_keys",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.3",
+      "check": "ntp_trusted_keys",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.4",
+      "check": "ntp_server_keys",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.4",
+      "check": "ntp_server_keys",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.1.4",
+      "check": "ntp_server_keys",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.2",
+      "check": "ntp_servers",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.2",
+      "check": "ntp_servers",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.3.2",
+      "check": "ntp_servers",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.4.3",
+      "check": "ntp_loopback_source",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.4.3",
+      "check": "ntp_loopback_source",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "2.4.3",
+      "check": "ntp_loopback_source",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.1",
+      "check": "source_routing_disabled",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.1",
+      "check": "source_routing_disabled",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.1",
+      "check": "source_routing_disabled",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.2",
+      "check": "proxy_arp_disabled",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.2",
+      "check": "proxy_arp_disabled",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.2",
+      "check": "proxy_arp_disabled",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.3",
+      "check": "no_tunnel_interfaces",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.3",
+      "check": "no_tunnel_interfaces",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.1.3",
+      "check": "no_tunnel_interfaces",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.4.1",
+      "check": "bgp_neighbor_password",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.4.1",
+      "check": "bgp_neighbor_password",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.4.1",
+      "check": "bgp_neighbor_password",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.2",
+      "check": "aaa_login_default",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.2",
+      "check": "aaa_login_default",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.2",
+      "check": "aaa_login_default",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.3",
+      "check": "aaa_enable_default",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.3",
+      "check": "aaa_enable_default",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.3",
+      "check": "aaa_enable_default",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.4",
+      "check": "aaa_line_console",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.4",
+      "check": "aaa_line_console",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.4",
+      "check": "aaa_line_console",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.5",
+      "check": "aaa_line_tty",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.5",
+      "check": "aaa_line_tty",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.5",
+      "check": "aaa_line_tty",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.6",
+      "check": "aaa_line_vty",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.6",
+      "check": "aaa_line_vty",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.1.6",
+      "check": "aaa_line_vty",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.4",
+      "check": "vty_restricting_acl",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.4",
+      "check": "vty_restricting_acl",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.4",
+      "check": "vty_restricting_acl",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.5",
+      "check": "vty_access_class",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.5",
+      "check": "vty_access_class",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "1.2.5",
+      "check": "vty_access_class",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.1",
+      "check": "external_antispoof_acl",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.1",
+      "check": "external_antispoof_acl",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.1",
+      "check": "external_antispoof_acl",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.2",
+      "check": "external_inbound_acl",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.2",
+      "check": "external_inbound_acl",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.2.2",
+      "check": "external_inbound_acl",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.8",
+      "check": "eigrp_interface_keychain",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.8",
+      "check": "eigrp_interface_keychain",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.8",
+      "check": "eigrp_interface_keychain",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.9",
+      "check": "eigrp_interface_md5",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.9",
+      "check": "eigrp_interface_md5",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.1.9",
+      "check": "eigrp_interface_md5",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.1",
+      "check": "ospf_area_md5",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.1",
+      "check": "ospf_area_md5",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.1",
+      "check": "ospf_area_md5",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.2",
+      "check": "ospf_interface_md5",
+      "target_status": "PASS",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.2",
+      "check": "ospf_interface_md5",
+      "target_status": "FAIL",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    },
+    {
+      "control_id": "3.3.2.2",
+      "check": "ospf_interface_md5",
+      "target_status": "UNKNOWN",
+      "oracle_status": "A_VALIDER_MANUELLEMENT",
+      "case_config": null,
+      "expected_evidence": null,
+      "comment": "Construire une configuration indépendante et justifier le statut attendu."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "configurations": 20,
+  "assertions": 33,
+  "matches": 33,
+  "mismatches": 0,
+  "expected_statuses": {
+    "PASS": 12,
+    "FAIL": 15,
+    "UNKNOWN": 6
+  },
+  "actual_statuses": {
+    "PASS": 12,
+    "FAIL": 15,
+    "UNKNOWN": 6
+  },
+  "scope": "oracle synthétique manuel; revue experte CIS indépendante encore nécessaire"
+}

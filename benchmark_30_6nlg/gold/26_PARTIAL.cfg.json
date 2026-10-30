@@ -1,0 +1,17 @@
+{
+  "facts": [
+    "banner=motd",
+    "hostname=R-BENCH-PARTIAL-26",
+    "interface=GigabitEthernet0/0|198.51.100.105/30",
+    "ios=15.2",
+    "login=con 0|authentication default",
+    "login=vty 0 4|authentication default",
+    "login=vty 5 15|authentication default",
+    "source_route=false",
+    "timeout=con 0|300",
+    "timeout=vty 0 4|0",
+    "timeout=vty 5 15|0",
+    "transport=vty 0 4|ssh",
+    "transport=vty 5 15|ssh"
+  ]
+}

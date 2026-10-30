@@ -1,0 +1,21 @@
+{
+  "family": "DHCP",
+  "facts": [
+    [
+      "hostname",
+      "R-DHCP-03"
+    ],
+    [
+      "dhcp_pool",
+      "USERS_3"
+    ],
+    [
+      "dhcp_network",
+      "10.3.0.0/24"
+    ],
+    [
+      "dhcp_gateway",
+      "10.3.0.1"
+    ]
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 14,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.10.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "source_line": 18,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.0.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [
+    {
+      "destination": "192.168.20.0",
+      "mask": "255.255.255.0",
+      "vrf": null,
+      "next_hop": "10.0.0.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 22,
+      "raw": "ip route 192.168.20.0 255.255.255.0 10.0.0.2"
+    }
+  ],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 11,
+      "command": "enable"
+    },
+    {
+      "line": 12,
+      "command": "configure terminal"
+    },
+    {
+      "line": 17,
+      "command": "exit"
+    },
+    {
+      "line": 21,
+      "command": "exit"
+    },
+    {
+      "line": 31,
+      "command": "exit"
+    },
+    {
+      "line": 37,
+      "command": "exit"
+    },
+    {
+      "line": 38,
+      "command": "end"
+    },
+    {
+      "line": 39,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 23,
+      "command": "ip dhcp excluded-address 192.168.10.1 192.168.10.10"
+    },
+    {
+      "line": 24,
+      "command": "ip dhcp excluded-address 192.168.20.1 192.168.20.10"
+    },
+    {
+      "line": 25,
+      "command": "ip dhcp pool LAN10"
+    },
+    {
+      "line": 26,
+      "command": "network 192.168.10.0 255.255.255.0"
+    },
+    {
+      "line": 27,
+      "command": "default-router 192.168.10.1"
+    },
+    {
+      "line": 28,
+      "command": "dns-server 8.8.8.8"
+    },
+    {
+      "line": 29,
+      "command": "domain-name lab.example.com"
+    },
+    {
+      "line": 30,
+      "command": "lease 0 8"
+    },
+    {
+      "line": 32,
+      "command": "ip dhcp pool LAN20"
+    },
+    {
+      "line": 33,
+      "command": "network 192.168.20.0 255.255.255.0"
+    },
+    {
+      "line": 34,
+      "command": "default-router 192.168.20.1"
+    },
+    {
+      "line": 35,
+      "command": "dns-server 8.8.8.8"
+    },
+    {
+      "line": 36,
+      "command": "lease 0 8"
+    }
+  ],
+  "source_file": "R1-config.txt"
+}

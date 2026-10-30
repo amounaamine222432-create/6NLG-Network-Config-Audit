@@ -1,0 +1,137 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 19,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.10.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": [
+        "ip nat inside"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2/0",
+      "source_line": 24,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.20.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": [
+        "ip nat inside"
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "source_line": 29,
+      "ipv4_addresses": [
+        {
+          "address": "203.0.113.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": [
+        "ip nat outside"
+      ]
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [
+    {
+      "destination": "0.0.0.0",
+      "mask": "0.0.0.0",
+      "vrf": null,
+      "next_hop": "203.0.113.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 34,
+      "raw": "ip route 0.0.0.0 0.0.0.0 203.0.113.2"
+    }
+  ],
+  "bgp_processes": [],
+  "access_lists": [
+    {
+      "name": "1",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "192.168.10.0 0.0.0.255",
+          "source_line": 37,
+          "raw": "permit 192.168.10.0 0.0.0.255"
+        }
+      ],
+      "other_commands": []
+    }
+  ],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 16,
+      "command": "enable"
+    },
+    {
+      "line": 17,
+      "command": "configure terminal"
+    },
+    {
+      "line": 23,
+      "command": "exit"
+    },
+    {
+      "line": 28,
+      "command": "exit"
+    },
+    {
+      "line": 33,
+      "command": "exit"
+    },
+    {
+      "line": 40,
+      "command": "end"
+    },
+    {
+      "line": 41,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 35,
+      "command": "ip nat translation icmp-timeout 600"
+    },
+    {
+      "line": 36,
+      "command": "ip nat inside source static 192.168.20.20 203.0.113.10"
+    },
+    {
+      "line": 38,
+      "command": "ip nat pool PUBLIC 203.0.113.9 203.0.113.9 prefix-length 29"
+    },
+    {
+      "line": 39,
+      "command": "ip nat inside source list 1 pool PUBLIC overload"
+    }
+  ],
+  "source_file": "R1-config.txt"
+}

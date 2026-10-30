@@ -1,0 +1,72 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 16,
+      "ipv4_addresses": [
+        {
+          "address": "10.10.10.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 11,
+      "command": "enable"
+    },
+    {
+      "line": 12,
+      "command": "configure terminal"
+    },
+    {
+      "line": 19,
+      "command": "exit"
+    },
+    {
+      "line": 28,
+      "command": "end"
+    },
+    {
+      "line": 29,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 14,
+      "command": "clock timezone UTC 0 0"
+    },
+    {
+      "line": 22,
+      "command": "ntp authentication-key 1 md5 Cisc0NtpKey"
+    },
+    {
+      "line": 23,
+      "command": "ntp authenticate"
+    },
+    {
+      "line": 24,
+      "command": "ntp trusted-key 1"
+    },
+    {
+      "line": 27,
+      "command": "ntp master 3"
+    }
+  ],
+  "source_file": "R1-config.txt"
+}

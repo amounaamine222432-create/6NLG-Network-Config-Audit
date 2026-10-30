@@ -1,0 +1,142 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>11_ntp_good_references — PARSING</title><style>body{font:14px system-ui;background:#eff4f9;color:#192b3d;margin:30px auto;max-width:1260px}
+    article{background:white;padding:25px;border-radius:13px}h1{color:#194d79}table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #d8e1ea;text-align:left;vertical-align:top}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f7;padding:12px;border-radius:8px}
+    .PASS{color:#1d7843;font-weight:bold}.FAIL{color:#b22929;font-weight:bold}.UNKNOWN{color:#9b6a00;font-weight:bold}</style><article><h1>11_ntp_good_references — PARSING</h1><p>Données complètes de la phase, à rapprocher du fichier CFG.</p><pre>{
+  &quot;vendor&quot;: &quot;cisco_ios&quot;,
+  &quot;parser_schema_version&quot;: &quot;6.0&quot;,
+  &quot;source_cli_family&quot;: &quot;ios&quot;,
+  &quot;hostname&quot;: &quot;11_NTP_GOOD_REFERENCES&quot;,
+  &quot;interfaces&quot;: [],
+  &quot;ospf_processes&quot;: [],
+  &quot;eigrp_processes&quot;: [],
+  &quot;static_routes&quot;: [],
+  &quot;bgp_processes&quot;: [],
+  &quot;key_chains&quot;: [],
+  &quot;access_lists&quot;: [],
+  &quot;prefix_lists&quot;: [],
+  &quot;route_maps&quot;: [],
+  &quot;community_lists&quot;: [],
+  &quot;wrapper_commands&quot;: [
+    {
+      &quot;line&quot;: 10,
+      &quot;command&quot;: &quot;end&quot;
+    }
+  ],
+  &quot;unparsed_lines&quot;: [],
+  &quot;vrfs&quot;: [],
+  &quot;global_settings&quot;: {
+    &quot;ios_version&quot;: &quot;15.2&quot;,
+    &quot;ip_domain_name&quot;: null,
+    &quot;ip_domain_lookup_enabled&quot;: null,
+    &quot;ip_cef_enabled&quot;: null,
+    &quot;ipv6_cef_enabled&quot;: null,
+    &quot;service_timestamps&quot;: [],
+    &quot;service_commands&quot;: [],
+    &quot;ssh_commands&quot;: [],
+    &quot;http_server_enabled&quot;: null,
+    &quot;https_server_enabled&quot;: null,
+    &quot;spanning_tree_mode&quot;: null,
+    &quot;spanning_tree_extend_system_id&quot;: null,
+    &quot;cdp_enabled&quot;: null,
+    &quot;ip_forward_protocols&quot;: [],
+    &quot;tftp_source_interface&quot;: null,
+    &quot;dns_views&quot;: [],
+    &quot;ipv6_ioam_commands&quot;: [],
+    &quot;enable_secret_configured&quot;: null,
+    &quot;enable_password_configured&quot;: null,
+    &quot;rsa_key_generation_requests&quot;: [],
+    &quot;aaa_login_privilege_mode&quot;: null,
+    &quot;aaa_authentication_login&quot;: [],
+    &quot;aaa_authentication_enable&quot;: [],
+    &quot;bgp_community_new_format&quot;: null,
+    &quot;icmp_unreachable_rate_limit&quot;: null,
+    &quot;tcp_synwait_seconds&quot;: null,
+    &quot;ip_source_route_enabled&quot;: null,
+    &quot;clock_timezone&quot;: null
+  },
+  &quot;ntp&quot;: {
+    &quot;servers&quot;: [
+      {
+        &quot;target&quot;: &quot;192.0.2.10&quot;,
+        &quot;vrf&quot;: null,
+        &quot;source_interface&quot;: null,
+        &quot;key_id&quot;: &quot;1&quot;,
+        &quot;version&quot;: null,
+        &quot;prefer&quot;: false,
+        &quot;unmodeled_token_count&quot;: 0,
+        &quot;source_line&quot;: 8
+      },
+      {
+        &quot;target&quot;: &quot;192.0.2.11&quot;,
+        &quot;vrf&quot;: null,
+        &quot;source_interface&quot;: null,
+        &quot;key_id&quot;: &quot;2&quot;,
+        &quot;version&quot;: null,
+        &quot;prefer&quot;: false,
+        &quot;unmodeled_token_count&quot;: 0,
+        &quot;source_line&quot;: 9
+      }
+    ],
+    &quot;peers&quot;: [],
+    &quot;source_interface&quot;: null,
+    &quot;authentication_enabled&quot;: true,
+    &quot;authentication_keys&quot;: [
+      {
+        &quot;key_id&quot;: &quot;1&quot;,
+        &quot;algorithm&quot;: &quot;md5&quot;,
+        &quot;secret_configured&quot;: true,
+        &quot;source_line&quot;: 4
+      },
+      {
+        &quot;key_id&quot;: &quot;2&quot;,
+        &quot;algorithm&quot;: &quot;md5&quot;,
+        &quot;secret_configured&quot;: true,
+        &quot;source_line&quot;: 5
+      }
+    ],
+    &quot;trusted_key_ids&quot;: [
+      &quot;1&quot;,
+      &quot;2&quot;
+    ],
+    &quot;master_configured&quot;: null,
+    &quot;master_stratum&quot;: null,
+    &quot;access_groups&quot;: [],
+    &quot;update_calendar_enabled&quot;: null,
+    &quot;logging_enabled&quot;: null,
+    &quot;clock_period&quot;: null
+  },
+  &quot;configuration_metadata&quot;: [],
+  &quot;platform_commands&quot;: [],
+  &quot;local_users&quot;: [],
+  &quot;lines&quot;: [],
+  &quot;banners&quot;: [],
+  &quot;system_stanzas&quot;: [],
+  &quot;vlans&quot;: [],
+  &quot;dhcp_pools&quot;: [],
+  &quot;dhcp_excluded_addresses&quot;: [],
+  &quot;dhcp_other_commands&quot;: [],
+  &quot;nat_rules&quot;: [],
+  &quot;nat_pools&quot;: [],
+  &quot;nat_other_commands&quot;: [],
+  &quot;nat_translation_settings&quot;: {},
+  &quot;snmp&quot;: {
+    &quot;communities&quot;: [],
+    &quot;hosts&quot;: [],
+    &quot;groups&quot;: [],
+    &quot;users&quot;: [],
+    &quot;trap_rules&quot;: [],
+    &quot;traps_enabled&quot;: null,
+    &quot;location_configured&quot;: null,
+    &quot;contact_configured&quot;: null,
+    &quot;other_commands&quot;: []
+  },
+  &quot;syslog&quot;: {
+    &quot;hosts&quot;: [],
+    &quot;source_interface&quot;: null,
+    &quot;trap_level&quot;: null,
+    &quot;console_enabled&quot;: null,
+    &quot;buffered&quot;: null,
+    &quot;other_commands&quot;: []
+  }
+}</pre></article></html>

@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://supcom.example.invalid/schemas/network_device_ir_v1.schema.json",
+  "title": "IR réseau multi-constructeurs — v1",
+  "description": "Représentation normalisée et statique d'une configuration. Ne décrit pas l'état opérationnel de l'équipement.",
+  "type": "object",
+  "required": ["schema_version", "source", "device", "vrfs", "interfaces", "routing", "policies", "services", "management", "diagnostics"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "source": {
+      "type": "object",
+      "required": ["vendor", "parser_schema_version", "file", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "vendor": {"type": "string"},
+        "parser_schema_version": {"type": ["string", "null"]},
+        "file": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["hostname", "platform"],
+      "additionalProperties": false,
+      "properties": {
+        "hostname": {"type": ["string", "null"]},
+        "platform": {
+          "type": "object",
+          "required": ["vendor", "family", "version"],
+          "properties": {
+            "vendor": {"type": "string"},
+            "family": {"type": "string"},
+            "version": {"type": ["string", "null"]}
+          }
+        }
+      }
+    },
+    "vrfs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "route_distinguisher", "address_families", "route_targets", "source"],
+        "properties": {
+          "name": {"type": ["string", "null"]},
+          "route_distinguisher": {"type": ["string", "null"]},
+          "description": {"type": ["string", "null"]},
+          "address_families": {"type": "array", "items": {"type": "string"}},
+          "route_targets": {"type": "array", "items": {"type": "object"}},
+          "source": {"$ref": "#/$defs/sourceLine"}
+        }
+      }
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "admin_enabled", "operational_state", "ipv4_addresses", "vrf", "nat_role", "dhcp_relay_targets", "vlan_tagging", "hsrp_groups", "source"],
+        "properties": {
+          "name": {"type": ["string", "null"]},
+          "description": {"type": ["string", "null"]},
+          "admin_enabled": {"type": ["boolean", "null"], "description": "null = état non explicitement déclaré."},
+          "operational_state": {"type": "null", "description": "Impossible à déduire d'une simple configuration."},
+          "link": {"type": "object"},
+          "ipv4_addresses": {"type": "array", "items": {"$ref": "#/$defs/interfaceIp"}},
+          "ipv4_dhcp": {"type": "boolean"},
+          "ipv4_explicitly_absent": {"type": "boolean"},
+          "vrf": {"type": ["string", "null"]},
+          "nat_role": {"enum": ["inside", "outside", null]},
+          "dhcp_relay_targets": {"type": "array", "items": {"type": "string"}},
+          "vlan_tagging": {
+            "type": ["object", "null"],
+            "properties": {"vlan_id": {"type": ["integer", "null"]}, "native": {"type": "boolean"}}
+          },
+          "switchport": {"type": "object"},
+          "hsrp_groups": {"type": "array", "items": {"type": "object"}},
+          "source": {"$ref": "#/$defs/sourceLine"}
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "required": ["static_routes", "ospf", "bgp"],
+      "additionalProperties": false,
+      "properties": {
+        "static_routes": {"type": "array", "items": {"$ref": "#/$defs/staticRoute"}},
+        "ospf": {"type": "array", "items": {"$ref": "#/$defs/ospfProcess"}},
+        "bgp": {"type": "array", "items": {"$ref": "#/$defs/bgpProcess"}}
+      }
+    },
+    "policies": {
+      "type": "object",
+      "required": ["acls", "prefix_lists", "route_maps", "community_lists"],
+      "additionalProperties": false,
+      "properties": {
+        "acls": {"type": "array", "items": {"$ref": "#/$defs/acl"}},
+        "prefix_lists": {"type": "array", "items": {"$ref": "#/$defs/prefixList"}},
+        "route_maps": {"type": "array", "items": {"$ref": "#/$defs/routeMap"}},
+        "community_lists": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "services": {
+      "type": "object",
+      "required": ["nat", "dhcp", "vlans", "snmp", "syslog"],
+      "additionalProperties": false,
+      "properties": {
+        "nat": {
+          "type": "object", "required": ["rules", "pools"],
+          "properties": {"rules": {"type": "array", "items": {"type": "object"}},
+                         "pools": {"type": "array", "items": {"type": "object"}}}
+        },
+        "dhcp": {
+          "type": "object", "required": ["pools", "excluded_ranges"],
+          "properties": {"pools": {"type": "array", "items": {"type": "object"}},
+                         "excluded_ranges": {"type": "array", "items": {"type": "array", "items": {"type": "string"}}}
+          }
+        },
+        "vlans": {"type": "array", "items": {"type": "object"}},
+        "snmp": {
+          "type": "object", "required": ["communities", "targets"],
+          "properties": {
+            "communities": {
+              "type": "array",
+              "items": {
+                "type": "object", "required": ["access", "secret_redacted", "source"],
+                "additionalProperties": false,
+                "properties": {"access": {"type": "string"}, "secret_redacted": {"const": true},
+                               "source": {"$ref": "#/$defs/sourceLine"}}
+              }
+            },
+            "targets": {"type": "array", "items": {"type": "object"}}
+          }
+        },
+        "syslog": {
+          "type": "object", "required": ["targets", "source_interface", "severity"],
+          "properties": {"targets": {"type": "array", "items": {"type": "object"}},
+                         "source_interface": {"type": ["string", "null"]},
+                         "severity": {"type": ["string", "null"]}}
+        }
+      }
+    },
+    "management": {
+      "type": "object",
+      "required": ["http_enabled", "https_enabled", "ssh_version", "terminal_lines", "local_accounts", "banners"],
+      "additionalProperties": false,
+      "properties": {
+        "http_enabled": {"type": ["boolean", "null"]},
+        "https_enabled": {"type": ["boolean", "null"]},
+        "ssh_version": {"type": ["integer", "null"]},
+        "terminal_lines": {"type": "array", "items": {"type": "object"}},
+        "local_accounts": {"type": "array", "items": {"type": "object"}},
+        "banners": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["unparsed_global_count", "unparsed_global_lines", "platform_opaque_count", "opaque_sections", "source_only_counts", "notes", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "unparsed_global_count": {"type": "integer", "minimum": 0},
+        "unparsed_global_lines": {"type": "array", "items": {"type": ["integer", "null"]}},
+        "platform_opaque_count": {"type": "integer", "minimum": 0},
+        "opaque_sections": {"type": "array", "items": {"type": "object"}},
+        "source_only_counts": {"type": "object"},
+        "notes": {"type": "array", "items": {"type": "string"}},
+        "status": {"enum": ["modeled_subset", "partial"]}
+      }
+    }
+  },
+  "$defs": {
+    "sourceLine": {
+      "type": "object", "required": ["line"], "additionalProperties": false,
+      "properties": {"line": {"type": ["integer", "null"], "minimum": 1}}
+    },
+    "interfaceIp": {
+      "type": "object", "required": ["address", "prefix_length", "cidr", "secondary"],
+      "additionalProperties": false,
+      "properties": {
+        "address": {"type": ["string", "null"]},
+        "prefix_length": {"type": ["integer", "null"], "minimum": 0, "maximum": 32},
+        "cidr": {"type": ["string", "null"]},
+        "secondary": {"type": "boolean"}
+      }
+    },
+    "staticRoute": {
+      "type": "object", "required": ["prefix", "vrf", "next_hop", "outgoing_interface", "administrative_distance", "source"],
+      "properties": {
+        "prefix": {"type": ["string", "null"]},
+        "destination": {"type": ["string", "null"]},
+        "mask": {"type": ["string", "null"]},
+        "vrf": {"type": ["string", "null"]},
+        "next_hop": {"type": ["string", "null"]},
+        "outgoing_interface": {"type": ["string", "null"]},
+        "administrative_distance": {"type": ["integer", "null"], "minimum": 0},
+        "unmodeled_option_count": {"type": "integer", "minimum": 0},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "ospfProcess": {
+      "type": "object", "required": ["process_id", "router_id", "network_selectors", "passive_interfaces", "source"],
+      "properties": {
+        "process_id": {"type": "string"},
+        "router_id": {"type": ["string", "null"]},
+        "network_selectors": {"type": "array", "items": {"type": "object"}},
+        "passive_interfaces": {"type": "array", "items": {"type": "string"}},
+        "redistribution_present": {"type": "boolean"},
+        "redistribution_statement_count": {"type": "integer"},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "bgpProcess": {
+      "type": "object", "required": ["local_as", "router_id", "neighbors", "network_statements", "source"],
+      "properties": {
+        "local_as": {"type": ["integer", "null"]},
+        "router_id": {"type": ["string", "null"]},
+        "neighbors": {"type": "array", "items": {"$ref": "#/$defs/bgpPeer"}},
+        "network_statements": {"type": "array", "items": {"type": "object"}},
+        "address_families": {"type": "array", "items": {"type": "string"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "bgpPeer": {
+      "type": "object", "required": ["id", "kind", "remote_as", "policies", "source"],
+      "properties": {
+        "id": {"type": ["string", "null"]},
+        "kind": {"enum": ["peer", "peer_group"]},
+        "peer_group": {"type": ["string", "null"]},
+        "remote_as": {"type": ["integer", "null"]},
+        "remote_as_unparsed": {"type": ["string", "null"]},
+        "remote_as_inherited_from": {"type": ["string", "null"]},
+        "session_type_configured": {"enum": ["ibgp", "ebgp", null]},
+        "activated_families": {"type": "array", "items": {"type": "string"}},
+        "update_source": {"type": ["string", "null"]},
+        "policies": {"type": "array", "items": {"type": "object"}},
+        "source": {"$ref": "#/$defs/sourceLine"}
+      }
+    },
+    "acl": {
+      "type": "object", "required": ["name", "type", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "type": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "prefixList": {
+      "type": "object", "required": ["name", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "routeMap": {
+      "type": "object", "required": ["name", "entries"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "entries": {"type": "array", "items": {"type": "object"}}
+      }
+    }
+  }
+}

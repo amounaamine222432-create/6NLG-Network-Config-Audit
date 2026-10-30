@@ -1,0 +1,21 @@
+{
+  "facts": [
+    "aaa=false",
+    "hostname=R-BENCH-FAIL-20",
+    "interface=GigabitEthernet0/0|198.51.100.81/30",
+    "interface=GigabitEthernet0/1|10.20.0.1/24",
+    "ios=15.2",
+    "login=con 0|line_password",
+    "login=vty 0 4|line_password",
+    "login=vty 5 15|line_password",
+    "route=0.0.0.0/0|198.51.100.82",
+    "snmp_access=RO",
+    "snmp_access=RW",
+    "source_route=true",
+    "timeout=con 0|300",
+    "timeout=vty 0 4|0",
+    "timeout=vty 5 15|0",
+    "transport=vty 0 4|telnet",
+    "transport=vty 5 15|telnet"
+  ]
+}

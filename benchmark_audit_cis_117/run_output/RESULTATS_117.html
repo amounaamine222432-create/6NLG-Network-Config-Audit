@@ -1,0 +1,565 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>6NLG 117 tests CIS</title><style>
+    body{font:14px system-ui;background:#f3f7fc;color:#172638;margin:30px auto;max-width:1320px}main{background:white;padding:30px;border-radius:15px}
+    table{border-collapse:collapse;width:100%}td,th{padding:9px;border-bottom:1px solid #dce5ed;text-align:left;vertical-align:top}
+    .ok{background:#e8f9ed}.bad{background:#ffe4e4}pre{white-space:pre-wrap} .warn{background:#fff3cb;padding:14px}
+    </style><main><h1>6NLG — Benchmark expérimental 117 cas</h1><p class="warn">Les attentes ont été écrites avant l'exécution
+    du moteur, mais les scénarios synthétiques doivent encore être revus indépendamment par un expert Cisco/CIS. Ce résultat ne certifie
+    pas la conformité à la norme CIS officielle.</p><h2>Résultats</h2><p>117 correspondances / 117 ; 0 écarts.</p><table><tr><th>CIS</th><th>Contrôle</th><th>Attendu</th><th>Observé</th><th>Preuve</th></tr><tr class="ok"><td>1.1.1</td><td>aaa_new_model</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.1</td><td>aaa_new_model</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.1</td><td>aaa_new_model</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.aaa_new_model_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.2</td><td>vty_ssh_only</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [
+        &quot;ssh&quot;
+      ],
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.2</td><td>vty_ssh_only</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;transport_input&quot;: [
+        &quot;telnet&quot;
+      ],
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.2</td><td>vty_ssh_only</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.7</td><td>console_exec_timeout</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;con 0&quot;,
+      &quot;seconds&quot;: 300,
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.7</td><td>console_exec_timeout</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;con 0&quot;,
+      &quot;seconds&quot;: 1200,
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.7</td><td>console_exec_timeout</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.9</td><td>vty_exec_timeout</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;seconds&quot;: 300,
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.9</td><td>vty_exec_timeout</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;max_allowed_seconds&quot;: 600,
+  &quot;lines&quot;: [
+    {
+      &quot;line_id&quot;: &quot;vty 0 4&quot;,
+      &quot;seconds&quot;: 1200,
+      &quot;source_line&quot;: 3
+    }
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.9</td><td>vty_exec_timeout</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.1</td><td>exec_banner_present</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;exec_banner_configured&quot;: true,
+  &quot;source_lines&quot;: [
+    3
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.1</td><td>exec_banner_present</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;exec_banner_configured&quot;: false,
+  &quot;source_lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.1</td><td>exec_banner_present</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;exec_banner_configured&quot;: false,
+  &quot;source_lines&quot;: [],
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.2</td><td>login_banner</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;source_lines&quot;: [
+    3
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.2</td><td>login_banner</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;observed&quot;: false,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.2</td><td>login_banner</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;login&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.3</td><td>motd_banner</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;source_lines&quot;: [
+    3
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.3</td><td>motd_banner</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;observed&quot;: false,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.3.3</td><td>motd_banner</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;banner_kind&quot;: &quot;motd&quot;,
+  &quot;observed&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.1</td><td>enable_secret_present</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: true,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.1</td><td>enable_secret_present</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: false,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.1</td><td>enable_secret_present</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;management.enable_secret_configured&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.3</td><td>local_user_secrets</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;local_user_count&quot;: 1,
+  &quot;secret_count&quot;: 1,
+  &quot;password_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.3</td><td>local_user_secrets</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;local_user_count&quot;: 1,
+  &quot;secret_count&quot;: 0,
+  &quot;password_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.4.3</td><td>local_user_secrets</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;local_user_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.4</td><td>snmp_no_rw</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;community_count&quot;: 1,
+  &quot;rw_count&quot;: 0,
+  &quot;unknown_access_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.4</td><td>snmp_no_rw</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;community_count&quot;: 1,
+  &quot;rw_count&quot;: 1,
+  &quot;unknown_access_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.4</td><td>snmp_no_rw</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;community_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.9</td><td>snmp_v3_priv</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;snmp_v3_group_count&quot;: 1,
+  &quot;priv_group_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.9</td><td>snmp_v3_priv</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;snmp_v3_group_count&quot;: 1,
+  &quot;priv_group_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.5.9</td><td>snmp_v3_priv</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;snmp_v3_group_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.1.1.2</td><td>ssh_version2</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ssh_version&quot;: 2,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.1.1.2</td><td>ssh_version2</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ssh_version&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.1.1.2</td><td>ssh_version2</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ssh_version&quot;: null,
+  &quot;requires_live_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.2</td><td>syslog_buffer</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;enabled&quot;: true,
+  &quot;buffer_size_bytes&quot;: 64000,
+  &quot;recommended_size_bytes&quot;: 64000,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.2</td><td>syslog_buffer</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;enabled&quot;: true,
+  &quot;buffer_size_bytes&quot;: 4096,
+  &quot;recommended_size_bytes&quot;: 64000,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.2</td><td>syslog_buffer</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;buffer_size_bytes&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.4</td><td>syslog_host</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_targets&quot;: 1,
+  &quot;ip_address_targets&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.4</td><td>syslog_host</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_targets&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.4</td><td>syslog_host</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_targets&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.5</td><td>syslog_informational</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;trap_severity&quot;: &quot;informational&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.5</td><td>syslog_informational</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;trap_severity&quot;: &quot;debugging&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.5</td><td>syslog_informational</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;trap_severity&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.7</td><td>syslog_source_present</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_interface&quot;: &quot;Loopback0&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.7</td><td>syslog_source_present</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_interface&quot;: null,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.2.7</td><td>syslog_source_present</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_interface&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.1</td><td>ntp_auth_enabled</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: true,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.1</td><td>ntp_auth_enabled</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: false,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.1</td><td>ntp_auth_enabled</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: true,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.2</td><td>ntp_auth_keys</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.2</td><td>ntp_auth_keys</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.2</td><td>ntp_auth_keys</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.authentication_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.3</td><td>ntp_trusted_keys</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.3</td><td>ntp_trusted_keys</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.3</td><td>ntp_trusted_keys</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ntp.trusted_key_count&quot;,
+  &quot;count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.4</td><td>ntp_server_keys</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;key_reference_consistency_verified&quot;: true,
+  &quot;ntp_server_count&quot;: 1,
+  &quot;keyed_server_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.4</td><td>ntp_server_keys</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;inferred_absence&quot;: true,
+  &quot;invalid_key_reference_count&quot;: 1,
+  &quot;ntp_server_count&quot;: 1,
+  &quot;keyed_server_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.1.4</td><td>ntp_server_keys</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.2</td><td>ntp_servers</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ntp_server_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.2</td><td>ntp_servers</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.3.2</td><td>ntp_servers</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ntp_server_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.4.3</td><td>ntp_loopback_source</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_is_loopback&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.4.3</td><td>ntp_loopback_source</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_is_loopback&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>2.4.3</td><td>ntp_loopback_source</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;source_is_loopback&quot;: null,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.1</td><td>source_routing_disabled</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: false,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.1</td><td>source_routing_disabled</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: true,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.1</td><td>source_routing_disabled</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ir_path&quot;: &quot;services.ip_stack.source_route_enabled&quot;,
+  &quot;observed&quot;: null,
+  &quot;expected&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.2</td><td>proxy_arp_disabled</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;interface_count&quot;: 1,
+  &quot;proxy_arp_enabled_count&quot;: 0,
+  &quot;proxy_arp_disabled_count&quot;: 1,
+  &quot;requires_live_confirmation&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.2</td><td>proxy_arp_disabled</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;interface_count&quot;: 1,
+  &quot;proxy_arp_enabled_count&quot;: 1,
+  &quot;proxy_arp_disabled_count&quot;: 0,
+  &quot;requires_live_confirmation&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.2</td><td>proxy_arp_disabled</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;interface_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.3</td><td>no_tunnel_interfaces</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;tunnel_count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.3</td><td>no_tunnel_interfaces</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;tunnel_count&quot;: 1,
+  &quot;source_lines&quot;: [
+    3
+  ],
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.1.3</td><td>no_tunnel_interfaces</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;tunnel_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.4.1</td><td>bgp_neighbor_password</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 1,
+  &quot;protected_peer_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.4.1</td><td>bgp_neighbor_password</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 1,
+  &quot;protected_peer_count&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.4.1</td><td>bgp_neighbor_password</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;bgp_peer_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.2</td><td>aaa_login_default</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;method_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.2</td><td>aaa_login_default</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;insecure_none_method&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.2</td><td>aaa_login_default</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.3</td><td>aaa_enable_default</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;method_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.3</td><td>aaa_enable_default</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;insecure_none_method&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.3</td><td>aaa_enable_default</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;list_name&quot;: &quot;default&quot;,
+  &quot;configured&quot;: false,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.4</td><td>aaa_line_console</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 1,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.4</td><td>aaa_line_console</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.4</td><td>aaa_line_console</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;con &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.5</td><td>aaa_line_tty</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 1,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.5</td><td>aaa_line_tty</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.5</td><td>aaa_line_tty</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;tty &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.6</td><td>aaa_line_vty</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 1,
+  &quot;failed_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.6</td><td>aaa_line_vty</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 1,
+  &quot;verified_count&quot;: 0,
+  &quot;failed_count&quot;: 1,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.1.6</td><td>aaa_line_vty</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;scope&quot;: &quot;vty &quot;,
+  &quot;line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.4</td><td>vty_restricting_acl</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;restrictive_acl_count&quot;: 1,
+  &quot;restrictive_acl_names&quot;: [
+    &quot;VTY-MGMT&quot;
+  ],
+  &quot;linked_restrictive_acls&quot;: [
+    &quot;VTY-MGMT&quot;
+  ],
+  &quot;validation_scope&quot;: &quot;acl_definition_only&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.4</td><td>vty_restricting_acl</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;non_restrictive_vty_acls&quot;: [
+    &quot;VTY-OPEN&quot;
+  ],
+  &quot;validation_scope&quot;: &quot;acl_definition_only&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.4</td><td>vty_restricting_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.5</td><td>vty_access_class</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 1,
+  &quot;restricted_count&quot;: 1,
+  &quot;unresolved_count&quot;: 0,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.5</td><td>vty_access_class</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 1,
+  &quot;restricted_count&quot;: 0,
+  &quot;unresolved_count&quot;: 1,
+  &quot;overly_broad_count&quot;: 0,
+  &quot;validation_scope&quot;: &quot;vty_input_acl&quot;,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>1.2.5</td><td>vty_access_class</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;vty_line_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.1</td><td>external_antispoof_acl</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;required_network_count&quot;: 9,
+  &quot;verified_deny_network_count&quot;: 9,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.1</td><td>external_antispoof_acl</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;early_broad_permit_count&quot;: 1,
+  &quot;required_network_count&quot;: 9,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.1</td><td>external_antispoof_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_found&quot;,
+  &quot;interface&quot;: &quot;GigabitEthernet0/0&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.2</td><td>external_inbound_acl</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;external_interface_count&quot;: 1,
+  &quot;inbound_acl_count&quot;: 1,
+  &quot;external_designation&quot;: &quot;user_supplied&quot;,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.2</td><td>external_inbound_acl</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;reason&quot;: &quot;inbound_acl_not_defined&quot;,
+  &quot;undefined_acl_binding_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.2.2</td><td>external_inbound_acl</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;reason&quot;: &quot;external_interface_not_found&quot;,
+  &quot;interface&quot;: &quot;GigabitEthernet0/0&quot;,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.8</td><td>eigrp_interface_keychain</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.8</td><td>eigrp_interface_keychain</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.8</td><td>eigrp_interface_keychain</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;eigrp_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.9</td><td>eigrp_interface_md5</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 0,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.9</td><td>eigrp_interface_md5</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_authentication_interfaces&quot;: 1,
+  &quot;invalid_count&quot;: 1,
+  &quot;requires_live_interface_membership_confirmation&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.1.9</td><td>eigrp_interface_md5</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;eigrp_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.1</td><td>ospf_area_md5</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ospf_area_count&quot;: 1,
+  &quot;area_md5_count&quot;: 1,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.1</td><td>ospf_area_md5</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ospf_area_count&quot;: 1,
+  &quot;area_md5_count&quot;: 0,
+  &quot;processes_without_network_selectors&quot;: 0,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;assumed_absence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.1</td><td>ospf_area_md5</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ospf_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.2</td><td>ospf_interface_md5</td><td>PASS</td><td>PASS</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 1,
+  &quot;missing_key_count&quot;: 0,
+  &quot;wrong_mode_count&quot;: 0,
+  &quot;inferred_absence&quot;: false,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.2</td><td>ospf_interface_md5</td><td>FAIL</td><td>FAIL</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;configured_ospf_interface_count&quot;: 1,
+  &quot;missing_key_count&quot;: 1,
+  &quot;wrong_mode_count&quot;: 1,
+  &quot;inferred_absence&quot;: true,
+  &quot;assessment_basis&quot;: &quot;explicit_ir&quot;
+}</pre></details></td></tr><tr class="ok"><td>3.3.2.2</td><td>ospf_interface_md5</td><td>UNKNOWN</td><td>UNKNOWN</td><td><details><summary>Voir preuve</summary><pre>{
+  &quot;ospf_process_count&quot;: 0,
+  &quot;assessment_basis&quot;: &quot;insufficient_evidence&quot;
+}</pre></details></td></tr></table></main></html>

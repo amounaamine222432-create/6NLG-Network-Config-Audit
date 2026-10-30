@@ -1,0 +1,8 @@
+{
+  "facts": [
+    "hostname=R-BENCH-PARTIAL-29",
+    "interface=GigabitEthernet0/0|198.51.100.117/30",
+    "interface=GigabitEthernet0/1|10.29.0.1/24",
+    "ios=15.2"
+  ]
+}

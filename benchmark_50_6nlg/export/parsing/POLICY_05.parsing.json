@@ -1,0 +1,133 @@
+{
+  "vendor": "cisco_ios",
+  "parser_schema_version": "6.0",
+  "source_cli_family": "ios",
+  "hostname": "R-POLICY-05",
+  "interfaces": [],
+  "ospf_processes": [],
+  "eigrp_processes": [],
+  "static_routes": [],
+  "bgp_processes": [],
+  "key_chains": [],
+  "access_lists": [],
+  "prefix_lists": [
+    {
+      "name": "PL_5",
+      "entries": [
+        {
+          "sequence": "5",
+          "action": "permit",
+          "prefix": "10.5.0.0/16",
+          "ge": null,
+          "le": null,
+          "options": [],
+          "source_line": 3,
+          "raw": "ip prefix-list PL_5 seq 5 permit 10.5.0.0/16"
+        }
+      ]
+    }
+  ],
+  "route_maps": [
+    {
+      "name": "RM_5",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "10",
+          "source_line": 4,
+          "match_commands": [
+            "match ip address prefix-list PL_5"
+          ],
+          "set_commands": [],
+          "other_commands": []
+        }
+      ]
+    }
+  ],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 6,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [],
+  "vrfs": [],
+  "global_settings": {
+    "ios_version": "15.2",
+    "ip_domain_name": null,
+    "ip_domain_lookup_enabled": null,
+    "ip_cef_enabled": null,
+    "ipv6_cef_enabled": null,
+    "service_timestamps": [],
+    "service_commands": [],
+    "ssh_commands": [],
+    "http_server_enabled": null,
+    "https_server_enabled": null,
+    "spanning_tree_mode": null,
+    "spanning_tree_extend_system_id": null,
+    "cdp_enabled": null,
+    "ip_forward_protocols": [],
+    "tftp_source_interface": null,
+    "dns_views": [],
+    "ipv6_ioam_commands": [],
+    "enable_secret_configured": null,
+    "enable_password_configured": null,
+    "rsa_key_generation_requests": [],
+    "aaa_login_privilege_mode": null,
+    "aaa_authentication_login": [],
+    "aaa_authentication_enable": [],
+    "bgp_community_new_format": null,
+    "icmp_unreachable_rate_limit": null,
+    "tcp_synwait_seconds": null,
+    "ip_source_route_enabled": null,
+    "clock_timezone": null
+  },
+  "ntp": {
+    "servers": [],
+    "peers": [],
+    "source_interface": null,
+    "authentication_enabled": null,
+    "authentication_keys": [],
+    "trusted_key_ids": [],
+    "master_configured": null,
+    "master_stratum": null,
+    "access_groups": [],
+    "update_calendar_enabled": null,
+    "logging_enabled": null,
+    "clock_period": null
+  },
+  "configuration_metadata": [],
+  "platform_commands": [],
+  "local_users": [],
+  "lines": [],
+  "banners": [],
+  "system_stanzas": [],
+  "vlans": [],
+  "dhcp_pools": [],
+  "dhcp_excluded_addresses": [],
+  "dhcp_other_commands": [],
+  "nat_rules": [],
+  "nat_pools": [],
+  "nat_other_commands": [],
+  "nat_translation_settings": {},
+  "snmp": {
+    "communities": [],
+    "hosts": [],
+    "groups": [],
+    "users": [],
+    "trap_rules": [],
+    "traps_enabled": null,
+    "location_configured": null,
+    "contact_configured": null,
+    "other_commands": []
+  },
+  "syslog": {
+    "hosts": [],
+    "source_interface": null,
+    "trap_level": null,
+    "console_enabled": null,
+    "buffered": null,
+    "other_commands": []
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "Loopback1",
+      "source_line": 18,
+      "ipv4_addresses": [
+        {
+          "address": "192.168.1.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": []
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 21,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.12.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "source_line": 25,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.13.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [
+    {
+      "destination": "192.168.2.0",
+      "mask": "255.255.255.0",
+      "vrf": null,
+      "next_hop": "10.0.12.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 29,
+      "raw": "ip route 192.168.2.0 255.255.255.0 10.0.12.2"
+    },
+    {
+      "destination": "192.168.2.0",
+      "mask": "255.255.255.0",
+      "vrf": null,
+      "next_hop": "10.0.13.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": 200,
+      "options": [
+        "200"
+      ],
+      "source_line": 30,
+      "raw": "ip route 192.168.2.0 255.255.255.0 10.0.13.2 200"
+    },
+    {
+      "destination": "0.0.0.0",
+      "mask": "0.0.0.0",
+      "vrf": null,
+      "next_hop": "10.0.12.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 31,
+      "raw": "ip route 0.0.0.0 0.0.0.0 10.0.12.2"
+    }
+  ],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 15,
+      "command": "enable"
+    },
+    {
+      "line": 16,
+      "command": "configure terminal"
+    },
+    {
+      "line": 20,
+      "command": "exit"
+    },
+    {
+      "line": 24,
+      "command": "exit"
+    },
+    {
+      "line": 28,
+      "command": "exit"
+    },
+    {
+      "line": 32,
+      "command": "end"
+    },
+    {
+      "line": 33,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [],
+  "source_file": "R1-config.txt"
+}

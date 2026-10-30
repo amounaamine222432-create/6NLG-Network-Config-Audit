@@ -1,0 +1,131 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "R1",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 17,
+      "ipv4_addresses": [
+        {
+          "address": "1.1.1.1",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": []
+    },
+    {
+      "name": "Loopback1",
+      "source_line": 20,
+      "ipv4_addresses": [
+        {
+          "address": "172.16.1.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "ip ospf network point-to-point"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 24,
+      "ipv4_addresses": [
+        {
+          "address": "10.0.12.1",
+          "mask": "255.255.255.252",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": "no shutdown",
+      "other_commands": []
+    }
+  ],
+  "ospf_processes": [
+    {
+      "process_id": "1",
+      "source_line": 28,
+      "router_id": "1.1.1.1",
+      "networks": [
+        {
+          "network": "10.0.12.0",
+          "wildcard_mask": "0.0.0.3",
+          "area": "0"
+        },
+        {
+          "network": "1.1.1.1",
+          "wildcard_mask": "0.0.0.0",
+          "area": "0"
+        },
+        {
+          "network": "172.16.1.0",
+          "wildcard_mask": "0.0.0.255",
+          "area": "0"
+        }
+      ],
+      "passive_interfaces": [],
+      "redistribution_commands": [],
+      "other_commands": []
+    }
+  ],
+  "static_routes": [
+    {
+      "destination": "198.51.100.0",
+      "mask": "255.255.255.0",
+      "vrf": null,
+      "next_hop": "10.0.12.2",
+      "outgoing_interface": null,
+      "administrative_distance_configured": null,
+      "options": [],
+      "source_line": 34,
+      "raw": "ip route 198.51.100.0 255.255.255.0 10.0.12.2"
+    }
+  ],
+  "bgp_processes": [],
+  "access_lists": [],
+  "prefix_lists": [],
+  "route_maps": [],
+  "community_lists": [],
+  "wrapper_commands": [
+    {
+      "line": 14,
+      "command": "enable"
+    },
+    {
+      "line": 15,
+      "command": "configure terminal"
+    },
+    {
+      "line": 19,
+      "command": "exit"
+    },
+    {
+      "line": 23,
+      "command": "exit"
+    },
+    {
+      "line": 27,
+      "command": "exit"
+    },
+    {
+      "line": 33,
+      "command": "exit"
+    },
+    {
+      "line": 35,
+      "command": "end"
+    },
+    {
+      "line": 36,
+      "command": "write memory"
+    }
+  ],
+  "unparsed_lines": [],
+  "source_file": "R1-config.txt"
+}

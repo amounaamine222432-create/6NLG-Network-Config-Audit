@@ -1,0 +1,15 @@
+{
+  "purpose": "Démonstration technique uniquement — non issue d'un benchmark CIS approuvé",
+  "rules": [
+    {
+      "id": "IOS-DEMO-HTTP-001",
+      "title": "Serveur HTTP non chiffré désactivé",
+      "benchmark_ref": null,
+      "status": "demo",
+      "ir_path": "management.http_enabled",
+      "operator": "equals",
+      "expected": false,
+      "remediation": "no ip http server"
+    }
+  ]
+}

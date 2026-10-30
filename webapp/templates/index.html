@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <meta name="csrf-token" content="{{ csrf }}">
+  <title>NetAudit | SUP'COM × 6NLG</title>
+  <meta name="description" content="Console NetAudit 6NLG : parsing JSON, normalisation IR et contrôle de sécurité CIS Cisco IOS 15.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cis_audit.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cis_pipeline.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cis_bridge.css') }}">
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/cis_audit.js') }}" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon-sprite" aria-hidden="true">
+  <symbol id="i-command" viewBox="0 0 24 24"><path d="m4 17 6-5-6-5M12 19h8"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m0 0-5 5m5-5 5 5M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 0v6h6M8 13h8M8 17h8"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-3.5 8.5-9 10-5.5-1.5-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 18v3h16v-3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3zm0 6v5m0 4v.01"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7l10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v6M5 17v-4h14v4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4M12 15v3"/></symbol>
+</svg>
+
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Navigation principale">
+    <a class="brand" href="#overview" aria-label="NetAudit — Tableau de bord">
+      <span class="brand-icon"><svg class="ico"><use href="#i-network"/></svg></span>
+      <span><strong>net<span>audit</span></strong><small>6NLG / SUP'COM</small></span>
+    </a>
+
+    <div class="sidebar-section-label">ESPACE DE TRAVAIL</div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" href="#overview"><svg class="ico"><use href="#i-grid"/></svg> Vue d'ensemble <span class="nav-trail"></span></a>
+      <a class="nav-item" href="#import"><svg class="ico"><use href="#i-upload"/></svg> Importer & analyser</a>
+      <a class="nav-item" href="#results"><svg class="ico"><use href="#i-activity"/></svg> Résultats <span class="nav-counter" id="navResultCount">—</span></a>
+      <a class="nav-item cis-nav-entry" href="#cis-audit"><svg class="ico"><use href="#i-shield"/></svg> Audit CIS <span class="cis-nav-mark">39</span></a>
+      <a class="nav-item" href="#methodology"><svg class="ico"><use href="#i-layers"/></svg> Architecture</a>
+    </nav>
+
+    <div class="sidebar-section-label nav-later">MODULES D'AUDIT</div>
+    <div class="module-entry"><span class="module-dot green"></span> Routeurs Cisco IOS <span class="module-tag live">ACTIF</span></div>
+    <div class="module-entry"><span class="module-dot green"></span> Routeurs Juniper Junos <span class="module-tag live">ACTIF</span></div>
+    <div class="module-entry muted-module"><span class="module-dot"></span> Proxies <span class="module-tag">BIENTÔT</span></div>
+    <div class="module-entry muted-module"><span class="module-dot"></span> SD-WAN <span class="module-tag">BIENTÔT</span></div>
+
+    <div class="sidebar-bottom">
+      <div class="local-card"><svg class="ico"><use href="#i-lock"/></svg><div><strong>Traitement local</strong><small>Les configurations brutes ne sont pas archivées.</small></div></div>
+      <div class="sidebar-foot"><span>PROJET TUTORÉ</span><strong>SUP'COM <i>×</i> 6NLG</strong></div>
+    </div>
+  </aside>
+
+  <main class="main" id="overview">
+    <header class="topbar">
+      <div class="breadcrumbs">Workspace <span>/</span> <strong>Dashboard</strong></div>
+      <div class="topbar-right"><span class="system-status"><span class="status-signal"></span> Cisco + Juniper prêts</span><span class="top-avatar">6N</span></div>
+    </header>
+
+    <div class="content-wrap">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> NETWORK CONFIGURATION INTELLIGENCE <span class="eyebrow-version">V1.0</span></div>
+          <h1 id="heroTitle">Votre réseau.<br><span>En toute clarté.</span></h1>
+          <p>Importez vos configurations Cisco IOS ou Juniper Junos. Visualisez le parsing, la normalisation IR et un bilan technique statique pour chaque constructeur.</p>
+          <a class="hero-cta" href="#import">Commencer une analyse <svg class="ico"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hero-graphic" aria-hidden="true">
+          <div class="orbit orbit-outer"></div><div class="orbit orbit-middle"></div>
+          <svg viewBox="0 0 430 290" class="topology" role="presentation">
+            <defs><linearGradient id="networkLine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#70eee0"/><stop offset="1" stop-color="#596cff"/></linearGradient></defs>
+            <path class="network-edge" d="M216 141 112 69M216 141 334 81M216 141 89 222M216 141 332 218M112 69 334 81M89 222 332 218" stroke="url(#networkLine)"/>
+            <circle class="net-halo" cx="216" cy="141" r="38"/><circle class="net-core" cx="216" cy="141" r="26"/>
+            <path d="m208 140 6 6 12-13" stroke="#071d26" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle class="net-node" cx="112" cy="69" r="13"/><circle class="net-node" cx="334" cy="81" r="13"/>
+            <circle class="net-node" cx="89" cy="222" r="13"/><circle class="net-node" cx="332" cy="218" r="13"/>
+            <circle cx="112" cy="69" r="4" fill="#b6fff1"/><circle cx="334" cy="81" r="4" fill="#b6fff1"/><circle cx="89" cy="222" r="4" fill="#b6fff1"/><circle cx="332" cy="218" r="4" fill="#b6fff1"/>
+          </svg>
+          <span class="topology-tag tag-top"><span></span> PARSER ONLINE</span>
+          <span class="topology-tag tag-bottom">IR NORMALISÉ <svg class="ico"><use href="#i-check"/></svg></span>
+        </div>
+      </section>
+
+      <section class="kpis" aria-label="Indicateurs du moteur validé">
+        <div class="kpi"><span class="kpi-label">TESTS UNITAIRES</span><div><strong>133<span class="kpi-suffix">/133</span></strong><span class="kpi-icon kpi-turq"><svg class="ico"><use href="#i-check"/></svg></span></div><small><span class="mini-check">●</span> Dernière exécution fournie par l'équipe</small></div>
+        <div class="kpi"><span class="kpi-label">CONFIGURATIONS DE RÉFÉRENCE</span><div><strong>35</strong><span class="kpi-icon kpi-purple"><svg class="ico"><use href="#i-file"/></svg></span></div><small>Corpus historique Cisco</small></div>
+        <div class="kpi"><span class="kpi-label">DIRECTIVES PLATEFORME</span><div><strong>84<span class="kpi-suffix">/84</span></strong><span class="kpi-icon kpi-blue"><svg class="ico"><use href="#i-layers"/></svg></span></div><small>Structurées · 20 à portée limitée</small></div>
+        <div class="kpi"><span class="kpi-label">SCÉNARIOS SYNTHÉTIQUES</span><div><strong>3<span class="kpi-suffix">/3</span></strong><span class="kpi-icon kpi-amber"><svg class="ico"><use href="#i-activity"/></svg></span></div><small>VLAN · OSPF/BGP · NAT</small></div>
+      </section>
+
+      <section class="workspace-grid" id="import" aria-labelledby="importTitle">
+        <div class="panel upload-panel">
+          <div class="panel-heading"><div><span class="section-kicker">NOUVELLE ANALYSE</span><h2 id="importTitle">Importer des configurations</h2><p>Choisissez le constructeur, puis importez ses fichiers de configuration.</p></div><span class="heading-icon"><svg class="ico"><use href="#i-upload"/></svg></span></div>
+          <label class="vendor-label" for="vendorSelect">Constructeur / système réseau</label>
+          <select id="vendorSelect" class="vendor-select" aria-label="Choisir le constructeur">
+            <option value="cisco_ios">Cisco IOS · Configuration classique</option>
+            <option value="juniper_junos">Juniper Junos / SRX · Hiérarchie ou display set</option>
+          </select>
+          <p class="vendor-hint" id="vendorHint">Parsing Cisco IOS V6.7, normalisation IR v1, contrôles statiques Cisco.</p>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choisir les configurations du constructeur sélectionné">
+            <div class="drop-icon"><svg class="ico"><use href="#i-upload"/></svg></div>
+            <strong>Glissez vos fichiers ici</strong><p>ou <span>parcourez votre ordinateur</span></p>
+            <small id="supportedFormats">Formats .CFG, .TXT • {{ max_files }} fichiers maximum • 1 Mio/fichier</small>
+            <input type="file" id="fileInput" name="files" accept=".cfg,.txt" multiple hidden>
+          </div>
+          <div class="file-queue" id="fileQueue" aria-live="polite"></div>
+          <div class="upload-actions"><div class="privacy-note"><svg class="ico"><use href="#i-shield"/></svg><span>Analyse statique sécurisée<br><small>Pas de connexion aux routeurs</small></span></div><button class="btn-primary" type="button" id="analyzeBtn" disabled>Lancer l'analyse <svg class="ico"><use href="#i-arrow"/></svg></button></div>
+          <div id="uploadFeedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="panel pipeline-panel" id="methodology">
+          <div class="panel-heading"><div><span class="section-kicker">COMMENT ÇA MARCHE</span><h2>Pipeline d'analyse</h2><p>Quatre étapes, un seul flux automatisé.</p></div></div>
+          <ol class="pipeline-list">
+            <li class="pipeline-step"><div class="pipeline-number">01</div><div class="pipeline-info"><strong>Acquisition</strong><p>Fichiers Cisco IOS ou Juniper Junos</p></div><span class="pipeline-check"><svg class="ico"><use href="#i-check"/></svg></span></li>
+            <li class="pipeline-step"><div class="pipeline-number">02</div><div class="pipeline-info"><strong>Parsing intelligent</strong><p>Interfaces, routage, ACL, services</p></div><span class="pipeline-check"><svg class="ico"><use href="#i-check"/></svg></span></li>
+            <li class="pipeline-step"><div class="pipeline-number">03</div><div class="pipeline-info"><strong>Normalisation IR</strong><p>Représentation JSON structurée</p></div><span class="pipeline-check"><svg class="ico"><use href="#i-check"/></svg></span></li>
+            <li class="pipeline-step"><div class="pipeline-number">04</div><div class="pipeline-info"><strong>Contrôles & rapport</strong><p>Couverture et constats statiques</p></div><span class="pipeline-check"><svg class="ico"><use href="#i-check"/></svg></span></li>
+          </ol>
+          <div class="pipeline-footer"><span class="pulse-green"></span> Pipeline prêt à traiter vos fichiers <span class="pipeline-footer-arrow">↗</span></div>
+        </div>
+      </section>
+
+      <section class="results-section is-hidden" id="results" aria-labelledby="resultsTitle">
+        <div class="results-topline"><div><span class="section-kicker">RÉSULTATS DE L'EXÉCUTION</span><h2 id="resultsTitle">Analyse terminée <span class="results-check">✓</span></h2><p id="reportTimestamp">Les constats portent sur les configurations, pas sur l'état opérationnel.</p></div><div class="result-buttons"><a class="btn-subtle" id="downloadSummary" href="#"><svg class="ico"><use href="#i-download"/></svg> Résumé JSON</a><a class="btn-subtle" id="downloadParsing" href="#"><svg class="ico"><use href="#i-download"/></svg> Parsing JSON</a><a class="btn-subtle" id="downloadIR" href="#"><svg class="ico"><use href="#i-download"/></svg> IR JSON</a><a class="btn-primary btn-report" id="downloadHTML" href="#"><svg class="ico"><use href="#i-file"/></svg> Rapport HTML</a></div></div>
+        <div class="result-kpis" id="resultKpis"></div>
+        <div class="result-panel"><div class="result-tabs" role="tablist" aria-label="Vues des résultats"><button type="button" class="result-tab active" data-tab="overview" role="tab" aria-selected="true">Vue complète</button><button type="button" class="result-tab" data-tab="devices" role="tab" aria-selected="false">Équipements</button><button type="button" class="result-tab" data-tab="parsing" role="tab" aria-selected="false">Parsing JSON</button><button type="button" class="result-tab" data-tab="normalization" role="tab" aria-selected="false">Normalisation IR</button><button type="button" class="result-tab" data-tab="findings" role="tab" aria-selected="false">Contrôles de configuration</button><button type="button" class="result-tab" data-tab="coverage" role="tab" aria-selected="false">Couverture du parsing</button><button type="button" class="result-tab" data-tab="report" role="tab" aria-selected="false">Rapport HTML</button></div><div class="tab-view" id="resultView"></div></div>
+        <div class="scope-warning"><svg class="ico"><use href="#i-alert"/></svg><span><strong>Limite méthodologique :</strong> ce rapport inspecte uniquement les déclarations présentes dans les fichiers. Il ne confirme ni l'état des interfaces, ni les sessions de routage, ni l'efficacité opérationnelle des ACL ou politiques SRX. Les compteurs IR v1/v2 Juniper ne doivent pas être additionnés.</span></div>
+      </section>
+
+      <!-- Module additionnel : le parcours multiconstructeur /api/analyze reste intact. -->
+      <section class="cis-workbench" id="cis-audit" aria-labelledby="cisTitle">
+        <div class="top-intro">
+          <span class="top-kicker">SÉCURITÉ DES CONFIGURATIONS · CIS CISCO IOS 15</span>
+          <h2 id="cisTitle">Audit CIS.<br><em>Dans la continuité de votre analyse.</em></h2>
+          <p>Un seul import, une chaîne liée : <strong>les fichiers analysés au-dessus</strong> alimentent directement la dernière étape CIS. On conserve les JSON et le rapport technique existants ; aucun deuxième rapport de parsing n'est généré dans l'interface.</p>
+          <div class="intro-tags"><span>01 · Parsing</span><span>02 · Normalisation IR</span><span>03 · Audit CIS</span></div>
+        </div>
+
+        <div class="cis-stage-track" aria-label="Progression du moteur CIS">
+          <div class="cis-stage" id="cisStageParsing" data-state="idle"><b>01</b><span>Parsing<small>Commandes extraites</small></span><i>EN ATTENTE</i></div>
+          <div class="cis-stage-arrow" aria-hidden="true">→</div>
+          <div class="cis-stage" id="cisStageIR" data-state="idle"><b>02</b><span>Normalisation IR<small>Objets structurés</small></span><i>EN ATTENTE</i></div>
+          <div class="cis-stage-arrow" aria-hidden="true">→</div>
+          <div class="cis-stage" id="cisStageAudit" data-state="idle"><b>03</b><span>Audit CIS<small>Comparaison CIS</small></span><i>EN ATTENTE</i></div>
+        </div>
+
+        <div class="cis-grid">
+          <form id="cisForm" class="cis-form" enctype="multipart/form-data">
+            <div class="cis-panel-title"><span>ÉTAPE 03 · AUDIT CIS</span><strong>Reprendre la configuration analysée</strong></div>
+            <div class="cis-prerequisite" id="cisPrerequisite" role="status">Commencez par <a href="#import">importer et analyser</a> une configuration Cisco IOS dans le tableau de bord. Le fichier sera repris ici automatiquement.</div>
+            <label class="cis-label" for="cisSourceSelect">Équipement analysé</label>
+            <select id="cisSourceSelect" class="cis-input" required disabled><option value="">En attente du parsing et de l'IR…</option></select>
+            <span class="cis-hint">Si le test global contient 3 routeurs Cisco, choisissez ici celui à auditer. Aucun nouveau fichier à déposer.</span>
+            <label class="cis-label" for="cisCompleteConfig"><input id="cisCompleteConfig" type="checkbox"> Configuration complète (absence de commande = absence confirmée)</label>
+            <small class="cis-hint">Ne cochez cette option que si le fichier représente l'intégralité de la configuration. Sinon, les contrôles sans preuve resteront UNKNOWN.</small>
+            <div class="cis-form-row">
+              <div><label class="cis-label" for="cisProfile">Profil CIS</label>
+                <select id="cisProfile" name="profile" class="cis-input"><option value="L1">L1 · Fondamental</option><option value="L2" selected>L2 · Renforcé</option></select></div>
+              <div><label class="cis-label" for="cisExternalInterface">Interfaces externes connues</label>
+                <input id="cisExternalInterface" name="external_interface" class="cis-input" type="text" autocomplete="off" placeholder="GigabitEthernet0/0">
+                <small class="cis-hint">Facultatif · Séparez plusieurs interfaces par une virgule.</small></div>
+            </div>
+            <div class="safety-policy"><strong>Preuves d'abord</strong><span>Si une commande n'apparaît pas dans un extrait, son absence ne démontre pas une non-conformité. Le moteur attribue <b>UNKNOWN</b> lorsque les preuves manquent. Un écart explicitement observé peut rester <b>FAIL</b>.</span></div>
+            <button id="cisRunBtn" class="cis-run" type="submit" disabled><span>Continuer vers l'audit CIS</span><span aria-hidden="true">↗</span></button>
+            <div id="cisFeedback" class="cis-feedback" role="status" aria-live="polite">Étapes 1 et 2 à effectuer dans le tableau de bord.</div>
+          </form>
+          <aside class="cis-scope">
+            <div class="cis-panel-title"><span>CHAÎNE CONNECTÉE</span><strong>Une seule source de configuration</strong></div>
+            <ol class="scope-steps">
+              <li><span>01</span><div><strong>Parsing existant</strong><small>JSON et rapport technique complet, déjà consultables en haut.</small></div></li>
+              <li><span>02</span><div><strong>Normalisation IR existante</strong><small>JSON conservé et synthèse HTML de la représentation IR.</small></div></li>
+              <li><span>03</span><div><strong>audit_cis_ios15</strong><small>Même fichier de configuration, comparé aux 39 contrôles CIS.</small></div></li>
+            </ol>
+            <div class="cis-caveat"><strong>Périmètre de l'audit</strong><p>Les 39 contrôles sont un sous-ensemble du CIS IOS 15, pas une certification du benchmark complet. L'audit est statique et ses résultats dépendent des éléments réellement observables.</p></div>
+          </aside>
+        </div>
+
+        <section id="cisResults" class="cis-results is-hidden" aria-live="polite">
+          <div class="cis-results-head"><div><span class="cis-overline">CHAÎNE PARSING → IR → AUDIT CIS</span><h2 id="cisReportName">Audit terminé</h2><p id="cisReportInfo"></p></div>
+            <div class="cis-actions"><a id="cisJsonLink" class="cis-link" href="#" download>Résultats audit JSON ↓</a></div></div>
+
+          <div class="cis-traceability" id="cisTraceability" role="status"></div>
+
+          <div class="stage-output-grid cis-connected-output" aria-label="Rapports du même parcours">
+            <article class="stage-output"><span class="stage-number">01 / PARSING · DÉJÀ FAIT</span><h3>Rapport technique original</h3><p>Le rapport complet du premier parcours, avec le Parsing JSON. Aucun HTML de parsing simplifié ou dupliqué.</p>
+              <div class="stage-links"><a id="cisSourceParsingPreview" href="#" target="_blank" rel="noopener">Rapport complet HTML ↗</a><a id="cisSourceParsingJson" href="#" download>Parsing JSON ↓</a></div></article>
+            <article class="stage-output"><span class="stage-number">02 / NORMALISATION · DÉJÀ FAITE</span><h3>IR et synthèse</h3><p>Le même IR JSON et les synthèses HTML de normalisation, reliés à la configuration choisie.</p>
+              <div class="stage-links"><a id="cisSourceIrJson" href="#" download>IR JSON ↓</a><a id="cisNormalizationPreview" href="#" target="_blank" rel="noopener">Bilan IR HTML ↗</a><a id="cisNormalizationHtml" href="#" download>HTML ↓</a><a id="cisSummaryPreview" href="#" target="_blank" rel="noopener">Synthèse HTML ↗</a><a id="cisSummaryHtml" href="#" download>HTML ↓</a><a id="cisParsingPdf" href="#" download>Synthèse PDF ↓</a></div></article>
+            <article class="stage-output audit-output"><span class="stage-number">03 / AUDIT CIS · DERNIÈRE ÉTAPE</span><h3>Comparaison au benchmark</h3><p>Les 39 contrôles CIS, leurs preuves, verdicts et corrections. Rapport final associé au même fichier.</p>
+              <div class="stage-links"><a id="cisPreviewLink" href="#" target="_blank" rel="noopener">Rapport d'audit HTML ↗</a><a id="cisHtmlLink" href="#" download>HTML ↓</a><a id="cisAuditPdf" href="#" download>Rapport final PDF ↓</a></div></article>
+          </div>
+
+          <div class="cis-intermediate"><div class="cis-intermediate-head"><strong>Inventaire des données analysées</strong><small>Chiffres extraits du pipeline réel.</small></div>
+            <div id="cisIntermediateStats" class="cis-intermediate-stats"></div>
+            <details class="cis-map-details"><summary>Afficher l'inventaire parsing → IR</summary><div id="cisMapping" class="cis-mapping"></div></details>
+          </div>
+          <div class="audit-section-title"><span>CONTRÔLES CIS · V4.1.1 LAB</span><h3>Analyse de conformité détaillée</h3><p>La configuration observée est comparée aux exigences du benchmark dans chaque fiche de contrôle.</p></div>
+          <div id="cisMetrics" class="cis-metrics"></div>
+          <div id="cisDistribution" class="cis-distribution" aria-label="Répartition des verdicts CIS"></div>
+          <div id="cisInsights" class="cis-insights"></div>
+          <div class="cis-filter-bar"><div><strong>39 contrôles expliqués</strong><small>Exigence, configuration observée, impact de sécurité et vérification.</small></div>
+            <div class="cis-filter-controls"><label for="cisStatusFilter">Verdict</label>
+              <select id="cisStatusFilter" class="cis-input"><option value="ALL">Tous</option><option value="FAIL">FAIL</option><option value="UNKNOWN">UNKNOWN</option><option value="PASS">PASS</option><option value="NOT_APPLICABLE">Non applicable</option><option value="NOT_SELECTED">Hors profil</option></select>
+              <label for="cisSearchInput">Recherche</label><input id="cisSearchInput" class="cis-input" type="search" placeholder="SSH, AAA, 1.2.2…"></div></div>
+          <div id="cisRules" class="cis-rules"></div>
+          <p class="cis-disclaimer">Prototype d'analyse statique de configuration, non certifié CIS. Les règles et leurs verdicts proviennent exclusivement du moteur actuel.</p>
+        </section>
+      </section>
+
+      <footer class="footer"><span>© 2026 SUP'COM × 6NLG · Projet Tutoré 15</span><span>NetAudit Console · Analyse locale et statique <span class="footer-bullet">●</span> Cisco IOS / Juniper Junos</span></footer>
+    </div>
+  </main>
+</div>
+<div class="toast is-hidden" id="toast" role="alert"></div>
+</body>
+</html>

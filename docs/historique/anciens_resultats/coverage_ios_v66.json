@@ -1,0 +1,1071 @@
+[
+  {
+    "file": "data/advanced_cases/bgp_prepending/CE-1.cfg",
+    "hostname": "CE-1A",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 8,
+      "platform_modeled": 8,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 4,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "platform_scope_review_pending"
+  },
+  {
+    "file": "data/advanced_cases/isp_bgp_base/CE-1.cfg",
+    "hostname": "CE-1A",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 8,
+      "platform_modeled": 8,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 4,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "platform_scope_review_pending"
+  },
+  {
+    "file": "data/advanced_cases/l2vpn_vpls/CE-1.cfg",
+    "hostname": "CE-1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 5,
+      "platform_modeled": 5,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 2,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/advanced_cases/l3vpn_rr/CE1A.cfg",
+    "hostname": "CE-1A",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 8,
+      "platform_modeled": 8,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 4,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "platform_scope_review_pending"
+  },
+  {
+    "file": "data/advanced_cases/rsvp_te_ce/CE-1A.cfg",
+    "hostname": "CE-1A",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 8,
+      "platform_modeled": 8,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 4,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "platform_scope_review_pending"
+  },
+  {
+    "file": "data/advanced_cases/segment_routing_ce/CE-1A.cfg",
+    "hostname": "CE-1A",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 8,
+      "platform_modeled": 8,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 4,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "platform_scope_review_pending"
+  },
+  {
+    "file": "data/pybatfish_full/as1border1.cfg",
+    "hostname": "as1border1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as1border2.cfg",
+    "hostname": "as1border2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as1core1.cfg",
+    "hostname": "as1core1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2border1.cfg",
+    "hostname": "as2border1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2border2.cfg",
+    "hostname": "as2border2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2core1.cfg",
+    "hostname": "as2core1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2core2.cfg",
+    "hostname": "as2core2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2dept1.cfg",
+    "hostname": "as2dept1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2dist1.cfg",
+    "hostname": "as2dist1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as2dist2.cfg",
+    "hostname": "as2dist2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as3border1.cfg",
+    "hostname": "as3border1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as3border2.cfg",
+    "hostname": "as3border2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/pybatfish_full/as3core1.cfg",
+    "hostname": "as3core1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_15_classic_syntax_inferred",
+    "format_confidence": "high",
+    "format_evidence": [
+      "ios_version_15",
+      "classic_cli_grammar"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 3,
+      "platform_modeled": 3,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/base-device/R1-base-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 1,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/dhcp-server-relay/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/dhcp-server-relay/R2-config.txt",
+    "hostname": "R2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/hsrp/R1-hsrp.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/hsrp/R2-hsrp.txt",
+    "hostname": "R2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/nat-pat/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/ntp/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/ospf-concepts/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/ospf-concepts/R2-config.txt",
+    "hostname": "R2",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/ospf-single-area/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/packet-forwarding/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/router-on-a-stick/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/router-on-a-stick/SW1-config.txt",
+    "hostname": "SW1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/routing-table/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/snmp-syslog/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 2,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  },
+  {
+    "file": "data/c4geeks/static-routing-ipv4/R1-config.txt",
+    "hostname": "R1",
+    "parser_label": "cisco_ios",
+    "source_format": "ios_like_fragment_inferred",
+    "format_confidence": "medium",
+    "format_evidence": [
+      "classic_cli_fragment"
+    ],
+    "device_os_identity_verified": false,
+    "ios_family_compatible": true,
+    "formatting_recovery_count": 0,
+    "ios_xr_or_advanced_syntax_hints": [],
+    "unparsed_global_count": 0,
+    "unparsed_global_line_numbers": [],
+    "nested_opaque_by_scope": {},
+    "nested_opaque_count": 0,
+    "source_only_counts": {
+      "platform_commands": 0,
+      "platform_modeled": 0,
+      "platform_semantics_unverified": 0,
+      "platform_documented_scope_limited": 0,
+      "platform_unmodeled": 0,
+      "service_commands": 0,
+      "service_timestamps": 0,
+      "system_stanza_commands": 0
+    },
+    "fully_modeled": false,
+    "status": "no_global_nested_or_platform_unknowns"
+  }
+]

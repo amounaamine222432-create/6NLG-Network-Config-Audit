@@ -1,0 +1,17 @@
+{
+  "family": "EIGRP",
+  "facts": [
+    [
+      "hostname",
+      "R-EIGRP-02"
+    ],
+    [
+      "eigrp_as",
+      "2"
+    ],
+    [
+      "eigrp_network",
+      "10.2.0.0|0.0.255.255"
+    ]
+  ]
+}

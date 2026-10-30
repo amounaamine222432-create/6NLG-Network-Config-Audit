@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0.0",
+  "source": {
+    "vendor": "cisco_ios",
+    "parser_schema_version": "6.0",
+    "file": "BGP_03.cfg",
+    "sha256": "9e9a4caf4855f89d8615112cf3cc19d18bc65432a0f546217f8a39890b73ab99"
+  },
+  "device": {
+    "hostname": "R-BGP-03",
+    "platform": {
+      "vendor": "cisco",
+      "family": "ios",
+      "version": "15.2"
+    },
+    "platform_directives": []
+  },
+  "vrfs": [],
+  "interfaces": [],
+  "routing": {
+    "static_routes": [],
+    "ospf": [],
+    "eigrp": [],
+    "key_chains": [],
+    "bgp": [
+      {
+        "local_as": 65003,
+        "router_id": "10.0.0.3",
+        "neighbors": [
+          {
+            "id": "192.0.2.3",
+            "kind": "peer",
+            "peer_group": null,
+            "remote_as": 65103,
+            "remote_as_unparsed": null,
+            "remote_as_inherited_from": null,
+            "session_type_configured": "ebgp",
+            "update_source": null,
+            "description_configured": false,
+            "password_configured": false,
+            "password_inherited_from": null,
+            "password_in_af_unverified": false,
+            "description_source": null,
+            "activated_families": [],
+            "policies": [],
+            "inherited_policy_references": [],
+            "send_community_by_family": {},
+            "advertise_additional_paths": [],
+            "route_reflector_client_families": [],
+            "source": {
+              "line": 5
+            }
+          }
+        ],
+        "log_neighbor_changes": null,
+        "network_statements": [
+          {
+            "prefix": "10.3.0.0/16",
+            "address": "10.3.0.0",
+            "mask": "255.255.0.0",
+            "address_family": null,
+            "source": {
+              "line": 6
+            }
+          }
+        ],
+        "address_families": [],
+        "address_family_features": [],
+        "source": {
+          "line": 3
+        }
+      }
+    ]
+  },
+  "policies": {
+    "acls": [],
+    "prefix_lists": [],
+    "route_maps": [],
+    "community_lists": []
+  },
+  "services": {
+    "nat": {
+      "rules": [],
+      "pools": [],
+      "translation_timers": {}
+    },
+    "dhcp": {
+      "pools": [],
+      "excluded_ranges": []
+    },
+    "vlans": [],
+    "snmp": {
+      "communities": [],
+      "targets": [],
+      "location_configured": null,
+      "contact_configured": null,
+      "groups": [],
+      "users": [],
+      "trap_rules": [],
+      "traps_explicitly_disabled": false
+    },
+    "syslog": {
+      "targets": [],
+      "source_interface": null,
+      "severity": null,
+      "buffered": null
+    },
+    "ntp": {
+      "servers": [],
+      "peers": [],
+      "source_interface": null,
+      "authentication_enabled": null,
+      "authentication_key_count": 0,
+      "trusted_key_count": 0,
+      "master_configured": null,
+      "master_stratum": null,
+      "access_groups": []
+    },
+    "ip_stack": {
+      "icmp_unreachable_rate_limit": null,
+      "tcp_synwait_seconds": null,
+      "source_route_enabled": null
+    },
+    "clock": {
+      "timezone": null,
+      "synchronized": null
+    }
+  },
+  "management": {
+    "http_enabled": null,
+    "https_enabled": null,
+    "ssh_version": null,
+    "terminal_lines": [],
+    "local_accounts": [],
+    "banners": [],
+    "enable_secret_configured": null,
+    "enable_password_configured": null,
+    "aaa_new_model_enabled": null,
+    "aaa_authentication_login": [],
+    "aaa_authentication_enable": [],
+    "aaa_login_privilege_mode": null,
+    "rsa_key_generation_requests": []
+  },
+  "diagnostics": {
+    "unparsed_global_count": 0,
+    "unparsed_global_lines": [],
+    "platform_opaque_count": 0,
+    "platform_directive_count": 0,
+    "platform_modeled_count": 0,
+    "platform_semantics_unverified_count": 0,
+    "platform_scope_limited_count": 0,
+    "formatting_recovery_count": 0,
+    "opaque_sections": [],
+    "source_only_counts": {
+      "cli_wrappers": 1,
+      "timestamps_directives": 0,
+      "other_global_service_directives": 0,
+      "other_system_stanzas": 0,
+      "configuration_metadata": 0,
+      "bgp_community_new_format_configured": null
+    },
+    "notes": [],
+    "status": "modeled_subset"
+  }
+}

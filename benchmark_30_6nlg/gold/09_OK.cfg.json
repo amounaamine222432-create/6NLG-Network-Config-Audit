@@ -1,0 +1,25 @@
+{
+  "facts": [
+    "aaa=true",
+    "banner=motd",
+    "hostname=R-BENCH-OK-09",
+    "interface=GigabitEthernet0/0|198.51.100.37/30",
+    "interface=GigabitEthernet0/1|10.9.0.1/24",
+    "ios=15.2",
+    "login=con 0|authentication default",
+    "login=vty 0 4|authentication default",
+    "login=vty 5 15|authentication default",
+    "ntp_server=192.0.2.30",
+    "route=0.0.0.0/0|198.51.100.38",
+    "snmp_access=RO",
+    "source_route=false",
+    "ssh_version=2",
+    "syslog_buffer=64000",
+    "syslog_host=192.0.2.20",
+    "timeout=con 0|300",
+    "timeout=vty 0 4|300",
+    "timeout=vty 5 15|300",
+    "transport=vty 0 4|ssh",
+    "transport=vty 5 15|ssh"
+  ]
+}

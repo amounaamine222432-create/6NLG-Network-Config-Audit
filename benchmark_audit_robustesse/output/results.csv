@@ -1,0 +1,34 @@
+case,check,control_id,expected,actual,match,reason
+01_multi_eigrp_valid,eigrp_interface_keychain,3.3.1.8,PASS,PASS,True,Deux processus EIGRP disjoints ne doivent pas être croisés.
+01_multi_eigrp_valid,eigrp_interface_md5,3.3.1.9,PASS,PASS,True,Deux processus EIGRP disjoints ne doivent pas être croisés.
+02_multi_eigrp_one_missing_auth,eigrp_interface_keychain,3.3.1.8,FAIL,FAIL,True,Une interface réellement sélectionnée par EIGRP 20 est non protégée.
+02_multi_eigrp_one_missing_auth,eigrp_interface_md5,3.3.1.9,FAIL,FAIL,True,Une interface réellement sélectionnée par EIGRP 20 est non protégée.
+03_acl_wan_undefined,external_inbound_acl,3.2.2,FAIL,FAIL,True,Référence ACL non résolue : ne jamais conclure PASS.
+03_acl_wan_undefined,external_antispoof_acl,3.2.1,FAIL,FAIL,True,Référence ACL non résolue : ne jamais conclure PASS.
+04_acl_wan_not_selected,external_inbound_acl,3.2.2,UNKNOWN,UNKNOWN,True,"Sans désignation explicite de l’interface WAN, aucune preuve de périmètre."
+04_acl_wan_not_selected,external_antispoof_acl,3.2.1,UNKNOWN,UNKNOWN,True,"Sans désignation explicite de l’interface WAN, aucune preuve de périmètre."
+05_acl_wan_early_permit,external_inbound_acl,3.2.2,PASS,PASS,True,Une règle permit any any avant les deny annule l’anti-spoofing.
+05_acl_wan_early_permit,external_antispoof_acl,3.2.1,FAIL,FAIL,True,Une règle permit any any avant les deny annule l’anti-spoofing.
+06_acl_wan_after_deny,external_inbound_acl,3.2.2,PASS,PASS,True,"Les refus arrivent avant le permis, mais la politique bloque tout trafic ; contrôle fonctionnel séparé requis."
+06_acl_wan_after_deny,external_antispoof_acl,3.2.1,PASS,PASS,True,"Les refus arrivent avant le permis, mais la politique bloque tout trafic ; contrôle fonctionnel séparé requis."
+07_vty_two_ranges_one_telnet,vty_ssh_only,1.2.2,FAIL,FAIL,True,Une seule plage VTY exposant telnet suffit à faire FAIL.
+08_vty_acl_one_broad,vty_access_class,1.2.5,FAIL,FAIL,True,Une plage VTY avec ACL permissive ne peut pas être masquée par une autre restrictive.
+08_vty_acl_one_broad,vty_restricting_acl,1.2.4,FAIL,FAIL,True,Une plage VTY avec ACL permissive ne peut pas être masquée par une autre restrictive.
+09_vty_acl_missing_reference,vty_access_class,1.2.5,FAIL,FAIL,True,Référence ACL inconnue sur une des deux plages.
+10_aaa_none_on_one_range,aaa_line_vty,1.1.6,FAIL,FAIL,True,Une plage VTY désactive la connexion malgré l’autre plage protégée.
+11_ntp_good_references,ntp_server_keys,2.3.1.4,PASS,PASS,True,Chaque serveur référence une clé définie et trusted.
+11_ntp_good_references,ntp_auth_keys,2.3.1.2,PASS,PASS,True,Chaque serveur référence une clé définie et trusted.
+11_ntp_good_references,ntp_trusted_keys,2.3.1.3,PASS,PASS,True,Chaque serveur référence une clé définie et trusted.
+11_ntp_good_references,ntp_servers,2.3.2,PASS,PASS,True,Chaque serveur référence une clé définie et trusted.
+12_ntp_one_untrusted,ntp_server_keys,2.3.1.4,FAIL,FAIL,True,Une clé définie mais non déclarée trusted ne valide pas le serveur.
+13_ntp_untrusted_partial,ntp_server_keys,2.3.1.4,UNKNOWN,UNKNOWN,True,"Sans hypothèse de complétude, la relation trusted est inconnue."
+14_ospf_two_areas_one_missing,ospf_area_md5,3.3.2.1,FAIL,FAIL,True,Une zone sans authentication message-digest; clés interface néanmoins définies.
+14_ospf_two_areas_one_missing,ospf_interface_md5,3.3.2.2,PASS,PASS,True,Une zone sans authentication message-digest; clés interface néanmoins définies.
+15_ospf_one_missing_interface_key,ospf_area_md5,3.3.2.1,PASS,PASS,True,"La zone OSPF est protégée, mais une interface manque de clé MD5."
+15_ospf_one_missing_interface_key,ospf_interface_md5,3.3.2.2,FAIL,FAIL,True,"La zone OSPF est protégée, mais une interface manque de clé MD5."
+16_bgp_one_peer_unprotected,bgp_neighbor_password,3.3.4.1,FAIL,FAIL,True,Un voisin BGP sans password invalide le contrôle global.
+17_bgp_two_peers_protected,bgp_neighbor_password,3.3.4.1,PASS,PASS,True,Les deux voisins BGP possèdent explicitement un password.
+18_acl_wan_missing_binding,external_inbound_acl,3.2.2,FAIL,FAIL,True,ACL définie mais non appliquée à l’interface externe.
+19_vty_acl_defined_but_unbound,vty_restricting_acl,1.2.4,UNKNOWN,UNKNOWN,True,Une ACL existante mais sans liaison aux VTY ne prouve pas le contrôle.
+19_vty_acl_defined_but_unbound,vty_access_class,1.2.5,UNKNOWN,UNKNOWN,True,Une ACL existante mais sans liaison aux VTY ne prouve pas le contrôle.
+20_bgp_incomplete_neighbor,bgp_neighbor_password,3.3.4.1,UNKNOWN,UNKNOWN,True,Un mot de passe absent de l’extrait ne signifie pas nécessairement absent du routeur.

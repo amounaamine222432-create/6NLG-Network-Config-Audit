@@ -1,0 +1,23 @@
+set system host-name JN-SRX-SEC-02
+set interfaces ge-0/0/0 unit 0 family inet address 198.51.100.2/30
+set interfaces ge-0/0/1 unit 0 family inet address 192.168.20.1/24
+set interfaces lo0 unit 0 family inet address 10.255.2.1/32
+set routing-options static route 0.0.0.0/0 next-hop 198.51.100.1
+set security zones security-zone TRUST interfaces ge-0/0/1.0
+set security zones security-zone UNTRUST interfaces ge-0/0/0.0
+set security zones security-zone TRUST host-inbound-traffic system-services ping
+set security zones security-zone TRUST host-inbound-traffic system-services ssh
+set security policies from-zone TRUST to-zone UNTRUST policy ALLOW-WEB match source-address any
+set security policies from-zone TRUST to-zone UNTRUST policy ALLOW-WEB match destination-address any
+set security policies from-zone TRUST to-zone UNTRUST policy ALLOW-WEB match application junos-http
+set security policies from-zone TRUST to-zone UNTRUST policy ALLOW-WEB match application junos-https
+set security policies from-zone TRUST to-zone UNTRUST policy ALLOW-WEB then permit
+set security policies from-zone UNTRUST to-zone TRUST policy BLOCK-INBOUND match source-address any
+set security policies from-zone UNTRUST to-zone TRUST policy BLOCK-INBOUND match destination-address any
+set security policies from-zone UNTRUST to-zone TRUST policy BLOCK-INBOUND match application any
+set security policies from-zone UNTRUST to-zone TRUST policy BLOCK-INBOUND then deny
+set security nat source rule-set NAT-OUT from zone TRUST
+set security nat source rule-set NAT-OUT to zone UNTRUST
+set security nat source rule-set NAT-OUT rule LAN-TO-INTERNET match source-address 192.168.20.0/24
+set security nat source rule-set NAT-OUT rule LAN-TO-INTERNET match destination-address 0.0.0.0/0
+set security nat source rule-set NAT-OUT rule LAN-TO-INTERNET then source-nat interface

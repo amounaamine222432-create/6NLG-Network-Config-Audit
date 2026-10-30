@@ -1,0 +1,17 @@
+{
+  "family": "ACL",
+  "facts": [
+    [
+      "hostname",
+      "R-ACL-01"
+    ],
+    [
+      "acl_name",
+      "FILTER_1"
+    ],
+    [
+      "acl_entries",
+      "2"
+    ]
+  ]
+}

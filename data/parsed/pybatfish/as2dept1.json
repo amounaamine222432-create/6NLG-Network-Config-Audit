@@ -1,0 +1,509 @@
+{
+  "vendor": "cisco_ios",
+  "hostname": "as2dept1",
+  "interfaces": [
+    {
+      "name": "Loopback0",
+      "source_line": 51,
+      "ipv4_addresses": [
+        {
+          "address": "2.1.1.2",
+          "mask": "255.255.255.255",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": []
+    },
+    {
+      "name": "Ethernet0/0",
+      "source_line": 54,
+      "ipv4_addresses": [],
+      "no_ip_address": true,
+      "administrative_command": "shutdown",
+      "other_commands": [
+        "duplex auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "source_line": 59,
+      "ipv4_addresses": [
+        {
+          "address": "2.34.101.4",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "media-type gbic",
+        "speed 1000",
+        "duplex full",
+        "negotiation auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0",
+      "source_line": 66,
+      "ipv4_addresses": [
+        {
+          "address": "2.34.201.4",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "negotiation auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet2/0",
+      "source_line": 70,
+      "ipv4_addresses": [
+        {
+          "address": "2.128.0.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "ip access-group RESTRICT_HOST_TRAFFIC_IN in",
+        "negotiation auto"
+      ]
+    },
+    {
+      "name": "GigabitEthernet3/0",
+      "source_line": 75,
+      "ipv4_addresses": [
+        {
+          "address": "2.128.1.1",
+          "mask": "255.255.255.0",
+          "options": []
+        }
+      ],
+      "no_ip_address": false,
+      "administrative_command": null,
+      "other_commands": [
+        "ip access-group RESTRICT_HOST_TRAFFIC_IN in",
+        "negotiation auto"
+      ]
+    }
+  ],
+  "ospf_processes": [],
+  "static_routes": [],
+  "bgp_processes": [
+    {
+      "local_as": "65001",
+      "source_line": 80,
+      "router_id": "2.1.4.1",
+      "neighbors": [
+        {
+          "id": "as2",
+          "source_line": 83,
+          "is_peer_group": true,
+          "peer_group": null,
+          "remote_as": "2",
+          "update_source": null,
+          "activated_families": [],
+          "route_maps": [
+            {
+              "name": "as2_to_dept",
+              "direction": "in",
+              "address_family": "ipv4",
+              "source_line": 95
+            },
+            {
+              "name": "dept_to_as2",
+              "direction": "out",
+              "address_family": "ipv4",
+              "source_line": 96
+            }
+          ],
+          "global_commands": [
+            "peer-group",
+            "remote-as 2"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "send-community",
+              "route-map as2_to_dept in",
+              "route-map dept_to_as2 out"
+            ]
+          }
+        },
+        {
+          "id": "2.34.101.3",
+          "source_line": 85,
+          "is_peer_group": false,
+          "peer_group": "as2",
+          "remote_as": null,
+          "update_source": null,
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group as2"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate"
+            ]
+          }
+        },
+        {
+          "id": "2.34.201.3",
+          "source_line": 86,
+          "is_peer_group": false,
+          "peer_group": "as2",
+          "remote_as": null,
+          "update_source": null,
+          "activated_families": [
+            "ipv4"
+          ],
+          "route_maps": [],
+          "global_commands": [
+            "peer-group as2"
+          ],
+          "address_family_commands": {
+            "ipv4": [
+              "activate"
+            ]
+          }
+        }
+      ],
+      "network_statements": [
+        {
+          "prefix": "2.128.0.0",
+          "mask": "255.255.255.0",
+          "address_family": "ipv4",
+          "source_line": 92,
+          "raw": "network 2.128.0.0 mask 255.255.255.0"
+        },
+        {
+          "prefix": "2.128.1.0",
+          "mask": "255.255.255.0",
+          "address_family": "ipv4",
+          "source_line": 93,
+          "raw": "network 2.128.1.0 mask 255.255.255.0"
+        }
+      ],
+      "address_families": [
+        {
+          "name": "ipv4",
+          "source_line": 88,
+          "other_commands": [
+            "bgp dampening",
+            "bgp additional-paths select all",
+            "bgp additional-paths send receive",
+            "maximum-paths eibgp 5"
+          ]
+        }
+      ],
+      "other_commands": [
+        "bgp log-neighbor-changes"
+      ]
+    }
+  ],
+  "access_lists": [
+    {
+      "name": "RESTRICT_HOST_TRAFFIC_IN",
+      "acl_type": "extended",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip 2.128.0.0 0.0.255.255 any",
+          "source_line": 111,
+          "raw": "permit ip 2.128.0.0 0.0.255.255 any"
+        },
+        {
+          "sequence": null,
+          "action": "deny",
+          "body": "ip any any",
+          "source_line": 112,
+          "raw": "deny   ip any any"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "icmp any any",
+          "source_line": 113,
+          "raw": "permit icmp any any"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "RESTRICT_HOST_TRAFFIC_OUT",
+      "acl_type": "extended",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip any 2.128.0.0 0.0.255.255",
+          "source_line": 115,
+          "raw": "permit ip any 2.128.0.0 0.0.255.255"
+        },
+        {
+          "sequence": null,
+          "action": "deny",
+          "body": "ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255",
+          "source_line": 116,
+          "raw": "deny   ip 1.128.0.0 0.0.255.255 2.128.0.0 0.0.255.255"
+        },
+        {
+          "sequence": null,
+          "action": "deny",
+          "body": "ip any any",
+          "source_line": 117,
+          "raw": "deny   ip any any"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "102",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 2.128.0.0 host 255.255.255.0",
+          "source_line": 119,
+          "raw": "permit ip host 2.128.0.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 2.128.1.0 host 255.255.255.0",
+          "source_line": 120,
+          "raw": "permit ip host 2.128.1.0 host 255.255.255.0"
+        }
+      ],
+      "other_commands": []
+    },
+    {
+      "name": "105",
+      "acl_type": "numbered",
+      "entries": [
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 1.0.1.0 host 255.255.255.0",
+          "source_line": 121,
+          "raw": "permit ip host 1.0.1.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 1.0.2.0 host 255.255.255.0",
+          "source_line": 122,
+          "raw": "permit ip host 1.0.2.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 3.0.1.0 host 255.255.255.0",
+          "source_line": 123,
+          "raw": "permit ip host 3.0.1.0 host 255.255.255.0"
+        },
+        {
+          "sequence": null,
+          "action": "permit",
+          "body": "ip host 3.0.2.0 host 255.255.255.0",
+          "source_line": 124,
+          "raw": "permit ip host 3.0.2.0 host 255.255.255.0"
+        }
+      ],
+      "other_commands": []
+    }
+  ],
+  "prefix_lists": [],
+  "route_maps": [
+    {
+      "name": "dept_to_as2",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "100",
+          "source_line": 126,
+          "match_commands": [
+            "match ip address 102"
+          ],
+          "set_commands": [
+            "set metric 50",
+            "set community 65001:2 additive"
+          ],
+          "other_commands": []
+        }
+      ]
+    },
+    {
+      "name": "as2_to_dept",
+      "entries": [
+        {
+          "action": "permit",
+          "sequence": "100",
+          "source_line": 131,
+          "match_commands": [
+            "match community as2_community"
+          ],
+          "set_commands": [
+            "set local-preference 350"
+          ],
+          "other_commands": []
+        }
+      ]
+    }
+  ],
+  "community_lists": [
+    {
+      "name": "as2_community",
+      "community_type": "expanded",
+      "entries": [
+        {
+          "raw": "ip community-list expanded as2_community permit _2:",
+          "definition": "permit _2:",
+          "source_line": 105
+        }
+      ]
+    }
+  ],
+  "wrapper_commands": [
+    {
+      "line": 154,
+      "command": "end"
+    }
+  ],
+  "unparsed_lines": [
+    {
+      "line": 3,
+      "command": "version 15.2"
+    },
+    {
+      "line": 4,
+      "command": "service timestamps debug datetime msec"
+    },
+    {
+      "line": 5,
+      "command": "service timestamps log datetime msec"
+    },
+    {
+      "line": 9,
+      "command": "boot-start-marker"
+    },
+    {
+      "line": 10,
+      "command": "boot-end-marker"
+    },
+    {
+      "line": 14,
+      "command": "no aaa new-model"
+    },
+    {
+      "line": 15,
+      "command": "no ip icmp rate-limit unreachable"
+    },
+    {
+      "line": 16,
+      "command": "ip cef"
+    },
+    {
+      "line": 23,
+      "command": "no ip domain lookup"
+    },
+    {
+      "line": 24,
+      "command": "ip domain name lab.local"
+    },
+    {
+      "line": 25,
+      "command": "no ipv6 cef"
+    },
+    {
+      "line": 28,
+      "command": "multilink bundle-name authenticated"
+    },
+    {
+      "line": 38,
+      "command": "ip tcp synwait-time 5"
+    },
+    {
+      "line": 102,
+      "command": "ip forward-protocol nd"
+    },
+    {
+      "line": 104,
+      "command": "ip bgp-community new-format"
+    },
+    {
+      "line": 107,
+      "command": "no ip http server"
+    },
+    {
+      "line": 108,
+      "command": "no ip http secure-server"
+    },
+    {
+      "line": 137,
+      "command": "control-plane"
+    },
+    {
+      "line": 140,
+      "command": "line con 0"
+    },
+    {
+      "line": 141,
+      "command": "exec-timeout 0 0"
+    },
+    {
+      "line": 142,
+      "command": "privilege level 15"
+    },
+    {
+      "line": 143,
+      "command": "logging synchronous"
+    },
+    {
+      "line": 144,
+      "command": "stopbits 1"
+    },
+    {
+      "line": 145,
+      "command": "line aux 0"
+    },
+    {
+      "line": 146,
+      "command": "exec-timeout 0 0"
+    },
+    {
+      "line": 147,
+      "command": "privilege level 15"
+    },
+    {
+      "line": 148,
+      "command": "logging synchronous"
+    },
+    {
+      "line": 149,
+      "command": "stopbits 1"
+    },
+    {
+      "line": 150,
+      "command": "line vty 0 4"
+    },
+    {
+      "line": 151,
+      "command": "login"
+    }
+  ],
+  "source_file": "as2dept1.cfg"
+}

@@ -1,0 +1,1364 @@
+{
+  "source_file": "01_R-FINAL-HARDENED.cfg",
+  "source_sha256": "0b2c8b7370ea138848c87f8ed3083afc66e376fe340ae60890b3355065819146",
+  "hostname": "R-FINAL-HARDENED",
+  "ios_version": "15.2",
+  "benchmark": {
+    "family": "Cisco IOS 15",
+    "version": "4.1.1",
+    "reference_pdf_sha256": "7a54074e91143d1ad6ecea3964d1ed4948775d01a863cfb53ab54d1facd4ed34",
+    "scope": "39 contrôles statiques expérimentaux (phase 5), certaines vérifications nécessitent un contexte WAN ou des commandes show",
+    "note": "Sous-ensemble du benchmark archivé ; contrôles de laboratoire, sans certification CIS."
+  },
+  "selected_profile": "L2",
+  "complete_config_assumed": false,
+  "external_interfaces_designated": [
+    "GigabitEthernet0/0"
+  ],
+  "benchmark_conformance_certified": false,
+  "implemented_rule_count": 39,
+  "counts": {
+    "PASS": 30,
+    "FAIL": 0,
+    "UNKNOWN": 9,
+    "NOT_SELECTED": 0,
+    "NOT_APPLICABLE": 0,
+    "NOT_EVALUATED": 0
+  },
+  "findings": [
+    {
+      "rule_id": "CIS-IOS15-1.1.1",
+      "cis_control_id": "1.1.1",
+      "pdf_page": 13,
+      "profile": "L1",
+      "title": "Activer AAA new-model",
+      "status": "PASS",
+      "evidence": {
+        "ir_path": "management.aaa_new_model_enabled",
+        "observed": true,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.2.2",
+      "cis_control_id": "1.2.2",
+      "pdf_page": 37,
+      "profile": "L1",
+      "title": "Limiter les accès VTY au protocole SSH",
+      "status": "PASS",
+      "evidence": {
+        "vty_lines": [
+          {
+            "line_id": "vty 0 4",
+            "transport_input": [
+              "ssh"
+            ],
+            "source_line": 92
+          },
+          {
+            "line_id": "vty 5 15",
+            "transport_input": [
+              "ssh"
+            ],
+            "source_line": 97
+          }
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.2.7",
+      "cis_control_id": "1.2.7",
+      "pdf_page": 47,
+      "profile": "L1",
+      "title": "Limiter la temporisation EXEC de la console à dix minutes",
+      "status": "PASS",
+      "evidence": {
+        "scope": "con ",
+        "max_allowed_seconds": 600,
+        "lines": [
+          {
+            "line_id": "con 0",
+            "seconds": 300,
+            "source_line": 89
+          }
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.2.9",
+      "cis_control_id": "1.2.9",
+      "pdf_page": 51,
+      "profile": "L1",
+      "title": "Limiter la temporisation EXEC VTY à dix minutes",
+      "status": "PASS",
+      "evidence": {
+        "scope": "vty ",
+        "max_allowed_seconds": 600,
+        "lines": [
+          {
+            "line_id": "vty 0 4",
+            "seconds": 300,
+            "source_line": 92
+          },
+          {
+            "line_id": "vty 5 15",
+            "seconds": 300,
+            "source_line": 97
+          }
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.3.1",
+      "cis_control_id": "1.3.1",
+      "pdf_page": 57,
+      "profile": "L1",
+      "title": "Définir une bannière EXEC",
+      "status": "PASS",
+      "evidence": {
+        "exec_banner_configured": true,
+        "source_lines": [
+          88
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.3.2",
+      "cis_control_id": "1.3.2",
+      "pdf_page": 60,
+      "profile": "L1",
+      "title": "Définir une bannière LOGIN",
+      "status": "PASS",
+      "evidence": {
+        "banner_kind": "login",
+        "source_lines": [
+          87
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.3.3",
+      "cis_control_id": "1.3.3",
+      "pdf_page": 62,
+      "profile": "L1",
+      "title": "Définir une bannière MOTD",
+      "status": "PASS",
+      "evidence": {
+        "banner_kind": "motd",
+        "source_lines": [
+          86
+        ],
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.4.1",
+      "cis_control_id": "1.4.1",
+      "pdf_page": 64,
+      "profile": "L1",
+      "title": "Configurer enable secret",
+      "status": "PASS",
+      "evidence": {
+        "ir_path": "management.enable_secret_configured",
+        "observed": true,
+        "expected": true,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.4.3",
+      "cis_control_id": "1.4.3",
+      "pdf_page": 68,
+      "profile": "L1",
+      "title": "Utiliser username secret pour les comptes locaux",
+      "status": "PASS",
+      "evidence": {
+        "local_user_count": 1,
+        "secret_count": 1,
+        "password_count": 0,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.5.4",
+      "cis_control_id": "1.5.4",
+      "pdf_page": 76,
+      "profile": "L1",
+      "title": "Éviter les communautés SNMP en lecture-écriture RW",
+      "status": "UNKNOWN",
+      "evidence": {
+        "community_count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.5.9",
+      "cis_control_id": "1.5.9",
+      "pdf_page": 86,
+      "profile": "L2",
+      "title": "Utiliser priv pour les groupes SNMPv3",
+      "status": "PASS",
+      "evidence": {
+        "snmp_v3_group_count": 1,
+        "priv_group_count": 1,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.1.1.2",
+      "cis_control_id": "2.1.1.2",
+      "pdf_page": 101,
+      "profile": "L1",
+      "title": "Utiliser SSH version 2",
+      "status": "PASS",
+      "evidence": {
+        "ssh_version": 2,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.2.2",
+      "cis_control_id": "2.2.2",
+      "pdf_page": 119,
+      "profile": "L1",
+      "title": "Activer la journalisation tamponnée avec une taille définie",
+      "status": "PASS",
+      "evidence": {
+        "enabled": true,
+        "buffer_size_bytes": 64000,
+        "recommended_size_bytes": 64000,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.2.4",
+      "cis_control_id": "2.2.4",
+      "pdf_page": 123,
+      "profile": "L1",
+      "title": "Définir un collecteur Syslog distant",
+      "status": "PASS",
+      "evidence": {
+        "configured_targets": 1,
+        "ip_address_targets": 1,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.2.5",
+      "cis_control_id": "2.2.5",
+      "pdf_page": 125,
+      "profile": "L1",
+      "title": "Utiliser le niveau informational pour les journaux distants",
+      "status": "PASS",
+      "evidence": {
+        "trap_severity": "informational",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.2.7",
+      "cis_control_id": "2.2.7",
+      "pdf_page": 129,
+      "profile": "L1",
+      "title": "Définir une interface source pour Syslog",
+      "status": "PASS",
+      "evidence": {
+        "source_interface": "GigabitEthernet0/1",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.3.1.1",
+      "cis_control_id": "2.3.1.1",
+      "pdf_page": 132,
+      "profile": "L2",
+      "title": "Activer l'authentification NTP",
+      "status": "UNKNOWN",
+      "evidence": {
+        "ir_path": "services.ntp.authentication_enabled",
+        "observed": null,
+        "expected": true,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.3.1.2",
+      "cis_control_id": "2.3.1.2",
+      "pdf_page": 134,
+      "profile": "L2",
+      "title": "Configurer des clés d'authentification NTP",
+      "status": "UNKNOWN",
+      "evidence": {
+        "ir_path": "services.ntp.authentication_key_count",
+        "count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.3.1.3",
+      "cis_control_id": "2.3.1.3",
+      "pdf_page": 136,
+      "profile": "L2",
+      "title": "Définir les clés NTP de confiance",
+      "status": "UNKNOWN",
+      "evidence": {
+        "ir_path": "services.ntp.trusted_key_count",
+        "count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.3.1.4",
+      "cis_control_id": "2.3.1.4",
+      "pdf_page": 138,
+      "profile": "L2",
+      "title": "Associer une clé aux serveurs NTP",
+      "status": "UNKNOWN",
+      "evidence": {
+        "ntp_server_count": 1,
+        "keyed_server_count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.3.2",
+      "cis_control_id": "2.3.2",
+      "pdf_page": 140,
+      "profile": "L1",
+      "title": "Définir un serveur NTP",
+      "status": "PASS",
+      "evidence": {
+        "ntp_server_count": 1,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-2.4.3",
+      "cis_control_id": "2.4.3",
+      "pdf_page": 146,
+      "profile": "L2",
+      "title": "Utiliser une interface Loopback comme source NTP",
+      "status": "UNKNOWN",
+      "evidence": {
+        "source_is_loopback": null,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.1.1",
+      "cis_control_id": "3.1.1",
+      "pdf_page": 151,
+      "profile": "L1",
+      "title": "Désactiver le routage par la source IP",
+      "status": "PASS",
+      "evidence": {
+        "ir_path": "services.ip_stack.source_route_enabled",
+        "observed": false,
+        "expected": false,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.1.2",
+      "cis_control_id": "3.1.2",
+      "pdf_page": 153,
+      "profile": "L2",
+      "title": "Désactiver Proxy ARP sur les interfaces",
+      "status": "PASS",
+      "evidence": {
+        "interface_count": 3,
+        "proxy_arp_enabled_count": 0,
+        "proxy_arp_disabled_count": 3,
+        "requires_live_confirmation": false,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.1.3",
+      "cis_control_id": "3.1.3",
+      "pdf_page": 155,
+      "profile": "L2",
+      "title": "Éviter les interfaces Tunnel",
+      "status": "UNKNOWN",
+      "evidence": {
+        "tunnel_count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.3.4.1",
+      "cis_control_id": "3.3.4.1",
+      "pdf_page": 196,
+      "profile": "L2",
+      "title": "Configurer l'authentification des voisins BGP",
+      "status": "UNKNOWN",
+      "evidence": {
+        "bgp_peer_count": 1,
+        "protected_peer_count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.1.2",
+      "cis_control_id": "1.1.2",
+      "pdf_page": 15,
+      "profile": "L1",
+      "title": "Définir aaa authentication login default",
+      "status": "PASS",
+      "evidence": {
+        "list_name": "default",
+        "method_count": 1,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.1.3",
+      "cis_control_id": "1.1.3",
+      "pdf_page": 17,
+      "profile": "L1",
+      "title": "Définir aaa authentication enable default",
+      "status": "PASS",
+      "evidence": {
+        "list_name": "default",
+        "method_count": 1,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.1.4",
+      "cis_control_id": "1.1.4",
+      "pdf_page": 19,
+      "profile": "L1",
+      "title": "Définir login authentication sur la console",
+      "status": "PASS",
+      "evidence": {
+        "scope": "con ",
+        "line_count": 1,
+        "verified_count": 1,
+        "failed_count": 0,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.1.5",
+      "cis_control_id": "1.1.5",
+      "pdf_page": 21,
+      "profile": "L1",
+      "title": "Définir login authentication sur les lignes TTY",
+      "status": "UNKNOWN",
+      "evidence": {
+        "scope": "tty ",
+        "line_count": 0,
+        "assessment_basis": "insufficient_evidence"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.1.6",
+      "cis_control_id": "1.1.6",
+      "pdf_page": 23,
+      "profile": "L1",
+      "title": "Définir login authentication sur les lignes VTY",
+      "status": "PASS",
+      "evidence": {
+        "scope": "vty ",
+        "line_count": 2,
+        "verified_count": 2,
+        "failed_count": 0,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.2.4",
+      "cis_control_id": "1.2.4",
+      "pdf_page": 41,
+      "profile": "L1",
+      "title": "Créer une ACL restrictive pour la gestion VTY",
+      "status": "PASS",
+      "evidence": {
+        "vty_line_count": 2,
+        "restricted_count": 2,
+        "unresolved_count": 0,
+        "overly_broad_count": 0,
+        "validation_scope": "vty_input_acl",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-1.2.5",
+      "cis_control_id": "1.2.5",
+      "pdf_page": 43,
+      "profile": "L1",
+      "title": "Appliquer access-class in aux lignes VTY",
+      "status": "PASS",
+      "evidence": {
+        "vty_line_count": 2,
+        "restricted_count": 2,
+        "unresolved_count": 0,
+        "overly_broad_count": 0,
+        "validation_scope": "vty_input_acl",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.2.1",
+      "cis_control_id": "3.2.1",
+      "pdf_page": 159,
+      "profile": "L2",
+      "title": "Filtrer les adresses sources privées ou réservées sur l'interface externe",
+      "status": "PASS",
+      "evidence": {
+        "required_network_count": 9,
+        "verified_deny_network_count": 9,
+        "external_designation": "user_supplied",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.2.2",
+      "cis_control_id": "3.2.2",
+      "pdf_page": 161,
+      "profile": "L2",
+      "title": "Appliquer une ACL entrante à l'interface externe",
+      "status": "PASS",
+      "evidence": {
+        "external_interface_count": 1,
+        "inbound_acl_count": 1,
+        "external_designation": "user_supplied",
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.3.1.8",
+      "cis_control_id": "3.3.1.8",
+      "pdf_page": 178,
+      "profile": "L2",
+      "title": "Activer ip authentication key-chain eigrp",
+      "status": "PASS",
+      "evidence": {
+        "configured_authentication_interfaces": 1,
+        "invalid_count": 0,
+        "requires_live_interface_membership_confirmation": true,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.3.1.9",
+      "cis_control_id": "3.3.1.9",
+      "pdf_page": 180,
+      "profile": "L2",
+      "title": "Activer ip authentication mode eigrp md5",
+      "status": "PASS",
+      "evidence": {
+        "configured_authentication_interfaces": 1,
+        "invalid_count": 0,
+        "requires_live_interface_membership_confirmation": true,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.3.2.1",
+      "cis_control_id": "3.3.2.1",
+      "pdf_page": 182,
+      "profile": "L2",
+      "title": "Configurer area authentication message-digest pour OSPF",
+      "status": "PASS",
+      "evidence": {
+        "ospf_area_count": 1,
+        "area_md5_count": 1,
+        "processes_without_network_selectors": 0,
+        "inferred_absence": false,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    },
+    {
+      "rule_id": "CIS-IOS15-3.3.2.2",
+      "cis_control_id": "3.3.2.2",
+      "pdf_page": 184,
+      "profile": "L2",
+      "title": "Configurer ip ospf message-digest-key md5",
+      "status": "PASS",
+      "evidence": {
+        "configured_ospf_interface_count": 1,
+        "missing_key_count": 0,
+        "wrong_mode_count": 0,
+        "inferred_absence": false,
+        "assessment_basis": "explicit_ir"
+      },
+      "remediation": null
+    }
+  ],
+  "parsing_normalization_inventory": {
+    "part_count": 59,
+    "group_count": 11,
+    "counts_by_status": {
+      "AUDITABLE_NOT_OBSERVED": 3,
+      "AUDITED": 20,
+      "IR_MAPPED": 13,
+      "NOT_PRESENT": 22,
+      "SOURCE_ONLY": 1
+    },
+    "audited_part_count": 23,
+    "mapped_cis_rule_count": 39,
+    "unparsed_global_count": 0,
+    "opaque_command_count": 0,
+    "opaque_scopes": [],
+    "unaccounted_parser_roots": [],
+    "warnings": [],
+    "parts": [
+      {
+        "group": "identite",
+        "part": "hostname",
+        "parser_path": "hostname",
+        "ir_path": "device.hostname",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "identite",
+        "part": "version_ios",
+        "parser_path": "global_settings.ios_version",
+        "ir_path": "device.platform.version",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "plateforme",
+        "part": "directives_plateforme",
+        "parser_path": "platform_commands",
+        "ir_path": "device.platform_directives",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "reseau",
+        "part": "vrf",
+        "parser_path": "vrfs",
+        "ir_path": "vrfs",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "reseau",
+        "part": "interfaces",
+        "parser_path": "interfaces",
+        "ir_path": "interfaces",
+        "parser_count": 3,
+        "ir_count": 3,
+        "cis_control_id": "3.1.2",
+        "cis_control_ids": [
+          "3.1.2",
+          "3.1.3",
+          "3.2.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "reseau",
+        "part": "vlan",
+        "parser_path": "vlans",
+        "ir_path": "services.vlans",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "routage",
+        "part": "routes_statiques",
+        "parser_path": "static_routes",
+        "ir_path": "routing.static_routes",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "routage",
+        "part": "ospf",
+        "parser_path": "ospf_processes",
+        "ir_path": "routing.ospf",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "3.3.2.1",
+        "cis_control_ids": [
+          "3.3.2.1",
+          "3.3.2.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "routage",
+        "part": "eigrp",
+        "parser_path": "eigrp_processes",
+        "ir_path": "routing.eigrp",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "3.3.1.8",
+        "cis_control_ids": [
+          "3.3.1.8",
+          "3.3.1.9"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "routage",
+        "part": "chaines_cles",
+        "parser_path": "key_chains",
+        "ir_path": "routing.key_chains",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "routage",
+        "part": "bgp",
+        "parser_path": "bgp_processes",
+        "ir_path": "routing.bgp",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "3.3.4.1",
+        "cis_control_ids": [
+          "3.3.4.1"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "politiques",
+        "part": "acl",
+        "parser_path": "access_lists",
+        "ir_path": "policies.acls",
+        "parser_count": 2,
+        "ir_count": 2,
+        "cis_control_id": "1.2.4",
+        "cis_control_ids": [
+          "1.2.4",
+          "3.2.1"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "politiques",
+        "part": "prefix_lists",
+        "parser_path": "prefix_lists",
+        "ir_path": "policies.prefix_lists",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "politiques",
+        "part": "route_maps",
+        "parser_path": "route_maps",
+        "ir_path": "policies.route_maps",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "politiques",
+        "part": "community_lists",
+        "parser_path": "community_lists",
+        "ir_path": "policies.community_lists",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "services",
+        "part": "nat",
+        "parser_path": "nat_rules",
+        "ir_path": "services.nat.rules",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "services",
+        "part": "nat_pools",
+        "parser_path": "nat_pools",
+        "ir_path": "services.nat.pools",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "services",
+        "part": "nat_timers",
+        "parser_path": "nat_translation_settings",
+        "ir_path": "services.nat.translation_timers",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "services",
+        "part": "dhcp_pools",
+        "parser_path": "dhcp_pools",
+        "ir_path": "services.dhcp.pools",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "services",
+        "part": "dhcp_exclusions",
+        "parser_path": "dhcp_excluded_addresses",
+        "ir_path": "services.dhcp.excluded_ranges",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "supervision",
+        "part": "snmp_communities",
+        "parser_path": "snmp.communities",
+        "ir_path": "services.snmp.communities",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": "1.5.4",
+        "cis_control_ids": [
+          "1.5.4"
+        ],
+        "status": "AUDITABLE_NOT_OBSERVED"
+      },
+      {
+        "group": "supervision",
+        "part": "snmp_groups",
+        "parser_path": "snmp.groups",
+        "ir_path": "services.snmp.groups",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.5.9",
+        "cis_control_ids": [
+          "1.5.9"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "supervision",
+        "part": "snmp_users",
+        "parser_path": "snmp.users",
+        "ir_path": "services.snmp.users",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "supervision",
+        "part": "snmp_targets",
+        "parser_path": "snmp.hosts",
+        "ir_path": "services.snmp.targets",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "supervision",
+        "part": "snmp_traps",
+        "parser_path": "snmp.trap_rules",
+        "ir_path": "services.snmp.trap_rules",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "supervision",
+        "part": "syslog_targets",
+        "parser_path": "syslog.hosts",
+        "ir_path": "services.syslog.targets",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "2.2.4",
+        "cis_control_ids": [
+          "2.2.4"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "supervision",
+        "part": "syslog_source",
+        "parser_path": "syslog.source_interface",
+        "ir_path": "services.syslog.source_interface",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "2.2.7",
+        "cis_control_ids": [
+          "2.2.7"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "supervision",
+        "part": "syslog_buffer",
+        "parser_path": "syslog.buffered",
+        "ir_path": "services.syslog.buffered",
+        "parser_count": 5,
+        "ir_count": 5,
+        "cis_control_id": "2.2.2",
+        "cis_control_ids": [
+          "2.2.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "supervision",
+        "part": "syslog_severity",
+        "parser_path": "syslog.trap_level",
+        "ir_path": "services.syslog.severity",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "2.2.5",
+        "cis_control_ids": [
+          "2.2.5"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "temps",
+        "part": "ntp_servers",
+        "parser_path": "ntp.servers",
+        "ir_path": "services.ntp.servers",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "2.3.1.4",
+        "cis_control_ids": [
+          "2.3.1.4",
+          "2.3.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "temps",
+        "part": "ntp_peers",
+        "parser_path": "ntp.peers",
+        "ir_path": "services.ntp.peers",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "temps",
+        "part": "ntp_authentication",
+        "parser_path": "ntp.authentication_enabled",
+        "ir_path": "services.ntp.authentication_enabled",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": "2.3.1.1",
+        "cis_control_ids": [
+          "2.3.1.1",
+          "2.3.1.2",
+          "2.3.1.3"
+        ],
+        "status": "AUDITABLE_NOT_OBSERVED"
+      },
+      {
+        "group": "temps",
+        "part": "ntp_access_groups",
+        "parser_path": "ntp.access_groups",
+        "ir_path": "services.ntp.access_groups",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "temps",
+        "part": "ntp_source",
+        "parser_path": "ntp.source_interface",
+        "ir_path": "services.ntp.source_interface",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": "2.4.3",
+        "cis_control_ids": [
+          "2.4.3"
+        ],
+        "status": "AUDITABLE_NOT_OBSERVED"
+      },
+      {
+        "group": "temps",
+        "part": "timezone",
+        "parser_path": "global_settings.clock_timezone",
+        "ir_path": "services.clock.timezone",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "securite_ip",
+        "part": "ip_source_route",
+        "parser_path": "global_settings.ip_source_route_enabled",
+        "ir_path": "services.ip_stack.source_route_enabled",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "3.1.1",
+        "cis_control_ids": [
+          "3.1.1"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "securite_ip",
+        "part": "icmp_rate_limit",
+        "parser_path": "global_settings.icmp_unreachable_rate_limit",
+        "ir_path": "services.ip_stack.icmp_unreachable_rate_limit",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "securite_ip",
+        "part": "tcp_synwait",
+        "parser_path": "global_settings.tcp_synwait_seconds",
+        "ir_path": "services.ip_stack.tcp_synwait_seconds",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "administration",
+        "part": "vty_et_console",
+        "parser_path": "lines",
+        "ir_path": "management.terminal_lines",
+        "parser_count": 3,
+        "ir_count": 3,
+        "cis_control_id": "1.2.2",
+        "cis_control_ids": [
+          "1.2.2",
+          "1.2.7",
+          "1.2.9",
+          "1.1.4",
+          "1.1.5",
+          "1.1.6",
+          "1.2.5"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "comptes_locaux",
+        "parser_path": "local_users",
+        "ir_path": "management.local_accounts",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.4.3",
+        "cis_control_ids": [
+          "1.4.3"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "bannieres",
+        "parser_path": "banners",
+        "ir_path": "management.banners",
+        "parser_count": 3,
+        "ir_count": 3,
+        "cis_control_id": "1.3.1",
+        "cis_control_ids": [
+          "1.3.1",
+          "1.3.2",
+          "1.3.3"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "enable_secret",
+        "parser_path": "global_settings.enable_secret_configured",
+        "ir_path": "management.enable_secret_configured",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.4.1",
+        "cis_control_ids": [
+          "1.4.1"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "enable_password",
+        "parser_path": "global_settings.enable_password_configured",
+        "ir_path": "management.enable_password_configured",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "administration",
+        "part": "http",
+        "parser_path": "global_settings.http_server_enabled",
+        "ir_path": "management.http_enabled",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "administration",
+        "part": "https",
+        "parser_path": "global_settings.https_server_enabled",
+        "ir_path": "management.https_enabled",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "IR_MAPPED"
+      },
+      {
+        "group": "administration",
+        "part": "ssh",
+        "parser_path": "global_settings.ssh_commands",
+        "ir_path": "management.ssh_version",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "2.1.1.2",
+        "cis_control_ids": [
+          "2.1.1.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "aaa",
+        "parser_path": "global_settings.aaa_login_privilege_mode",
+        "ir_path": "management.aaa_login_privilege_mode",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "administration",
+        "part": "aaa_new_model",
+        "parser_path": "global_settings.aaa_new_model_enabled",
+        "ir_path": "management.aaa_new_model_enabled",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.1.1",
+        "cis_control_ids": [
+          "1.1.1"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "aaa_login",
+        "parser_path": "global_settings.aaa_authentication_login",
+        "ir_path": "management.aaa_authentication_login",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.1.2",
+        "cis_control_ids": [
+          "1.1.2"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "aaa_enable",
+        "parser_path": "global_settings.aaa_authentication_enable",
+        "ir_path": "management.aaa_authentication_enable",
+        "parser_count": 1,
+        "ir_count": 1,
+        "cis_control_id": "1.1.3",
+        "cis_control_ids": [
+          "1.1.3"
+        ],
+        "status": "AUDITED"
+      },
+      {
+        "group": "administration",
+        "part": "rsa_keys",
+        "parser_path": "global_settings.rsa_key_generation_requests",
+        "ir_path": "management.rsa_key_generation_requests",
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "metadonnees_config",
+        "parser_path": "configuration_metadata",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "stanzas_systeme",
+        "parser_path": "system_stanzas",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "cli_wrappers",
+        "parser_path": "wrapper_commands",
+        "ir_path": null,
+        "parser_count": 1,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "SOURCE_ONLY"
+      },
+      {
+        "group": "hors_ir",
+        "part": "service_timestamps",
+        "parser_path": "global_settings.service_timestamps",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "autres_services_globaux",
+        "parser_path": "global_settings.service_commands",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "nat_commandes_non_modelees",
+        "parser_path": "nat_other_commands",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "dhcp_commandes_non_modelees",
+        "parser_path": "dhcp_other_commands",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      },
+      {
+        "group": "hors_ir",
+        "part": "commandes_globales_inconnues",
+        "parser_path": "unparsed_lines",
+        "ir_path": null,
+        "parser_count": 0,
+        "ir_count": 0,
+        "cis_control_id": null,
+        "cis_control_ids": [],
+        "status": "NOT_PRESENT"
+      }
+    ]
+  }
+}

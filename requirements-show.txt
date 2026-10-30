@@ -1,0 +1,2 @@
+# Facultatif : uniquement pour la collecte SSH des commandes SHOW (phase 5).
+netmiko>=4.4,<5

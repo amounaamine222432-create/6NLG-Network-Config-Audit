@@ -1,0 +1,25 @@
+{
+  "family": "MIXED",
+  "facts": [
+    [
+      "hostname",
+      "R-MIXED-02"
+    ],
+    [
+      "static",
+      "10.2.0.0/24|192.0.2.2"
+    ],
+    [
+      "dhcp_pool",
+      "LAN_2"
+    ],
+    [
+      "dhcp_network",
+      "10.2.0.0/24"
+    ],
+    [
+      "acl_name",
+      "MGMT_2"
+    ]
+  ]
+}

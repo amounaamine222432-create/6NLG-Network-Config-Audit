@@ -1,0 +1,21 @@
+{
+  "family": "NAT",
+  "facts": [
+    [
+      "hostname",
+      "R-NAT-05"
+    ],
+    [
+      "nat_rules",
+      "1"
+    ],
+    [
+      "nat_inside",
+      "GigabitEthernet0/1"
+    ],
+    [
+      "nat_outside",
+      "GigabitEthernet0/0"
+    ]
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "schema_version": "1.0.0",
+  "source": {
+    "vendor": "cisco_ios",
+    "parser_schema_version": "6.0",
+    "file": "MIXED_02.cfg",
+    "sha256": "74446a838d9dcdbf8d9ba22fdf6b8750eae65af6a56eddaa91efe3b79019d2e4"
+  },
+  "device": {
+    "hostname": "R-MIXED-02",
+    "platform": {
+      "vendor": "cisco",
+      "family": "ios",
+      "version": "15.2"
+    },
+    "platform_directives": []
+  },
+  "vrfs": [],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/1",
+      "description": null,
+      "admin_enabled": null,
+      "operational_state": null,
+      "link": {
+        "speed": null,
+        "duplex": null,
+        "media_type": null,
+        "mtu": null,
+        "auto_negotiation": null,
+        "cdp_enabled": null
+      },
+      "ipv4_addresses": [
+        {
+          "address": "10.2.0.1",
+          "prefix_length": 24,
+          "cidr": "10.2.0.1/24",
+          "secondary": false
+        }
+      ],
+      "ipv4_dhcp": false,
+      "ipv4_explicitly_absent": false,
+      "vrf": null,
+      "nat_role": null,
+      "proxy_arp_enabled": null,
+      "acl_bindings": [],
+      "ospf_network_type": null,
+      "ospf_authentication_mode": null,
+      "ospf_md5_key_ids": [],
+      "eigrp_authentication": {},
+      "dhcp_relay_targets": [],
+      "vlan_tagging": null,
+      "switchport": {
+        "mode": null,
+        "access_vlan": null,
+        "native_vlan": null,
+        "trunk_encapsulation": null,
+        "allowed_vlan_expressions": []
+      },
+      "hsrp_groups": [],
+      "source": {
+        "line": 6
+      }
+    }
+  ],
+  "routing": {
+    "static_routes": [
+      {
+        "prefix": "10.2.0.0/24",
+        "destination": "10.2.0.0",
+        "mask": "255.255.255.0",
+        "vrf": null,
+        "next_hop": "192.0.2.2",
+        "outgoing_interface": null,
+        "administrative_distance": null,
+        "unmodeled_option_count": 0,
+        "source": {
+          "line": 3
+        }
+      }
+    ],
+    "ospf": [],
+    "eigrp": [],
+    "key_chains": [],
+    "bgp": []
+  },
+  "policies": {
+    "acls": [
+      {
+        "name": "MGMT_2",
+        "type": "standard",
+        "entries": [
+          {
+            "sequence": null,
+            "action": "permit",
+            "protocol": null,
+            "source_match": {
+              "kind": "host_or_unspecified_mask",
+              "address": "192.0.2.2"
+            },
+            "destination_match": null,
+            "source_port": null,
+            "destination_port": null,
+            "logging_mode": null,
+            "unmodeled_token_count": 0,
+            "source": {
+              "line": 9
+            }
+          }
+        ]
+      }
+    ],
+    "prefix_lists": [],
+    "route_maps": [],
+    "community_lists": []
+  },
+  "services": {
+    "nat": {
+      "rules": [],
+      "pools": [],
+      "translation_timers": {}
+    },
+    "dhcp": {
+      "pools": [
+        {
+          "name": "LAN_2",
+          "subnet": "10.2.0.0/24",
+          "gateways": [],
+          "dns_servers": [],
+          "domain_name": null,
+          "lease": null
+        }
+      ],
+      "excluded_ranges": []
+    },
+    "vlans": [],
+    "snmp": {
+      "communities": [],
+      "targets": [],
+      "location_configured": null,
+      "contact_configured": null,
+      "groups": [],
+      "users": [],
+      "trap_rules": [],
+      "traps_explicitly_disabled": false
+    },
+    "syslog": {
+      "targets": [],
+      "source_interface": null,
+      "severity": null,
+      "buffered": null
+    },
+    "ntp": {
+      "servers": [],
+      "peers": [],
+      "source_interface": null,
+      "authentication_enabled": null,
+      "authentication_key_count": 0,
+      "trusted_key_count": 0,
+      "master_configured": null,
+      "master_stratum": null,
+      "access_groups": []
+    },
+    "ip_stack": {
+      "icmp_unreachable_rate_limit": null,
+      "tcp_synwait_seconds": null,
+      "source_route_enabled": null
+    },
+    "clock": {
+      "timezone": null,
+      "synchronized": null
+    }
+  },
+  "management": {
+    "http_enabled": null,
+    "https_enabled": null,
+    "ssh_version": null,
+    "terminal_lines": [],
+    "local_accounts": [],
+    "banners": [],
+    "enable_secret_configured": null,
+    "enable_password_configured": null,
+    "aaa_new_model_enabled": null,
+    "aaa_authentication_login": [],
+    "aaa_authentication_enable": [],
+    "aaa_login_privilege_mode": null,
+    "rsa_key_generation_requests": []
+  },
+  "diagnostics": {
+    "unparsed_global_count": 0,
+    "unparsed_global_lines": [],
+    "platform_opaque_count": 0,
+    "platform_directive_count": 0,
+    "platform_modeled_count": 0,
+    "platform_semantics_unverified_count": 0,
+    "platform_scope_limited_count": 0,
+    "formatting_recovery_count": 0,
+    "opaque_sections": [],
+    "source_only_counts": {
+      "cli_wrappers": 1,
+      "timestamps_directives": 0,
+      "other_global_service_directives": 0,
+      "other_system_stanzas": 0,
+      "configuration_metadata": 0,
+      "bgp_community_new_format_configured": null
+    },
+    "notes": [],
+    "status": "modeled_subset"
+  }
+}

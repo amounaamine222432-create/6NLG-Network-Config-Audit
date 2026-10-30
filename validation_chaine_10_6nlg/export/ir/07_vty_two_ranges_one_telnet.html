@@ -1,0 +1,155 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>07_vty_two_ranges_one_telnet — IR</title><style>body{font:14px system-ui;background:#eff4f9;color:#192b3d;margin:30px auto;max-width:1260px}
+    article{background:white;padding:25px;border-radius:13px}h1{color:#194d79}table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #d8e1ea;text-align:left;vertical-align:top}
+    pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eef3f7;padding:12px;border-radius:8px}
+    .PASS{color:#1d7843;font-weight:bold}.FAIL{color:#b22929;font-weight:bold}.UNKNOWN{color:#9b6a00;font-weight:bold}</style><article><h1>07_vty_two_ranges_one_telnet — IR</h1><p>Données complètes de la phase, à rapprocher du fichier CFG.</p><pre>{
+  &quot;schema_version&quot;: &quot;1.0.0&quot;,
+  &quot;source&quot;: {
+    &quot;vendor&quot;: &quot;cisco_ios&quot;,
+    &quot;parser_schema_version&quot;: &quot;6.0&quot;,
+    &quot;file&quot;: &quot;07_vty_two_ranges_one_telnet.cfg&quot;,
+    &quot;sha256&quot;: &quot;8b157cd2c6a211e7e634a102f40879ed79351d40012ffd97448174fb5f3c34ad&quot;
+  },
+  &quot;device&quot;: {
+    &quot;hostname&quot;: &quot;07_VTY_TWO_RANGES_ONE_TELNET&quot;,
+    &quot;platform&quot;: {
+      &quot;vendor&quot;: &quot;cisco&quot;,
+      &quot;family&quot;: &quot;ios&quot;,
+      &quot;version&quot;: &quot;15.2&quot;
+    },
+    &quot;platform_directives&quot;: []
+  },
+  &quot;vrfs&quot;: [],
+  &quot;interfaces&quot;: [],
+  &quot;routing&quot;: {
+    &quot;static_routes&quot;: [],
+    &quot;ospf&quot;: [],
+    &quot;eigrp&quot;: [],
+    &quot;key_chains&quot;: [],
+    &quot;bgp&quot;: []
+  },
+  &quot;policies&quot;: {
+    &quot;acls&quot;: [],
+    &quot;prefix_lists&quot;: [],
+    &quot;route_maps&quot;: [],
+    &quot;community_lists&quot;: []
+  },
+  &quot;services&quot;: {
+    &quot;nat&quot;: {
+      &quot;rules&quot;: [],
+      &quot;pools&quot;: [],
+      &quot;translation_timers&quot;: {}
+    },
+    &quot;dhcp&quot;: {
+      &quot;pools&quot;: [],
+      &quot;excluded_ranges&quot;: []
+    },
+    &quot;vlans&quot;: [],
+    &quot;snmp&quot;: {
+      &quot;communities&quot;: [],
+      &quot;targets&quot;: [],
+      &quot;location_configured&quot;: null,
+      &quot;contact_configured&quot;: null,
+      &quot;groups&quot;: [],
+      &quot;users&quot;: [],
+      &quot;trap_rules&quot;: [],
+      &quot;traps_explicitly_disabled&quot;: false
+    },
+    &quot;syslog&quot;: {
+      &quot;targets&quot;: [],
+      &quot;source_interface&quot;: null,
+      &quot;severity&quot;: null,
+      &quot;buffered&quot;: null
+    },
+    &quot;ntp&quot;: {
+      &quot;servers&quot;: [],
+      &quot;peers&quot;: [],
+      &quot;source_interface&quot;: null,
+      &quot;authentication_enabled&quot;: null,
+      &quot;authentication_key_count&quot;: 0,
+      &quot;trusted_key_count&quot;: 0,
+      &quot;defined_key_ids&quot;: [],
+      &quot;trusted_key_ids&quot;: [],
+      &quot;master_configured&quot;: null,
+      &quot;master_stratum&quot;: null,
+      &quot;access_groups&quot;: []
+    },
+    &quot;ip_stack&quot;: {
+      &quot;icmp_unreachable_rate_limit&quot;: null,
+      &quot;tcp_synwait_seconds&quot;: null,
+      &quot;source_route_enabled&quot;: null
+    },
+    &quot;clock&quot;: {
+      &quot;timezone&quot;: null,
+      &quot;synchronized&quot;: null
+    }
+  },
+  &quot;management&quot;: {
+    &quot;http_enabled&quot;: null,
+    &quot;https_enabled&quot;: null,
+    &quot;ssh_version&quot;: null,
+    &quot;terminal_lines&quot;: [
+      {
+        &quot;line_id&quot;: &quot;vty 0 4&quot;,
+        &quot;transport_input&quot;: [
+          &quot;ssh&quot;
+        ],
+        &quot;login_method&quot;: null,
+        &quot;access_classes&quot;: [],
+        &quot;exec_timeout&quot;: [],
+        &quot;privilege_level&quot;: null,
+        &quot;stopbits&quot;: null,
+        &quot;line_password_configured&quot;: false,
+        &quot;source&quot;: {
+          &quot;line&quot;: 3
+        }
+      },
+      {
+        &quot;line_id&quot;: &quot;vty 5 15&quot;,
+        &quot;transport_input&quot;: [
+          &quot;ssh&quot;,
+          &quot;telnet&quot;
+        ],
+        &quot;login_method&quot;: null,
+        &quot;access_classes&quot;: [],
+        &quot;exec_timeout&quot;: [],
+        &quot;privilege_level&quot;: null,
+        &quot;stopbits&quot;: null,
+        &quot;line_password_configured&quot;: false,
+        &quot;source&quot;: {
+          &quot;line&quot;: 5
+        }
+      }
+    ],
+    &quot;local_accounts&quot;: [],
+    &quot;banners&quot;: [],
+    &quot;enable_secret_configured&quot;: null,
+    &quot;enable_password_configured&quot;: null,
+    &quot;aaa_new_model_enabled&quot;: null,
+    &quot;aaa_authentication_login&quot;: [],
+    &quot;aaa_authentication_enable&quot;: [],
+    &quot;aaa_login_privilege_mode&quot;: null,
+    &quot;rsa_key_generation_requests&quot;: []
+  },
+  &quot;diagnostics&quot;: {
+    &quot;unparsed_global_count&quot;: 0,
+    &quot;unparsed_global_lines&quot;: [],
+    &quot;platform_opaque_count&quot;: 0,
+    &quot;platform_directive_count&quot;: 0,
+    &quot;platform_modeled_count&quot;: 0,
+    &quot;platform_semantics_unverified_count&quot;: 0,
+    &quot;platform_scope_limited_count&quot;: 0,
+    &quot;formatting_recovery_count&quot;: 0,
+    &quot;opaque_sections&quot;: [],
+    &quot;source_only_counts&quot;: {
+      &quot;cli_wrappers&quot;: 1,
+      &quot;timestamps_directives&quot;: 0,
+      &quot;other_global_service_directives&quot;: 0,
+      &quot;other_system_stanzas&quot;: 0,
+      &quot;configuration_metadata&quot;: 0,
+      &quot;bgp_community_new_format_configured&quot;: null
+    },
+    &quot;notes&quot;: [],
+    &quot;status&quot;: &quot;modeled_subset&quot;
+  }
+}</pre></article></html>
