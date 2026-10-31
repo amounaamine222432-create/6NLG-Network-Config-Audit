@@ -256,6 +256,8 @@ def audit_cis_ios15(
             "status": status,
             "evidence": evidence,
             "remediation": rule.get("remediation") if status == "FAIL" else None,
+            "assessment_scope": "static_configuration_lab",
+            "requires_manual_review": status in {"UNKNOWN", "NOT_EVALUATED"},
         })
 
     counts = Counter(f["status"] for f in findings)
@@ -270,6 +272,14 @@ def audit_cis_ios15(
         "external_interfaces_designated": list((audit_context or {}).get("external_interfaces") or []),
         "benchmark_conformance_certified": False,
         "implemented_rule_count": len(findings),
+        "catalogue_coverage": {
+            "mapped_rules": sum(rule.get("review_status") == "mapped_for_lab"
+                                for rule in catalogue.get("rules", [])),
+            "total_rules": len(findings),
+            "unique_checks": len({rule.get("check") for rule in catalogue.get("rules", [])}),
+            "unresolved_findings": counts["UNKNOWN"] + counts["NOT_EVALUATED"],
+            "meaning": "couverture du catalogue local, pas certification du benchmark CIS",
+        },
         "counts": {key: counts.get(key, 0) for key in (
             "PASS", "FAIL", "UNKNOWN", "NOT_SELECTED", "NOT_APPLICABLE", "NOT_EVALUATED"
         )},

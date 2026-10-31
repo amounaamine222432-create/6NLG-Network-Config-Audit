@@ -292,7 +292,10 @@
         if (Array.isArray(finding.source_anchors) && finding.source_anchors.length) {
           const anchors = elem("div", "cis-source-anchors");
           finding.source_anchors.slice(0, 8).forEach((anchor) => {
-            const marker = elem("span", "cis-source-anchor", `L${anchor.line} · ${anchor.element}`);
+            const marker = elem("a", "cis-source-anchor", `L${anchor.line} · ${anchor.element} ↗`);
+            marker.href = `${$("cisPreviewLink").href.split("#")[0]}#src-L${encodeURIComponent(anchor.line)}`;
+            marker.target = "_blank";
+            marker.rel = "noopener";
             marker.title = anchor.scope || "Repère de source";
             anchors.append(marker);
           });
@@ -347,6 +350,8 @@
     $("cisJsonLink").href = data.downloads.json;
     $("cisParsingPdf").href = data.downloads.parsing_pdf;
     $("cisAuditPdf").href = data.downloads.cis_pdf;
+    $("cisFailuresCsv").href = data.downloads.failures_html;
+    $("cisConfigPreview").href = data.html_preview + "#configuration-importee";
     renderPipeline(data.pipeline);
     stageState("cisStageParsing", "complete");
     stageState("cisStageIR", "complete");

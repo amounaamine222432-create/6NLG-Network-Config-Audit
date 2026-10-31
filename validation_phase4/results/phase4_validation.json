@@ -1,0 +1,123 @@
+{
+  "phase": 4,
+  "generated_utc": "2026-10-31T19:58:39.824675+00:00",
+  "status": "PASS",
+  "sections": [
+    {
+      "name": "Contrôles CIS (39) et preuve de source",
+      "status": "PASS",
+      "tests": 114,
+      "exit_code": 0,
+      "log_tail": "[OK] edge/r1.cfg -> /tmp/tmp83ylr8fc/ir/edge/r1.ir.json | interfaces=2, OSPF=1, BGP=0, globales non parsees=0\n[OK] edge/r2.json -> /tmp/tmp83ylr8fc/ir/edge/r2.ir.json | interfaces=2, OSPF=1, BGP=0, globales non parsees=0\nRESULTAT : 2/2 configurations normalisees\n\n..................................................................................................................\n----------------------------------------------------------------------\nRan 114 tests in 0.044s\n\nOK\n"
+    },
+    {
+      "name": "Cohérence réseau OSPF/BGP/ACL/VLAN/NAT/DHCP",
+      "status": "PASS",
+      "tests": 14,
+      "exit_code": 0,
+      "log_tail": "\ntest_directly_connected_default_route (tests.test_network_coherence.NetworkCoherenceTests) ... ok\ntest_missing_gateway_is_review_not_false_failure (tests.test_network_coherence.NetworkCoherenceTests) ... ok\ntest_shadowing_standard_acl_and_trace (tests.test_network_coherence.NetworkCoherenceTests) ... ok\ntest_unknown_acl_syntax_is_not_assumed_shadowed (tests.test_network_coherence.NetworkCoherenceTests) ... ok\ntest_vty_acl_binding_is_not_unused (tests.test_network_coherence.NetworkCoherenceTests) ... ok\ntest_bgp_as_and_remote_neighbor_are_distinct (tests.test_network_advanced_v75.AdvancedCoherenceV75) ... ok\ntest_ospf_md5_missing_key_is_review_not_fail (tests.test_network_advanced_v75.AdvancedCoherenceV75) ... ok\ntest_static_nat_collision_but_pat_ports_allowed (tests.test_network_advanced_v75.AdvancedCoherenceV75) ... ok\ntest_undeclared_vlan_requires_complete_local_inventory (tests.test_network_advanced_v75.AdvancedCoherenceV75) ... ok\ntest_defined_acl_is_not_missing (tests.test_cis_network_phase12.CoherencePhase12Tests) ... ok\ntest_dhcp_overlap_and_absent_not_applicable (tests.test_cis_network_phase12.CoherencePhase12Tests) ... ok\ntest_overlap_different_vrf_is_not_a_conflict (tests.test_cis_network_phase12.CoherencePhase12Tests) ... ok\ntest_overlap_same_vrf_is_review_with_lines (tests.test_cis_network_phase12.CoherencePhase12Tests) ... ok\ntest_undefined_acl_requires_explicit_completeness_for_fail (tests.test_cis_network_phase12.CoherencePhase12Tests) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "name": "Robustesse et sécurité interface Flask",
+      "status": "PASS",
+      "tests": 37,
+      "exit_code": 0,
+      "log_tail": "\n........./home/ouni/projet-6nlg/network-config-audit/.venv/lib/python3.10/site-packages/jinja2/parser.py:669: ResourceWarning: unclosed file <_io.FileIO name=3 mode='rb+' closefd=True>\n  node = nodes.Const(\"\".join(buf), lineno=lineno)\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n......./home/ouni/projet-6nlg/network-config-audit/.venv/lib/python3.10/site-packages/jinja2/nodes.py:140: ResourceWarning: unclosed file <_io.FileIO name=3 mode='rb+' closefd=True>\n  for name, arg in zip(self.fields, fields):\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n.....................\n----------------------------------------------------------------------\nRan 37 tests in 12.825s\n\nOK\n"
+    },
+    {
+      "name": "Pipeline de bout en bout (6 cas)",
+      "status": "PASS",
+      "cases": [
+        {
+          "configuration": "01_ADRESSAGE_ROUTAGE_CONFLITS.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 5,
+            "FAIL": 21,
+            "UNKNOWN": 3,
+            "NOT_APPLICABLE": 10
+          },
+          "network_assertions": {
+            "ROUTE_CONFLICT": "REVIEW",
+            "INVALID_DEFAULT_GATEWAY": "REVIEW",
+            "OVERLAPPING_INTERFACE_SUBNETS": "REVIEW"
+          },
+          "issues": []
+        },
+        {
+          "configuration": "02_ACL_MASQUAGE_CONTRADICTIONS.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 7,
+            "FAIL": 18,
+            "UNKNOWN": 4,
+            "NOT_APPLICABLE": 10
+          },
+          "network_assertions": {
+            "ACL_RULE_SHADOWING": "FAIL",
+            "UNUSED_ACL": "REVIEW",
+            "UNDEFINED_ACL_BINDING": "FAIL"
+          },
+          "issues": []
+        },
+        {
+          "configuration": "03_OSPF_BGP_INCOHERENCES.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 4,
+            "FAIL": 24,
+            "UNKNOWN": 4,
+            "NOT_APPLICABLE": 7
+          },
+          "network_assertions": {
+            "OSPF_MD5_KEY_COHERENCE": "REVIEW",
+            "BGP_PEER_REACHABILITY": "REVIEW"
+          },
+          "issues": []
+        },
+        {
+          "configuration": "04_VLAN_NAT_DHCP_ANOMALIES.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 4,
+            "FAIL": 21,
+            "UNKNOWN": 4,
+            "NOT_APPLICABLE": 10
+          },
+          "network_assertions": {
+            "OVERLAPPING_DHCP_POOLS": "REVIEW",
+            "UNDECLARED_ACCESS_VLAN": "FAIL",
+            "NAT_STATIC_GLOBAL_COLLISION": "FAIL"
+          },
+          "issues": []
+        },
+        {
+          "configuration": "05_PARTIEL_AMBIGU_INCOMPLET.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 0,
+            "FAIL": 0,
+            "UNKNOWN": 39,
+            "NOT_APPLICABLE": 0
+          },
+          "network_assertions": {
+            "UNDEFINED_ACL_BINDING": "REVIEW"
+          },
+          "issues": []
+        },
+        {
+          "configuration": "06_REFERENCE_DURCIE_COMPLEXE.cfg",
+          "status": "PASS",
+          "counts": {
+            "PASS": 21,
+            "FAIL": 11,
+            "UNKNOWN": 1,
+            "NOT_APPLICABLE": 6
+          },
+          "network_assertions": {},
+          "issues": []
+        }
+      ]
+    }
+  ]
+}

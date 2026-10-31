@@ -50,3 +50,4 @@
 .cis-check[data-status="PASS"]{border-left:3px solid #43d9c3}
 .cis-check[data-status="UNKNOWN"]{border-left:3px solid #eac174}
 @media(max-width:680px){.cis-check-detail{grid-template-columns:1fr}}
+.cis-source-anchor{color:#88f5de;text-decoration:underline;text-underline-offset:3px;cursor:pointer}

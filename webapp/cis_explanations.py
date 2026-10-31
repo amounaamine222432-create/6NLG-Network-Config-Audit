@@ -6,6 +6,8 @@ commands are illustrative templates, and never carry collected credentials.
 
 from __future__ import annotations
 
+import re
+
 
 # check: (impact, illustrative configuration, read-only validation, precaution)
 GUIDANCE = {
@@ -115,6 +117,19 @@ def enrich_explanation(finding: dict, check: str) -> None:
     else:
         analysis = "Aucun verdict technique exploitable pour ce contrôle dans le périmètre sélectionné."
     evidence = finding.get("evidence") or {}
+    # Build scoped command examples from strictly validated identifiers;
+    # never interpolate arbitrary CLI text or credentials from an upload.
+    if status == "FAIL" and check in {"vty_ssh_only", "vty_exec_timeout", "aaa_line_vty"}:
+        vty_ids = [str(row.get("line_id") or "") for row in
+                   (evidence.get("vty_lines") or evidence.get("lines") or [])
+                   if isinstance(row, dict)]
+        safe_ranges = sorted({value for value in vty_ids if
+                              re.fullmatch(r"vty\s+\d+\s+\d+", value)})
+        if safe_ranges:
+            directive = {"vty_ssh_only": "transport input ssh",
+                         "vty_exec_timeout": "exec-timeout 10 0",
+                         "aaa_line_vty": "login authentication default"}[check]
+            example = "\n".join(f"line {value}\n {directive}" for value in safe_ranges)
     lines = []
     def scan(value):
         if isinstance(value, dict):

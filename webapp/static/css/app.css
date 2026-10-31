@@ -44,3 +44,12 @@
 .vendor-select option{background:#122339;color:#efffff}
 .vendor-hint{color:#8baebd;font-size:11px;line-height:1.6;margin:10px 0 2px}
 .vendor-select+.vendor-hint+.dropzone{margin-top:17px}
+
+/* Aperçu visible dès la sélection du fichier, avant tout lancement d'analyse. */
+.file-entry{flex-wrap:wrap;align-items:flex-start}
+.file-preview-details{flex:0 0 100%;min-width:0;border-top:1px solid #28485a;padding-top:12px;margin-top:3px}
+.file-preview-toggle{color:#61e0d4;cursor:pointer;font-size:12px;font-weight:750;list-style-position:inside}
+.file-preview-toggle:focus-visible{outline:2px solid #61e0d4;outline-offset:4px}
+.file-preview-status{font-size:11px;color:#8fb1c4;margin:11px 0 8px}
+.file-preview-code{box-sizing:border-box;width:100%;max-height:365px;overflow:auto;white-space:pre;tab-size:2;margin:0;padding:14px 16px;border:1px solid #2b5667;border-radius:9px;background:#061522;color:#d7eaf0;font:12px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;text-align:left}
+@media(max-width:760px){.file-preview-code{font-size:10px;padding:10px;max-height:300px}}

@@ -17,6 +17,13 @@
   ],
   "benchmark_conformance_certified": false,
   "implemented_rule_count": 39,
+  "catalogue_coverage": {
+    "mapped_rules": 39,
+    "total_rules": 39,
+    "unique_checks": 39,
+    "unresolved_findings": 0,
+    "meaning": "couverture du catalogue local, pas certification du benchmark CIS"
+  },
   "counts": {
     "PASS": 37,
     "FAIL": 0,
@@ -38,7 +45,9 @@
         "observed": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.2.2",
@@ -66,7 +75,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.2.7",
@@ -87,7 +98,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.2.9",
@@ -113,7 +126,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.3.1",
@@ -129,7 +144,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.3.2",
@@ -145,7 +162,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.3.3",
@@ -161,7 +180,9 @@
         ],
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.4.1",
@@ -176,7 +197,9 @@
         "expected": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.4.3",
@@ -191,7 +214,9 @@
         "password_count": 0,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.5.4",
@@ -204,7 +229,9 @@
         "community_count": 0,
         "assessment_basis": "insufficient_evidence"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.5.9",
@@ -218,7 +245,9 @@
         "priv_group_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.1.1.2",
@@ -231,7 +260,9 @@
         "ssh_version": 2,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.2.2",
@@ -246,7 +277,9 @@
         "recommended_size_bytes": 64000,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.2.4",
@@ -260,7 +293,9 @@
         "ip_address_targets": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.2.5",
@@ -273,7 +308,9 @@
         "trap_severity": "informational",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.2.7",
@@ -286,7 +323,9 @@
         "source_interface": "GigabitEthernet0/1",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.3.1.1",
@@ -301,7 +340,9 @@
         "expected": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.3.1.2",
@@ -315,7 +356,9 @@
         "count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.3.1.3",
@@ -329,7 +372,9 @@
         "count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.3.1.4",
@@ -344,7 +389,9 @@
         "keyed_server_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.3.2",
@@ -357,7 +404,9 @@
         "ntp_server_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-2.4.3",
@@ -370,7 +419,9 @@
         "source_is_loopback": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.1.1",
@@ -385,7 +436,9 @@
         "expected": false,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.1.2",
@@ -401,7 +454,9 @@
         "requires_live_confirmation": false,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.1.3",
@@ -415,7 +470,9 @@
         "inferred_absence": true,
         "assessment_basis": "assumed_absence"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.3.4.1",
@@ -429,7 +486,9 @@
         "protected_peer_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.1.2",
@@ -443,7 +502,9 @@
         "method_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.1.3",
@@ -457,7 +518,9 @@
         "method_count": 1,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.1.4",
@@ -473,7 +536,9 @@
         "failed_count": 0,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.1.5",
@@ -487,7 +552,9 @@
         "line_count": 0,
         "assessment_basis": "insufficient_evidence"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.1.6",
@@ -503,7 +570,9 @@
         "failed_count": 0,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.2.4",
@@ -523,7 +592,9 @@
         "validation_scope": "acl_definition_only",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-1.2.5",
@@ -540,7 +611,9 @@
         "validation_scope": "vty_input_acl",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.2.1",
@@ -555,7 +628,9 @@
         "external_designation": "user_supplied",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.2.2",
@@ -570,7 +645,9 @@
         "external_designation": "user_supplied",
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.3.1.8",
@@ -585,7 +662,9 @@
         "requires_live_interface_membership_confirmation": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.3.1.9",
@@ -600,7 +679,9 @@
         "requires_live_interface_membership_confirmation": true,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.3.2.1",
@@ -616,7 +697,9 @@
         "inferred_absence": false,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     },
     {
       "rule_id": "CIS-IOS15-3.3.2.2",
@@ -632,7 +715,9 @@
         "inferred_absence": false,
         "assessment_basis": "explicit_ir"
       },
-      "remediation": null
+      "remediation": null,
+      "assessment_scope": "static_configuration_lab",
+      "requires_manual_review": false
     }
   ],
   "parsing_normalization_inventory": {

@@ -79,6 +79,41 @@ def _line_auth(ir: dict, complete: bool, scope: str) -> tuple[str, dict]:
     return status, evidence
 
 
+def _acl_restriction(acl: dict) -> str:
+    """Assess effective VTY source restriction without assuming unknown ACEs safe.
+
+    Cisco wildcard 255.255.255.255 is equivalent to ``any``. An ACL with
+    no usable permit is not a proven management allowlist.
+    """
+    permits = [e for e in acl.get("entries") or []
+               if isinstance(e, dict) and e.get("action") == "permit"]
+    if not permits:
+        return "UNKNOWN"
+    for entry in permits:
+        source = entry.get("source_match")
+        if not isinstance(source, dict):
+            return "UNKNOWN"
+        kind = source.get("kind")
+        if kind == "any":
+            return "BROAD"
+        if kind == "host":
+            try:
+                ipaddress.ip_address(str(source.get("address")))
+            except ValueError:
+                return "UNKNOWN"
+        elif kind == "network_wildcard":
+            try:
+                wildcard = ipaddress.IPv4Address(str(source.get("wildcard")))
+                if int(wildcard) == 0xFFFFFFFF:
+                    return "BROAD"
+                ipaddress.IPv4Address(str(source.get("address")))
+            except ValueError:
+                return "UNKNOWN"
+        else:
+            return "UNKNOWN"
+    return "RESTRICTIVE"
+
+
 def _vty_restrictions(ir: dict, complete: bool, *, require_application: bool) -> tuple[str, dict]:
     lines = _read(ir, "management", "terminal_lines") or []
     vty = [l for l in lines if isinstance(l, dict) and
@@ -92,16 +127,14 @@ def _vty_restrictions(ir: dict, complete: bool, *, require_application: bool) ->
         # de son application (qui relève du contrôle 1.2.5).
         candidates = []
         for acl in named.values():
-            entries = acl.get("entries") or []
-            permits = [e for e in entries if isinstance(e, dict) and e.get("action") == "permit"]
-            if permits and all((e.get("source_match") or {}).get("kind") not in {None, "any"}
-                               for e in permits):
+            if _acl_restriction(acl) == "RESTRICTIVE":
                 candidates.append(str(acl.get("name")))
         linked = {str(binding.get("acl")) for line in vty
                   for binding in line.get("access_classes") or []
                   if isinstance(binding, dict) and binding.get("direction") == "in"}
         linked_known = linked.intersection(named)
-        linked_broad = sorted(linked_known.difference(candidates))
+        linked_broad = sorted(name for name in linked_known
+                              if _acl_restriction(named[name]) == "BROAD")
         if linked_broad:
             return "FAIL", {"non_restrictive_vty_acls": linked_broad,
                             "validation_scope": "acl_definition_only"}
@@ -128,15 +161,13 @@ def _vty_restrictions(ir: dict, complete: bool, *, require_application: bool) ->
         if acl is None:
             missing += 1
             continue
-        entries = acl.get("entries") or []
-        permits = [e for e in entries if isinstance(e, dict) and e.get("action") == "permit"]
-        if not permits:
-            missing += 1
-        elif any((e.get("source_match") or {}).get("kind") == "any" or
-                 e.get("source_match") is None for e in permits):
+        restriction = _acl_restriction(acl)
+        if restriction == "BROAD":
             broad += 1
-        else:
+        elif restriction == "RESTRICTIVE":
             valid += 1
+        else:
+            missing += 1
     if broad:
         status = "FAIL"
     elif require_application and missing:

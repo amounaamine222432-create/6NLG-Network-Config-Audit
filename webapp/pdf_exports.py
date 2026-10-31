@@ -221,7 +221,7 @@ def _rule_table(finding: dict, styles: dict) -> Table:
     status = finding["status"]
     status_color = {"PASS": TEAL, "FAIL": RED, "UNKNOWN": AMBER}.get(status, SLATE)
     heading = ParagraphStyle(f"rule_{status}", parent=styles["rulehead"], textColor=status_color)
-    first = [_p(f"{finding.get('cis_control_id')} / {finding.get('title')}  •  {status}", heading), ""]
+    first = [_p(f"{finding.get('cis_control_id')} / {finding.get('title')}  •  {status}  |  Impact {finding.get('risk_level', 'NOT_ASSESSED')}", heading), ""]
     def row(label, value, style="cell"):
         return [_p(label, styles["label"]), _p(value, styles[style])]
     location = finding.get("source_location") or "Repère non disponible dans l'IR"
@@ -240,7 +240,9 @@ def _rule_table(finding: dict, styles: dict) -> Table:
         row("01  EXIGENCE CIS", finding.get("benchmark_expected", "Non documenté")),
         row("02  CONSTAT IOS / IR", f"{observed}  |  base de preuve : {basis}"),
         row("COMMANDES SOURCE", excerpt_text + "\nExtraits indicatifs expurgés ; ne constituent pas seuls un verdict.", "command"),
-        row("REPÈRES SOURCE", location, "micro"),
+        row("REPÈRES SOURCE", location + " | précision : " +
+            finding.get("source_evidence_quality", "NO_SOURCE_ANCHOR") +
+            ". Les débuts de blocs ne sont pas des preuves de directive.", "micro"),
         row("03  ANALYSE DE L'ÉCART", finding.get("technical_analysis", "Analyse non disponible")),
         row("04  IMPACT SÉCURITÉ", finding.get("security_impact", "Impact à qualifier")),
         row("05  CORRECTION", remediation),
@@ -315,6 +317,17 @@ def generate_cis_pdf(report: dict, view: dict) -> bytes:
                 Spacer(1, 3),
                 _rule_table(finding, styles),
             ]))
+    supplemental = (report.get("network_coherence") or {}).get("findings") or []
+    if supplemental:
+        story.append(PageBreak())
+        story.append(_p("Cohérence réseau - diagnostic complémentaire", styles["section"]))
+        story.append(_p("Ces contrôles exploratoires sont distincts du benchmark CIS et ne modifient aucun des 39 verdicts. REVIEW impose une analyse humaine.", styles["muted"]))
+        for item in supplemental:
+            story.append(CondPageBreak(90))
+            story.append(_p(f"{item['rule_id']} | {item['status']} | Impact {item['severity']}", styles["subsection"]))
+            story.append(_p(item["description"], styles["body"]))
+            story.append(_p("Constat structuré : " + str(item["evidence"]), styles["micro"]))
+            story.append(_p("Recommandation : " + item["recommendation"], styles["body"]))
     story.append(Spacer(1, 15))
     story.append(_p("Limitations et périmètre", styles["section"]))
     story.append(_p("Ce document examine uniquement 39 contrôles sélectionnés et implémentés pour ce laboratoire. Il ne constitue ni le benchmark CIS complet, ni une certification, ni une mesure de risque CVSS. Les preuves structurées sont disponibles dans l'export JSON et les observations opérationnelles doivent être confirmées séparément par des commandes show collectées en lecture seule.", styles["body"]))

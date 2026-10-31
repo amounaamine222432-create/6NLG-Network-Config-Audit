@@ -21,6 +21,9 @@
   .legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--sub);font-size:12px;margin-bottom:24px}.legend b{color:var(--ink)}
   .notice{background:#171d2d;border:1px solid #61523b;border-left:4px solid var(--yellow);padding:15px 19px;border-radius:9px;color:#cbd5e2;margin:22px 0 34px}
   .notice strong{color:#ffdb96}h2{font-size:24px;letter-spacing:-.03em;margin:0 0 8px}h3{font-size:17px;margin:0}
+  .audit-actions{display:flex;gap:12px;flex-wrap:wrap;margin:15px 0 23px}.audit-actions a{color:#9cf5e6;border:1px solid #367b78;background:#103c42;border-radius:8px;text-decoration:none;padding:10px 14px;font-weight:700}
+  .config-preview{margin-top:28px;background:var(--pane);border:1px solid var(--line);border-radius:12px;padding:18px}.config-preview summary{cursor:pointer;font-weight:800;color:var(--cyan)}.config-preview pre{max-height:560px;overflow:auto;margin-top:15px}
+  .source-line{display:block;white-space:pre;min-height:1.5em}.source-line.source-alert{background:#3a2632;border-left:3px solid #ff8694;padding-left:9px}.source-line:target{background:#4b3a28;outline:2px solid #f6c36b;color:#fff}.proof-jump{display:inline-block;color:#8af4e3;font-weight:750;margin:7px 8px 2px 0;text-decoration:underline;text-underline-offset:3px}
   .chapter{margin-top:31px}.chapter-head{display:flex;justify-content:space-between;gap:14px;align-items:end;padding-bottom:16px;border-bottom:1px solid var(--line)}.chapter-head p{margin:3px 0;color:var(--sub)}
   .chapter-count{white-space:nowrap;color:var(--sub);font-size:12px}.chapter-count b{color:var(--red);font-size:22px}
   .rules{display:grid;gap:10px;padding-top:14px}.rule{background:var(--pane);border:1px solid var(--line);border-radius:12px;overflow:hidden;break-inside:avoid}
@@ -84,6 +87,30 @@
       <span><b>{{ report.counts.UNKNOWN }}</b> contrôles sans preuve suffisante</span></div>
   </section>
   <div class="notice"><strong>Portée et limites ·</strong> Prototype de laboratoire, non certifié CIS. Une configuration déclarée complète : <strong>{{ "OUI" if report.complete_config_assumed else "NON" }}</strong>. Une absence n'est traitée comme un écart que si la complétude a été explicitement confirmée. Les cas UNKNOWN, hors profil et non applicables ne sont jamais comptés comme PASS. Les règles vérifient la configuration, pas l'état opérationnel des routeurs.</div>
+  {% if report.evidence_quality %}
+  <section class="chapter" aria-label="Qualité des preuves CIS"><h2>Qualité des preuves CIS</h2>
+    <p class="reference-note">Ce bilan distingue les numéros de ligne d'une directive des simples contextes de section. Il ne modifie aucun verdict CIS.</p>
+    <div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+      <div class="stat"><span>PASS / FAIL</span><strong>{{ report.evidence_quality.assessed_controls }}</strong></div>
+      <div class="stat"><span>LIGNE DIRECTIVE</span><strong>{{ report.evidence_quality.directive_line }}</strong></div>
+      <div class="stat"><span>REPÈRE SECTION</span><strong>{{ report.evidence_quality.section_context_only }}</strong></div>
+      <div class="stat unknown"><span>SANS REPÈRE</span><strong>{{ report.evidence_quality.no_source_anchor }}</strong></div>
+    </div>
+  </section>
+  {% endif %}
+  <div class="audit-actions"><a href="#configuration-importee">Voir la configuration importée (expurgée) ↓</a><a href="#controle-defaillants">Consulter les erreurs CIS ↓</a></div>
+  <details id="configuration-importee" class="config-preview">
+    <summary>Configuration Cisco IOS importée — aperçu avec numéros de ligne</summary>
+    <p>Par sécurité, les secrets, commentaires libres et directives non reconnues sont masqués. La configuration originale n'est pas conservée dans le rapport.</p>
+    {% set ns = namespace(alert_lines=[]) %}{% for finding in report.findings if finding.status == 'FAIL' %}{% for anchor in finding.source_anchors|default([]) %}{% if anchor.line and anchor.scope in ('ligne de directive', 'ligne de règle ACL') %}{% set ns.alert_lines = ns.alert_lines + [anchor.line] %}{% endif %}{% endfor %}{% endfor %}
+    <pre>{% for line in report.configuration_preview %}<span id="src-L{{ line.number }}" class="source-line{% if line.number in ns.alert_lines %} source-alert{% endif %}">L{{ "%04d" | format(line.number) }}  {{ line.text }}</span>{% endfor %}</pre>
+  </details>
+  <section id="controle-defaillants" class="chapter"><h2>Résumé des contrôles CIS non conformes ({{ report.counts.FAIL }})</h2>
+    {% if report.counts.FAIL %}<p>La synthèse HTML des anomalies est téléchargeable depuis l'interface : règle, faute, impact, preuve et correction.</p>
+    <div class="rules">{% for finding in report.findings if finding.status == "FAIL" %}
+      <div class="technical-card"><strong>{{ finding.cis_control_id }} — {{ finding.title }}</strong><p>{{ finding.observed_summary }}</p><small>Correction : {{ finding.remediation }}</small></div>
+    {% endfor %}</div>{% else %}<p>Aucun contrôle CIS en état FAIL pour cette analyse.</p>{% endif %}
+  </section>
   {% for group in view.groups %}
   <section class="chapter" aria-labelledby="domain-{{ group.id }}">
     <div class="chapter-head"><div><span class="marker">DOMAINE 0{{ group.id }}</span><h2 id="domain-{{ group.id }}">{{ group.name }}</h2><p>{{ group.subtitle }}</p></div>
@@ -91,14 +118,18 @@
     <div class="rules">
       {% for finding in group.findings %}
       <details class="rule" {% if finding.status == "FAIL" %}open{% endif %}>
-        <summary><span class="rule-id">{{ finding.cis_control_id }}</span><span class="rule-title">{{ finding.title }}<small class="rule-meta">Profil {{ finding.profile }} · Référence documentaire p. {{ finding.pdf_page if finding.pdf_page is not none else "n/d" }} · {{ finding.rule_id }}</small></span><span class="status {{ finding.status }}">{{ finding.status }}</span></summary>
+        <summary><span class="rule-id">{{ finding.cis_control_id }}</span><span class="rule-title">{{ finding.title }}<small class="rule-meta">Profil {{ finding.profile }} · Référence documentaire p. {{ finding.pdf_page if finding.pdf_page is not none else "n/d" }} · {{ finding.rule_id }} · Impact {{ finding.risk_level }}</small></span><span class="status {{ finding.status }}">{{ finding.status }}</span></summary>
         <div class="detail">
           <div class="benchmark-comparison"><div><h4>01 / Exigence du contrôle CIS</h4><p>{{ finding.benchmark_expected }}</p><p class="reference-note">Profil {{ finding.profile }} · règle {{ finding.cis_control_id }}</p></div>
-            <div><h4>02 / Observation extraite de l'IR</h4><p>{{ finding.observed_summary }}</p><p class="reference-note">{{ finding.source_location }} · preuve {{ finding.evidence_basis }}</p>{% if finding.source_anchors %}<div class="anchors" aria-label="Repères dans le fichier source">{% for anchor in finding.source_anchors[:8] %}<span title="{{ anchor.scope }}">L{{ anchor.line }} · {{ anchor.element }}</span>{% endfor %}</div>{% endif %}{% if finding.ios_config_observed and not finding.ios_config_observed.startswith("Aucune commande brute") %}<pre>{{ finding.ios_config_observed }}</pre>{% endif %}</div></div>
+            <div><h4>02 / Observation extraite de l'IR</h4><p>{{ finding.observed_summary }}</p><p class="reference-note">{{ finding.source_location }} · base {{ finding.evidence_basis }} · ancrage {{ finding.source_evidence_quality }}</p>{% if finding.source_anchors %}<div class="anchors" aria-label="Repères dans le fichier source">{% for anchor in finding.source_anchors[:8] %}<a class="proof-jump" href="#src-L{{ anchor.line }}" title="{{ anchor.scope }}">L{{ anchor.line }} · {{ anchor.element }}</a>{% endfor %}</div>{% endif %}{% if finding.ios_config_observed and not finding.ios_config_observed.startswith("Aucune commande brute") %}<pre>{{ finding.ios_config_observed }}</pre>{% endif %}<small>{{ finding.source_evidence_note }}</small></div></div>
           <div class="technical-card"><h4>03 / Analyse de l'écart</h4><p>{{ finding.technical_analysis }}</p></div>
           <div class="technical-card"><h4>04 / Impact de sécurité</h4><p>{{ finding.security_impact }}</p></div>
           <div class="technical-card"><h4>05 / Correction recommandée</h4><p>{% if finding.status == "FAIL" %}{{ finding.remediation }}{% else %}Aucune modification recommandée par ce verdict.{% endif %}</p><small>EXEMPLE IOS - INDICATIF</small><pre>{{ finding.remediation_example }}</pre><small>{{ finding.remediation_caution }}</small></div>
           <div class="technical-card"><h4>06 / Vérification en lecture seule</h4><pre>{{ finding.verification_command }}</pre><small>Confirmer l'état effectif sur l'équipement autorisé.</small></div>
+          <div class="technical-card technical-wide"><h4>07 / Commandes de la configuration source (expurgées)</h4>
+            {% if finding.ios_source_excerpts %}<pre>{% for excerpt in finding.ios_source_excerpts %}L{{ excerpt.line }}  {{ excerpt.command }}
+{% endfor %}</pre>{% else %}<p>Aucune commande sûre correspondante affichable. L'absence d'extrait ne prouve pas l'absence de configuration.</p>{% endif %}
+            <small>Extraits indicatifs : le verdict est produit par l'IR, pas par cette recherche textuelle.</small></div>
           <details class="technical-raw"><summary>Preuve technique structurée (IR / JSON)</summary><pre>{{ finding.evidence | tojson(indent=2) }}</pre></details>
         </div>
       </details>
@@ -106,5 +137,13 @@
     </div>
   </section>
   {% endfor %}
+  <section class="chapter"><div class="chapter-head"><div><span class="marker">ANALYSE COMPLÉMENTAIRE</span><h2>Cohérence réseau</h2><p>Contrôles exploratoires hors référentiel CIS : aucune incidence sur les 39 verdicts CIS.</p></div></div>
+    <div class="rules">{% for item in report.network_coherence.findings %}
+      <details class="rule" {% if item.status in ("FAIL", "REVIEW") %}open{% endif %}>
+        <summary><span class="rule-id">NET</span><span class="rule-title">{{ item.rule_id }}<small class="rule-meta">Impact {{ item.severity }} · {{ item.description }}</small></span><span class="status {{ 'FAIL' if item.status == 'FAIL' else 'UNKNOWN' if item.status in ('REVIEW', 'UNKNOWN') else 'PASS' }}">{{ item.status }}</span></summary>
+        <div class="detail"><div class="technical-card"><h4>Constat technique</h4>{% for line in item.source_lines|default([]) %}<a class="proof-jump" href="#src-L{{ line }}">L{{ line }} · contexte source</a>{% endfor %}<pre>{{ item.evidence | tojson(indent=2) }}</pre></div>
+          <div class="technical-card"><h4>Recommandation</h4><p>{{ item.recommendation }}</p><small>REVIEW exige une validation humaine ; ces contrôles ne sont pas des preuves de fonctionnement réel.</small></div></div>
+      </details>{% endfor %}</div>
+  </section>
   <footer class="footer"><span>6NLG / SUP'COM · Audit CIS Cisco IOS 15 v4.1.1 (sous-ensemble de laboratoire)</span><span>Fichier {{ report.source_file }} · Interfaces externes désignées : {{ report.external_interfaces_designated | join(", ") if report.external_interfaces_designated else "aucune" }}</span><span>Ce rapport ne constitue ni un certificat CIS ni un test de fonctionnement.</span></footer>
-</div></body></html>
+</div><script>document.querySelectorAll('a[href^="#src-L"]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('configuration-importee').open=true}));if(location.hash.startsWith('#src-L'))document.getElementById('configuration-importee').open=true;</script></body></html>

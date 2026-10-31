@@ -66,6 +66,40 @@
     toastTimer = setTimeout(() => node.classList.add("is-hidden"), 4700);
   }
 
+  // Aperçu local avant analyse : aucune configuration n'est envoyée au serveur.
+  // Le contenu est toujours inséré via textContent pour éviter toute injection HTML.
+  function redactConfigurationLine(line) {
+    const value = line.trim();
+    if (/^(?:!|#|\/\/)/.test(value)) return line;
+    if (/\b(?:password|passwd|secret|community|private[-_ ]?key|authentication[-_ ]?key|key[-_ ]?string|api[-_ ]?key|token|credential|encrypted-password|pre-shared-key)\b/i.test(value)
+      || /^username\s+/i.test(value)
+      || /^banner\s+/i.test(value)
+      || /^set\s+system\s+(?:login\s+user|root-authentication)/i.test(value)) {
+      return `${line.match(/^\s*/)[0]}[DIRECTIVE SENSIBLE MASQUÉE]`;
+    }
+    return line;
+  }
+
+  async function showFilePreview(file, preview, status) {
+    try {
+      const source = await file.text();
+      if (!preview.isConnected) return;
+      const lines = source.replace(/\r\n?/g, "\n").split("\n");
+      const limit = 1500;
+      preview.textContent = lines.slice(0, limit)
+        .map((line, index) => `${String(index + 1).padStart(4, "0")} │ ${redactConfigurationLine(line)}`)
+        .join("\n");
+      status.textContent = `${lines.length} ligne(s) · aperçu local avant analyse · données sensibles masquées`;
+      if (lines.length > limit) {
+        preview.textContent += `\n… ${lines.length - limit} ligne(s) supplémentaires non affichées.`;
+      }
+    } catch (_error) {
+      if (!preview.isConnected) return;
+      preview.textContent = "Impossible de lire ce fichier dans le navigateur.";
+      status.textContent = "Aperçu indisponible";
+    }
+  }
+
   function updateQueue() {
     // Toute nouvelle sélection invalide les preuves d'une exécution antérieure.
     window.dispatchEvent(new Event("netaudit:source-changed"));
@@ -91,7 +125,15 @@
         updateQueue();
       });
       row.append(left, remove);
+      const details = make("details", "file-preview-details");
+      details.open = true;
+      addText(details, "summary", "file-preview-toggle", "Configuration importée — afficher / masquer l’aperçu");
+      const status = addText(details, "div", "file-preview-status", "Lecture locale du fichier…");
+      const preview = addText(details, "pre", "file-preview-code", "Chargement de la configuration…");
+      details.append(status, preview);
+      row.append(details);
       queue.append(row);
+      showFilePreview(file, preview, status);
     });
     el("analyzeBtn").disabled = chosen.length === 0;
     if (chosen.length) feedback(`${chosen.length} fichier(s) prêt(s) pour l'analyse.`, true);

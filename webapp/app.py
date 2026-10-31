@@ -35,12 +35,15 @@ from normalizers.cisco_normalizer import normalize_cisco_ios  # noqa: E402
 from audit_parser_coverage import audit_text  # noqa: E402
 from report_validation import analyze_device  # noqa: E402
 from audit_engine.cis15_engine import audit_cis_ios15  # noqa: E402
+from audit_engine.network_coherence import audit_network_coherence  # noqa: E402
 
 from .cis_dashboard import build_cis_dashboard, enrich_cis_report
 from .detailed_report import build_detailed_devices
 from .juniper_adapter import analyze_juniper
 from .parsed_preview import safe_parsed_preview
 from .pdf_exports import generate_parsing_ir_pdf, generate_cis_pdf
+from .cis_config_preview import redacted_ios_preview
+from .cis_failure_summary import failure_summary_csv, failure_summary_html
 
 
 ALLOWED_SUFFIXES = {"cisco_ios": {".cfg", ".txt"}, "juniper_junos": {".cfg", ".txt", ".conf", ".md"}}
@@ -355,6 +358,9 @@ def create_app(test_config: dict | None = None) -> Flask:
             )
             parsing_view = safe_parsed_preview(parsed, filename)
             enrich_cis_report(report, catalogue, ir, source_text=content)
+            report["network_coherence"] = audit_network_coherence(
+                ir, complete_config=completeness == "true")
+            report["configuration_preview"] = redacted_ios_preview(content)
         except (ValueError, UnicodeError):
             return jsonify({"ok": False, "error":
                             "Configuration Cisco IOS invalide, non compatible ou trop volumineuse."}), 422
@@ -374,6 +380,8 @@ def create_app(test_config: dict | None = None) -> Flask:
         identifier = cis_reports.put({
             "json": _json_bytes(report), "html": html.encode("utf-8"),
             "parsing_pdf": parsing_pdf, "cis_pdf": audit_pdf,
+            "failures_csv": failure_summary_csv(report),
+            "failures_html": failure_summary_html(report),
         })
         session["cis_report_ids"] = (session.get("cis_report_ids", []) + [identifier])[-8:]
         parse_counts = {
@@ -404,24 +412,29 @@ def create_app(test_config: dict | None = None) -> Flask:
                 "html": f"/api/cis/download/{identifier}/html",
                 "parsing_pdf": f"/api/cis/download/{identifier}/parsing_pdf",
                 "cis_pdf": f"/api/cis/download/{identifier}/cis_pdf",
+                "failures_csv": f"/api/cis/download/{identifier}/failures_csv",
+                "failures_html": f"/api/cis/download/{identifier}/failures_html",
             },
             "html_preview": f"/api/cis/view/{identifier}",
         })
 
     @app.get("/api/cis/download/<identifier>/<kind>")
     def cis_download(identifier: str, kind: str):
-        if kind not in {"json", "html", "parsing_pdf", "cis_pdf"} or identifier not in session.get("cis_report_ids", []):
+        if kind not in {"json", "html", "parsing_pdf", "cis_pdf", "failures_csv", "failures_html"} or identifier not in session.get("cis_report_ids", []):
             abort(404)
         stored = cis_reports.get(identifier)
         if not stored:
             abort(404)
         mime = {"json": "application/json", "html": "text/html; charset=utf-8",
-                "parsing_pdf": "application/pdf", "cis_pdf": "application/pdf"}[kind]
+                "parsing_pdf": "application/pdf", "cis_pdf": "application/pdf",
+                "failures_csv": "text/csv; charset=utf-8", "failures_html": "text/html; charset=utf-8"}[kind]
         download_name = {
             "json": f"6nlg_cis_ios15_{identifier[:8]}.json",
             "html": f"6nlg_cis_ios15_{identifier[:8]}.html",
             "parsing_pdf": f"6nlg_parsing_ir_{identifier[:8]}.pdf",
             "cis_pdf": f"6nlg_audit_cis_{identifier[:8]}.pdf",
+            "failures_csv": f"6nlg_erreurs_cis_{identifier[:8]}.csv",
+            "failures_html": f"6nlg_synthese_fail_{identifier[:8]}.html",
         }[kind]
         return send_file(BytesIO(stored[kind]), mimetype=mime, as_attachment=True,
                          download_name=download_name, max_age=0)
