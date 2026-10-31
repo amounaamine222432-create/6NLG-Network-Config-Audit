@@ -25,3 +25,6 @@ exports/
 # Configurations privées
 private_configs/
 secrets/
+
+# Fichiers de sauvegarde
+*.bak
